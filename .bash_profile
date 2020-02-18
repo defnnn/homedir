@@ -1,2 +1,2 @@
-source /app/venv/bin/activate
+source /app/venv-home/bin/activate
 source ~/.bashrc
