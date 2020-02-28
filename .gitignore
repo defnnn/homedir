@@ -1,0 +1,8 @@
+# dotfiles
+.gitconfig
+.aws/config
+.bashrc.site
+.password-store
+.vim
+.vimrc
+work
