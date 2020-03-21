@@ -1,4 +1,5 @@
 tap "homebrew/cask"
+tap "github/gh"
 
 brew "asdf"
 brew "aws-okta"
@@ -10,6 +11,7 @@ brew "gnupg"
 brew "git"
 brew "htop"
 brew "jq"
+brew "kind"
 brew "make"
 brew "pass"
 brew "powerline-go"
@@ -17,6 +19,8 @@ brew "rsync"
 brew "tmux"
 brew "unzip"
 brew "vim"
+
+brew "github/gh/gh"
 
 cask "1password"
 cask "docker"
