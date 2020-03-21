@@ -1,0 +1,15 @@
+pydantic
+attrs
+click
+yq
+black
+isort
+mypy
+pyflakes
+pytest
+pytest-cov
+coverage
+cookiecutter
+httpie
+awscli
+aws-sam-cli
