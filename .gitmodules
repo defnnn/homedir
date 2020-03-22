@@ -3,7 +3,7 @@
 	url = git@github.com:destructuring/dotfiles
 [submodule ".asdf/plugins/helm"]
 	path = .asdf/plugins/helm
-	url = ttps://github.com/Antiarchitect/asdf-helm.git
+	url = https://github.com/Antiarchitect/asdf-helm.git
 [submodule ".asdf/plugins/kind"]
 	path = .asdf/plugins/kind
 	url = https://github.com/johnlayton/asdf-kind.git
