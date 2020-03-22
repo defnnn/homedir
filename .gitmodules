@@ -1,3 +1,15 @@
 [submodule ".dotfiles"]
 	path = .dotfiles
 	url = git@github.com:destructuring/dotfiles
+[submodule ".asdf/plugins/helm"]
+	path = .asdf/plugins/helm
+	url = ttps://github.com/Antiarchitect/asdf-helm.git
+[submodule ".asdf/plugins/kind"]
+	path = .asdf/plugins/kind
+	url = https://github.com/johnlayton/asdf-kind.git
+[submodule ".asdf/plugins/kubectl"]
+	path = .asdf/plugins/kubectl
+	url = https://github.com/Banno/asdf-kubectl.git
+[submodule ".asdf/plugins/python"]
+	path = .asdf/plugins/python
+	url = https://github.com/danhper/asdf-python.git
