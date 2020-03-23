@@ -1,3 +1,5 @@
+export GPG_TTY="$(tty)"
+
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 if [[ -S "$HOME/.gnupg/S.gpg-agent.ssh" ]]; then
