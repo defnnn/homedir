@@ -20,6 +20,7 @@ brew "unzip"
 brew "vim"
 
 brew "github/gh/gh"
+brew "argoproj/tap/argo"
 
 cask "1password"
 cask "docker"
