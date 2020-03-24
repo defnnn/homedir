@@ -1,6 +1,5 @@
 tap "homebrew/cask"
 tap "github/gh"
-tap "argoproj/tap"
 
 brew "asdf"
 brew "aws-okta"
@@ -21,7 +20,6 @@ brew "unzip"
 brew "vim"
 
 brew "github/gh/gh"
-brew "argoproj/tap/argo"
 
 cask "1password"
 cask "docker"
