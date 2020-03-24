@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 tap "github/gh"
+tap "argoproj/tap"
 
 brew "asdf"
 brew "aws-okta"
