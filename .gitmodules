@@ -13,3 +13,9 @@
 [submodule ".asdf/plugins/python"]
 	path = .asdf/plugins/python
 	url = https://github.com/danhper/asdf-python.git
+[submodule ".asdf/plugins/kustomize"]
+	path = .asdf/plugins/kustomize
+	url = https://github.com/Banno/asdf-kustomize.git
+[submodule ".asdf/plugins/terraform"]
+	path = .asdf/plugins/terraform
+	url = https://github.com/Banno/asdf-hashicorp.git
