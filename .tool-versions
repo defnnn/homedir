@@ -1,4 +1,4 @@
 python 3.8.1
 helm 3.1.2
-kubectl 1.17.4
+kubectl 1.18.0
 kind 0.7.0
