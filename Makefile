@@ -16,7 +16,7 @@ update_inner:
 
 upgrade: # Upgrade homedir
 	$(MAKE) -f .dotfiles/Makefile update
-	source ./.bash_profile && $(MAKE) upgrade
+	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile upgrade
 
 install: # Install software bundles
 	brew bundle
@@ -24,7 +24,7 @@ install: # Install software bundles
 	python -m venv venv
 	source venv/bin/activate && pip install --upgrade pip
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
-	source ./.bash_profile && $(MAKE) install
+	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 
 fmt: # Format with isort, black
 	@echo
