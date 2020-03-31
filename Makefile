@@ -6,7 +6,11 @@ menu:
 	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile | sort -b
 
 update: # Update code
-	git pull && git submodule update --init
+	git pull
+	$(MAKE) update_inner
+
+update_inner:
+	git submodule update --init
 	cd .dotfiles && git pull && git submodule update --init
 	$(MAKE) -f .dotfiles/Makefile update
 
