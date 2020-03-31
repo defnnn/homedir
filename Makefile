@@ -15,7 +15,6 @@ update_inner:
 	$(MAKE) -f .dotfiles/Makefile update
 
 upgrade: # Upgrade homedir
-	$(MAKE) -f .dotfiles/Makefile update
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile upgrade
 
 install: # Install software bundles
