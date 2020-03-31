@@ -13,3 +13,4 @@ cookiecutter
 httpie
 awscli
 aws-sam-cli
+ansible
