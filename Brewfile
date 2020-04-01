@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 tap "github/gh"
+tap "git-chglog/git-chglog"
 
 brew "aws-okta"
 brew "chamber"
@@ -18,6 +19,7 @@ brew "tmux"
 brew "unzip"
 
 brew "github/gh/gh"
+brew "git-chglog/git-chglog/git-chglog"
 
 cask "1password"
 cask "chromedriver"
