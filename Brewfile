@@ -1,7 +1,6 @@
 tap "homebrew/cask"
 tap "github/gh"
 
-brew "asdf"
 brew "aws-okta"
 brew "chamber"
 brew "ctop"
