@@ -17,6 +17,7 @@ brew "powerline-go"
 brew "rsync"
 brew "tmux"
 brew "unzip"
+brew "vim"
 
 brew "github/gh/gh"
 brew "git-chglog/git-chglog/git-chglog"
