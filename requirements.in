@@ -14,3 +14,4 @@ httpie
 awscli
 aws-sam-cli
 ansible
+pre-commit
