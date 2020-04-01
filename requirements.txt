@@ -10,13 +10,13 @@ argcomplete==1.11.1       # via -r /drone/src/requirements.in.txt, yq
 arrow==0.15.5             # via -r /drone/src/requirements.in.txt, jinja2-time
 attrs==19.3.0             # via -r /drone/src/requirements.in.txt, black, jsonschema, pytest
 aws-lambda-builders==0.8.0  # via -r /drone/src/requirements.in.txt, aws-sam-cli
-aws-sam-cli==0.46.2       # via -r /drone/src/requirements.in.txt
+aws-sam-cli==0.47.0       # via -r /drone/src/requirements.in.txt
 aws-sam-translator==1.22.0  # via -r /drone/src/requirements.in.txt, aws-sam-cli
-awscli==1.18.32           # via -r /drone/src/requirements.in.txt
+awscli==1.18.33           # via -r /drone/src/requirements.in.txt
 binaryornot==0.4.4        # via -r /drone/src/requirements.in.txt, cookiecutter
 black==19.10b0            # via -r /drone/src/requirements.in.txt
-boto3==1.12.32            # via -r /drone/src/requirements.in.txt, aws-sam-cli, aws-sam-translator, serverlessrepo
-botocore==1.15.32         # via -r /drone/src/requirements.in.txt, awscli, boto3, s3transfer
+boto3==1.12.33            # via -r /drone/src/requirements.in.txt, aws-sam-cli, aws-sam-translator, serverlessrepo
+botocore==1.15.33         # via -r /drone/src/requirements.in.txt, awscli, boto3, s3transfer
 certifi==2019.11.28       # via -r /drone/src/requirements.in.txt, requests
 cffi==1.14.0              # via -r /drone/src/requirements.in.txt, cryptography
 chardet==3.0.4            # via -r /drone/src/requirements.in.txt, binaryornot, requests
@@ -64,6 +64,7 @@ regex==2020.2.20          # via -r /drone/src/requirements.in.txt, black, datepa
 requests==2.22.0          # via -r /drone/src/requirements.in.txt, aws-sam-cli, cookiecutter, docker, httpie
 rsa==3.4.2                # via -r /drone/src/requirements.in.txt, awscli
 s3transfer==0.3.3         # via -r /drone/src/requirements.in.txt, awscli, boto3
+selenium==3.141.0         # via -r requirements.dev
 serverlessrepo==0.1.9     # via -r /drone/src/requirements.in.txt, aws-sam-cli
 six==1.14.0               # via -r /drone/src/requirements.in.txt, aws-lambda-builders, aws-sam-translator, cryptography, docker, jsonschema, packaging, pyrsistent, python-dateutil, serverlessrepo, websocket-client
 toml==0.10.0              # via -r /drone/src/requirements.in.txt, black
@@ -71,10 +72,10 @@ tomlkit==0.5.8            # via -r /drone/src/requirements.in.txt, aws-sam-cli
 typed-ast==1.4.1          # via -r /drone/src/requirements.in.txt, black, mypy
 typing-extensions==3.7.4.1  # via -r /drone/src/requirements.in.txt, mypy
 tzlocal==2.0.0            # via -r /drone/src/requirements.in.txt, dateparser
-urllib3==1.25.8           # via -r /drone/src/requirements.in.txt, botocore, requests
+urllib3==1.25.8           # via -r /drone/src/requirements.in.txt, botocore, requests, selenium
 wcwidth==0.1.9            # via -r /drone/src/requirements.in.txt, pytest
 websocket-client==0.57.0  # via -r /drone/src/requirements.in.txt, docker
-werkzeug==1.0.0           # via -r /drone/src/requirements.in.txt, flask
+werkzeug==1.0.1           # via -r /drone/src/requirements.in.txt, flask
 wheel==0.34.2             # via -r /drone/src/requirements.in.txt, aws-lambda-builders
 whichcraft==0.6.1         # via -r /drone/src/requirements.in.txt, cookiecutter
 xmltodict==0.12.0         # via -r /drone/src/requirements.in.txt, yq
