@@ -22,6 +22,7 @@ brew "vim"
 brew "github/gh/gh"
 
 cask "1password"
+cask "chromedriver"
 cask "docker"
 cask "google-chrome"
 cask "iterm2"
