@@ -11,8 +11,6 @@ update: # Update code
 
 update_inner:
 	git submodule update --init
-	if ! test -d .asdf; then git clone https://github.com/asdf-vm/asdf .asdf; fi
-	cd .asdf && git pull
 	cd .dotfiles && git pull && git submodule update --init
 	$(MAKE) -f .dotfiles/Makefile update
 
