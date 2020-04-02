@@ -18,7 +18,7 @@ upgrade: # Upgrade homedir
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile upgrade
 
 install: # Install software bundles
-	brew bundle && brew clean
+	brew bundle && rm -rf $(shell brew --cache)
 	asdf install
 	python -m venv venv
 	source venv/bin/activate && pip install --upgrade pip
