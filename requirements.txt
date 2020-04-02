@@ -26,7 +26,7 @@ click==7.1.1              # via -r /drone/src/requirements.in.txt, aws-sam-cli, 
 colorama==0.4.3           # via -r /drone/src/requirements.in.txt, awscli
 cookiecutter==1.6.0       # via -r /drone/src/requirements.in.txt, aws-sam-cli
 coverage==5.0.4           # via -r /drone/src/requirements.in.txt, pytest-cov
-cryptography==2.8         # via -r /drone/src/requirements.in.txt, ansible
+cryptography==2.8         # via -r /drone/src/requirements.in.txt, ansible, secretstorage
 dateparser==0.7.4         # via -r /drone/src/requirements.in.txt, aws-sam-cli
 distlib==0.3.0            # via -r /drone/src/requirements.in.txt, virtualenv
 docker==4.2.0             # via -r /drone/src/requirements.in.txt, aws-sam-cli
@@ -39,11 +39,14 @@ identify==1.4.13          # via -r /drone/src/requirements.in.txt, pre-commit
 idna==2.8                 # via -r /drone/src/requirements.in.txt, requests
 isort==4.3.21             # via -r /drone/src/requirements.in.txt
 itsdangerous==1.1.0       # via -r /drone/src/requirements.in.txt, flask
+jeepney==0.4.3            # via -r /drone/src/requirements.in.txt, keyring, secretstorage
 jinja2-time==0.2.0        # via -r /drone/src/requirements.in.txt, cookiecutter
 jinja2==2.11.1            # via -r /drone/src/requirements.in.txt, ansible, cookiecutter, flask, jinja2-time
 jmespath==0.9.5           # via -r /drone/src/requirements.in.txt, aws-sam-cli, boto3, botocore
 jsonschema==3.2.0         # via -r /drone/src/requirements.in.txt, aws-sam-translator
+keyring==21.2.0           # via -r /drone/src/requirements.in.txt
 markupsafe==1.1.1         # via -r /drone/src/requirements.in.txt, jinja2
+mitogen==0.2.9            # via -r /drone/src/requirements.in.txt
 more-itertools==8.2.0     # via -r /drone/src/requirements.in.txt, pytest
 mypy-extensions==0.4.3    # via -r /drone/src/requirements.in.txt, mypy
 mypy==0.770               # via -r /drone/src/requirements.in.txt
@@ -70,6 +73,7 @@ regex==2020.2.20          # via -r /drone/src/requirements.in.txt, black, datepa
 requests==2.22.0          # via -r /drone/src/requirements.in.txt, aws-sam-cli, cookiecutter, docker, httpie
 rsa==3.4.2                # via -r /drone/src/requirements.in.txt, awscli
 s3transfer==0.3.3         # via -r /drone/src/requirements.in.txt, awscli, boto3
+secretstorage==3.1.2      # via -r /drone/src/requirements.in.txt, keyring
 selenium==3.141.0         # via -r requirements.dev
 serverlessrepo==0.1.9     # via -r /drone/src/requirements.in.txt, aws-sam-cli
 six==1.14.0               # via -r /drone/src/requirements.in.txt, aws-lambda-builders, aws-sam-translator, cryptography, docker, jsonschema, packaging, pyrsistent, python-dateutil, serverlessrepo, virtualenv, websocket-client

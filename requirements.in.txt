@@ -26,7 +26,7 @@ click==7.1.1              # via -r /drone/src/requirements.in, aws-sam-cli, blac
 colorama==0.4.3           # via awscli
 cookiecutter==1.6.0       # via -r /drone/src/requirements.in, aws-sam-cli
 coverage==5.0.4           # via -r /drone/src/requirements.in, pytest-cov
-cryptography==2.8         # via ansible
+cryptography==2.8         # via ansible, secretstorage
 dateparser==0.7.4         # via aws-sam-cli
 distlib==0.3.0            # via virtualenv
 docker==4.2.0             # via aws-sam-cli
@@ -39,11 +39,14 @@ identify==1.4.13          # via pre-commit
 idna==2.8                 # via requests
 isort==4.3.21             # via -r /drone/src/requirements.in
 itsdangerous==1.1.0       # via flask
+jeepney==0.4.3            # via keyring, secretstorage
 jinja2-time==0.2.0        # via cookiecutter
 jinja2==2.11.1            # via ansible, cookiecutter, flask, jinja2-time
 jmespath==0.9.5           # via aws-sam-cli, boto3, botocore
 jsonschema==3.2.0         # via aws-sam-translator
+keyring==21.2.0           # via -r /drone/src/requirements.in
 markupsafe==1.1.1         # via jinja2
+mitogen==0.2.9            # via -r /drone/src/requirements.in
 more-itertools==8.2.0     # via pytest
 mypy-extensions==0.4.3    # via mypy
 mypy==0.770               # via -r /drone/src/requirements.in
@@ -70,6 +73,7 @@ regex==2020.2.20          # via black, dateparser
 requests==2.22.0          # via aws-sam-cli, cookiecutter, docker, httpie
 rsa==3.4.2                # via awscli
 s3transfer==0.3.3         # via awscli, boto3
+secretstorage==3.1.2      # via keyring
 serverlessrepo==0.1.9     # via aws-sam-cli
 six==1.14.0               # via aws-lambda-builders, aws-sam-translator, cryptography, docker, jsonschema, packaging, python-dateutil, serverlessrepo, virtualenv, websocket-client
 toml==0.10.0              # via black, pre-commit
