@@ -11,6 +11,7 @@ update: # Update code
 
 update_inner:
 	git submodule update --init
+	if [[ ! -d .dotfiles ]]; then git clone https://github.com/amanibhavam/dotfiles .dotfiles; fi
 	cd .dotfiles && git pull && git submodule update --init
 	$(MAKE) -f .dotfiles/Makefile update
 
