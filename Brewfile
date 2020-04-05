@@ -2,7 +2,6 @@ tap "homebrew/cask"
 tap "github/gh"
 tap "git-chglog/git-chglog"
 
-brew "asdf"
 brew "aws-okta"
 brew "chamber"
 brew "ctop"
