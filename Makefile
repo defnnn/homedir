@@ -29,6 +29,8 @@ asdf:
         sudo \
         build-essential \
         libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev \
+	sudo apt-get install -y --no-install-recommends \
+				unzip
 
 install: # Install software bundles
 	if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
