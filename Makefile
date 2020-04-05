@@ -22,7 +22,13 @@ brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
 asdf:
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8 || true
+	sudo apt-get install -y --no-install-recommends \
+        openssh-server tzdata locales iputils-ping iproute2 net-tools git curl xz-utils \
+        docker.io libusb-1.0-0 \
+        sudo \
+        build-essential \
+        libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev \
 
 install: # Install software bundles
 	if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
