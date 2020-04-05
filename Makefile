@@ -24,13 +24,11 @@ brew:
 asdf:
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8 || true
 	sudo apt-get install -y --no-install-recommends \
-        openssh-server tzdata locales iputils-ping iproute2 net-tools git curl xz-utils \
+        openssh-server tzdata locales iputils-ping iproute2 net-tools git curl xz-utils unzip \
         docker.io libusb-1.0-0 \
         sudo \
         build-essential \
         libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev \
-	sudo apt-get install -y --no-install-recommends \
-				unzip
 
 install: # Install software bundles
 	if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
