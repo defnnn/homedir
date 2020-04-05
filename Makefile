@@ -21,8 +21,11 @@ upgrade: # Upgrade homedir
 brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
+asdf:
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
+
 install: # Install software bundles
-	brew bundle && rm -rf $(shell brew --cache)
+	if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
 	asdf install
 	python -m venv venv
 	source venv/bin/activate && pip install --upgrade pip
