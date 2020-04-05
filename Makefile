@@ -17,6 +17,9 @@ update_inner:
 upgrade: # Upgrade homedir
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile upgrade
 
+install-brew:
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
 install: # Install software bundles
 	brew bundle && rm -rf $(shell brew --cache)
 	asdf install
