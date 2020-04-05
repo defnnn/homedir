@@ -10,6 +10,7 @@ update: # Update code
 	$(MAKE) update_inner
 
 update_inner:
+	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
 	git submodule update --init
 	if [[ ! -d .dotfiles ]]; then git clone https://github.com/amanibhavam/dotfiles .dotfiles; fi
 	cd .dotfiles && git pull && git submodule update --init
@@ -22,7 +23,6 @@ brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
 asdf:
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8 || true
 	if test -x "$(shell which apt-get)"; then \
 		sudo apt-get install -y --no-install-recommends \
         openssh-server tzdata locales iputils-ping iproute2 net-tools git curl xz-utils unzip \
