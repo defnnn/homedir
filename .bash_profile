@@ -10,8 +10,15 @@ export PATH="$HOME/bin:/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
 
-if [[ -f "$HOME/venv/bin/activate" ]]; then
-  source "$HOME/venv/bin/activate"
-fi
+case "$(uname -s)" in
+  Darwin)
+    true
+    ;;
+  *)
+    if [[ -f "$HOME/venv/bin/activate" ]]; then
+      source "$HOME/venv/bin/activate"
+    fi
+    ;;
+esac
 
 source "$HOME/.bashrc"
