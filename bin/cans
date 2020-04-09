@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function main {
+  source ~/.env
+
+  export _ANSIBLE_MITOGEN_ARGS="-e ANSIBLE_DEPRECATION_WARNINGS=False -e ANSIBLE_FORKS=20 -e ANSIBLE_CONNECTION=ssh -e ANSIBLE_STRATEGY=mitogen_linear -e ANSIBLE_STRATEGY_PLUGINS=/usr/local/lib/python2.7/site-packages/ansible_mitogen/plugins/strategy"
+  export DOCKER_IMAGE="${_ANSIBLE_MITOGEN_ARGS} ${_ANSIBLE_DOCKER_ARGS:-} ${_ANSIBLE_DOCKER_IMAGE}"
+
+  exec ${_ANSIBLE_COMMAND} -- "$@"
+}
+
+main "$@"
