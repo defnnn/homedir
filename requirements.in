@@ -18,3 +18,4 @@ ansible
 mitogen
 keyring
 SQLAlchemy
+ipython

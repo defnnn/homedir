@@ -12,12 +12,13 @@ attrs==19.3.0             # via -r /drone/src/requirements.in, black, jsonschema
 aws-lambda-builders==0.8.0  # via aws-sam-cli
 aws-sam-cli==0.47.0       # via -r /drone/src/requirements.in
 aws-sam-translator==1.22.0  # via aws-sam-cli
-awscli==1.18.35           # via -r /drone/src/requirements.in
+awscli==1.18.39           # via -r /drone/src/requirements.in
+backcall==0.1.0           # via ipython
 binaryornot==0.4.4        # via cookiecutter
 black==19.10b0            # via -r /drone/src/requirements.in
-boto3==1.12.35            # via aws-sam-cli, aws-sam-translator, serverlessrepo
-botocore==1.15.35         # via awscli, boto3, s3transfer
-certifi==2019.11.28       # via requests
+boto3==1.12.39            # via aws-sam-cli, aws-sam-translator, serverlessrepo
+botocore==1.15.39         # via awscli, boto3, s3transfer
+certifi==2020.4.5.1       # via requests
 cffi==1.14.0              # via cryptography
 cfgv==3.1.0               # via pre-commit
 chardet==3.0.4            # via binaryornot, requests
@@ -28,6 +29,7 @@ cookiecutter==1.6.0       # via -r /drone/src/requirements.in, aws-sam-cli
 coverage==5.0.4           # via -r /drone/src/requirements.in, pytest-cov
 cryptography==2.9         # via ansible, secretstorage
 dateparser==0.7.4         # via aws-sam-cli
+decorator==4.4.2          # via ipython, traitlets
 distlib==0.3.0            # via virtualenv
 docker==4.2.0             # via aws-sam-cli
 docutils==0.15.2          # via awscli, botocore
@@ -35,10 +37,13 @@ filelock==3.0.12          # via virtualenv
 flask==1.0.4              # via aws-sam-cli
 future==0.18.2            # via cookiecutter
 httpie==2.0.0             # via -r /drone/src/requirements.in
-identify==1.4.13          # via pre-commit
+identify==1.4.14          # via pre-commit
 idna==2.8                 # via requests
+ipython-genutils==0.2.0   # via traitlets
+ipython==7.13.0           # via -r /drone/src/requirements.in
 isort==4.3.21             # via -r /drone/src/requirements.in
 itsdangerous==1.1.0       # via flask
+jedi==0.16.0              # via ipython
 jeepney==0.4.3            # via keyring, secretstorage
 jinja2-time==0.2.0        # via cookiecutter
 jinja2==2.11.1            # via ansible, cookiecutter, flask, jinja2-time
@@ -52,39 +57,45 @@ mypy-extensions==0.4.3    # via mypy
 mypy==0.770               # via -r /drone/src/requirements.in
 nodeenv==1.3.5            # via pre-commit
 packaging==20.3           # via pytest
-pathspec==0.7.0           # via black
+parso==0.6.2              # via jedi
+pathspec==0.8.0           # via black
+pexpect==4.8.0            # via ipython
+pickleshare==0.7.5        # via ipython
 pluggy==0.13.1            # via pytest
 poyo==0.5.0               # via cookiecutter
 pre-commit==2.2.0         # via -r /drone/src/requirements.in
+prompt-toolkit==3.0.5     # via ipython
+ptyprocess==0.6.0         # via pexpect
 py==1.8.1                 # via pytest
 pyasn1==0.4.8             # via rsa
 pycparser==2.20           # via cffi
 pydantic==1.4             # via -r /drone/src/requirements.in
-pyflakes==2.1.1           # via -r /drone/src/requirements.in
-pygments==2.6.1           # via httpie
-pyparsing==2.4.6          # via packaging
+pyflakes==2.2.0           # via -r /drone/src/requirements.in
+pygments==2.6.1           # via httpie, ipython
+pyparsing==2.4.7          # via packaging
 pyrsistent==0.16.0        # via jsonschema
 pytest-cov==2.8.1         # via -r /drone/src/requirements.in
 pytest==5.4.1             # via -r /drone/src/requirements.in, pytest-cov
 python-dateutil==2.8.0    # via arrow, aws-sam-cli, botocore, dateparser
 pytz==2019.3              # via dateparser, tzlocal
 pyyaml==5.3.1             # via ansible, aws-sam-cli, awscli, pre-commit, serverlessrepo, yq
-regex==2020.2.20          # via black, dateparser
+regex==2020.4.4           # via black, dateparser
 requests==2.22.0          # via aws-sam-cli, cookiecutter, docker, httpie
 rsa==3.4.2                # via awscli
 s3transfer==0.3.3         # via awscli, boto3
 secretstorage==3.1.2      # via keyring
 serverlessrepo==0.1.9     # via aws-sam-cli
-six==1.14.0               # via aws-lambda-builders, aws-sam-translator, cryptography, docker, jsonschema, packaging, python-dateutil, serverlessrepo, virtualenv, websocket-client
-sqlalchemy==1.3.15        # via -r /drone/src/requirements.in
+six==1.14.0               # via aws-lambda-builders, aws-sam-translator, cryptography, docker, jsonschema, packaging, python-dateutil, serverlessrepo, traitlets, virtualenv, websocket-client
+sqlalchemy==1.3.16        # via -r /drone/src/requirements.in
 toml==0.10.0              # via black, pre-commit
 tomlkit==0.5.8            # via aws-sam-cli
+traitlets==4.3.3          # via ipython
 typed-ast==1.4.1          # via black, mypy
 typing-extensions==3.7.4.2  # via mypy
 tzlocal==2.0.0            # via dateparser
 urllib3==1.25.8           # via botocore, requests
-virtualenv==20.0.15       # via pre-commit
-wcwidth==0.1.9            # via pytest
+virtualenv==20.0.17       # via pre-commit
+wcwidth==0.1.9            # via prompt-toolkit, pytest
 websocket-client==0.57.0  # via docker
 werkzeug==1.0.1           # via flask
 wheel==0.34.2             # via aws-lambda-builders
