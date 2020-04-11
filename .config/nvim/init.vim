@@ -51,7 +51,6 @@ syntax on
 set encoding=utf-8
 
 " Whitespace stuff
-set wrap
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -106,17 +105,6 @@ if has("autocmd")
     \| exe "normal g'\"" | endif
 endif
 
-function s:setupWrapping()
-  set wrap
-  set wrapmargin=2
-  set textwidth=72
-endfunction
-
-function s:setupMarkup()
-  call s:setupWrapping()
-  set ft=mkd
-endfunction
-
 " make uses real tabs
 au FileType make set noexpandtab
 
@@ -124,14 +112,10 @@ au FileType make set noexpandtab
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
 
 " These are Markdown
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,ronn} set filetype=markdown
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,ronn} call s:setupMarkup()
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,ronn} call s:setupWrapping()
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,ronn} set ft=mkd " ft=markdown
 
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
-
-au BufRead,BufNewFile *.txt call s:setupWrapping()
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
