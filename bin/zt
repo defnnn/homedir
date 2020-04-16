@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+function main {
+  local nm="$1"; shift
+
+  export _K_CONTEXT="${nm}"
+  if [[ "$#" -gt 0 ]]; then
+    case "$1" in
+      shell)
+        multipass shell "${nm}"
+        ;;
+      exec)
+        multipass exec "${nm}" -- "$@"
+        ;;
+      *)
+        "$@"
+        ;;
+    esac
+  fi
+}
+
+main "$@"

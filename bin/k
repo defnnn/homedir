@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  kubectl --context ${_K_CONTEXT:-kind-kind} "$@"
+}
+
+main "$@"

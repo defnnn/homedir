@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  zt zt0 "$@"
+}
+
+main "$@"

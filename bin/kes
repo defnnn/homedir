@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  ken kube-system "$@"
+}
+
+main "$@"
