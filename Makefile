@@ -52,3 +52,10 @@ requirements: # Compile requirements
 
 uitest:
 	 cypress run --browser chrome --headless
+
+uideps:
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sudo apt install -y ./google-chrome-stable_current_amd64.deb
+	sudo apt install -y xvfb
+	#sudo apt install -y libxcomposite1 libxcursor-dev libxi6 libxtst6 libnss3 libgdk-pixbuf2.0.0 libgtk-3-0 libxss1 libasound2
+	rm -f google-chrome-stable_current_amd64.deb

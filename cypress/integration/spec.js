@@ -1,3 +1,3 @@
-it('visits www.defn.sh', () => {
+it('visits /', () => {
   cy.visit('/')
 })
