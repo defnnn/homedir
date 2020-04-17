@@ -49,3 +49,6 @@ docs: # Build docs
 requirements: # Compile requirements
 	@echo
 	drone exec --pipeline $@
+
+uitest:
+	 cypress run --browser chrome --headless
