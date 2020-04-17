@@ -19,3 +19,6 @@
 [submodule ".asdf/plugins/terraform"]
 	path = .asdf/plugins/terraform
 	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/nodejs"]
+	path = .asdf/plugins/nodejs
+	url = https://github.com/asdf-vm/asdf-nodejs.git
