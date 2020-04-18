@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function main {
+  local cmd_pinentry="$(which pinentry-mac pinentry-curses pinentry-tty pinentry 2>/dev/null | head -1 || true)"
+
+  exec "${cmd_pinentry}" "$@"
+}
+
+main "$@"
