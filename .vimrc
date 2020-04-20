@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible
 
 set ruler
@@ -63,3 +65,7 @@ if has("autocmd")
 endif
 
 set guioptions=
+
+colorscheme xoria256
+hi Folded  ctermfg=180 guifg=#dfaf87 ctermbg=234 guibg=#1c1c1c
+hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
