@@ -54,6 +54,7 @@ uitest:
 	 cypress run --browser chrome --headless
 
 uideps:
+	sudo apt install -y wget
 	sudo apt install -y xvfb
 	sudo apt install -y libxcomposite1 libxcursor-dev libxi6 libxtst6 libnss3 libgdk-pixbuf2.0.0 libgtk-3-0 libxss1 libasound2
 	if ! test "$(shell which google-chrome)"; then \
