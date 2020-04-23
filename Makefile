@@ -51,7 +51,7 @@ requirements: # Compile requirements
 	drone exec --pipeline $@
 
 uitest:
-	 cypress run --browser chrome --headless
+	 ./node_modules/.bin/cypress run --browser chrome --headless
 
 uideps:
 	sudo apt install -y wget
