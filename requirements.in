@@ -10,10 +10,9 @@ pyflakes
 pytest
 pytest-cov
 coverage
-cookiecutter~=1.6.0
+cookiecutter
 httpie
 awscli
-aws-sam-cli
 ansible
 mitogen
 keyring
