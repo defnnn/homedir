@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=/tmp/requirements.in.txt /drone/src/requirements.in
 #
-ansible==2.9.6            # via -r /drone/src/requirements.in
+ansible==2.9.7            # via -r /drone/src/requirements.in
 appdirs==1.4.3            # via black, virtualenv
 argcomplete==1.11.1       # via yq
 arrow==0.15.5             # via jinja2-time
@@ -12,12 +12,12 @@ attrs==19.3.0             # via -r /drone/src/requirements.in, black, jsonschema
 aws-lambda-builders==0.8.0  # via aws-sam-cli
 aws-sam-cli==0.47.0       # via -r /drone/src/requirements.in
 aws-sam-translator==1.22.0  # via aws-sam-cli
-awscli==1.18.39           # via -r /drone/src/requirements.in
+awscli==1.18.45           # via -r /drone/src/requirements.in
 backcall==0.1.0           # via ipython
 binaryornot==0.4.4        # via cookiecutter
 black==19.10b0            # via -r /drone/src/requirements.in
-boto3==1.12.39            # via aws-sam-cli, aws-sam-translator, serverlessrepo
-botocore==1.15.39         # via awscli, boto3, s3transfer
+boto3==1.12.45            # via aws-sam-cli, aws-sam-translator, serverlessrepo
+botocore==1.15.45         # via awscli, boto3, s3transfer
 certifi==2020.4.5.1       # via requests
 cffi==1.14.0              # via cryptography
 cfgv==3.1.0               # via pre-commit
@@ -26,8 +26,8 @@ chevron==0.13.1           # via aws-sam-cli
 click==7.1.1              # via -r /drone/src/requirements.in, aws-sam-cli, black, cookiecutter, flask
 colorama==0.4.3           # via awscli
 cookiecutter==1.6.0       # via -r /drone/src/requirements.in, aws-sam-cli
-coverage==5.0.4           # via -r /drone/src/requirements.in, pytest-cov
-cryptography==2.9         # via ansible, secretstorage
+coverage==5.1             # via -r /drone/src/requirements.in, pytest-cov
+cryptography==2.9.2       # via ansible, secretstorage
 dateparser==0.7.4         # via aws-sam-cli
 decorator==4.4.2          # via ipython, traitlets
 distlib==0.3.0            # via virtualenv
@@ -36,17 +36,17 @@ docutils==0.15.2          # via awscli, botocore
 filelock==3.0.12          # via virtualenv
 flask==1.0.4              # via aws-sam-cli
 future==0.18.2            # via cookiecutter
-httpie==2.0.0             # via -r /drone/src/requirements.in
-identify==1.4.14          # via pre-commit
+httpie==2.1.0             # via -r /drone/src/requirements.in
+identify==1.4.15          # via pre-commit
 idna==2.8                 # via requests
 ipython-genutils==0.2.0   # via traitlets
 ipython==7.13.0           # via -r /drone/src/requirements.in
 isort==4.3.21             # via -r /drone/src/requirements.in
 itsdangerous==1.1.0       # via flask
-jedi==0.16.0              # via ipython
+jedi==0.17.0              # via ipython
 jeepney==0.4.3            # via keyring, secretstorage
 jinja2-time==0.2.0        # via cookiecutter
-jinja2==2.11.1            # via ansible, cookiecutter, flask, jinja2-time
+jinja2==2.11.2            # via ansible, cookiecutter, flask, jinja2-time
 jmespath==0.9.5           # via aws-sam-cli, boto3, botocore
 jsonschema==3.2.0         # via aws-sam-translator
 keyring==21.2.0           # via -r /drone/src/requirements.in
@@ -57,19 +57,19 @@ mypy-extensions==0.4.3    # via mypy
 mypy==0.770               # via -r /drone/src/requirements.in
 nodeenv==1.3.5            # via pre-commit
 packaging==20.3           # via pytest
-parso==0.6.2              # via jedi
+parso==0.7.0              # via jedi
 pathspec==0.8.0           # via black
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 pluggy==0.13.1            # via pytest
 poyo==0.5.0               # via cookiecutter
-pre-commit==2.2.0         # via -r /drone/src/requirements.in
+pre-commit==2.3.0         # via -r /drone/src/requirements.in
 prompt-toolkit==3.0.5     # via ipython
 ptyprocess==0.6.0         # via pexpect
 py==1.8.1                 # via pytest
 pyasn1==0.4.8             # via rsa
 pycparser==2.20           # via cffi
-pydantic==1.4             # via -r /drone/src/requirements.in
+pydantic==1.5.1           # via -r /drone/src/requirements.in
 pyflakes==2.2.0           # via -r /drone/src/requirements.in
 pygments==2.6.1           # via httpie, ipython
 pyparsing==2.4.7          # via packaging
@@ -93,8 +93,8 @@ traitlets==4.3.3          # via ipython
 typed-ast==1.4.1          # via black, mypy
 typing-extensions==3.7.4.2  # via mypy
 tzlocal==2.0.0            # via dateparser
-urllib3==1.25.8           # via botocore, requests
-virtualenv==20.0.17       # via pre-commit
+urllib3==1.25.9           # via botocore, requests
+virtualenv==20.0.18       # via pre-commit
 wcwidth==0.1.9            # via prompt-toolkit, pytest
 websocket-client==0.57.0  # via docker
 werkzeug==1.0.1           # via flask
