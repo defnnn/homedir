@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+function main {
+  set -efu
+
+  local remote="$1"; shift
+
+  export _GPG_EXTRA_SOCKET="$(gpgconf --list-dir agent-extra-socket)"
+  export _GPG_AGENT_SOCKET="$(ssh "${remote}" ./env gpgconf --list-dirs | grep ^agent-socket: | cut -d: -f2)"
+
+  if [[ "$#" == 0 ]]; then
+    set -- bash -c "$(printf '%q' "$(cat "$0.sh")")"
+  fi
+
+  ssh "${remote}" rm -f "${_GPG_AGENT_SOCKET}"
+
+  exec ssh "${remote}" -tA \
+    -o RemoteForward="${_GPG_AGENT_SOCKET}:${_GPG_EXTRA_SOCKET}" \
+    ./env "$@"
+}
+
+main "$@"
