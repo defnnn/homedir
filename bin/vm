@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-function main {
-  docker run -it --rm -v "$HOME:$HOME" -w "${PWD}" -e "HOME=$HOME" defn/spacenghiem "$@"
-}
-
-main "$@"
