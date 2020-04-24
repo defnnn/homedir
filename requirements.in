@@ -10,7 +10,7 @@ pyflakes
 pytest
 pytest-cov
 coverage
-cookiecutter
+cookiecutter~=1.6.0
 httpie
 awscli
 aws-sam-cli
