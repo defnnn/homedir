@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  set -efu
+
+  mv homedir/.git .
+  rm -rf homedir
+  git reset --hard
+  echo git@github.com:amanibhavam/dotfiles > .dotfiles-repo
+  make update
+  make upgrade
+}
+
+main "$@"
