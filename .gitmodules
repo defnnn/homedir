@@ -22,3 +22,6 @@
 [submodule ".asdf/plugins/nodejs"]
 	path = .asdf/plugins/nodejs
 	url = https://github.com/asdf-vm/asdf-nodejs.git
+[submodule ".asdf/plugins/packer"]
+	path = .asdf/plugins/packer
+	url = https://github.com/Banno/asdf-hashicorp.git
