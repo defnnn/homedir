@@ -1,4 +1,4 @@
-python 3.8.1
+python system
 nodejs 12.16.2
 kubectl 1.18.0
 kustomize 3.5.4
