@@ -10,6 +10,12 @@ export PATH="$HOME/bin:$HOME/node_modules/.bin:/home/linuxbrew/.linuxbrew/bin:$P
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
 
+if [[ -z "${VIRTUAL_ENV:-}" ]]; then
+  if [[ -f "$HOME/venv/bin/activate" ]]; then
+    source "$HOME/venv/bin/activate"
+  fi
+fi
+
 case "$(uname -s)" in
   Darwin)
     true
