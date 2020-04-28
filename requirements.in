@@ -1,6 +1,7 @@
 pre-commit
 pydantic
 attrs
+lambda_decorators
 click
 yq
 black
