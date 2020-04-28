@@ -9,6 +9,9 @@ function main {
   echo git@github.com:amanibhavam/dotfiles > .dotfiles-repo
   make update
   make upgrade
+  make install
+  source .bash_profile
+  exec bash
 }
 
 main "$@"
