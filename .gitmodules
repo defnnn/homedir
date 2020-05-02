@@ -25,3 +25,9 @@
 [submodule ".asdf/plugins/packer"]
 	path = .asdf/plugins/packer
 	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/vault"]
+	path = .asdf/plugins/vault
+	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/consul"]
+	path = .asdf/plugins/consul
+	url = https://github.com/Banno/asdf-hashicorp.git
