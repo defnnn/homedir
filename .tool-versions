@@ -6,3 +6,4 @@ helm 3.1.2
 kind 0.7.0
 terraform 0.12.24
 packer 1.5.5
+vault 1.4.1
