@@ -4,6 +4,7 @@ tap "git-chglog/git-chglog"
 
 brew "aws-okta"
 brew "chamber"
+brew "clojure"
 brew "ctop"
 brew "drone-cli"
 brew "gnupg"
