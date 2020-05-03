@@ -9,12 +9,12 @@ appdirs==1.4.3            # via -r /drone/src/requirements.in.txt, black, virtua
 argcomplete==1.11.1       # via -r /drone/src/requirements.in.txt, yq
 arrow==0.15.5             # via -r /drone/src/requirements.in.txt, jinja2-time
 attrs==19.3.0             # via -r /drone/src/requirements.in.txt, black, pytest
-awscli==1.18.48           # via -r /drone/src/requirements.in.txt
+awscli==1.18.51           # via -r /drone/src/requirements.in.txt
 backcall==0.1.0           # via -r /drone/src/requirements.in.txt, ipython
 binaryornot==0.4.4        # via -r /drone/src/requirements.in.txt, cookiecutter
 black==19.10b0            # via -r /drone/src/requirements.in.txt
-boto3==1.12.48            # via -r /drone/src/requirements.in.txt, lambda-decorators
-botocore==1.15.48         # via -r /drone/src/requirements.in.txt, awscli, boto3, s3transfer
+boto3==1.13.1             # via -r /drone/src/requirements.in.txt, lambda-decorators
+botocore==1.16.1          # via -r /drone/src/requirements.in.txt, awscli, boto3, s3transfer
 certifi==2020.4.5.1       # via -r /drone/src/requirements.in.txt, requests
 cffi==1.14.0              # via -r /drone/src/requirements.in.txt, cryptography
 cfgv==3.1.0               # via -r /drone/src/requirements.in.txt, pre-commit
@@ -26,20 +26,21 @@ coverage==5.1             # via -r /drone/src/requirements.in.txt, pytest-cov
 cryptography==2.9.2       # via -r /drone/src/requirements.in.txt, ansible, secretstorage
 decorator==4.4.2          # via -r /drone/src/requirements.in.txt, ipython, traitlets
 distlib==0.3.0            # via -r /drone/src/requirements.in.txt, virtualenv
+dnf==0.0.1                # via -r /drone/src/requirements.in.txt
 docutils==0.15.2          # via -r /drone/src/requirements.in.txt, awscli, botocore
 filelock==3.0.12          # via -r /drone/src/requirements.in.txt, virtualenv
 httpie==2.1.0             # via -r /drone/src/requirements.in.txt
 identify==1.4.15          # via -r /drone/src/requirements.in.txt, pre-commit
 idna==2.9                 # via -r /drone/src/requirements.in.txt, requests
 ipython-genutils==0.2.0   # via -r /drone/src/requirements.in.txt, traitlets
-ipython==7.13.0           # via -r /drone/src/requirements.in.txt
+ipython==7.14.0           # via -r /drone/src/requirements.in.txt
 isort==4.3.21             # via -r /drone/src/requirements.in.txt
 jedi==0.17.0              # via -r /drone/src/requirements.in.txt, ipython
 jeepney==0.4.3            # via -r /drone/src/requirements.in.txt, keyring, secretstorage
 jinja2-time==0.2.0        # via -r /drone/src/requirements.in.txt, cookiecutter
 jinja2==2.11.2            # via -r /drone/src/requirements.in.txt, ansible, cookiecutter, jinja2-time
 jmespath==0.9.5           # via -r /drone/src/requirements.in.txt, boto3, botocore
-keyring==21.2.0           # via -r /drone/src/requirements.in.txt
+keyring==21.2.1           # via -r /drone/src/requirements.in.txt
 lambda-decorators==0.6.0  # via -r /drone/src/requirements.in.txt
 markupsafe==1.1.1         # via -r /drone/src/requirements.in.txt, cookiecutter, jinja2
 mitogen==0.2.9            # via -r /drone/src/requirements.in.txt
