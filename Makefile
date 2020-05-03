@@ -64,3 +64,6 @@ uideps:
 		rm -f google-chrome-stable_current_amd64.deb; \
 	fi
 	npm install
+
+fixroot:
+	find /home/linuxbrew ~ -uid 0 | xargs sudo chown app:app -v
