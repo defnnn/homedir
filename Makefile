@@ -66,4 +66,5 @@ uideps:
 	npm install
 
 fixroot:
+	sudo chown app:app ~
 	find /home/linuxbrew ~/.git ~/.cache -uid 0 | xargs sudo chown app:app -v
