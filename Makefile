@@ -30,9 +30,6 @@ install: # Install software bundles
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 
-upgrade: # Upgrade software bundles
-	source ./.bash_profile && if test -x "$(shell which brew)"; then brew upgrade; fi
-
 fmt: # Format with isort, black
 	@echo
 	drone exec --pipeline $@
