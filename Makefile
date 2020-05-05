@@ -67,4 +67,4 @@ uideps:
 
 fixroot:
 	sudo chown app:app ~
-	find /home/linuxbrew ~/.git ~/.cache -uid 0 | xargs sudo chown app:app -v
+	find /home/linuxbrew ~/.git ~/.cache ~/.npm -uid 0 | xargs sudo chown app:app -v
