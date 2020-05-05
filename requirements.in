@@ -3,6 +3,7 @@ pydantic
 attrs
 lambda_decorators
 click
+rich
 yq
 black
 isort
