@@ -2,7 +2,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " One of following
-Plug 'junegunn/fzf'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Requires
 Plug 'guns/vim-sexp',    {'for': 'clojure'}
