@@ -6,7 +6,7 @@ if [[ -S "$HOME/.gnupg/S.gpg-agent.ssh" ]]; then
   export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
 fi
 
-export PATH="$HOME/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$HOME/.config/nvim/plugged/vim-iced/bin:$PATH:$HOME/node_modules/.bin"
+export PATH="$HOME/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$HOME/.config/nvim/plugged/vim-iced/bin:$PATH"
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
 
