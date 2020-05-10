@@ -1,5 +1,4 @@
 python system
-nodejs 12.16.3
 kubectl 1.18.2
 kustomize 3.5.4
 helm 3.2.0
