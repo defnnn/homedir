@@ -1,9 +1,1 @@
 python system
-kubectl 1.18.2
-kustomize 3.5.4
-helm 3.2.0
-kind 0.8.1
-terraform 0.12.24
-packer 1.5.6
-vault 1.4.1
-consul 1.7.2
