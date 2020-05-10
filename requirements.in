@@ -5,3 +5,5 @@ pre-commit
 keyring
 mitogen
 ansible
+pypyp
+mario
