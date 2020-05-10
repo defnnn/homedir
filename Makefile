@@ -3,7 +3,7 @@ SHELL := /bin/bash
 .PHONY: docs
 
 menu:
-	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile | sort -b
+	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile
 
 update: # Update code
 	git pull
@@ -34,11 +34,7 @@ fmt: # Format with isort, black
 	@echo
 	drone exec --pipeline $@
 
-lint: # Run pyflakes, mypy
-	@echo
-	drone exec --pipeline $@
-
-test: # Run tests
+lint: # Run drone lint
 	@echo
 	drone exec --pipeline $@
 

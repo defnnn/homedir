@@ -42,9 +42,7 @@ steps:
   image: letfn/python
   commands:
   - . /app/venv/bin/activate
-  - pip-compile /drone/src/requirements.in -o /tmp/requirements.in.txt
-  - if test -w . ; then cp /tmp/requirements.in.txt requirements.in.txt; else diff requirements.in.txt /tmp/requirements.in.txt || true; fi
-  - pip-compile /drone/src/requirements.in.txt requirements.dev -o /tmp/requirements.txt
+  - pip-compile /drone/src/requirements.in -o /tmp/requirements.txt
   - if test -w . ; then cp /tmp/requirements.txt requirements.txt; else diff requirements.txt /tmp/requirements.txt || true;  fi
 
 trigger:
