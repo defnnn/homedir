@@ -30,6 +30,7 @@ install: # Install software bundles
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 	rm -rf .cache/Homebrew
+	npm install
 
 fmt: # Format with isort, black
 	@echo
