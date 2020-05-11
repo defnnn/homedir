@@ -1,0 +1,11 @@
+{
+  "name": "defn",
+  "version": "0.0.1",
+  "description": "",
+  "author": "defn",
+  "license": "MIT",
+  "devDependencies": {
+    "pkg": "4.4.8"
+  },
+  "dependencies": {}
+}
