@@ -10,6 +10,8 @@ export PATH="$HOME/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
 
+PATH="$HOME/.asdf/installs/nodejs/12.16.1/bin:$PATH"
+
 if [[ -z "${VIRTUAL_ENV:-}" ]]; then
   if [[ -f "$HOME/venv/bin/activate" ]]; then
     source "$HOME/venv/bin/activate"
