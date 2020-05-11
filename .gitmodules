@@ -4,3 +4,6 @@
 [submodule ".asdf/plugins/python"]
 	path = .asdf/plugins/python
 	url = https://github.com/danhper/asdf-python.git
+[submodule ".asdf/plugins/nodejs"]
+	path = .asdf/plugins/nodejs
+	url = https://github.com/asdf-vm/asdf-nodejs.git
