@@ -2,6 +2,7 @@ cookiecutter
 httpie
 awscli
 pre-commit
+diagrams
 keyring
 mitogen
 ansible
