@@ -1,9 +1,6 @@
 tap "homebrew/cask"
-tap "github/gh"
-tap "git-chglog/git-chglog"
 
 brew "aws-okta"
-brew "caddy"
 brew "chamber"
 brew "clojure"
 brew "ctop"
@@ -23,9 +20,6 @@ brew "socat"
 brew "tmux"
 brew "vim"
 brew "neovim"
-
-brew "github/gh/gh"
-brew "git-chglog/git-chglog/git-chglog"
 
 cask "1password"
 cask "chromedriver"
