@@ -5,7 +5,7 @@ function main {
 
   local remote="$1"; shift
 
-  export _GPG_EXTRA_SOCKET="$(gpgconf --list-dir agent-extra-socket)"
+  export _GPG_EXTRA_SOCKET="/usr/local/bin/S.gpg-agent.extra"
   export _GPG_AGENT_SOCKET="$(ssh "${remote}" ./env gpgconf --list-dirs | grep ^agent-socket: | cut -d: -f2)"
 
   if [[ "$#" == 0 ]]; then
