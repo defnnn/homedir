@@ -3,6 +3,11 @@
 function main {
   set -efu
 
+  if [[ -x "$(type -P apt)" ]]; then
+    sudo apt update
+    sudo apt install -y make unzip python3-venv
+  fi
+
   mv homedir/.git .
   rm -rf homedir
   git reset --hard
