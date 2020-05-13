@@ -8,6 +8,11 @@ function main {
     sudo apt install -y make unzip python3-venv
   fi
 
+  sudo install -d -u app -g app /home/linuxbrew
+  git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
+  git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
+    /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
+
   mv homedir/.git .
   rm -rf homedir
   git reset --hard
