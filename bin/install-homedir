@@ -6,12 +6,14 @@ function main {
   if [[ -x "$(type -P apt)" ]]; then
     sudo apt update
     sudo apt install -y make unzip python3-venv build-essential
-  fi
 
-  sudo install -d -u app -g app /home/linuxbrew
-  git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
-  git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
-    /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
+    sudo install -d -u app -g app /home/linuxbrew
+    git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
+    git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
+      /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
+
+    brew tap linuxbrew/xorg
+  fi
 
   mv homedir/.git .
   rm -rf homedir
