@@ -13,3 +13,6 @@
 [submodule ".asdf/plugins/consul"]
 	path = .asdf/plugins/consul
 	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/kubectl"]
+	path = .asdf/plugins/kubectl
+	url = https://github.com/Banno/asdf-kubectl.git
