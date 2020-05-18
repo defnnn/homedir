@@ -19,3 +19,6 @@
 [submodule ".asdf/plugins/defn--sub"]
 	path = .asdf/plugins/defn--sub
 	url = https://github.com/defn/asdf-plugin
+[submodule ".asdf/plugins/letfn--shflags"]
+	path = .asdf/plugins/letfn--shflags
+	url = https://github.com/defn/asdf-plugin
