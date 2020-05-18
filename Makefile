@@ -30,7 +30,7 @@ install: # Install software bundles
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 	rm -rf .cache/Homebrew
-	if ! ./env npm install; then ls -ls .asdf/shims/* || true; ./env node --version || true; ./env npm --version || true; fi
+	./env npm install
 
 fmt: # Format with isort, black
 	@echo

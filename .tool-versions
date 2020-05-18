@@ -1,2 +1,6 @@
+python system
+nodejs 12.16.1
+vault 1.4.1
+consul 1.8.0-beta1
 kubectl 1.18.2
 defn--sub 0.0.2
