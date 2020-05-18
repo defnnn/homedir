@@ -5,7 +5,7 @@ function main {
 
   if [[ -x "$(type -P apt)" ]]; then
     sudo apt update
-    sudo apt install -y make unzip python3-venv build-essential
+    sudo apt install -y make unzip python3-venv build-essential jq
 
     sudo install -d -o app -g app /home/linuxbrew
     git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
