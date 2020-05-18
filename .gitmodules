@@ -16,3 +16,6 @@
 [submodule ".asdf/plugins/kubectl"]
 	path = .asdf/plugins/kubectl
 	url = https://github.com/Banno/asdf-kubectl.git
+[submodule ".asdf/plugins/defn--sub"]
+	path = .asdf/plugins/defn--sub
+	url = https://github.com/defn/asdf-plugin
