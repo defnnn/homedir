@@ -25,3 +25,12 @@
 [submodule ".asdf/plugins/defn--kitt"]
 	path = .asdf/plugins/defn--kitt
 	url = https://github.com/defn/asdf-plugin
+[submodule ".asdf/plugins/defn--kiki"]
+	path = .asdf/plugins/defn--kiki
+	url = https://github.com/defn/asdf-plugin
+[submodule ".asdf/plugins/defn-gandalf"]
+	path = .asdf/plugins/defn-gandalf
+	url = https://github.com/defn/asdf-plugin
+[submodule ".asdf/plugins/defn--gandalf"]
+	path = .asdf/plugins/defn--gandalf
+	url = https://github.com/defn/asdf-plugin
