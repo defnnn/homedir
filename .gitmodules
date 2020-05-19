@@ -22,3 +22,6 @@
 [submodule ".asdf/plugins/letfn--shflags"]
 	path = .asdf/plugins/letfn--shflags
 	url = https://github.com/defn/asdf-plugin
+[submodule ".asdf/plugins/defn--kitt"]
+	path = .asdf/plugins/defn--kitt
+	url = https://github.com/defn/asdf-plugin
