@@ -6,3 +6,17 @@ diagrams
 keyring
 mitogen
 ansible
+click
+rich
+yq
+
+pydantic
+attrs
+lambda_decorators
+black
+isort
+mypy
+pyflakes
+pytest
+pytest-cov
+coverage
