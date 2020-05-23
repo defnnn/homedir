@@ -3,9 +3,6 @@ httpie
 awscli
 pre-commit
 diagrams
-keyring
-mitogen
-ansible
 click
 rich
 yq
