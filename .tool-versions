@@ -3,9 +3,9 @@ nodejs 12.16.1
 vault 1.4.1
 consul 1.8.0-beta1
 kubectl 1.18.2
-letfn--shflags defn1
-defn--sub 0.0.2
-defn--kitt defn0
-defn--kiki defn0
 defn--gandalf defn0
-defn--moria defn0
+letfn--shflags defn1
+defn--sub defn1
+defn--kitt defn1
+defn--kiki defn1
+defn--moria defn1
