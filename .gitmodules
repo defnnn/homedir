@@ -37,3 +37,6 @@
 [submodule ".asdf/plugins/defn--moria"]
 	path = .asdf/plugins/defn--moria
 	url = https://github.com/defn/asdf-plugin
+[submodule ".asdf/plugins/kustomize"]
+	path = .asdf/plugins/kustomize
+	url = https://github.com/Banno/asdf-kustomize.git
