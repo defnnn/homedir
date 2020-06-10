@@ -40,3 +40,6 @@
 [submodule ".asdf/plugins/kustomize"]
 	path = .asdf/plugins/kustomize
 	url = https://github.com/Banno/asdf-kustomize.git
+[submodule ".asdf/plugins/packer"]
+	path = .asdf/plugins/packer
+	url = https://github.com/Banno/asdf-hashicorp.git
