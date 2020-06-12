@@ -81,7 +81,7 @@ toml==0.10.1              # via black, pre-commit
 typed-ast==1.4.1          # via black, mypy
 typing-extensions==3.7.4.2  # via mypy, rich
 urllib3==1.25.9           # via botocore, requests
-virtualenv==20.0.21       # via pre-commit
+virtualenv==20.0.22       # via pre-commit
 wcwidth==0.2.4            # via pytest
 xmltodict==0.12.0         # via pywinrm, yq
 yq==2.10.1                # via -r /drone/src/requirements.in
