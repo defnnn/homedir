@@ -6,6 +6,7 @@ diagrams
 click
 rich
 yq
+pyinfra
 
 pydantic
 attrs
