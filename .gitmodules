@@ -46,3 +46,6 @@
 [submodule ".asdf/plugins/terraform"]
 	path = .asdf/plugins/terraform
 	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/kitt"]
+	path = .asdf/plugins/kitt
+	url = https://github.com/defn/kitt
