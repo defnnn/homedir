@@ -49,3 +49,18 @@
 [submodule ".asdf/plugins/kitt"]
 	path = .asdf/plugins/kitt
 	url = https://github.com/defn/kitt
+[submodule ".asdf/plugins/gandalf"]
+	path = .asdf/plugins/gandalf
+	url = https://github.com/defn/gandalf
+[submodule ".asdf/plugins/moria"]
+	path = .asdf/plugins/moria
+	url = https://github.com/defn/moria
+[submodule ".asdf/plugins/kiki"]
+	path = .asdf/plugins/kiki
+	url = https://github.com/defn/kiki
+[submodule ".asdf/plugins/sub"]
+	path = .asdf/plugins/sub
+	url = https://github.com/defn/sub
+[submodule ".asdf/plugins/shflags"]
+	path = .asdf/plugins/shflags
+	url = https://github.com/letfn/shflags
