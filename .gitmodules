@@ -64,3 +64,6 @@
 [submodule ".asdf/plugins/shflags"]
 	path = .asdf/plugins/shflags
 	url = https://github.com/letfn/shflags
+[submodule ".asdf/plugins/defn--asdf-plugin"]
+	path = .asdf/plugins/defn--asdf-plugin
+	url = https://github.com/defn/asdf-plugin
