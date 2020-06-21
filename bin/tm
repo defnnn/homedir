@@ -2,7 +2,7 @@
 
 function main {
   set -efu
-
+  
   local remote="$1"; shift
 
   export _GPG_EXTRA_SOCKET="/usr/local/bin/S.gpg-agent.extra"
@@ -10,6 +10,11 @@ function main {
 
   if [[ "$#" == 0 ]]; then
     set -- bash -c "$(printf '%q' "$(cat "$0.sh")")"
+  fi
+
+  if [[ -z "${_GPG_AGENT_SOCKET}" ]]; then
+    echo "ERROR: remote host cannot find gpg agent-socket" 1>&2
+    return 1
   fi
 
   ssh "${remote}" rm -f "${_GPG_AGENT_SOCKET}"
