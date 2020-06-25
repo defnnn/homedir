@@ -23,6 +23,9 @@ brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
 install: # Install software bundles
+	$(MAKE) install || true
+
+install_inner:
 	source ./.bash_profile && if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
 	source ./.bash_profile && asdf install
 	if ! test -f venv/bin/activate; then source ./.bash_profile && python3 -m venv venv; fi
