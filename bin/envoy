@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  exec getenvoy run standard:1.14.2 "$@"
+}
+
+main "$@"
