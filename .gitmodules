@@ -67,3 +67,6 @@
 [submodule ".asdf/plugins/defn--asdf-plugin"]
 	path = .asdf/plugins/defn--asdf-plugin
 	url = https://github.com/defn/asdf-plugin
+[submodule ".asdf/plugins/getenvoy"]
+	path = .asdf/plugins/getenvoy
+	url = https://github.com/asdf-community/asdf-getenvoy.git
