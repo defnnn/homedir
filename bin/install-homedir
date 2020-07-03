@@ -17,6 +17,8 @@ function main {
     fi
   fi
 
+  PATH="$HOME/.asdf/installs/bin:$PATH"
+
   mv homedir/.git .
   rm -rf homedir
   git reset --hard
