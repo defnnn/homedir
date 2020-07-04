@@ -1,7 +1,7 @@
 python system
 nodejs 12.16.3
 consul 1.8.0
-vault 1.4.2
+vault 1.4.3
 kubectl 1.18.4
 kustomize 3.6.1
 defn--asdf-plugin defn1
