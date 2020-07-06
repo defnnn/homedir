@@ -7,6 +7,7 @@ packer 1.6.0
 terraform 0.12.28
 kubectl 1.18.5
 kustomize 3.6.1
+kind 0.8.1
 defn--asdf-plugin defn1
 shflags defn7
 sub defn7
