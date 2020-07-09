@@ -31,6 +31,35 @@ steps:
 ---
 kind: pipeline
 type: docker
+name: build
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: clone defn/home
+  image: plugins/git
+  commands:
+    - rm -rf home
+    - git clone https://github.com/defn/home
+- name: kaniko
+  image: letfn/drone-kaniko
+  settings:
+    args: --destination=registry.kitt.run/defn/home:latest --build-arg HOMEDIR=https://github.com/amanibhavam/homedir --build-arg DOTFILES=https://github.com/amanibhavam/dotfiles
+    cache: true
+    cache_repo: registry.kitt.run/defn/home/cache-homedir
+    context: home/b
+    repo: registry.kitt.run/defn/home
+    tag: latest
+- name: delete defn/home
+  image: plugins/git
+  commands:
+    - rm -rf home
+
+---
+kind: pipeline
+type: docker
 name: docs
 
 platform:
@@ -43,30 +72,6 @@ steps:
 
 depends_on:
 - build
-
----
-kind: secret
-name: docker_username
-
-get:
-  path: kv/data/drone/common
-  name: docker_username
-
----
-kind: secret
-name: docker_password
-
-get:
-  path: kv/data/drone/common
-  name: docker_password
-
----
-kind: secret
-name: github_token
-
-get:
-  path: kv/data/drone/common
-  name: github_token
 
 ---
 kind: pipeline
@@ -84,4 +89,5 @@ steps:
   - . /app/venv/bin/activate
   - pip-compile /drone/src/requirements.in -o /tmp/requirements.txt
   - if test -w . ; then cp /tmp/requirements.txt requirements.txt; else diff requirements.txt /tmp/requirements.txt || true;  fi
+
 ...
