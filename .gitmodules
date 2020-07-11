@@ -52,9 +52,6 @@
 [submodule ".asdf/plugins/gandalf"]
 	path = .asdf/plugins/gandalf
 	url = https://github.com/defn/gandalf
-[submodule ".asdf/plugins/moria"]
-	path = .asdf/plugins/moria
-	url = https://github.com/defn/moria
 [submodule ".asdf/plugins/kiki"]
 	path = .asdf/plugins/kiki
 	url = https://github.com/defn/kiki
