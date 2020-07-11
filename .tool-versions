@@ -1,6 +1,7 @@
 python system
 nodejs 12.16.3
-consul 1.8.1
+consul 1.8.0
+vault 1.4.3
 vault 1.4.3
 packer 1.6.0
 terraform 0.12.28
