@@ -1,7 +1,8 @@
 {
   "name": "defn",
   "version": "0.0.1",
-  "description": "",
+  "description": "defn",
+  "repository": "amanibhavam/homedir",
   "author": "defn",
   "license": "MIT",
   "devDependencies": {
