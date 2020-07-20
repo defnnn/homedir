@@ -23,13 +23,6 @@ function main {
   rm -rf homedir
   git reset --hard
   echo https://github.com/amanibhavam/dotfiles > .dotfiles-repo
-  if [[ -f /cache/.npmrc ]]; then
-    ln -nfs /cache/.npmrc .
-  fi
-  if [[ -f /cache/.pip/pip.conf ]]; then
-    mkdir -p .pip
-    ln -nfs /cache/.pip/pip.conf .pip/
-  fi
   make update
   make upgrade
   make install
