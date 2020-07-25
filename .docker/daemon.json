@@ -1,12 +1,1 @@
-{
-  "debug": true,
-  "experimental": true,
-  "default-address-pools": [
-    {
-      "base": "172.31.0.0/16",
-      "size": 24
-    }
-  ],
-  "ipv6": true,
-  "fixed-cidr-v6": "fca0:c6a5:a55b:5a54:1da3::/80"
-}
+{"debug":true,"experimental":true,"default-address-pools":[{"base":"172.31.0.0/16","size":24}],"ipv6":true,"fixed-cidr-v6":"fca0:c6a5:a55b:5a54:1da3::/80"}
