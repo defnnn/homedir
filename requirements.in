@@ -8,6 +8,7 @@ rich
 yq
 pyinfra
 pyhcl
+keyring
 
 pydantic
 attrs
