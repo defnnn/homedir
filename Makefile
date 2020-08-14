@@ -27,6 +27,7 @@ install: # Install software bundles
 
 install_inner:
 	if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
+	brew link --overwrite docker-compose
 	source ./.bash_profile && asdf install
 	if ! test -f venv/bin/activate; then rm -rf venv; source ./.bash_profile && python3 -m venv venv; fi
 	source venv/bin/activate && pip install --upgrade pip
