@@ -9,16 +9,16 @@ ansible==2.8.1            # via -r /drone/src/requirements.in
 appdirs==1.4.4            # via black, virtualenv
 argcomplete==1.12.0       # via yq
 arrow==0.15.8             # via jinja2-time
-attrs==19.3.0             # via -r /drone/src/requirements.in, black, pytest
-awscli==1.18.119          # via -r /drone/src/requirements.in
-bcrypt==3.1.7             # via paramiko
+attrs==20.1.0             # via -r /drone/src/requirements.in, black, pytest
+awscli==1.18.124          # via -r /drone/src/requirements.in
+bcrypt==3.2.0             # via paramiko
 binaryornot==0.4.4        # via cookiecutter
 black==19.10b0            # via -r /drone/src/requirements.in
-boto3==1.14.42            # via lambda-decorators
+boto3==1.14.47            # via lambda-decorators
 boto==2.49.0              # via ansible-ec2-inventory
-botocore==1.17.42         # via awscli, boto3, s3transfer
+botocore==1.17.47         # via awscli, boto3, s3transfer
 certifi==2020.6.20        # via requests
-cffi==1.14.1              # via bcrypt, cryptography, pynacl
+cffi==1.14.2              # via bcrypt, cryptography, pynacl
 cfgv==3.2.0               # via pre-commit
 chardet==3.0.4            # via binaryornot, requests
 click==7.1.2              # via -r /drone/src/requirements.in, black, cookiecutter, pyinfra
@@ -38,10 +38,10 @@ graphviz==0.13.2          # via diagrams
 greenlet==0.4.16          # via gevent
 httpie==2.2.0             # via -r /drone/src/requirements.in
 httplib2==0.18.1          # via youtrack
-identify==1.4.25          # via pre-commit
+identify==1.4.28          # via pre-commit
 idna==2.10                # via requests
 iniconfig==1.0.1          # via pytest
-isort==5.4.1              # via -r /drone/src/requirements.in
+isort==5.4.2              # via -r /drone/src/requirements.in
 jeepney==0.4.3            # via keyring, secretstorage
 jinja2-time==0.2.0        # via cookiecutter
 jinja2==2.11.2            # via ansible, cookiecutter, diagrams, jinja2-time, pyinfra
@@ -79,7 +79,7 @@ pyyaml==5.3.1             # via ansible, awscli, pre-commit, yq
 regex==2020.7.14          # via black
 requests-ntlm==1.1.0      # via pywinrm
 requests==2.24.0          # via cookiecutter, httpie, pywinrm, requests-ntlm
-rich==5.1.2               # via -r /drone/src/requirements.in
+rich==5.2.1               # via -r /drone/src/requirements.in
 rsa==4.5                  # via awscli
 s3transfer==0.3.3         # via awscli, boto3
 secretstorage==3.1.2      # via keyring
@@ -89,7 +89,7 @@ toml==0.10.1              # via black, pre-commit, pytest
 typed-ast==1.4.1          # via black, mypy
 typing-extensions==3.7.4.2  # via mypy, rich
 urllib3==1.25.10          # via botocore, requests
-virtualenv==20.0.30       # via pre-commit
+virtualenv==20.0.31       # via pre-commit
 xmltodict==0.12.0         # via pywinrm, yq
 youtrack==0.1.69          # via -r /drone/src/requirements.in
 yq==2.10.1                # via -r /drone/src/requirements.in
