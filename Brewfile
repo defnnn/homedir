@@ -3,6 +3,7 @@ tap "aws/tap"
 
 brew "aws-okta"
 brew "awscli"
+brew "aws-sam-cli"
 brew "chamber"
 brew "clojure"
 brew "consul-template"
