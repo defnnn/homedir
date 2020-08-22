@@ -1,6 +1,5 @@
 cookiecutter
 httpie
-awscli
 pre-commit
 diagrams
 click
