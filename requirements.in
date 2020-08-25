@@ -23,3 +23,6 @@ coverage
 ansible==2.8.1
 ansible-ec2-inventory
 youtrack
+
+sphinx
+sphinx-rtd-theme
