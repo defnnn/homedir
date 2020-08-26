@@ -80,8 +80,8 @@ let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 
-map X :bprevious<CR>
-map C :bnext<CR>
+autocmd FileType go map Z :bprevious<CR>
+autocmd FileType go map X :bnext<CR>
 
 autocmd FileType go nmap B <Plug>(go-build)
 autocmd FileType go nmap T <Plug>(go-test)
