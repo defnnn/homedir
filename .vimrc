@@ -3,7 +3,7 @@ execute pathogen#infect()
 set nocompatible
 
 set ruler
-set nonumber
+set number
 syntax on
 
 " Set encoding
@@ -38,12 +38,13 @@ set modelines=10
 set noshowcmd
 set noshowmode
 
+set cmdheight=10
+
 set shiftround smarttab
 set autoindent smartindent
 set showmatch
 
 set hidden
-set nonumber
 
 set history=1000
 set undolevels=1000
