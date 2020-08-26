@@ -73,3 +73,9 @@ hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=no
 
 map X :bprevious<CR>
 map C :bnext<CR>
+
+autocmd FileType go nmap B <Plug>(go-build)
+autocmd FileType go nmap T <Plug>(go-test)
+autocmd FileType go nmap K <Plug>(go-doc)
+autocmd FileType go nmap I <Plug>(go-info)
+
