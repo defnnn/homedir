@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 tap "aws/tap"
+tap "cloudflare/cloudflare"
 
 brew "aws-okta"
 brew "awscli"
@@ -31,8 +32,7 @@ brew "tmux"
 brew "vim"
 brew "neovim"
 brew "newman"
-
-brew "cloudflare/cloudflare/cloudflared"
+brew "cloudflared"
 
 cask "1password"
 cask "chromedriver"
