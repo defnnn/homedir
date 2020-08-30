@@ -86,6 +86,7 @@ autocmd FileType go map X :bnext<CR>
 autocmd FileType go map gt :bnext<CR>
 autocmd FileType go map Q :bd<CR>
 
+autocmd FileType go nmap E <Plug>(go-run)
 autocmd FileType go nmap B <Plug>(go-build)
 autocmd FileType go nmap T <Plug>(go-test)
 autocmd FileType go nmap K <Plug>(go-doc)
