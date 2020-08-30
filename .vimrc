@@ -58,6 +58,7 @@ set nojoinspaces
 
 set nobackup
 set noswapfile
+set autowrite
 
 " Remember last location in file
 if has("autocmd")
