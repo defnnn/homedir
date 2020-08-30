@@ -32,6 +32,8 @@ brew "vim"
 brew "neovim"
 brew "newman"
 
+brew "cloudflare/cloudflare/cloudflared"
+
 cask "1password"
 cask "chromedriver"
 cask "docker"
