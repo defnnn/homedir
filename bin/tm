@@ -21,7 +21,7 @@ function main {
 
   exec ssh "${remote}" -tA \
     -o RemoteForward="${_GPG_AGENT_SOCKET}:${_GPG_EXTRA_SOCKET}" \
-    ./env "$@"
+    ./env.sh "$@"
 }
 
 main "$@"
