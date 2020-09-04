@@ -35,6 +35,7 @@ install_inner:
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 	rm -rf .cache/Homebrew
 	./env npm install
+	npm install -g npm
 
 fmt: # Format with isort, black
 	@echo
