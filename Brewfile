@@ -1,10 +1,8 @@
 tap "homebrew/cask"
 tap "aws/tap"
-#tap "cloudflare/cloudflare"
 
 brew "aws-okta"
 brew "awscli"
-brew "aws-sam-cli"
 brew "chamber"
 brew "clojure"
 brew "consul-template"
@@ -32,7 +30,6 @@ brew "tmux"
 brew "vim"
 brew "neovim"
 brew "newman"
-#brew "cloudflared"
 
 cask "1password"
 cask "chromedriver"
