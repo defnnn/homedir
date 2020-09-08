@@ -2,7 +2,6 @@ tap "homebrew/cask"
 tap "aws/tap"
 
 brew "aws-okta"
-brew "awscli"
 brew "chamber"
 brew "clojure"
 brew "consul-template"
