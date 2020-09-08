@@ -1,0 +1,13 @@
+github.com/danieljoos/wincred v1.1.0/go.mod h1:XYlo+eRTsVA9aHGp7NGjFkPla4m+DCL7hqDjlFjiygg=
+github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/docker/docker-credential-helpers v0.6.3 h1:zI2p9+1NQYdnG6sMU26EX4aVGlqbInSQxQXLvzJ4RPQ=
+github.com/docker/docker-credential-helpers v0.6.3/go.mod h1:WRaJzqw3CTB9bk10avuGsjVBZsD05qeibJ1/TYlvc0Y=
+github.com/jojomomojo/docker-credential-helpers v0.6.3 h1:lMWfSfGMnCj/ftsSE3tX/EjwfDwAA9QrD9VdLwWOqJc=
+github.com/jojomomojo/docker-credential-helpers v0.6.3/go.mod h1:dyD7YrWamr0DyfLQtNB/w0pt2PVf/1Fd+UfBVghWm/I=
+github.com/jojomomojo/docker-credential-helpers v0.6.5 h1:mcVf+05K/OGhCNAecByYOjNNsifpmhTQKlgyKKdDBkY=
+github.com/jojomomojo/docker-credential-helpers v0.6.5/go.mod h1:Hs+HEsKSZn62u+yVp7A9SaVkZM5KgGPfcBV939avekQ=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
