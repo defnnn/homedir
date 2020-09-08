@@ -37,4 +37,8 @@ if [[ ! -d "$HOME/.password-store/." -a -d /efs/password-store ]]; then
   ln -nfs /efs/pasword-store "$HOME/.password-store"
 fi
 
+if [[ ! -f .env ]]; then
+  ln -nfs .password-store/.env "$HOME/.env"
+fi
+
 source "$HOME/.bashrc"
