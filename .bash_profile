@@ -33,7 +33,7 @@ case "$(uname -s)" in
     ;;
 esac
 
-if [[ ! -d "$HOME/.password-store/." -a -d /efs/password-store ]]; then
+if [[ ! -d "$HOME/.password-store/." && -d /efs/password-store ]]; then
   ln -nfs /efs/pasword-store "$HOME/.password-store"
 fi
 
