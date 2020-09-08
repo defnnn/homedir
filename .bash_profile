@@ -16,8 +16,6 @@ if [[ -d "$HOME/.asdf/installs/bin" ]]; then
   PATH="$HOME/.asdf/installs/bin:$PATH"
 fi
 
-PATH="$HOME/.asdf/installs/nodejs/12.16.1/bin:$PATH"
-
 if [[ -z "${VIRTUAL_ENV:-}" ]]; then
   if [[ -f "$HOME/venv/bin/activate" ]]; then
     source "$HOME/venv/bin/activate"
@@ -34,5 +32,9 @@ case "$(uname -s)" in
     fi
     ;;
 esac
+
+if [[ ! -d "$HOME/.password-store/." -a -d /efs/password-store ]]; then
+  ln -nfs /efs/pasword-store "$HOME/.password-store"
+fi
 
 source "$HOME/.bashrc"
