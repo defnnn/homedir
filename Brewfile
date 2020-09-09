@@ -30,6 +30,7 @@ brew "vim"
 brew "neovim"
 brew "newman"
 
+cask "aws-vault"
 cask "1password"
 cask "chromedriver"
 cask "docker"
