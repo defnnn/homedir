@@ -20,3 +20,5 @@ sphinx
 sphinx-rtd-theme
 
 docker-compose
+
+boto3
