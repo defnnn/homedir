@@ -19,7 +19,7 @@ update_inner:
 
 upgrade: # Upgrade installed software
 	brew upgrade
-	brew cask upgrade
+	if [[ "$(shell uname -s)" == "Linux" ]]; then brew upgrade --cask; fi
 
 brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
