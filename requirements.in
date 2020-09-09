@@ -4,7 +4,6 @@ pre-commit
 diagrams
 click
 rich
-yq
 pyinfra
 testinfra
 pyhcl
@@ -12,7 +11,6 @@ keyring
 
 pydantic
 attrs
-lambda_decorators
 black
 isort
 pyflakes
