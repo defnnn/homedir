@@ -1,6 +1,7 @@
 tap "homebrew/cask"
 tap "aws/tap"
 
+brew "aws-vault"
 brew "aws-okta"
 brew "chamber"
 brew "clojure"
