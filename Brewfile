@@ -29,6 +29,7 @@ brew "tmux"
 brew "vim"
 brew "neovim"
 brew "newman"
+brew "gh"
 
 cask "aws-vault"
 cask "1password"
