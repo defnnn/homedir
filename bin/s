@@ -4,7 +4,7 @@ function main {
   local host="$1"; shift
 
   cloudflared access ssh-gen --hostname "$host"
-  ssh "$host" "$@"
+  exec ssh "$host" "$@"
 }
 
 main "$@"
