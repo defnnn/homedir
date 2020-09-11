@@ -7,7 +7,7 @@ terraform 0.13.2
 kubectl 1.18.8
 kustomize 3.8.2
 kind 0.8.1
-golang 1.15.1
+golang 1.15.2
 getenvoy 0.1.8
 defn--asdf-plugin defn1
 shflags defn7
