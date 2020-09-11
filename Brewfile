@@ -30,6 +30,7 @@ brew "vim"
 brew "neovim"
 brew "newman"
 brew "gh"
+brew "openssh"
 
 cask "aws-vault"
 cask "1password"
