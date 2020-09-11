@@ -6,7 +6,7 @@ function main {
   local remote="$1"; shift
 
   export _GPG_EXTRA_SOCKET="/usr/local/bin/S.gpg-agent.extra"
-  export _GPG_AGENT_SOCKET="$(ssh "${remote}" ./env gpgconf --list-dirs | grep ^agent-socket: | cut -d: -f2)"
+  export _GPG_AGENT_SOCKET="$(ssh "${remote}" gpgconf --list-dirs | grep ^agent-socket: | cut -d: -f2)"
 
   if [[ "$#" == 0 ]]; then
     set -- bash -c "$(printf '%q' "$(cat "$0.sh")")"
@@ -21,7 +21,7 @@ function main {
 
   exec ssh "${remote}" -tA \
     -o RemoteForward="${_GPG_AGENT_SOCKET}:${_GPG_EXTRA_SOCKET}" \
-    ./env.sh "$@"
+    "$@"
 }
 
 main "$@"
