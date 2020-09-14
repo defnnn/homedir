@@ -31,6 +31,7 @@ brew "neovim"
 brew "newman"
 brew "gh"
 brew "openssh"
+brew "yaegi"
 
 cask "aws-vault"
 cask "1password"
