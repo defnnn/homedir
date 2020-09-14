@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 tap "aws/tap"
+tap "instrumenta/instrumenta"
 
 brew "aws-vault"
 brew "aws-okta"
@@ -32,6 +33,8 @@ brew "newman"
 brew "gh"
 brew "openssh"
 brew "yaegi"
+brew "kubeval"
+brew "conftest"
 
 cask "aws-vault"
 cask "1password"
