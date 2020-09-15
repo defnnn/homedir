@@ -2,15 +2,12 @@ cookiecutter
 httpie
 pre-commit
 diagrams
-click
-rich
 pyinfra
 testinfra
 pyhcl
 keyring
+yq
 
-pydantic
-attrs
 black
 isort
 pyflakes
