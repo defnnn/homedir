@@ -35,6 +35,7 @@ brew "openssh"
 brew "yaegi"
 brew "kubeval"
 brew "conftest"
+brew "kumactl"
 
 cask "aws-vault"
 cask "1password"
