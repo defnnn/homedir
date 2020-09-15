@@ -33,9 +33,7 @@ install_inner:
 	if ! test -f venv/bin/activate; then rm -rf venv; source ./.bash_profile && python3 -m venv venv; fi
 	source venv/bin/activate && pip install --upgrade pip
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
-	if ! test -f venv-aws-sam-cli/bin/activate; then source ./.bash_profile && python3 -m venv venv-aws-sam-cli; fi
-	source venv-aws-sam-cli/bin/activate && pip install --upgrade aws-sam-cli
-	ln -nfs ../venv-aws-sam-cli/bin/sam bin/sam
+	if ! test -f venv-aws-sam-cli/bin/activate; then source ./.bash_profile && python3 -m venv venv-aws-sam-cli; source venv-aws-sam-cli/bin/activate && pip install --upgrade aws-sam-cli; ln -nfs ../venv-aws-sam-cli/bin/sam bin/sam; fi
 	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
 	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
