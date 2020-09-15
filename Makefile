@@ -39,7 +39,7 @@ install_inner:
 	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
 	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
-	rm -rf .cache/Homebrew
+	rm -rf .cache/Homebrew || sudo rm -rf .cache/Homebrew
 	./env npm install
 	npm install -g npm
 
