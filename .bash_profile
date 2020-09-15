@@ -12,9 +12,7 @@ if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
 fi
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
-if [[ -d "$HOME/.asdf/installs/bin" ]]; then
-  PATH="$HOME/.asdf/installs/bin:$PATH"
-fi
+PATH="$HOME/.asdf/installs/bin:$PATH"
 
 if [[ -z "${VIRTUAL_ENV:-}" ]]; then
   if [[ -f "$HOME/venv/bin/activate" ]]; then
