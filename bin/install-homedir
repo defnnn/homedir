@@ -17,6 +17,14 @@ function main {
     fi
   fi
 
+  if [[ -f /efs/backup/linuxbrew-install.tar.gz ]]; then
+    pushd /home
+    sudo install -d -o 1001 -g 1001 linuxbrew
+    cd linuxbrew
+    tar xvfz /efs/backup/linuxbrew-install.tar.gz 
+    popd
+  fi
+
   PATH="$HOME/.asdf/installs/bin:$PATH"
 
   mv homedir/.git .
