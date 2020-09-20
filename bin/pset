@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function main {
+  local src="$1"
+  local dst="$1"
+
+  cat "$src" | perl -pe 's{\s*$}{}' | pass insert -e "$dst"
+}
+
+main "$@"

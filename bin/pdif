@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function main {
+  local src="$1"
+  local dst="$1"
+
+  diff <(pass "$src" | perl -pe 's{\s*$$}{}') "$dst"
+}
+
+main "$@"

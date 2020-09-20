@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function main {
+  local src="$1"
+  local dst="$1"
+
+  base64 -w 0 "$src" | pass insert -e "$dst"
+}
+
+main "$@"
