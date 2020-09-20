@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function main {
-  local src="$1"
-  local dst="$1"
+  local src="$1"; shift
+  local dst="$1"; shift
 
   pass "$src" | perl -pe 's{\s*$}{}' > "$dst"
 }
