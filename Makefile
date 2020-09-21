@@ -26,7 +26,7 @@ brew:
 
 install-aws:
 	sudo yum install -y jq
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	/bin/bash -c "$(shell curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	cd .. && homedir/bin/install-homedir
 
 install: # Install software bundles
