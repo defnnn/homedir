@@ -27,7 +27,11 @@ brew:
 install-aws:
 	sudo yum install -y jq expat-devel htop tmux
 	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	rm -f /home/linuxbrew/.linuxbrew/bin/gs
 	cd .. && homedir/bin/install-homedir
+
+setup-aws:
+	ln -nfs $HOME/.gnupg/S.gpg-agent "$(shell gpgconf --list-dirs | grep agent-socket: | cut -d: -f2-)"
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
