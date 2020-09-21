@@ -24,6 +24,14 @@ upgrade: # Upgrade installed software
 brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
+install-aws:
+	curl -sSL -O https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-2020.8.2-linux-amd64.deb
+	sudo dpkg -i cloudflared-2020.8.2-linux-amd64.deb
+	rm -f cloudflared-2020.8.2-linux-amd64.deb
+	sudo yum install -y jq
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	cd .. && homedir/bin/install-homedir
+
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	rm -f /home/linuxbrew/.linuxbrew/bin/gs
