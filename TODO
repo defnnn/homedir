@@ -11,5 +11,7 @@ amazon-linux:
 
     ln -nfs ~/.gnupg/S.gpg-agent /run/user/108512/gnupg/S.gpg-agent
 
+    sshd_config: GatewayPorts yes
+
 password-store:
 chmod 0600 ssh/config
