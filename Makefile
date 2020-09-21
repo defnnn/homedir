@@ -25,7 +25,7 @@ brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
 install-aws:
-	sudo yum install -y jq expat-devel
+	sudo yum install -y jq expat-devel htop
 	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	cd .. && homedir/bin/install-homedir
 
