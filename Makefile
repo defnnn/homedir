@@ -31,7 +31,8 @@ install-aws:
 	cd .. && homedir/bin/install-homedir
 
 setup-aws:
-	ln -nfs $HOME/.gnupg/S.gpg-agent "$(shell gpgconf --list-dirs | grep agent-socket: | cut -d: -f2-)"
+	ln -nfs $$HOME/.gnupg/S.gpg-agent "$(shell gpgconf --list-dirs | grep agent-socket: | cut -d: -f2-)"
+	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
