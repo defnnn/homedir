@@ -26,6 +26,7 @@ brew:
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
+	rm -f /home/linuxbrew/.linuxbrew/bin/gs
 
 install_inner:
 	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
