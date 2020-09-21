@@ -3,5 +3,13 @@ sudo dpkg -i cloudflared-2020.8.2-linux-amd64.deb
 rm cloudflared-2020.8.2-linux-amd64.deb
 
 amazon-linux:
-sudo yum install -y jq
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    $ gpgconf --list-dirs | grep S.gpg-agent
+    agent-ssh-socket:/run/user/108512/gnupg/S.gpg-agent.ssh
+    agent-extra-socket:/run/user/108512/gnupg/S.gpg-agent.extra
+    agent-browser-socket:/run/user/108512/gnupg/S.gpg-agent.browser
+    agent-socket:/run/user/108512/gnupg/S.gpg-agent
+
+    ln -nfs ~/.gnupg/S.gpg-agent /run/user/108512/gnupg/S.gpg-agent
+
+password-store:
+chmod 0600 ssh/config
