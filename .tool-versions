@@ -1,14 +1,9 @@
 python system
-nodejs 12.18.3
-consul 1.8.4
-vault 1.5.3
-packer 1.6.2
-terraform 0.13.2
-kubectl 1.18.8
-kustomize 3.8.2
+nodejs 12.18.4
+kubectl 1.18.9
+kustomize 3.8.4
 kind 0.8.1
 golang 1.15.2
-getenvoy 0.1.8
 defn--asdf-plugin defn1
 shflags defn7
 sub defn7
