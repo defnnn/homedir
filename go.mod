@@ -23,6 +23,7 @@ require (
 	github.com/jirfag/go-printf-func-name v0.0.0-20191110105641-45db9963cdd3 // indirect
 	github.com/jojomomojo/docker-credential-helpers v0.6.5 // indirect
 	github.com/josharian/impl v1.0.1-0.20200525131425-f0acc9a90fd0 // indirect
+	github.com/jsonnet-bundler/jsonnet-bundler v0.4.0 // indirect
 	github.com/jstemmer/gotags v1.4.2-0.20180202163508-7de7045e69ff // indirect
 	github.com/kisielk/errcheck v1.4.1-0.20200804040739-3b58ac754354 // indirect
 	github.com/klauspost/asmfmt v1.2.1 // indirect
