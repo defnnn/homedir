@@ -33,6 +33,7 @@ brew "gh"
 brew "yaegi"
 brew "kubeval"
 brew "conftest"
+brew "tanka"
 
 cask "aws-vault"
 cask "1password"
