@@ -25,7 +25,7 @@ brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
 install-aws:
-	sudo yum install -y jq htop tmux
+	sudo yum install -y jq
 	sudo yum install -y expat-devel readline-devel openssl-devel bzip2-devel sqlite-devel
 	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	rm -f /home/linuxbrew/.linuxbrew/bin/gs
