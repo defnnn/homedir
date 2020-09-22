@@ -7,9 +7,7 @@ if [[ -S "$HOME/.gnupg/S.gpg-agent.ssh" ]]; then
 fi
 
 export PATH="$HOME/bin:$HOME/.config/nvim/plugged/vim-iced/bin:$PATH:/usr/local/sbin:/sbin:/usr/sbin"
-if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
-  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$PATH"
-fi
+export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$PATH"
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
 PATH="$HOME/.asdf/installs/bin:$PATH"
