@@ -34,6 +34,7 @@ brew "yaegi"
 brew "kubeval"
 brew "conftest"
 brew "tanka"
+brew "jsonnet"
 
 cask "aws-vault"
 cask "1password"
