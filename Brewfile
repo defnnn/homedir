@@ -33,8 +33,6 @@ brew "gh"
 brew "yaegi"
 brew "kubeval"
 brew "conftest"
-brew "tanka"
-brew "go-jsonnet"
 brew "just"
 
 cask "aws-vault"
