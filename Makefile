@@ -5,6 +5,11 @@ SHELL := /bin/bash
 menu:
 	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile
 
+thing: # Upgrade all the things
+	$(MAKE) update
+	$(MAKE) update
+	$(MAKE) install
+
 update: # Update code
 	git pull
 	$(MAKE) update_inner
