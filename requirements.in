@@ -2,9 +2,6 @@ cookiecutter
 httpie
 pre-commit
 diagrams
-pyinfra
-testinfra
-pyhcl
 keyring
 yq
 
@@ -12,6 +9,9 @@ black
 isort
 pyflakes
 pytest
+pytest-shell
+testinfra
+pyinfra
 
 sphinx
 sphinx-rtd-theme
