@@ -36,7 +36,6 @@ brew "kubeval"
 brew "conftest"
 brew "just"
 brew "cue"
-brew "dhall"
 brew "dhall-json"
 
 cask "aws-vault"
