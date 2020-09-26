@@ -2,7 +2,7 @@
 
 function main {
   set -efu
-  
+
   local remote="$1"; shift
 
   export _GPG_EXTRA_SOCKET="/usr/local/bin/S.gpg-agent.extra"
