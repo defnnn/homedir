@@ -49,7 +49,6 @@ install_inner:
 	if ! test -f venv/bin/activate; then rm -rf venv; source ./.bash_profile && python3 -m venv venv; fi
 	source venv/bin/activate && pip install --upgrade pip
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
-	curl -sSL https://raw.githubusercontent.com/jojomomojo/httpie-aws-authv4/master/httpie_aws_authv4.py > ~/venv//lib/python3.8/site-packages/httpie_aws_authv4.py
 	if ! test -f venv-aws-sam-cli/bin/activate; then source ./.bash_profile && python3 -m venv venv-aws-sam-cli; source venv-aws-sam-cli/bin/activate && pip install --upgrade aws-sam-cli; ln -nfs ../venv-aws-sam-cli/bin/sam bin/sam; fi
 	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
 	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
