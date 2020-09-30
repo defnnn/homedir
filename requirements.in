@@ -11,6 +11,7 @@ isort
 pyflakes
 pytest
 pytest-shell
+pytest-kind
 testinfra
 pyinfra
 
