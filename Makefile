@@ -55,8 +55,6 @@ install_inner:
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 	rm -rf .cache/Homebrew || sudo rm -rf .cache/Homebrew
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
-	./env npm install
-	npm install -g npm
 
 fmt: # Format with isort, black
 	@echo

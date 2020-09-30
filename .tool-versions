@@ -1,5 +1,4 @@
 python system
-nodejs 12.18.4
 kubectl 1.18.9
 kustomize 3.8.4
 kind 0.8.1
