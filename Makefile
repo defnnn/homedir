@@ -71,3 +71,6 @@ docs: # Build docs
 requirements: # Compile requirements
 	@echo
 	drone exec --pipeline $@
+
+test:
+	 env PYTEST_ADDOPTS='--keep-cluster --cluster-name=test' pytest -v -s test.py
