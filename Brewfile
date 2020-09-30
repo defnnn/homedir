@@ -36,6 +36,7 @@ brew "just"
 brew "cue"
 brew "dhall-json"
 brew "tilt"
+brew "openssh"
 
 cask "aws-vault"
 cask "1password"
