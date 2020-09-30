@@ -6,20 +6,24 @@ diagrams
 keyring
 yq
 
-black
-isort
-pyflakes
-pytest
-pytest-shell
-pytest-kind
-testinfra
-pyinfra
-
 sphinx
 sphinx-rtd-theme
 
 docker-compose
 
+black
+isort
+pyflakes
+pytest
+pytest-shell
+
+testinfra
+pyinfra
+
 boto3
 botocore
 awscli
+
+pytest-kind
+pykube-ng
+kopf
