@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/Djarvur/go-err113 v0.0.0-20200511133814-5174e21577d5 // indirect
 	github.com/OpenPeeDeeP/depguard v1.0.1 // indirect
+	github.com/blushft/go-diagrams v0.0.0-20201001013342-5cb928d39e04 // indirect
 	github.com/bombsimon/wsl/v3 v3.1.0 // indirect
 	github.com/daixiang0/gci v0.2.4 // indirect
 	github.com/davidrjenni/reftools v0.0.0-20191222082827-65925cf01315 // indirect
