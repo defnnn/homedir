@@ -27,6 +27,7 @@ botocore
 awscli
 
 PyYAML
+ruamel.yaml
 
 pytest-kind
 pykube-ng
