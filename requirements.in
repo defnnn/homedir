@@ -26,6 +26,8 @@ boto3
 botocore
 awscli
 
+PyYAML
+
 pytest-kind
 pykube-ng
 kopf
