@@ -17,6 +17,8 @@ pyflakes
 pytest
 pytest-shell
 
+twine
+
 testinfra
 pyinfra
 
