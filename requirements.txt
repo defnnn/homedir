@@ -96,8 +96,7 @@ requests-toolbelt==0.9.1  # via twine
 requests==2.24.0          # via aws-requests-auth, cookiecutter, docker, docker-compose, httpie, pykube-ng, pywinrm, requests-ntlm, requests-toolbelt, sphinx, twine
 rfc3986==1.4.0            # via twine
 rsa==4.5                  # via awscli
-ruamel.yaml.clib==0.2.2   # via ruamel.yaml
-ruamel.yaml==0.16.12      # via -r /drone/src/requirements.in
+ruamel.yaml==0.15.100     # via -r /drone/src/requirements.in, yamlfmt
 s3transfer==0.3.3         # via awscli, boto3
 secretstorage==3.1.2      # via keyring
 six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, jsonschema, packaging, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
@@ -123,6 +122,7 @@ virtualenv==20.0.32       # via pre-commit
 webencodings==0.5.1       # via bleach
 websocket-client==0.57.0  # via docker, docker-compose
 xmltodict==0.12.0         # via pywinrm, yq
+yamlfmt==1.1.0            # via -r /drone/src/requirements.in
 yarl==1.6.0               # via aiohttp
 yq==2.11.1                # via -r /drone/src/requirements.in
 zope.event==4.5.0         # via gevent
