@@ -40,6 +40,7 @@ brew "openssh"
 brew "screen"
 brew "irssi"
 brew "sops"
+brew "goreleaser"
 
 cask "aws-vault"
 cask "1password"
