@@ -52,7 +52,9 @@ install_inner:
 	if ! test -f venv-aws-sam-cli/bin/activate; then source ./.bash_profile && python3 -m venv venv-aws-sam-cli; source venv-aws-sam-cli/bin/activate && pip install --upgrade aws-sam-cli; ln -nfs ../venv-aws-sam-cli/bin/sam bin/sam; fi
 	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
 	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
-	curl -o bin/SopsSecretGenerator -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64
+	mkdir -p "$(HOME).config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
+	curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64
+	chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
 	chmod 755 bin/SopsSecretGenerator
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 	rm -rf .cache/Homebrew || sudo rm -rf .cache/Homebrew
