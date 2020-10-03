@@ -39,6 +39,7 @@ brew "tilt"
 brew "openssh"
 brew "screen"
 brew "irssi"
+brew "sops"
 
 cask "aws-vault"
 cask "1password"
