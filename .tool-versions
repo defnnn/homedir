@@ -1,4 +1,4 @@
-python system
+python 3.9.0
+golang 1.15.2
 kubectl 1.19.1
 kind 0.9.0
-golang 1.15.2
