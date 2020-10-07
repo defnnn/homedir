@@ -89,7 +89,6 @@ python-slugify==4.0.1     # via cookiecutter
 pytz==2020.1              # via babel
 pywinrm==0.4.1            # via pyinfra
 pyyaml==5.3.1             # via -r /drone/src/requirements.in, awscli, docker-compose, pre-commit, pykube-ng, yq
-readline==6.2.4.1         # via -r /drone/src/requirements.in
 readme-renderer==26.0     # via twine
 regex==2020.9.27          # via black
 requests-ntlm==1.1.0      # via pywinrm
