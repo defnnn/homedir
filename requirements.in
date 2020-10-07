@@ -5,6 +5,7 @@ pre-commit
 diagrams
 keyring
 yq
+readline
 
 sphinx
 sphinx-rtd-theme
