@@ -41,6 +41,7 @@ brew "screen"
 brew "irssi"
 brew "sops"
 brew "goreleaser"
+brew "python"
 
 cask "aws-vault"
 cask "1password"
