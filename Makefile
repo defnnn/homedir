@@ -44,6 +44,8 @@ install: # Install software bundles
 	rm -f /home/linuxbrew/.linuxbrew/bin/gs
 
 install_inner:
+	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
+	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
 	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
 	source ./.bash_profile && asdf install
 	if ! test -f venv/bin/activate; then rm -rf venv; source ./.bash_profile && python3 -m venv venv; fi
