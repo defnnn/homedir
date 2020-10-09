@@ -1,4 +1,5 @@
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "aws/tap"
 tap "instrumenta/instrumenta"
 tap "cuelang/tap"
@@ -57,3 +58,6 @@ cask "skitch"
 cask "superduper"
 cask "session-manager-plugin"
 cask "postman"
+cask "font-juliamono"
+
+
