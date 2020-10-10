@@ -36,6 +36,18 @@ install-aws:
 	rm -f /home/linuxbrew/.linuxbrew/bin/gs
 	cd .. && homedir/bin/install-homedir
 
+setup-do:
+	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s; sudo swapon $$s; done
+	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; rsync -ia /mnt/zerotier-one /var/lib/; fi
+	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
+	while ! test -e /dev/sda; do date; sleep 5; done
+	sudo mount /dev/sda /mnt
+	ln -nfs /mnt/password-store .password-store
+	ln -nfs /mnt/work work
+	(cd work/katt && git pull)
+	git pull && make thing setup-dummy setup-registry
+	docker pull defn/home:jojomomojo && docker tag defn/home:jojomomojo localhost:5000/defn/home:jojomomojo && docker push localhost:5000/defn/home:jojomomojo
+
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
 
