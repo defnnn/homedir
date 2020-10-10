@@ -39,6 +39,9 @@ install-aws:
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
 
+setup:
+	bin/setup-dummy
+
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	rm -f /home/linuxbrew/.linuxbrew/bin/gs
