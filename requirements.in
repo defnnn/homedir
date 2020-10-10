@@ -16,6 +16,7 @@ isort
 pyflakes
 pytest
 pytest-shell
+pytest-timeout
 
 twine
 

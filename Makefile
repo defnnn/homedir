@@ -67,7 +67,7 @@ install: # Install software bundles
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
-	-if test -x "$(shell which brew)"; then brew bundle && sudo rm -rf $(shell brew --cache); fi
+	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
 	source ./.bash_profile && asdf install
 	if ! test -f venv/bin/activate; then rm -rf venv; source ./.bash_profile && python3 -m venv venv; fi
 	bundle check || bundle install
@@ -79,7 +79,7 @@ install_inner:
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
-	sudo rm -rf $(shell brew --cache)
+	rm -rf $(shell brew --cache) 2>/dev/null
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 
 fmt: # Format with isort, black
