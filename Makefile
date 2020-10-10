@@ -38,10 +38,10 @@ install-aws:
 
 setup-do:
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s; sudo swapon $$s; done
-	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; sudo rsync -ia /mnt/zerotier-one /var/lib/; fi
-	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
 	while ! test -e /dev/sda; do date; sleep 5; done
 	sudo mount /dev/sda /mnt
+	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; sudo rsync -ia /mnt/zerotier-one /var/lib/; fi
+	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
 	(cd work/katt && git pull)
@@ -64,7 +64,7 @@ install: # Install software bundles
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
-	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache); fi
+	-if test -x "$(shell which brew)"; then brew bundle && sudo rm -rf $(shell brew --cache); fi
 	source ./.bash_profile && asdf install
 	if ! test -f venv/bin/activate; then rm -rf venv; source ./.bash_profile && python3 -m venv venv; fi
 	source venv/bin/activate && pip install --upgrade pip
@@ -75,7 +75,7 @@ install_inner:
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
-	rm -rf .cache/Homebrew || sudo rm -rf .cache/Homebrew
+	sudo rm -rf $(shell brew --cache)
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 
 fmt: # Format with isort, black
