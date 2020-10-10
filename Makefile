@@ -46,7 +46,7 @@ setup-do:
 	ln -nfs /mnt/work work
 	(cd work/katt && git pull)
 	git pull && make thing setup-dummy setup-registry
-	docker pull defn/home:jojomomojo && docker tag defn/home:jojomomojo localhost:5000/defn/home:jojomomojo && docker push localhost:5000/defn/home:jojomomojo
+	docker pull --quiet defn/home:jojomomojo && docker tag defn/home:jojomomojo localhost:5000/defn/home:jojomomojo && docker push localhost:5000/defn/home:jojomomojo
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
