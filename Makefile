@@ -39,8 +39,11 @@ install-aws:
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
 
-setup:
+setup-dummy:
 	bin/setup-dummy
+
+setup-registry:
+	docker run -d -p 5000:5000 --restart=always --name registry registry:2
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
