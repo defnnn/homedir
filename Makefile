@@ -47,7 +47,6 @@ setup-do-inner:
 	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	(cd work/katt && git pull && asdf install)
 	git pull && make thing setup-dummy setup-registry
 	docker pull --quiet defn/home:jojomomojo && docker tag defn/home:jojomomojo localhost:5000/defn/home:jojomomojo && docker push localhost:5000/defn/home:jojomomojo
 
