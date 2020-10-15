@@ -45,7 +45,7 @@
 	url = https://github.com/Banno/asdf-hashicorp.git
 [submodule ".asdf/plugins/kitt"]
 	path = .asdf/plugins/kitt
-	url = https://github.com/defn/kitt
+	url = https://github.com/defn/asdf-defn.git
 [submodule ".asdf/plugins/gandalf"]
 	path = .asdf/plugins/gandalf
 	url = https://github.com/defn/gandalf
@@ -66,7 +66,7 @@
 	url = https://github.com/asdf-community/asdf-getenvoy.git
 [submodule ".asdf/plugins/katt"]
 	path = .asdf/plugins/katt
-	url = https://github.com/defn/katt
+	url = https://github.com/defn/asdf-defn.git
 [submodule ".asdf/plugins/kind"]
 	path = .asdf/plugins/kind
 	url = https://github.com/johnlayton/asdf-kind.git
@@ -82,3 +82,9 @@
 [submodule ".asdf/plugins/boundary"]
 	path = .asdf/plugins/boundary
 	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/fogg"]
+	path = .asdf/plugins/fogg
+	url = https://github.com/defn/asdf-defn.git
+[submodule ".asdf/plugins/whoa"]
+	path = .asdf/plugins/whoa
+	url = https://github.com/defn/asdf-defn.git
