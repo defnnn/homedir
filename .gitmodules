@@ -13,26 +13,8 @@
 [submodule ".asdf/plugins/kubectl"]
 	path = .asdf/plugins/kubectl
 	url = https://github.com/Banno/asdf-kubectl.git
-[submodule ".asdf/plugins/defn--sub"]
-	path = .asdf/plugins/defn--sub
-	url = https://github.com/defn/asdf-plugin
 [submodule ".asdf/plugins/letfn--shflags"]
 	path = .asdf/plugins/letfn--shflags
-	url = https://github.com/defn/asdf-plugin
-[submodule ".asdf/plugins/defn--kitt"]
-	path = .asdf/plugins/defn--kitt
-	url = https://github.com/defn/asdf-plugin
-[submodule ".asdf/plugins/defn--kiki"]
-	path = .asdf/plugins/defn--kiki
-	url = https://github.com/defn/asdf-plugin
-[submodule ".asdf/plugins/defn-gandalf"]
-	path = .asdf/plugins/defn-gandalf
-	url = https://github.com/defn/asdf-plugin
-[submodule ".asdf/plugins/defn--gandalf"]
-	path = .asdf/plugins/defn--gandalf
-	url = https://github.com/defn/asdf-plugin
-[submodule ".asdf/plugins/defn--moria"]
-	path = .asdf/plugins/defn--moria
 	url = https://github.com/defn/asdf-plugin
 [submodule ".asdf/plugins/kustomize"]
 	path = .asdf/plugins/kustomize
@@ -58,9 +40,6 @@
 [submodule ".asdf/plugins/shflags"]
 	path = .asdf/plugins/shflags
 	url = https://github.com/letfn/shflags
-[submodule ".asdf/plugins/defn--asdf-plugin"]
-	path = .asdf/plugins/defn--asdf-plugin
-	url = https://github.com/defn/asdf-plugin
 [submodule ".asdf/plugins/getenvoy"]
 	path = .asdf/plugins/getenvoy
 	url = https://github.com/asdf-community/asdf-getenvoy.git
