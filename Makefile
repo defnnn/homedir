@@ -62,6 +62,7 @@ setup-registry:
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	rm -f /home/linuxbrew/.linuxbrew/bin/gs
+	chmod 600 .ssh/config
 
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
