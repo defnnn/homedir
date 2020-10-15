@@ -76,3 +76,9 @@
 [submodule ".vim/bundle/dhall-vim"]
 	path = .vim/bundle/dhall-vim
 	url = https://github.com/vmchale/dhall-vim
+[submodule ".asdf/plugins/waypoint"]
+	path = .asdf/plugins/waypoint
+	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/boundary"]
+	path = .asdf/plugins/boundary
+	url = https://github.com/Banno/asdf-hashicorp.git
