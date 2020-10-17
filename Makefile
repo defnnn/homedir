@@ -33,7 +33,6 @@ install-aws:
 	sudo yum install -y jq htop
 	sudo yum install -y expat-devel readline-devel openssl-devel bzip2-devel sqlite-devel
 	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	rm -f /home/linuxbrew/.linuxbrew/bin/gs
 	cd .. && homedir/bin/install-homedir
 
 setup-do:
@@ -61,8 +60,7 @@ setup-registry:
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
-	rm -f /home/linuxbrew/.linuxbrew/bin/gs
-	chmod 600 .ssh/config
+	-chmod 600 .ssh/config
 
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
@@ -76,7 +74,7 @@ install_inner:
 	if ! test -x "$(HOME)/bin/docker-credential-pass"; then go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5; go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd; fi
 	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
-	chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
+	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
 	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
 	rm -rf $(shell brew --cache) 2>/dev/null
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
