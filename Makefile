@@ -49,7 +49,7 @@ setup-do-inner:
 	chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	-git pull
+	git pull
 	git reset --hard
 	git submodule sync
 	git submodule update --init --recursive --remote
