@@ -49,10 +49,12 @@ setup-do-inner:
 	chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	git pull && make setup-dummy setup-registry
-	docker pull --quiet defn/home:home && docker tag defn/home:home localhost:5000/defn/home:home && docker push localhost:5000/defn/home:home
+	-git pull
+	git reset --hard
 	git submodule sync
 	git submodule update --init --recursive --remote
+	make setup-dummy setup-registry
+	docker pull --quiet defn/home:home && docker tag defn/home:home localhost:5000/defn/home:home && docker push localhost:5000/defn/home:home
 	-make thing
 
 setup-aws:
