@@ -39,6 +39,7 @@ setup-do:
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
+	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s; sudo swapon $$s; done
 	while ! test -e /dev/sda; do date; sleep 5; done
 	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; sudo rsync -ia /mnt/zerotier-one /var/lib/; fi
