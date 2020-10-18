@@ -44,6 +44,7 @@ setup-do-inner:
 	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; sudo rsync -ia /mnt/zerotier-one /var/lib/; fi
 	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+	rm -f .ssh/authorized_keys
 	sudo cat ~root/.ssh/authorized_keys > .ssh/authorized_keys
 	chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	ln -nfs /mnt/password-store .password-store
