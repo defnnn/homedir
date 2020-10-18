@@ -44,10 +44,14 @@ setup-do-inner:
 	sudo mount /dev/sda /mnt
 	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; sudo rsync -ia /mnt/zerotier-one /var/lib/; fi
 	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
+	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+	sudo cat ~root/.ssh/authorized_keys > .ssh/authorized_keys
+	chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	git pull && make thing setup-dummy setup-registry
-	docker pull --quiet defn/home:jojomomojo && docker tag defn/home:jojomomojo localhost:5000/defn/home:jojomomojo && docker push localhost:5000/defn/home:jojomomojo
+	git pull && make setup-dummy setup-registry
+	docker pull --quiet defn/home:home && docker tag defn/home:home localhost:5000/defn/home:home && docker push localhost:5000/defn/home:home
+	-make thing
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
