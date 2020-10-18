@@ -41,7 +41,6 @@ setup-do:
 setup-do-inner:
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s; sudo swapon $$s; done
 	while ! test -e /dev/sda; do date; sleep 5; done
-	sudo mount /dev/sda /mnt
 	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; sudo rsync -ia /mnt/zerotier-one /var/lib/; fi
 	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
