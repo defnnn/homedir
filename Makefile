@@ -56,7 +56,6 @@ setup-do-inner:
 	git submodule update --init --recursive --remote
 	make setup-dummy setup-registry
 	-make thing
-	( setsid docker pull --quiet defn/home:home && docker tag defn/home:home localhost:5000/defn/home:home && docker push localhost:5000/defn/home:home & ) & 
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
