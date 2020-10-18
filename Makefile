@@ -51,6 +51,8 @@ setup-do-inner:
 	ln -nfs /mnt/work work
 	git pull && make setup-dummy setup-registry
 	docker pull --quiet defn/home:home && docker tag defn/home:home localhost:5000/defn/home:home && docker push localhost:5000/defn/home:home
+	git submodule sync
+	git submodule update --init --recursive --remote
 	-make thing
 
 setup-aws:
