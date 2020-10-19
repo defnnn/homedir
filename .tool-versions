@@ -1,4 +1,4 @@
 python system
-golang 1.15.2
-kubectl 1.19.1
+golang 1.15.3
+kubectl 1.19.2
 kind 0.9.0
