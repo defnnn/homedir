@@ -5,6 +5,7 @@ pre-commit
 diagrams
 keyring
 yq
+keepercommander
 
 sphinx
 sphinx-rtd-theme
@@ -23,9 +24,8 @@ twine
 testinfra
 pyinfra
 
-boto3
-botocore
-awscli
+awscli==1.18.159
+boto3==1.15.18
 
 PyYAML
 ruamel.yaml
