@@ -39,11 +39,18 @@ setup-do:
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
+	sudo apt update -y
+	sudo apt upgrade -y
+	sudo apt install -y ruby gem
+	sudo -H gem install pleaserun
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s; sudo swapon $$s; done
 	while ! test -e /dev/sda; do date; sleep 5; done
-	if test -d /mnt/zerotier-one; then sudo rm -rf /var/lib/zerotier-one; sudo rsync -ia /mnt/zerotier-one /var/lib/; fi
-	sudo systemctl enable zerotier-one; sudo systemctl start zerotier-one
+	sudo mkdir -p /mnt/zerotier-one
+	sudo rm -rf /var/lib/zerotier-one
+	sudo ln -nfs /mnt/zerotier-one /var/lib/
+	sudo systemctl enable zerotier-one
+	sudo systemctl start zerotier-one
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 	rm -f .ssh/authorized_keys
 	sudo cat ~root/.ssh/authorized_keys > .ssh/authorized_keys
