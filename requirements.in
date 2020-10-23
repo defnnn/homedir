@@ -25,8 +25,7 @@ twine
 testinfra
 pyinfra
 
-awscli==1.18.159
-boto3==1.15.18
+awscli
 
 PyYAML
 ruamel.yaml
