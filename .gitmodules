@@ -52,9 +52,6 @@
 [submodule ".asdf/plugins/golang"]
 	path = .asdf/plugins/golang
 	url = https://github.com/kennyp/asdf-golang.git
-[submodule ".vim/bundle/dhall-vim"]
-	path = .vim/bundle/dhall-vim
-	url = https://github.com/vmchale/dhall-vim
 [submodule ".asdf/plugins/waypoint"]
 	path = .asdf/plugins/waypoint
 	url = https://github.com/Banno/asdf-hashicorp.git
@@ -67,6 +64,3 @@
 [submodule ".asdf/plugins/whoa"]
 	path = .asdf/plugins/whoa
 	url = https://github.com/defn/asdf-defn.git
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline
