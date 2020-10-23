@@ -59,5 +59,5 @@ cask "superduper"
 cask "session-manager-plugin"
 cask "postman"
 cask "font-juliamono"
-
-
+cask "vscode"
+cask "goland"
