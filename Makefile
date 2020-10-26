@@ -47,6 +47,7 @@ setup-do-inner:
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s; sudo swapon $$s; done
 	while ! test -e /dev/sda; do date; sleep 5; done
 	sudo mkdir -p /mnt/zerotier-one
+	sudo chown zerotier-one:zerotier-one /mnt/zerotier-one
 	sudo rm -rf /var/lib/zerotier-one
 	sudo ln -nfs /mnt/zerotier-one /var/lib/
 	sudo systemctl enable zerotier-one
