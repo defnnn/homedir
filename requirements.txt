@@ -14,11 +14,11 @@ asciitree==0.3.3          # via keepercommander
 async-timeout==3.0.1      # via aiohttp
 attrs==20.2.0             # via aiohttp, jsonschema, pytest
 aws-requests-auth==0.4.3  # via httpie-aws-authv4
-awscli==1.18.164          # via -r /drone/src/requirements.in
+awscli==1.18.164          # via -r requirements.in
 babel==2.8.0              # via sphinx
 bcrypt==3.2.0             # via paramiko
 binaryornot==0.4.4        # via cookiecutter
-black==20.8b1             # via -r /drone/src/requirements.in
+black==20.8b1             # via -r requirements.in
 bleach==3.2.1             # via readme-renderer
 boto3==1.16.4             # via httpie-aws-authv4
 botocore==1.19.4          # via awscli, boto3, s3transfer
@@ -30,37 +30,37 @@ chardet==3.0.4            # via aiohttp, binaryornot, requests
 click==7.1.2              # via black, cookiecutter, kopf, pyinfra
 colorama==0.4.3           # via awscli, keepercommander, libkeepass, pyinfra, twine
 configparser==5.0.1       # via pyinfra
-cookiecutter==1.7.2       # via -r /drone/src/requirements.in
-cryptography==3.1.1       # via fido2, keepercommander, paramiko, requests-ntlm, secretstorage
-diagrams==0.17.0          # via -r /drone/src/requirements.in
+cookiecutter==1.7.2       # via -r requirements.in
+cryptography==3.2         # via fido2, keepercommander, paramiko, requests-ntlm, secretstorage
+diagrams==0.17.0          # via -r requirements.in
 distlib==0.3.1            # via virtualenv
 distro==1.5.0             # via docker-compose, pyinfra
-docker-compose==1.27.4    # via -r /drone/src/requirements.in
+docker-compose==1.27.4    # via -r requirements.in
 docker[ssh]==4.3.1        # via docker-compose
 dockerpty==0.4.1          # via docker-compose
 docopt==0.6.2             # via docker-compose
 docutils==0.15.2          # via awscli, readme-renderer, sphinx
-fido2==0.8.1              # via -r /drone/src/requirements.in
+fido2==0.8.1              # via -r requirements.in
 filelock==3.0.12          # via virtualenv
 gevent==20.9.0            # via pyinfra
 graphviz==0.13.2          # via diagrams
 greenlet==0.4.17          # via gevent
-httpie-aws-authv4==0.1.4  # via -r /drone/src/requirements.in
-httpie==2.2.0             # via -r /drone/src/requirements.in, httpie-aws-authv4
+httpie-aws-authv4==0.1.4  # via -r requirements.in
+httpie==2.2.0             # via -r requirements.in, httpie-aws-authv4
 identify==1.5.6           # via pre-commit
 idna==2.10                # via requests, yarl
 imagesize==1.2.0          # via sphinx
 iniconfig==1.1.1          # via pytest
 iso8601==0.1.13           # via kopf
-isort==5.6.4              # via -r /drone/src/requirements.in
+isort==5.6.4              # via -r requirements.in
 jeepney==0.4.3            # via keyring, secretstorage
 jinja2-time==0.2.0        # via cookiecutter
 jinja2==2.11.2            # via cookiecutter, diagrams, jinja2-time, pyinfra, sphinx
 jmespath==0.10.0          # via boto3, botocore
 jsonschema==3.2.0         # via docker-compose
-keepercommander==4.51     # via -r /drone/src/requirements.in
-keyring==21.4.0           # via -r /drone/src/requirements.in, twine
-kopf==0.28                # via -r /drone/src/requirements.in
+keepercommander==4.51     # via -r requirements.in
+keyring==21.4.0           # via -r requirements.in, twine
+kopf==0.28                # via -r requirements.in
 libkeepass==0.3.1.post1   # via keepercommander
 lxml==4.6.1               # via libkeepass
 markupsafe==1.1.1         # via cookiecutter, jinja2
@@ -74,7 +74,7 @@ pathspec==0.8.0           # via black
 pkginfo==1.6.0            # via twine
 pluggy==0.13.1            # via pytest
 poyo==0.5.0               # via cookiecutter
-pre-commit==2.7.1         # via -r /drone/src/requirements.in
+pre-commit==2.7.1         # via -r requirements.in
 prompt-toolkit==2.0.10    # via keepercommander
 protobuf==3.13.0          # via keepercommander
 py==1.9.0                 # via pytest
@@ -82,25 +82,25 @@ pyasn1==0.4.8             # via rsa
 pycparser==2.20           # via cffi
 pycryptodome==3.9.8       # via libkeepass
 pycryptodomex==3.9.8      # via keepercommander
-pyflakes==2.2.0           # via -r /drone/src/requirements.in
+pyflakes==2.2.0           # via -r requirements.in
 pygments==2.7.1           # via httpie, readme-renderer, sphinx
-pyinfra==1.2              # via -r /drone/src/requirements.in
-pykube-ng==20.10.0        # via -r /drone/src/requirements.in, kopf, pytest-kind
+pyinfra==1.2              # via -r requirements.in
+pykube-ng==20.10.0        # via -r requirements.in, kopf, pytest-kind
 pynacl==1.4.0             # via paramiko
 pyparsing==2.4.7          # via packaging
 pyperclip==1.8.1          # via keepercommander
 pyrsistent==0.17.3        # via jsonschema
-pytest-kind==20.10.0      # via -r /drone/src/requirements.in
-pytest-shell==0.2.3       # via -r /drone/src/requirements.in
-pytest-timeout==1.4.2     # via -r /drone/src/requirements.in
-pytest==6.1.1             # via -r /drone/src/requirements.in, pytest-timeout, testinfra
+pytest-kind==20.10.0      # via -r requirements.in
+pytest-shell==0.2.3       # via -r requirements.in
+pytest-timeout==1.4.2     # via -r requirements.in
+pytest==6.1.1             # via -r requirements.in, pytest-timeout, testinfra
 python-dateutil==2.8.1    # via arrow, botocore, pyinfra
 python-dotenv==0.14.0     # via docker-compose
 python-json-logger==2.0.1  # via kopf
 python-slugify==4.0.1     # via cookiecutter
 pytz==2020.1              # via babel
 pywinrm==0.4.1            # via pyinfra
-pyyaml==5.3.1             # via -r /drone/src/requirements.in, awscli, docker-compose, pre-commit, pykube-ng, yq
+pyyaml==5.3.1             # via -r requirements.in, awscli, docker-compose, pre-commit, pykube-ng, yq
 readme-renderer==28.0     # via twine
 regex==2020.10.23         # via black
 requests-ntlm==1.1.0      # via pywinrm
@@ -108,13 +108,13 @@ requests-toolbelt==0.9.1  # via twine
 requests==2.24.0          # via aws-requests-auth, cookiecutter, docker, docker-compose, httpie, keepercommander, pykube-ng, pywinrm, requests-ntlm, requests-toolbelt, sphinx, twine
 rfc3986==1.4.0            # via twine
 rsa==4.5                  # via awscli
-ruamel.yaml==0.15.100     # via -r /drone/src/requirements.in, yamlfmt
+ruamel.yaml==0.15.100     # via -r requirements.in, yamlfmt
 s3transfer==0.3.3         # via awscli, boto3
 secretstorage==3.1.2      # via keyring
 six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, packaging, prompt-toolkit, protobuf, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
 snowballstemmer==2.0.0    # via sphinx
-sphinx-rtd-theme==0.5.0   # via -r /drone/src/requirements.in
-sphinx==3.2.1             # via -r /drone/src/requirements.in, sphinx-rtd-theme
+sphinx-rtd-theme==0.5.0   # via -r requirements.in
+sphinx==3.2.1             # via -r requirements.in, sphinx-rtd-theme
 sphinxcontrib-applehelp==1.0.2  # via sphinx
 sphinxcontrib-devhelp==1.0.2  # via sphinx
 sphinxcontrib-htmlhelp==1.0.3  # via sphinx
@@ -122,12 +122,12 @@ sphinxcontrib-jsmath==1.0.1  # via sphinx
 sphinxcontrib-qthelp==1.0.3  # via sphinx
 sphinxcontrib-serializinghtml==1.1.4  # via sphinx
 tabulate==0.8.7           # via keepercommander
-testinfra==5.3.1          # via -r /drone/src/requirements.in
+testinfra==5.3.1          # via -r requirements.in
 text-unidecode==1.3       # via python-slugify
 texttable==1.6.3          # via docker-compose
 toml==0.10.1              # via black, pre-commit, pytest
 tqdm==4.50.2              # via twine
-twine==3.2.0              # via -r /drone/src/requirements.in
+twine==3.2.0              # via -r requirements.in
 typed-ast==1.4.1          # via black
 typing-extensions==3.7.4.3  # via black, kopf
 urllib3==1.25.11          # via botocore, httpie-aws-authv4, requests
@@ -136,9 +136,9 @@ wcwidth==0.2.5            # via prompt-toolkit
 webencodings==0.5.1       # via bleach
 websocket-client==0.57.0  # via docker, docker-compose
 xmltodict==0.12.0         # via pywinrm, yq
-yamlfmt==1.1.0            # via -r /drone/src/requirements.in
+yamlfmt==1.1.0            # via -r requirements.in
 yarl==1.5.1               # via aiohttp
-yq==2.11.1                # via -r /drone/src/requirements.in
+yq==2.11.1                # via -r requirements.in
 zope.event==4.5.0         # via gevent
 zope.interface==5.1.2     # via gevent
 
