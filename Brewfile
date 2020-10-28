@@ -47,6 +47,8 @@ brew "goreleaser"
 brew "python"
 brew "stern"
 brew "nfpm"
+brew "yubico-piv-tool"
+brew "ykman"
 
 cask "aws-vault"
 cask "1password"
