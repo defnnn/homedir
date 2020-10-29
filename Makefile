@@ -53,9 +53,9 @@ setup-do-inner:
 	sudo systemctl enable zerotier-one
 	sudo systemctl start zerotier-one
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-	rm -f .ssh/authorized_keys
-	sudo cat ~root/.ssh/authorized_keys > .ssh/authorized_keys
-	chmod 700 .ssh; chmod 600 .ssh/authorized_keys
+	rm -f .ssh/authorized_keys; touch .ssh/authorized_keys; chmod 700 .ssh; chmod 600 .ssh/authorized_keys
+	curl -s "https://api.github.com/users/dgwyn/keys" | jq -r '.[].key' >> .ssh/authorized_keys
+	curl -s "https://api.github.com/users/jojomomojo/keys" | jq -r '.[].key' >> .ssh/authorized_keys
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
 	rm -rf .vim/bundle/dhall-vim .vim/bundle/vim-airline
