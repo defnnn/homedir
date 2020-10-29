@@ -44,7 +44,7 @@ setup-do-inner:
 	sudo apt install -y ruby gem
 	sudo -H gem install pleaserun
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
-	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s; sudo swapon $$s; done
+	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s || true; sudo swapon $$s || true; done
 	while ! test -e /dev/sda; do date; sleep 5; done
 	sudo mkdir -p /mnt/zerotier-one
 	sudo chown zerotier-one:zerotier-one /mnt/zerotier-one
