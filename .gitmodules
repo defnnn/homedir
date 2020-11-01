@@ -64,3 +64,6 @@
 [submodule ".asdf/plugins/whoa"]
 	path = .asdf/plugins/whoa
 	url = https://github.com/defn/asdf-defn.git
+[submodule "redis"]
+	path = redis
+	url = https://github.com/smashedtoatoms/asdf-redis.git
