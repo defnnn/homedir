@@ -28,8 +28,6 @@ pyinfra
 awscli
 
 PyYAML
-ruamel.yaml
-yamlfmt
 
 pytest-kind
 pykube-ng
