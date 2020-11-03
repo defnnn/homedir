@@ -14,14 +14,14 @@ asciitree==0.3.3          # via keepercommander
 async-timeout==3.0.1      # via aiohttp
 attrs==20.2.0             # via aiohttp, jsonschema, pytest
 aws-requests-auth==0.4.3  # via httpie-aws-authv4
-awscli==1.18.169          # via -r /drone/src/requirements.in
+awscli==1.18.170          # via -r /drone/src/requirements.in
 babel==2.8.0              # via sphinx
 bcrypt==3.2.0             # via paramiko
 binaryornot==0.4.4        # via cookiecutter
 black==20.8b1             # via -r /drone/src/requirements.in
 bleach==3.2.1             # via readme-renderer
-boto3==1.16.9             # via httpie-aws-authv4
-botocore==1.19.9          # via awscli, boto3, s3transfer
+boto3==1.16.10            # via httpie-aws-authv4, python-dynamodb-lock
+botocore==1.19.10         # via awscli, boto3, python-dynamodb-lock, s3transfer
 cached-property==1.5.2    # via docker-compose
 certifi==2020.6.20        # via requests
 cffi==1.14.3              # via bcrypt, cryptography, pynacl
@@ -47,7 +47,7 @@ graphviz==0.13.2          # via diagrams
 greenlet==0.4.17          # via gevent
 httpie-aws-authv4==0.1.4  # via -r /drone/src/requirements.in
 httpie==2.3.0             # via -r /drone/src/requirements.in, httpie-aws-authv4
-identify==1.5.6           # via pre-commit
+identify==1.5.7           # via pre-commit
 idna==2.10                # via requests, yarl
 imagesize==1.2.0          # via sphinx
 iniconfig==1.1.1          # via pytest
@@ -80,8 +80,8 @@ protobuf==3.13.0          # via keepercommander
 py==1.9.0                 # via pytest
 pyasn1==0.4.8             # via rsa
 pycparser==2.20           # via cffi
-pycryptodome==3.9.8       # via libkeepass
-pycryptodomex==3.9.8      # via keepercommander
+pycryptodome==3.9.9       # via libkeepass
+pycryptodomex==3.9.9      # via keepercommander
 pyflakes==2.2.0           # via -r /drone/src/requirements.in
 pygments==2.7.2           # via httpie, readme-renderer, sphinx
 pyinfra==1.2.1            # via -r /drone/src/requirements.in
@@ -97,9 +97,10 @@ pytest-timeout==1.4.2     # via -r /drone/src/requirements.in
 pytest==6.1.2             # via -r /drone/src/requirements.in, pytest-timeout, testinfra
 python-dateutil==2.8.1    # via arrow, botocore, pyinfra
 python-dotenv==0.15.0     # via docker-compose
+python-dynamodb-lock==0.9.1  # via -r /drone/src/requirements.in
 python-json-logger==2.0.1  # via kopf
 python-slugify==4.0.1     # via cookiecutter
-pytz==2020.1              # via babel
+pytz==2020.4              # via babel
 pywinrm==0.4.1            # via pyinfra
 pyyaml==5.3.1             # via -r /drone/src/requirements.in, awscli, docker-compose, pre-commit, pykube-ng, yq
 readme-renderer==28.0     # via twine
@@ -114,7 +115,7 @@ secretstorage==3.1.2      # via keyring
 six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, packaging, prompt-toolkit, protobuf, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
 snowballstemmer==2.0.0    # via sphinx
 sphinx-rtd-theme==0.5.0   # via -r /drone/src/requirements.in
-sphinx==3.2.1             # via -r /drone/src/requirements.in, sphinx-rtd-theme
+sphinx==3.3.0             # via -r /drone/src/requirements.in, sphinx-rtd-theme
 sphinxcontrib-applehelp==1.0.2  # via sphinx
 sphinxcontrib-devhelp==1.0.2  # via sphinx
 sphinxcontrib-htmlhelp==1.0.3  # via sphinx
