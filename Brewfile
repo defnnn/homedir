@@ -48,6 +48,7 @@ brew "stern"
 brew "nfpm"
 brew "yubico-piv-tool"
 brew "ykman"
+brew "bat"
 
 cask "aws-vault"
 cask "1password"
