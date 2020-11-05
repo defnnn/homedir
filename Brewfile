@@ -49,6 +49,7 @@ brew "nfpm"
 brew "yubico-piv-tool"
 brew "ykman"
 brew "bat"
+brew "git-delta"
 
 cask "aws-vault"
 cask "1password"
