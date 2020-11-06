@@ -1,10 +1,4 @@
 {
-  "name": "defn",
-  "version": "0.0.1",
-  "description": "defn",
-  "repository": "amanibhavam/homedir",
-  "author": "defn",
-  "license": "MIT",
   "dependencies": {
     "cloudflare-cli": "^4.1.0"
   }
