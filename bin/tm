@@ -9,7 +9,11 @@ function main {
   export _GPG_AGENT_SOCKET="$(ssh "${remote}" gpgconf --list-dirs | grep ^agent-socket: | cut -d: -f2)"
 
   if [[ "$#" == 0 ]]; then
-    set -- bash -c "$(printf '%q' "$(cat "$0.sh")")"
+    if [[ -n "${TMUX:-}" ]]; then
+      set -- bash -il
+    else
+      set -- bash -c "$(printf '%q' "$(cat "$0.sh")")"
+    fi
   fi
 
   if [[ -z "${_GPG_AGENT_SOCKET}" ]]; then
