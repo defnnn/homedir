@@ -67,3 +67,6 @@
 [submodule "redis"]
 	path = redis
 	url = https://github.com/smashedtoatoms/asdf-redis.git
+[submodule ".asdf/plugins/nomad"]
+	path = .asdf/plugins/nomad
+	url = https://github.com/Banno/asdf-hashicorp.git
