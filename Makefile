@@ -88,6 +88,7 @@ install_inner:
 	source venv/bin/activate && pip install --upgrade pip
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
 	if ! test -x "$(HOME)/bin/docker-credential-pass"; then go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5; go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd; fi
+	if [[ -w /usr/local/bin ]]; then ln -nfs ~/bin/pass-vault-helper /usr/local/bin/; else sudo ln -nfs ~/bin/pass-vault-helper /usr/local/bin/; fi
 	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
