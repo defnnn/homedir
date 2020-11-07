@@ -49,6 +49,7 @@ brew "yubico-piv-tool"
 brew "ykman"
 brew "bat"
 brew "git-delta"
+brew "gron"
 
 if OS.mac?
   cask "aws-vault"
