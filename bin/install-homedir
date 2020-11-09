@@ -4,16 +4,18 @@ function main {
   set -efu
 
   if [[ ! -d /home/linuxbrew ]]; then
-    if [[ -x "$(type -P apt)" ]]; then
-      sudo apt update
-      sudo apt install -y make unzip python3-venv build-essential jq net-tools docker.io
+    if [[ "$(uname -s)" != "Darwin" ]]; then
+      if [[ -x "$(type -P apt)" ]]; then
+        sudo apt update
+        sudo apt install -y make unzip python3-venv build-essential jq net-tools docker.io
 
-      sudo install -d -o 1000 -g 1000 /home/linuxbrew
-      git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
-      git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
-        /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
+        sudo install -d -o 1000 -g 1000 /home/linuxbrew
+        git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
+        git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
+          /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
 
-      /home/linuxbrew/.linuxbrew/bin/brew tap linuxbrew/xorg
+        /home/linuxbrew/.linuxbrew/bin/brew tap linuxbrew/xorg
+      fi
     fi
   fi
 

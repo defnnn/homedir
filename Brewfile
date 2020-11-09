@@ -50,6 +50,7 @@ brew "ykman"
 brew "bat"
 brew "git-delta"
 brew "gron"
+brew "dog"
 
 if OS.mac?
   cask "aws-vault"
@@ -64,6 +65,8 @@ if OS.mac?
   cask "postman"
   cask "font-juliamono"
   cask "jetbrains-toolbox"
+
+  brew "oracle-jdk"
 else
   brew "aws-vault"
 end
