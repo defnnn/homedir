@@ -64,8 +64,7 @@ if OS.mac?
   cask "postman"
   cask "font-juliamono"
   cask "jetbrains-toolbox"
-
-  brew "oracle-jdk"
+  cask "oracle-jdk"
 else
   brew "aws-vault"
 end
