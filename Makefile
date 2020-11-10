@@ -13,14 +13,14 @@ thing: # Upgrade all the things
 update: # Update code
 	git pull
 	$(MAKE) update_inner
-	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile upgrade
+	source ./.bash_profile && $(MAKE) -f Makefile.dotfiles upgrade
 
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
 	git submodule update --init
 	if [[ ! -d .dotfiles ]]; then git clone "$(shell cat .dotfiles-repo)" .dotfiles; fi
 	cd .dotfiles && git pull && git submodule update --init
-	$(MAKE) -f .dotfiles/Makefile update
+	$(MAKE) -f Makefile.dotfiles update
 
 upgrade: # Upgrade installed software
 	brew upgrade
@@ -92,7 +92,7 @@ install_inner:
 	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
-	source ./.bash_profile && $(MAKE) -f .dotfiles/Makefile install
+	source ./.bash_profile && $(MAKE) -f Makefile.dotfiles install
 	rm -rf $(shell brew --cache) 2>/dev/null
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 
