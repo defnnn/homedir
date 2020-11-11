@@ -50,6 +50,8 @@ brew "ykman"
 brew "bat"
 brew "git-delta"
 brew "gron"
+brew "runit"
+brew "daemontools"
 
 if OS.mac?
   cask "aws-vault"
