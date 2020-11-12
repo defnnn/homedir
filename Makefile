@@ -109,7 +109,7 @@ install_inner:
 	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
-	rm -rf $(shell brew --cache) 2>/dev/null
+	rm -rf $(shell brew --cache) 2>/dev/null || sudo rm -rf $(shell brew --cache)
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 
 fmt: # Format with isort, black
