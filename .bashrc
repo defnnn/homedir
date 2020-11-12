@@ -154,7 +154,7 @@ function render_ps1 {
     -priority root,cwd,user,host,ssh,perms,git-branch,exit,cwd-path,git-status \
     -modules host,ssh,cwd,perms,gitlite,load,exit${PS1_VAR:+,shell-var --shell-var PS1_VAR} \
     -path-aliases /efs=efs,/home/boot=\~,\~/work=work \
-    -theme ~/.dotfiles/default.json
+    -theme ~/default.json
 }
 
 function update_ps1 {
@@ -222,10 +222,5 @@ if type -P vim >/dev/null; then
 else
   export EDITOR="$(which vi)"
 fi
-
-function cm {
-  source ~/.dotfiles/.cmrc
-  _cm "$@"
-}
 
 if [[ -f ~/.bashrc.site ]]; then source ~/.bashrc.site; fi

@@ -13,14 +13,31 @@ thing: # Upgrade all the things
 update: # Update code
 	git pull
 	$(MAKE) update_inner
-	source ./.bash_profile && $(MAKE) -f Makefile.dotfiles upgrade
 
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
 	git submodule update --init
-	if [[ ! -d .dotfiles ]]; then git clone "$(shell cat .dotfiles-repo)" .dotfiles; fi
-	cd .dotfiles && git pull && git submodule update --init
-	$(MAKE) -f Makefile.dotfiles update
+	if [[ -f /cache/.npmrc ]]; then ln -nfs /cache/.npmrc .; fi
+	if [[ -f /efs/.npmrc ]]; then ln -nfs /efs/.npmrc .; fi
+	if [[ -f /cache/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /cache/.pip/pip.conf .pip/; fi
+	if [[ -f /efs/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /efs/.pip/pip.conf .pip/; fi
+	if [[ -f /efs/.gitconfig ]]; then cp /efs/.gitconfig .gitconfig; fi
+	mkdir -p .ssh && chmod 700 .ssh
+	mkdir -p .gnupg && chmod 700 .gnupg
+	mkdir -p .aws
+	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
+		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
+			if [[ -w /usr/local/bin ]]; then \
+				ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
+			else \
+				sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
+			fi \
+		fi; \
+	fi
+	mkdir -p .docker
+	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
+	mv .docker/config.json.1 .docker/config.json
+	rm -f .profile
 
 upgrade: # Upgrade installed software
 	brew upgrade
@@ -92,7 +109,6 @@ install_inner:
 	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
-	source ./.bash_profile && $(MAKE) -f Makefile.dotfiles install
 	rm -rf $(shell brew --cache) 2>/dev/null
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 

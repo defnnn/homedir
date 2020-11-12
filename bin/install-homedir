@@ -33,7 +33,6 @@ function main {
   mv homedir/.git .
   rm -rf homedir
   git reset --hard
-  echo https://github.com/amanibhavam/dotfiles > .dotfiles-repo
   make update
   make upgrade
   make install

@@ -1,6 +1,3 @@
-[submodule ".dotfiles"]
-	path = .dotfiles
-	url = git@github.com:destructuring/dotfiles
 [submodule ".asdf/plugins/python"]
 	path = .asdf/plugins/python
 	url = https://github.com/danhper/asdf-python.git
