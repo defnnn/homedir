@@ -9,6 +9,7 @@ tap "goreleaser/tap"
 
 brew "aws-okta"
 brew "chamber"
+brew "ctop"
 brew "doctl"
 brew "cirrus"
 brew "drone-cli"
