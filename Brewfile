@@ -55,6 +55,7 @@ brew "gron"
 if OS.mac?
   cask "aws-vault"
   cask "1password"
+  cask "keeper-password-manager"
   cask "chromedriver"
   cask "docker"
   cask "google-chrome"
