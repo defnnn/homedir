@@ -67,7 +67,6 @@ Brewfile.lock.json
 .cpan/
 .irssi/
 .gem/
-.env
 .oracle_jre_usage/
 .bash_sessions/
 .bash_logout
