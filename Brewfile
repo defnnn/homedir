@@ -51,6 +51,7 @@ brew "ykman"
 brew "bat"
 brew "git-delta"
 brew "gron"
+brew "envconsul"
 
 if OS.mac?
   cask "aws-vault"
