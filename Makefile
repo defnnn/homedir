@@ -12,14 +12,14 @@ thing: # Upgrade all the things
 
 update: # Update code
 	git pull
-	-chmod 600 .ssh/config
+	-chmod 600 .ssh/config .password-store/ssh/config
 	$(MAKE) update_inner
 
 update_password_store:
 	cd .password-store && git reset --hard origin/master
-	-chmod 600 .ssh/config
+	-chmod 600 .ssh/config .password-store/ssh/config
 	cd .password-store && git pull
-	-chmod 600 .ssh/config
+	-chmod 600 .ssh/config .password-store/ssh/config
 
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
@@ -101,7 +101,7 @@ setup-registry:
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
-	-chmod 600 .ssh/config
+	-chmod 600 .ssh/config .password-store/ssh/config
 
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
