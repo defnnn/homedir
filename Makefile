@@ -12,11 +12,14 @@ thing: # Upgrade all the things
 
 update: # Update code
 	git pull
+	-chmod 600 .ssh/config
 	$(MAKE) update_inner
 
 update_password_store:
 	cd .password-store && git reset --hard origin/master
+	-chmod 600 .ssh/config
 	cd .password-store && git pull
+	-chmod 600 .ssh/config
 
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
