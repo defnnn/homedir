@@ -15,6 +15,7 @@ update: # Update code
 	$(MAKE) update_inner
 
 update_password_store:
+	cd .password-store && git reset --hard origin/master
 	cd .password-store && git pull
 
 update_inner:
