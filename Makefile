@@ -6,9 +6,10 @@ menu:
 	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile
 
 thing: # Upgrade all the things
-	$(MAKE) update
+	-$(MAKE) update
 	$(MAKE) update
 	$(MAKE) install
+	$(MAKE) upgrade
 
 update: # Update code
 	git pull
