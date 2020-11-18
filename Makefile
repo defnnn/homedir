@@ -6,6 +6,9 @@ menu:
 	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile
 
 thing: # Upgrade all the things
+	./env.sh $(MAKE) thing-inner
+
+thing-inner:
 	-$(MAKE) update
 	$(MAKE) update
 	$(MAKE) install
