@@ -74,12 +74,6 @@ setup-do-inner:
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s || true; sudo swapon $$s || true; done
 	while ! test -e /dev/sda; do date; sleep 5; done
-	sudo mkdir -p /mnt/zerotier-one
-	sudo chown zerotier-one:zerotier-one /mnt/zerotier-one
-	sudo rm -rf /var/lib/zerotier-one
-	sudo ln -nfs /mnt/zerotier-one /var/lib/
-	sudo systemctl enable zerotier-one
-	sudo systemctl start zerotier-one
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 	rm -f .ssh/authorized_keys; touch .ssh/authorized_keys; chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	curl -s "https://api.github.com/users/dgwyn/keys" | jq -r '.[].key' >> .ssh/authorized_keys
