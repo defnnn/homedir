@@ -74,6 +74,7 @@ setup-do-inner:
 	rm -f .ssh/authorized_keys; touch .ssh/authorized_keys; chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	curl -s "https://api.github.com/users/dgwyn/keys" | jq -r '.[].key' >> .ssh/authorized_keys
 	curl -s "https://api.github.com/users/jojomomojo/keys" | jq -r '.[].key' >> .ssh/authorized_keys
+	sudo install -d -o 1000 -g 1000 /mnt/password-store /mnt/work
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
 	git submodule sync
