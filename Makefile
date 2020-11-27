@@ -67,10 +67,6 @@ setup-do:
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
-	sudo apt update -y
-	sudo apt upgrade -y
-	sudo apt install -y ruby gem
-	sudo -H gem install pleaserun
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s || true; sudo swapon $$s || true; done
 	while ! test -e /dev/sda; do date; sleep 5; done
@@ -80,13 +76,10 @@ setup-do-inner:
 	curl -s "https://api.github.com/users/jojomomojo/keys" | jq -r '.[].key' >> .ssh/authorized_keys
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	rm -rf .vim/bundle/dhall-vim .vim/bundle/vim-airline
-	git pull
-	git reset --hard
 	git submodule sync
 	git submodule update --init --recursive --remote
 	make setup-dummy
-	make update
+	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; fi
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
