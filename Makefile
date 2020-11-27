@@ -64,6 +64,8 @@ install-aws:
 	cd .. && homedir/bin/install-homedir
 
 setup-do:
+	git fetch
+	git reset --hard origin/master
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
@@ -85,8 +87,8 @@ setup-do-inner:
 	git reset --hard
 	git submodule sync
 	git submodule update --init --recursive --remote
-	make setup-dummy setup-registry
-	-make thing
+	make setup-dummy
+	make update
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
