@@ -64,8 +64,6 @@ install-aws:
 	cd .. && homedir/bin/install-homedir
 
 setup-do:
-	git fetch
-	git reset --hard origin/master
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
