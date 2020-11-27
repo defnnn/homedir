@@ -36,15 +36,6 @@ update_inner:
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
-	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
-		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
-			if [[ -w /usr/local/bin ]]; then \
-				ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
-			else \
-				sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
-			fi \
-		fi; \
-	fi
 	mkdir -p .docker
 	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
 	mv .docker/config.json.1 .docker/config.json
@@ -108,6 +99,15 @@ install_inner:
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
 	if ! test -x "$(HOME)/bin/docker-credential-pass"; then go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5; go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd; fi
 	if [[ -w /usr/local/bin ]]; then ln -nfs ~/bin/pass-vault-helper /usr/local/bin/; else sudo ln -nfs ~/bin/pass-vault-helper /usr/local/bin/; fi
+	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
+		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
+			if [[ -w /usr/local/bin ]]; then \
+				ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
+			else \
+				sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
+			fi \
+		fi; \
+	fi
 	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
