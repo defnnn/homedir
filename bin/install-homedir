@@ -39,12 +39,12 @@ function main {
   PATH="$HOME/.asdf/installs/bin:$PATH"
   PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$PATH"
 
-  mv homedir/.git .
-  rm -rf homedir
+  rsync -ia homedir/.git .
   git reset --hard
   make update
   make upgrade
   make install
+  rm -rf homedir
 }
 
 main "$@"
