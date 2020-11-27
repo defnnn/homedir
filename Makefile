@@ -80,7 +80,8 @@ setup-do-inner:
 	git submodule sync
 	git submodule update --init --recursive --remote
 	make setup-dummy
-	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; fi
+	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; sudo tailescale up; fi
+	if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
