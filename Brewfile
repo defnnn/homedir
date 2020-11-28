@@ -71,6 +71,7 @@ if OS.mac?
   cask "balenaetcher"
   cask "tunnelblick"
   brew "htop"
+  brew "pinentry-mac"
 else
   brew "aws-vault"
 end
