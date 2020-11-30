@@ -89,6 +89,11 @@ install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	-chmod 600 .ssh/config .password-store/ssh/config
 
+reinstall-python: # Reinstall Python virtualenv
+	rm -rf venv
+	source venv/bin/activate && pip install --upgrade pip
+	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
+
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
