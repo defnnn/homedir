@@ -21,6 +21,7 @@ pytest-shell
 pytest-timeout
 
 twine
+pip-tools
 
 testinfra
 pyinfra
