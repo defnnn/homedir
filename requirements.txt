@@ -127,6 +127,7 @@ text-unidecode==1.3       # via python-slugify
 texttable==1.6.3          # via docker-compose
 toml==0.10.2              # via black, pre-commit, pytest
 tqdm==4.51.0              # via twine
+traceback-with-variables==1.1.9  # via -r requirements.in
 twine==3.2.0              # via -r requirements.in
 typed-ast==1.4.1          # via black
 typing-extensions==3.7.4.3  # via aiohttp, black, kopf

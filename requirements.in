@@ -19,6 +19,7 @@ pyflakes
 pytest
 pytest-shell
 pytest-timeout
+traceback-with-variables
 
 twine
 pip-tools
