@@ -85,7 +85,7 @@ setup-do-inner:
 	git reset --hard
 	git submodule sync
 	git submodule update --init --recursive --remote
-	make setup-dummy setup-registry
+	make setup-dummy
 	-make thing
 
 setup-aws:
