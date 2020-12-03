@@ -69,6 +69,7 @@ Brewfile.lock.json
 .gem/
 .oracle_jre_usage/
 .bash_sessions/
+.zsh_sessions/
 .bash_logout
 .asdf
 .local/

@@ -69,6 +69,9 @@ if OS.mac?
   cask "jetbrains-toolbox"
   cask "oracle-jdk"
   cask "balenaetcher"
+  cask "tunnelblick"
+  brew "htop"
+  brew "pinentry-mac"
 else
   brew "aws-vault"
 end

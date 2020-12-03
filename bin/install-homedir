@@ -27,15 +27,24 @@ function main {
     popd
   fi
 
+  if [[ ! -x "$(which brew || true)" ]]; then
+    case "$(uname -s)" in
+      Darwin)
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        brew install jq
+        ;;
+    esac
+  fi
+
   PATH="$HOME/.asdf/installs/bin:$PATH"
   PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$PATH"
 
-  mv homedir/.git .
-  rm -rf homedir
+  rsync -ia homedir/.git .
   git reset --hard
   make update
   make upgrade
   make install
+  rm -rf homedir
 }
 
 main "$@"

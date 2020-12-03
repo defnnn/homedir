@@ -36,15 +36,6 @@ update_inner:
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
-	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
-		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
-			if [[ -w /usr/local/bin ]]; then \
-				ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
-			else \
-				sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
-			fi \
-		fi; \
-	fi
 	mkdir -p .docker
 	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass"}' > .docker/config.json.1
 	mv .docker/config.json.1 .docker/config.json
@@ -67,10 +58,6 @@ setup-do:
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
-	sudo apt update -y
-	sudo apt upgrade -y
-	sudo apt install -y ruby gem
-	sudo -H gem install pleaserun
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s || true; sudo swapon $$s || true; done
 	while ! test -e /dev/sda; do date; sleep 5; done
@@ -78,15 +65,16 @@ setup-do-inner:
 	rm -f .ssh/authorized_keys; touch .ssh/authorized_keys; chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	curl -s "https://api.github.com/users/dgwyn/keys" | jq -r '.[].key' >> .ssh/authorized_keys
 	curl -s "https://api.github.com/users/jojomomojo/keys" | jq -r '.[].key' >> .ssh/authorized_keys
+	sudo install -d -o 1000 -g 1000 /mnt/password-store /mnt/work
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	rm -rf .vim/bundle/dhall-vim .vim/bundle/vim-airline
-	git pull
-	git reset --hard
 	git submodule sync
 	git submodule update --init --recursive --remote
 	make setup-dummy
-	-make thing
+	make update
+	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; fi
+	sleep 30
+	if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
@@ -101,6 +89,11 @@ install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	-chmod 600 .ssh/config .password-store/ssh/config
 
+reinstall-python: # Reinstall Python virtualenv
+	rm -rf venv
+	source venv/bin/activate && pip install --upgrade pip
+	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
+
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
@@ -110,7 +103,16 @@ install_inner:
 	source venv/bin/activate && pip install --upgrade pip
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
 	if ! test -x "$(HOME)/bin/docker-credential-pass"; then go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5; go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd; fi
-	if [[ -w /usr/local/bin ]]; then ln -nfs ~/bin/pass-vault-helper /usr/local/bin/; else sudo ln -nfs ~/bin/pass-vault-helper /usr/local/bin/; fi
+	if [[ -w /usr/local/bin ]]; then ln -nfs ~/bin/pass-vault-helper ~/bin/pinentry-defn /usr/local/bin/; else sudo ln -nfs ~/bin/pass-vault-helper ~/bin/pinentry-defn /usr/local/bin/; fi
+	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
+		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
+			if [[ -w /usr/local/bin ]]; then \
+				ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
+			else \
+				sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
+			fi \
+		fi; \
+	fi
 	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
 	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
 	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"

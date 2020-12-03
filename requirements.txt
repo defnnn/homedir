@@ -27,7 +27,7 @@ certifi==2020.6.20        # via requests
 cffi==1.14.3              # via bcrypt, cryptography, pynacl
 cfgv==3.2.0               # via pre-commit
 chardet==3.0.4            # via aiohttp, binaryornot, requests
-click==7.1.2              # via black, cookiecutter, kopf, pyinfra
+click==7.1.2              # via black, cookiecutter, kopf, pip-tools, pyinfra
 colorama==0.4.3           # via awscli, keepercommander, libkeepass, pyinfra, twine
 configparser==5.0.1       # via pyinfra
 cookiecutter==1.7.2       # via -r requirements.in
@@ -70,6 +70,7 @@ ntlm-auth==1.5.0          # via requests-ntlm
 packaging==20.4           # via bleach, pytest, sphinx
 paramiko==2.7.2           # via docker, pyinfra
 pathspec==0.8.0           # via black
+pip-tools==5.4.0          # via -r requirements.in
 pkginfo==1.6.1            # via twine
 pluggy==0.13.1            # via pytest
 poyo==0.5.0               # via cookiecutter
@@ -110,7 +111,7 @@ requests[socks]==2.24.0   # via aws-requests-auth, cookiecutter, docker, docker-
 rfc3986==1.4.0            # via twine
 rsa==4.5                  # via awscli
 s3transfer==0.3.3         # via awscli, boto3
-six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, packaging, prompt-toolkit, protobuf, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
+six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, packaging, pip-tools, prompt-toolkit, protobuf, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
 snowballstemmer==2.0.0    # via sphinx
 sphinx-rtd-theme==0.5.0   # via -r requirements.in
 sphinx==3.3.0             # via -r requirements.in, sphinx-rtd-theme
@@ -126,6 +127,7 @@ text-unidecode==1.3       # via python-slugify
 texttable==1.6.3          # via docker-compose
 toml==0.10.2              # via black, pre-commit, pytest
 tqdm==4.51.0              # via twine
+traceback-with-variables==1.1.9  # via -r requirements.in
 twine==3.2.0              # via -r requirements.in
 typed-ast==1.4.1          # via black
 typing-extensions==3.7.4.3  # via aiohttp, black, kopf
@@ -141,4 +143,5 @@ zope.event==4.5.0         # via gevent
 zope.interface==5.2.0     # via gevent
 
 # The following packages are considered to be unsafe in a requirements file:
+# pip
 # setuptools
