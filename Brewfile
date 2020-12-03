@@ -35,7 +35,6 @@ brew "yaegi"
 brew "kubeval"
 brew "conftest"
 brew "cue"
-brew "dhall-json"
 brew "tilt"
 brew "screen"
 brew "irssi"
@@ -71,6 +70,7 @@ if OS.mac?
   cask "tunnelblick"
   brew "htop"
   brew "pinentry-mac"
+  brew "podman"
 else
   brew "aws-vault"
 end
