@@ -1,5 +1,3 @@
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "aws/tap"
 tap "instrumenta/instrumenta"
 tap "cuelang/tap"
@@ -52,6 +50,9 @@ brew "gron"
 brew "envconsul"
 
 if OS.mac?
+  tap "homebrew/cask"
+  tap "homebrew/cask-fonts"
+
   cask "aws-vault"
   cask "1password"
   cask "keeper-password-manager"
@@ -68,6 +69,7 @@ if OS.mac?
   cask "oracle-jdk"
   cask "balenaetcher"
   cask "tunnelblick"
+
   brew "htop"
   brew "pinentry-mac"
   brew "podman"
