@@ -72,7 +72,6 @@ if OS.mac?
 
   brew "htop"
   brew "pinentry-mac"
-  brew "podman"
 else
   brew "aws-vault"
 end
