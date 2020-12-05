@@ -48,6 +48,7 @@ brew "bat"
 brew "git-delta"
 brew "gron"
 brew "envconsul"
+brew "step"
 
 if OS.mac?
   tap "homebrew/cask"
