@@ -59,8 +59,17 @@ setup-do:
 
 setup-do-inner:
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
-	for s in /swap0 /swap1 /swap2 /swap3; do sudo fallocate -l 1G $$s; sudo chmod 0600 $$s; sudo mkswap $$s || true; sudo swapon $$s || true; done
+	for s in /swap0 /swap1 /swap2 /swap3; do \
+		sudo fallocate -l 1G $$s; \
+		sudo chmod 0600 $$s; 
+		sudo mkswap $$s; \
+		echo $$a swap swap defaults 0 0 | sudo tee -a /etc/fstab; \
+	done
 	while ! test -e /dev/sda; do date; sleep 5; done
+	sudo e2label /dev/sda mnt
+	echo LABEL=mnt /mnt ext4 defaults 0 0 | sudo tee -a /etc/fstab
+	-sudo umount /mnt
+	sudo mount /mnt
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 	rm -f .ssh/authorized_keys; touch .ssh/authorized_keys; chmod 700 .ssh; chmod 600 .ssh/authorized_keys
 	curl -s "https://api.github.com/users/dgwyn/keys" | jq -r '.[].key' >> .ssh/authorized_keys
@@ -73,8 +82,8 @@ setup-do-inner:
 	make setup-dummy
 	make update
 	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; fi
-	sleep 30
-	if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
+	#sleep 30
+	#if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
