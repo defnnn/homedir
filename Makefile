@@ -81,7 +81,7 @@ setup-do-inner:
 	git submodule update --init --recursive --remote
 	make setup-dummy
 	make update
-	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; fi
+	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; sudo tailscale down; sudo tailscale up --accept=dns=false --accept-routes=true; fi
 	#sleep 30
 	#if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
 	sudo apt update
