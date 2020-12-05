@@ -86,6 +86,9 @@ setup-do-inner:
 	#if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
 	sudo apt update
 	sudo apt upgrade -y
+	sudo install -d -o 1000 -g 1000 /mnt/ssh
+	echo HostKey /mnt/ssh/ssh_host_ecdsa_key | sudo tee -a /etc/ssh/sshd_config
+	echo HostCertificate /mnt/ssh/ssh_host_ecdsa_key-cert.pub | sudo tee -a /etc/ssh/sshd_config
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
