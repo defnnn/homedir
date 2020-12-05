@@ -61,7 +61,7 @@ setup-do-inner:
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do \
 		sudo fallocate -l 1G $$s; \
-		sudo chmod 0600 $$s; 
+		sudo chmod 0600 $$s; \
 		sudo mkswap $$s; \
 		echo $$a swap swap defaults 0 0 | sudo tee -a /etc/fstab; \
 	done
