@@ -84,6 +84,8 @@ setup-do-inner:
 	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; fi
 	#sleep 30
 	#if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
+	sudo apt update
+	sudo apt upgrade -y
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
