@@ -148,3 +148,10 @@ requirements: # Compile requirements
 
 test:
 	 env PYTEST_ADDOPTS='--keep-cluster --cluster-name=test' pytest -v -s test.py
+
+step-ca:
+	step-ca --password-file .password-store/step/.pw .step/config/ca.json
+
+step-ssh-host:
+	token=$$(step ca token ryokan.defn.jp --ssh --host --provisioner defn --password-file .step/.pw); \
+		step ssh certificate --token "$${token}" --provisioner defn -f --insecure --no-password --host --principal TODO TODO .step/hosts/TODO/ssh_host_ecdsa_key
