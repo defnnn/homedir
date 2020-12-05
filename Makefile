@@ -87,8 +87,7 @@ setup-do-inner:
 	sudo apt update
 	sudo apt upgrade -y
 	sudo install -d -o 1000 -g 1000 /mnt/ssh
-	echo HostKey /mnt/ssh/ssh_host_ecdsa_key | sudo tee -a /etc/ssh/sshd_config
-	echo HostCertificate /mnt/ssh/ssh_host_ecdsa_key-cert.pub | sudo tee -a /etc/ssh/sshd_config
+	if test -f /mnt/ssh/ssh_host_ecdsa_key; then echo HostKey /mnt/ssh/ssh_host_ecdsa_key | sudo tee -a /etc/ssh/sshd_config; echo HostCertificate /mnt/ssh/ssh_host_ecdsa_key-cert.pub | sudo tee -a /etc/ssh/sshd_config; fi
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
