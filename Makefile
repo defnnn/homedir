@@ -63,7 +63,7 @@ setup-do-inner:
 		sudo fallocate -l 1G $$s; \
 		sudo chmod 0600 $$s; \
 		sudo mkswap $$s; \
-		echo $$a swap swap defaults 0 0 | sudo tee -a /etc/fstab; \
+		echo $$s swap swap defaults 0 0 | sudo tee -a /etc/fstab; \
 	done
 	while ! test -e /dev/sda; do date; sleep 5; done
 	sudo e2label /dev/sda mnt
