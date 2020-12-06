@@ -83,7 +83,7 @@ setup-do-inner:
 	#sleep 30
 	#if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
 	sudo apt update
-	sudo apt upgrade -y
+	sudo apt upgrade -y | cat
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
