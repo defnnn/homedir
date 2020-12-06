@@ -154,5 +154,5 @@ step-ca:
 
 step-ssh-host:
 	mkdir -p .step/hosts/${host}
-	token=$$(step ca token ryokan.defn.jp --not-after 11s --ssh --host --provisioner defn --password-file .step/.pw); \
+	token=$$(step ca token ${host} --not-after 11s --ssh --host --provisioner defn --password-file .step/.pw); \
 		step ssh certificate --token "$${token}" --provisioner defn -f --insecure --no-password --host --principal "${host}" "${host}" ".step/hosts/${host}/ssh_host_ecdsa_key"
