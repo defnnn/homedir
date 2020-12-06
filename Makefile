@@ -74,6 +74,7 @@ setup-do-inner:
 	sudo install -d -o 1000 -g 1000 /mnt/password-store /mnt/work
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
+	sudo install -d -o 1000 -g 1000 /mnt/ssh
 	git submodule sync
 	git submodule update --init --recursive --remote
 	make setup-dummy
