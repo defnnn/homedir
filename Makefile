@@ -16,7 +16,7 @@ thing-inner:
 
 update: # Update code
 	git pull
-	-chmod 600 .ssh/config .password-store/ssh/config
+	if test -d .password-store/.; then cd .password-store && if git pull; then chmod 600 ssh/config; fi; fi
 	$(MAKE) update_inner
 
 update_password_store:
