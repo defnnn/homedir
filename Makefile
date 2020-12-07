@@ -77,7 +77,8 @@ setup-do-inner:
 	sudo install -d -o 1000 -g 1000 /mnt/ssh
 	git submodule sync
 	git submodule update --init --recursive --remote
-	make setup-dummy
+	cd /etc/systemd/network && for a in 0 1 2 3; do (echo [NetDev]; echo Name=dummy$$a; echo Kind=dummy) | sudo tee dummy$$a.netdev; (echo [Match]; echo Name=dummy$$a; echo; echo [Network]; echo Address=169.254.32.$$a/32) | sudo tee dummy$$a.network; done
+	sudo systemctl restart systemd-networkd
 	make update
 	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; sleep 10; sudo tailscale down; sudo tailscale up --accept-dns=false --accept-routes=true; fi
 	#sleep 30
