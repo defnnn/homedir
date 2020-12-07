@@ -146,21 +146,3 @@ requirements: # Compile requirements
 
 test:
 	 env PYTEST_ADDOPTS='--keep-cluster --cluster-name=test' pytest -v -s test.py
-
-step-ca:
-	step-ca --password-file .password-store/step/.pw .step/config/ca.json
-
-step-ssh-user:
-	ssh-add -L > ~/.ssh/id_rsa.pub
-	token=$$(step ca token ${user} --not-after 11s --ssh --principal "${username}" --provisioner defn --password-file .step/.pw); \
-		step ssh certificate --token "$${token}" --provisioner defn -f --insecure --no-password --sign --principal "${username}" "${user}" ~/.ssh/id_rsa.pub
-	ssh-keygen -L -f ~/.ssh/id_rsa-cert.pub
-
-step-ssh-host:
-	mkdir -p .step/hosts/${host}
-	token=$$(step ca token ${host} --not-after 11s --ssh --host --provisioner defn --password-file .step/.pw); \
-		step ssh certificate --token "$${token}" --provisioner defn -f --insecure --no-password --host --principal "${host}" "${host}" ".step/hosts/${host}/ssh_host_ecdsa_key"
-
-step-ssh-host-rsync:
-	rsync -ia ".step/hosts/${host}/." "app@${host}:/mnt/ssh/."
-
