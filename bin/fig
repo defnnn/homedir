@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  figlet -d ~/etc -f broadway -w 999 "$@" | lolcat
+  figlet -d ~/etc -f chunky -w 999 "$@" | lolcat
 }
 
 main "$@"
