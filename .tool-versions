@@ -1,7 +1,7 @@
 python system
-golang 1.15.4
-kubectl 1.19.4
+golang 1.15.6
+kubectl 1.19.5
 kind 0.9.0
-consul 1.9.0
+consul 1.9.1
 vault 1.6.0
-nomad 1.0.0-beta3
+nomad 1.0.0
