@@ -4,39 +4,39 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
-aiohttp==3.7.2            # via aiojobs, kopf
-aiojobs==0.2.2            # via kopf
+aiohttp==3.7.3            # via kopf
+aiojobs==0.3.0            # via kopf
 alabaster==0.7.12         # via sphinx
 appdirs==1.4.4            # via black, virtualenv
-argcomplete==1.12.1       # via yq
+argcomplete==1.12.2       # via yq
 arrow==0.17.0             # via jinja2-time
 asciitree==0.3.3          # via keepercommander
 async-timeout==3.0.1      # via aiohttp
 attrs==20.3.0             # via aiohttp, jsonschema, pytest
 aws-requests-auth==0.4.3  # via httpie-aws-authv4
-awscli==1.18.172          # via -r requirements.in
-babel==2.8.0              # via sphinx
+awscli==1.18.194          # via -r requirements.in
+babel==2.9.0              # via sphinx
 bcrypt==3.2.0             # via paramiko
 binaryornot==0.4.4        # via cookiecutter
 black==20.8b1             # via -r requirements.in
 bleach==3.2.1             # via readme-renderer
-boto3==1.16.12            # via httpie-aws-authv4, python-dynamodb-lock
-botocore==1.19.12         # via awscli, boto3, python-dynamodb-lock, s3transfer
+boto3==1.16.34            # via httpie-aws-authv4, python-dynamodb-lock
+botocore==1.19.34         # via awscli, boto3, python-dynamodb-lock, s3transfer
 cached-property==1.5.2    # via docker-compose
-certifi==2020.6.20        # via requests
-cffi==1.14.3              # via bcrypt, cryptography, pynacl
+certifi==2020.12.5        # via requests
+cffi==1.14.4              # via bcrypt, cryptography, pynacl
 cfgv==3.2.0               # via pre-commit
 chardet==3.0.4            # via aiohttp, binaryornot, requests
 click==7.1.2              # via black, cookiecutter, kopf, pip-tools, pyinfra
 colorama==0.4.3           # via awscli, keepercommander, libkeepass, pyinfra, twine
 configparser==5.0.1       # via pyinfra
 cookiecutter==1.7.2       # via -r requirements.in
-cryptography==3.2.1       # via fido2, keepercommander, paramiko, requests-ntlm
-diagrams==0.17.0          # via -r requirements.in
+cryptography==3.3.1       # via fido2, keepercommander, paramiko, requests-ntlm
+diagrams==0.18.0          # via -r requirements.in
 distlib==0.3.1            # via virtualenv
 distro==1.5.0             # via docker-compose, pyinfra
 docker-compose==1.27.4    # via -r requirements.in
-docker[ssh]==4.3.1        # via docker-compose
+docker[ssh]==4.4.0        # via docker-compose
 dockerpty==0.4.1          # via docker-compose
 docopt==0.6.2             # via docker-compose
 docutils==0.15.2          # via awscli, readme-renderer, sphinx
@@ -47,7 +47,7 @@ graphviz==0.13.2          # via diagrams
 greenlet==0.4.17          # via gevent
 httpie-aws-authv4==0.1.4  # via -r requirements.in
 httpie==2.3.0             # via -r requirements.in, httpie-aws-authv4
-identify==1.5.9           # via pre-commit
+identify==1.5.10          # via pre-commit
 idna==2.10                # via requests, yarl
 imagesize==1.2.0          # via sphinx
 iniconfig==1.1.1          # via pytest
@@ -57,34 +57,34 @@ jinja2-time==0.2.0        # via cookiecutter
 jinja2==2.11.2            # via cookiecutter, diagrams, jinja2-time, pyinfra, sphinx
 jmespath==0.10.0          # via boto3, botocore
 jsonschema==3.2.0         # via docker-compose
-keepercommander==4.55     # via -r requirements.in
-keyring==21.4.0           # via -r requirements.in, twine
-kopf==0.28                # via -r requirements.in
+keepercommander==4.59     # via -r requirements.in
+keyring==21.5.0           # via -r requirements.in, twine
+kopf==0.28.1              # via -r requirements.in
 libkeepass==0.3.1.post1   # via keepercommander
-lxml==4.6.1               # via libkeepass
+lxml==4.6.2               # via libkeepass
 markupsafe==1.1.1         # via cookiecutter, jinja2
-multidict==5.0.0          # via aiohttp, yarl
+multidict==5.1.0          # via aiohttp, yarl
 mypy-extensions==0.4.3    # via black
 nodeenv==1.5.0            # via pre-commit
 ntlm-auth==1.5.0          # via requests-ntlm
-packaging==20.4           # via bleach, pytest, sphinx
+packaging==20.7           # via bleach, pytest, sphinx
 paramiko==2.7.2           # via docker, pyinfra
-pathspec==0.8.0           # via black
+pathspec==0.8.1           # via black
 pip-tools==5.4.0          # via -r requirements.in
 pkginfo==1.6.1            # via twine
 pluggy==0.13.1            # via pytest
 poyo==0.5.0               # via cookiecutter
-pre-commit==2.8.2         # via -r requirements.in
+pre-commit==2.9.3         # via -r requirements.in
 prompt-toolkit==2.0.10    # via keepercommander
-protobuf==3.13.0          # via keepercommander
+protobuf==3.14.0          # via keepercommander
 py==1.9.0                 # via pytest
 pyasn1==0.4.8             # via rsa
 pycparser==2.20           # via cffi
 pycryptodome==3.9.9       # via libkeepass
 pycryptodomex==3.9.9      # via keepercommander
 pyflakes==2.2.0           # via -r requirements.in
-pygments==2.7.2           # via httpie, readme-renderer, sphinx
-pyinfra==1.2.1            # via -r requirements.in
+pygments==2.7.3           # via httpie, readme-renderer, sphinx
+pyinfra==1.3              # via -r requirements.in
 pykube-ng==20.10.0        # via -r requirements.in, kopf, pytest-kind
 pynacl==1.4.0             # via paramiko
 pyparsing==2.4.7          # via packaging
@@ -93,8 +93,9 @@ pyrsistent==0.17.3        # via jsonschema
 pysocks==1.7.1            # via requests
 pytest-kind==20.10.0      # via -r requirements.in
 pytest-shell==0.2.3       # via -r requirements.in
+pytest-testinfra==6.1.0   # via testinfra
 pytest-timeout==1.4.2     # via -r requirements.in
-pytest==6.1.2             # via -r requirements.in, pytest-timeout, testinfra
+pytest==6.1.2             # via -r requirements.in, pytest-testinfra, pytest-timeout
 python-dateutil==2.8.1    # via arrow, botocore, pyinfra
 python-dotenv==0.15.0     # via docker-compose
 python-dynamodb-lock==0.9.1  # via -r requirements.in
@@ -104,17 +105,17 @@ pytz==2020.4              # via babel
 pywinrm==0.4.1            # via pyinfra
 pyyaml==5.3.1             # via -r requirements.in, awscli, docker-compose, pre-commit, pykube-ng, yq
 readme-renderer==28.0     # via twine
-regex==2020.10.28         # via black
+regex==2020.11.13         # via black
 requests-ntlm==1.1.0      # via pywinrm
 requests-toolbelt==0.9.1  # via httpie, twine
-requests[socks]==2.24.0   # via aws-requests-auth, cookiecutter, docker, docker-compose, httpie, keepercommander, pykube-ng, pywinrm, requests-ntlm, requests-toolbelt, sphinx, twine
+requests[socks]==2.25.0   # via aws-requests-auth, cookiecutter, docker, docker-compose, httpie, keepercommander, pykube-ng, pywinrm, requests-ntlm, requests-toolbelt, sphinx, twine
 rfc3986==1.4.0            # via twine
 rsa==4.5                  # via awscli
 s3transfer==0.3.3         # via awscli, boto3
-six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, packaging, pip-tools, prompt-toolkit, protobuf, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
+six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, pip-tools, prompt-toolkit, protobuf, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
 snowballstemmer==2.0.0    # via sphinx
 sphinx-rtd-theme==0.5.0   # via -r requirements.in
-sphinx==3.3.0             # via -r requirements.in, sphinx-rtd-theme
+sphinx==3.3.1             # via -r requirements.in, sphinx-rtd-theme
 sphinxcontrib-applehelp==1.0.2  # via sphinx
 sphinxcontrib-devhelp==1.0.2  # via sphinx
 sphinxcontrib-htmlhelp==1.0.3  # via sphinx
@@ -122,22 +123,22 @@ sphinxcontrib-jsmath==1.0.1  # via sphinx
 sphinxcontrib-qthelp==1.0.3  # via sphinx
 sphinxcontrib-serializinghtml==1.1.4  # via sphinx
 tabulate==0.8.7           # via keepercommander
-testinfra==5.3.1          # via -r requirements.in
+testinfra==6.0.0          # via -r requirements.in
 text-unidecode==1.3       # via python-slugify
 texttable==1.6.3          # via docker-compose
 toml==0.10.2              # via black, pre-commit, pytest
-tqdm==4.51.0              # via twine
+tqdm==4.54.1              # via twine
 traceback-with-variables==1.1.9  # via -r requirements.in
 twine==3.2.0              # via -r requirements.in
 typed-ast==1.4.1          # via black
 typing-extensions==3.7.4.3  # via aiohttp, black, kopf
-urllib3==1.25.11          # via botocore, httpie-aws-authv4, requests
-virtualenv==20.1.0        # via pre-commit
+urllib3==1.26.2           # via botocore, httpie-aws-authv4, requests
+virtualenv==20.2.2        # via pre-commit
 wcwidth==0.2.5            # via prompt-toolkit
 webencodings==0.5.1       # via bleach
 websocket-client==0.57.0  # via docker, docker-compose
 xmltodict==0.12.0         # via pywinrm, yq
-yarl==1.6.2               # via aiohttp
+yarl==1.6.3               # via aiohttp
 yq==2.11.1                # via -r requirements.in
 zope.event==4.5.0         # via gevent
 zope.interface==5.2.0     # via gevent
