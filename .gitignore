@@ -117,3 +117,4 @@ config.json
 .weechat
 /.step
 /.mozilla
+/.atlantis
