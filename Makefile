@@ -12,7 +12,6 @@ thing-inner:
 	-$(MAKE) update
 	$(MAKE) update
 	$(MAKE) install
-	$(MAKE) upgrade
 
 update: # Update code
 	git pull
@@ -43,7 +42,7 @@ update_inner:
 
 upgrade: # Upgrade installed software
 	brew upgrade
-	if [[ "$(shell uname -s)" == "Linux" ]]; then brew upgrade --cask; fi
+	if [[ "$(shell uname -s)" == "Darwin" ]]; then brew upgrade --cask; fi
 
 brew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
