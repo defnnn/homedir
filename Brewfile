@@ -4,7 +4,6 @@ tap "cuelang/tap"
 tap "tilt-dev/tap"
 tap "goreleaser/tap"
 
-brew "aws-okta"
 brew "chamber"
 brew "ctop"
 brew "doctl"
