@@ -12,7 +12,9 @@ argcomplete==1.12.2       # via yq
 arrow==0.17.0             # via jinja2-time
 asciitree==0.3.3          # via keepercommander
 async-timeout==3.0.1      # via aiohttp
-attrs==20.3.0             # via aiohttp, jsonschema, pytest
+attrs==20.3.0             # via aiohttp, autobahn, automat, jsonschema, magic-wormhole, pytest, service-identity, twisted
+autobahn[twisted]==20.12.2  # via magic-wormhole
+automat==20.2.0           # via magic-wormhole, twisted, txtorcon
 aws-requests-auth==0.4.3  # via httpie-aws-authv4
 awscli==1.18.194          # via -r requirements.in
 babel==2.9.0              # via sphinx
@@ -27,11 +29,12 @@ certifi==2020.12.5        # via requests
 cffi==1.14.4              # via bcrypt, cryptography, pynacl
 cfgv==3.2.0               # via pre-commit
 chardet==3.0.4            # via aiohttp, binaryornot, requests
-click==7.1.2              # via black, cookiecutter, kopf, pip-tools, pyinfra
+click==7.1.2              # via black, cookiecutter, kopf, magic-wormhole, pip-tools, pyinfra
 colorama==0.4.3           # via awscli, keepercommander, libkeepass, pyinfra, twine
 configparser==5.0.1       # via pyinfra
+constantly==15.1.0        # via twisted
 cookiecutter==1.7.2       # via -r requirements.in
-cryptography==3.3.1       # via fido2, keepercommander, paramiko, requests-ntlm
+cryptography==3.3.1       # via autobahn, fido2, keepercommander, paramiko, pyopenssl, requests-ntlm, service-identity, txtorcon
 diagrams==0.18.0          # via -r requirements.in
 distlib==0.3.1            # via virtualenv
 distro==1.5.0             # via docker-compose, pyinfra
@@ -45,11 +48,15 @@ filelock==3.0.12          # via virtualenv
 gevent==20.9.0            # via pyinfra
 graphviz==0.13.2          # via diagrams
 greenlet==0.4.17          # via gevent
+hkdf==0.0.3               # via magic-wormhole, spake2
 httpie-aws-authv4==0.1.4  # via -r requirements.in
 httpie==2.3.0             # via -r requirements.in, httpie-aws-authv4
+humanize==3.2.0           # via magic-wormhole
+hyperlink==20.0.1         # via twisted
 identify==1.5.10          # via pre-commit
-idna==2.10                # via requests, yarl
+idna==2.10                # via hyperlink, requests, twisted, yarl
 imagesize==1.2.0          # via sphinx
+incremental==17.5.0       # via twisted, txtorcon
 iniconfig==1.1.1          # via pytest
 iso8601==0.1.13           # via kopf
 isort==5.6.4              # via -r requirements.in
@@ -62,6 +69,7 @@ keyring==21.5.0           # via -r requirements.in, twine
 kopf==0.28.1              # via -r requirements.in
 libkeepass==0.3.1.post1   # via keepercommander
 lxml==4.6.2               # via libkeepass
+magic-wormhole==0.12.0    # via -r requirements.in
 markupsafe==1.1.1         # via cookiecutter, jinja2
 multidict==5.1.0          # via aiohttp, yarl
 mypy-extensions==0.4.3    # via black
@@ -78,15 +86,18 @@ pre-commit==2.9.3         # via -r requirements.in
 prompt-toolkit==2.0.10    # via keepercommander
 protobuf==3.14.0          # via keepercommander
 py==1.9.0                 # via pytest
-pyasn1==0.4.8             # via rsa
+pyasn1-modules==0.2.8     # via service-identity
+pyasn1==0.4.8             # via pyasn1-modules, rsa, service-identity
 pycparser==2.20           # via cffi
 pycryptodome==3.9.9       # via libkeepass
 pycryptodomex==3.9.9      # via keepercommander
 pyflakes==2.2.0           # via -r requirements.in
 pygments==2.7.3           # via httpie, readme-renderer, sphinx
+pyhamcrest==2.0.2         # via twisted
 pyinfra==1.3              # via -r requirements.in
 pykube-ng==20.10.0        # via -r requirements.in, kopf, pytest-kind
-pynacl==1.4.0             # via paramiko
+pynacl==1.4.0             # via magic-wormhole, paramiko
+pyopenssl==20.0.0         # via twisted
 pyparsing==2.4.7          # via packaging
 pyperclip==1.8.1          # via keepercommander
 pyrsistent==0.17.3        # via jsonschema
@@ -112,8 +123,10 @@ requests[socks]==2.25.0   # via aws-requests-auth, cookiecutter, docker, docker-
 rfc3986==1.4.0            # via twine
 rsa==4.5                  # via awscli
 s3transfer==0.3.3         # via awscli, boto3
-six==1.15.0               # via bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, pip-tools, prompt-toolkit, protobuf, pyinfra, pynacl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
+service-identity==18.1.0  # via twisted
+six==1.15.0               # via automat, bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, magic-wormhole, pip-tools, prompt-toolkit, protobuf, pyinfra, pynacl, pyopenssl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
 snowballstemmer==2.0.0    # via sphinx
+spake2==0.8               # via magic-wormhole
 sphinx-rtd-theme==0.5.0   # via -r requirements.in
 sphinx==3.3.1             # via -r requirements.in, sphinx-rtd-theme
 sphinxcontrib-applehelp==1.0.2  # via sphinx
@@ -127,9 +140,12 @@ testinfra==6.0.0          # via -r requirements.in
 text-unidecode==1.3       # via python-slugify
 texttable==1.6.3          # via docker-compose
 toml==0.10.2              # via black, pre-commit, pytest
-tqdm==4.54.1              # via twine
+tqdm==4.54.1              # via magic-wormhole, twine
 traceback-with-variables==1.1.9  # via -r requirements.in
 twine==3.2.0              # via -r requirements.in
+twisted[tls]==20.3.0      # via autobahn, magic-wormhole, txtorcon
+txaio==20.4.1             # via autobahn
+txtorcon==20.0.0          # via magic-wormhole
 typed-ast==1.4.1          # via black
 typing-extensions==3.7.4.3  # via aiohttp, black, kopf
 urllib3==1.26.2           # via botocore, httpie-aws-authv4, requests
@@ -141,7 +157,7 @@ xmltodict==0.12.0         # via pywinrm, yq
 yarl==1.6.3               # via aiohttp
 yq==2.11.1                # via -r requirements.in
 zope.event==4.5.0         # via gevent
-zope.interface==5.2.0     # via gevent
+zope.interface==5.2.0     # via autobahn, gevent, twisted, txtorcon
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
