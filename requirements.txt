@@ -12,8 +12,8 @@ argcomplete==1.12.2       # via yq
 arrow==0.17.0             # via jinja2-time
 asciitree==0.3.3          # via keepercommander
 async-timeout==3.0.1      # via aiohttp
-attrs==20.3.0             # via aiohttp, autobahn, automat, jsonschema, magic-wormhole, magic-wormhole-mailbox-server, pytest, service-identity, twisted
-autobahn[twisted]==20.12.2  # via magic-wormhole, magic-wormhole-mailbox-server
+attrs==20.3.0             # via aiohttp, autobahn, automat, jsonschema, magic-wormhole, pytest, service-identity, twisted
+autobahn[twisted]==20.12.2  # via magic-wormhole
 automat==20.2.0           # via magic-wormhole, twisted, txtorcon
 aws-requests-auth==0.4.3  # via httpie-aws-authv4
 awscli==1.18.194          # via -r requirements.in
@@ -69,8 +69,6 @@ keyring==21.5.0           # via -r requirements.in, twine
 kopf==0.28.1              # via -r requirements.in
 libkeepass==0.3.1.post1   # via keepercommander
 lxml==4.6.2               # via libkeepass
-magic-wormhole-mailbox-server==0.4.1  # via -r requirements.in
-magic-wormhole-transit-relay==0.2.1  # via -r requirements.in
 magic-wormhole==0.12.0    # via -r requirements.in
 markupsafe==1.1.1         # via cookiecutter, jinja2
 multidict==5.1.0          # via aiohttp, yarl
@@ -126,7 +124,7 @@ rfc3986==1.4.0            # via twine
 rsa==4.5                  # via awscli
 s3transfer==0.3.3         # via awscli, boto3
 service-identity==18.1.0  # via twisted
-six==1.15.0               # via automat, bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, magic-wormhole, magic-wormhole-mailbox-server, pip-tools, prompt-toolkit, protobuf, pyinfra, pynacl, pyopenssl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
+six==1.15.0               # via automat, bcrypt, bleach, cookiecutter, cryptography, docker, dockerpty, fido2, jsonschema, magic-wormhole, pip-tools, prompt-toolkit, protobuf, pyinfra, pynacl, pyopenssl, python-dateutil, pywinrm, readme-renderer, virtualenv, websocket-client
 snowballstemmer==2.0.0    # via sphinx
 spake2==0.8               # via magic-wormhole
 sphinx-rtd-theme==0.5.0   # via -r requirements.in
@@ -145,7 +143,7 @@ toml==0.10.2              # via black, pre-commit, pytest
 tqdm==4.54.1              # via magic-wormhole, twine
 traceback-with-variables==1.1.9  # via -r requirements.in
 twine==3.2.0              # via -r requirements.in
-twisted[tls]==20.3.0      # via autobahn, magic-wormhole, magic-wormhole-mailbox-server, magic-wormhole-transit-relay, txtorcon
+twisted[tls]==20.3.0      # via autobahn, magic-wormhole, txtorcon
 txaio==20.4.1             # via autobahn
 txtorcon==20.0.0          # via magic-wormhole
 typed-ast==1.4.1          # via black
