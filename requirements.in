@@ -8,6 +8,7 @@ yq
 keepercommander
 fido2
 magic-wormhole
+magic-wormhole-mailbox-server
 
 sphinx
 sphinx-rtd-theme
