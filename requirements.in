@@ -9,6 +9,7 @@ keepercommander
 fido2
 magic-wormhole
 magic-wormhole-mailbox-server
+magic-wormhole-transit-relay
 
 sphinx
 sphinx-rtd-theme
