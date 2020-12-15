@@ -1,9 +1,4 @@
-curl -sSL -O https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-2020.8.2-linux-amd64.deb
-sudo dpkg -i cloudflared-2020.8.2-linux-amd64.deb
-rm cloudflared-2020.8.2-linux-amd64.deb
-
 amazon-linux:
 sshd_config: GatewayPorts yes
 
-password-store:
-chmod 0600 ssh/config
+launchctl disable user/$UID/com.openssh.ssh-agent
