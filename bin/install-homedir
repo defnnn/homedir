@@ -6,9 +6,6 @@ function main {
   if [[ "$(id -un)" = "cloudshell-user" ]]; then
     sudo yum upgrade -y
     sudo yum install -y rsync
-    sudo curl -sSL -o /usr/local/bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.18.0/powerline-go-linux-amd64
-    sudo chmod 755 /usr/local/bin/powerline-go
-    rm -f .zshrc
   else
     if [[ ! -d /home/linuxbrew ]]; then
       if [[ "$(uname -s)" != "Darwin" ]]; then
@@ -49,6 +46,11 @@ function main {
 
   rsync -ia homedir/.git .
   git reset --hard
+  rm -f .zshrc
+  if [[ "$(id -un)" = "cloudshell-user" ]]; then
+    curl -sSL -o bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.18.0/powerline-go-linux-amd64
+    chmod 755 bin/powerline-go
+  fi
   make update
   make install
   rm -rf homedir
