@@ -47,7 +47,6 @@ function main {
   rsync -ia homedir/.git .
   git reset --hard
   make update
-  make upgrade
   make install
   rm -rf homedir
 }
