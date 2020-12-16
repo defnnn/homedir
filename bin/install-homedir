@@ -7,6 +7,7 @@ function main {
     sudo yum upgrade -y
     sudo yum install -y rsync
     sudo mkdir -p /asdf/installs
+    sudo chown 1000:997 /asdf/installs
     sudo curl -sSL -o /usr/local/bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.18.0/powerline-go-linux-amd64
     sudo chmod 755 /usr/local/bin/powerline-go
   else
