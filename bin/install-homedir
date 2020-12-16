@@ -3,37 +3,42 @@
 function main {
   set -efu
 
-  if [[ ! -d /home/linuxbrew ]]; then
-    if [[ "$(uname -s)" != "Darwin" ]]; then
-      if [[ -x "$(type -P apt)" ]]; then
-        sudo apt update
-        sudo apt install -y make unzip python3-venv build-essential jq net-tools docker.io
+  if [[ "$(id -un)" = "cloudshell-user" ]]; then
+    sudo yum upgrade -y
+    sudo yum install -y rsync
+  else
+    if [[ ! -d /home/linuxbrew ]]; then
+      if [[ "$(uname -s)" != "Darwin" ]]; then
+        if [[ -x "$(type -P apt)" ]]; then
+          sudo apt update
+          sudo apt install -y make unzip python3-venv build-essential jq net-tools docker.io
 
-        sudo install -d -o 1000 -g 1000 /home/linuxbrew
-        git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
-        git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
-          /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
+          sudo install -d -o 1000 -g 1000 /home/linuxbrew
+          git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
+          git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
+            /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
 
-        /home/linuxbrew/.linuxbrew/bin/brew tap linuxbrew/xorg
+          /home/linuxbrew/.linuxbrew/bin/brew tap linuxbrew/xorg
+        fi
       fi
     fi
-  fi
 
-  if [[ -f /efs/backup/linuxbrew-install.tar.gz ]]; then
-    pushd /home
-    sudo install -d -o 1000 -g 1000 linuxbrew
-    cd linuxbrew
-    tar xvfz /efs/backup/linuxbrew-install.tar.gz 
-    popd
-  fi
+    if [[ -f /efs/backup/linuxbrew-install.tar.gz ]]; then
+      pushd /home
+      sudo install -d -o 1000 -g 1000 linuxbrew
+      cd linuxbrew
+      tar xvfz /efs/backup/linuxbrew-install.tar.gz 
+      popd
+    fi
 
-  if [[ ! -x "$(which brew || true)" ]]; then
-    case "$(uname -s)" in
-      Darwin)
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        brew install jq
-        ;;
-    esac
+    if [[ ! -x "$(which brew || true)" ]]; then
+      case "$(uname -s)" in
+        Darwin)
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install jq
+          ;;
+      esac
+    fi
   fi
 
   PATH="$HOME/.asdf/installs/bin:$PATH"
