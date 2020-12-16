@@ -8,6 +8,7 @@ function main {
     sudo yum install -y rsync
     sudo curl -sSL -o /usr/local/bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.18.0/powerline-go-linux-amd64
     sudo chmod 755 /usr/local/bin/powerline-go
+    rm -f .zshrc
   else
     if [[ ! -d /home/linuxbrew ]]; then
       if [[ "$(uname -s)" != "Darwin" ]]; then
