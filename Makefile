@@ -106,7 +106,7 @@ install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
 	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
-	source ./.bash_profile && asdf install
+	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then source ./.bash_profile && asdf install; fi
 	if ! venv/bin/python --version; then rm -rf venv; source ./.bash_profile && python3 -m venv venv; fi
 	source venv/bin/activate && python bin/get-pip.py && pip install --upgrade pip
 	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
