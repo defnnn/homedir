@@ -96,7 +96,7 @@ install: # Install software bundles
 
 python:
 	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && source venv/bin/activate && python bin/get-pip.py && pip install --upgrade pip pipx pip-tools; fi
-	bin/runmany 'bin/pipx install $$1' cookiecutter httpie pre-commit yq keepercommander magic-wormhole docker-compose black isort pyinfra awscli aws-sam-cli poetry
+	bin/runmany 'bin/pipx install $$1' cookiecutter httpie pre-commit yq keepercommander magic-wormhole docker-compose black isort pyinfra awscli aws-sam-cli poetry tox
 	bin/pipx runpip httpie install httpie-aws-authv4
 
 install_inner:

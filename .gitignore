@@ -120,3 +120,4 @@ config.json
 /.atlantis
 powerline-go
 /.pyenv
+.tox
