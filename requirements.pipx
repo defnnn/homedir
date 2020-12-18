@@ -10,3 +10,4 @@ black
 isort
 pyinfra
 awscli
+aws-sam-cli
