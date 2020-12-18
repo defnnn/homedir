@@ -23,14 +23,6 @@ function main {
       fi
     fi
 
-    if [[ -f /efs/backup/linuxbrew-install.tar.gz ]]; then
-      pushd /home
-      sudo install -d -o 1000 -g 1000 linuxbrew
-      cd linuxbrew
-      tar xvfz /efs/backup/linuxbrew-install.tar.gz 
-      popd
-    fi
-
     if [[ ! -x "$(which brew || true)" ]]; then
       case "$(uname -s)" in
         Darwin)

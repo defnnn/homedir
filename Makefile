@@ -28,10 +28,7 @@ update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
 	git submodule update --init
 	if [[ -f /cache/.npmrc ]]; then ln -nfs /cache/.npmrc .; fi
-	if [[ -f /efs/.npmrc ]]; then ln -nfs /efs/.npmrc .; fi
 	if [[ -f /cache/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /cache/.pip/pip.conf .pip/; fi
-	if [[ -f /efs/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /efs/.pip/pip.conf .pip/; fi
-	if [[ -f /efs/.gitconfig ]]; then cp /efs/.gitconfig .gitconfig; fi
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
