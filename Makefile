@@ -94,6 +94,9 @@ install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	-chmod 600 .ssh/config .password-store/ssh/config
 
+pyenv:
+	curl https://pyenv.run | bash
+
 python:
 	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && source venv/bin/activate && python bin/get-pip.py && pip install --upgrade pip pipx pip-tools; fi
 	bin/runmany 'bin/pipx install $$1' cookiecutter httpie pre-commit yq keepercommander magic-wormhole docker-compose black isort pyinfra awscli aws-sam-cli poetry tox
