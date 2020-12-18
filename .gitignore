@@ -119,3 +119,4 @@ config.json
 /.mozilla
 /.atlantis
 powerline-go
+/.pyenv
