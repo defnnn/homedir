@@ -100,7 +100,7 @@ install_inner:
 	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then source ./.bash_profile && asdf install; fi
 	if ! venv/bin/python --version; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && source venv/bin/activate && python bin/get-pip.py && pip install --upgrade pip pipx pip-tools; fi
-	source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
+	runmany 'pipx install $1' cookiecutter httpie pre-commit yq keepercommander magic-wormhole docker-compose black isort pyinfra awscli aws-sam-cli; pipx runpip httpie install httpie-aws-authv4
 	if ! test -x "$(HOME)/bin/docker-credential-pass"; then go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5; go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd; fi
 	if [[ -w /usr/local/bin ]]; then ln -nfs ~/bin/pass-vault-helper ~/bin/pinentry-defn /usr/local/bin/; else sudo ln -nfs ~/bin/pass-vault-helper ~/bin/pinentry-defn /usr/local/bin/; fi
 	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
