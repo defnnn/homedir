@@ -101,7 +101,7 @@ python: .pyenv/bin/pyenv
 	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && source venv/bin/activate && python bin/get-pip.py && pip install --upgrade pip pip-tools pipx; fi
 	bin/runmany 'bin/pipx install $$1' cookiecutter httpie pre-commit yq keepercommander magic-wormhole docker-compose black isort pyinfra awscli aws-sam-cli poetry tox
 	bin/pipx runpip httpie install httpie-aws-authv4
-	bin/pipx runpip tox install tox-pyenv
+	bin/pipx runpip tox install tox-pyenv tox-docker
 
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
