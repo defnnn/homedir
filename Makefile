@@ -95,7 +95,7 @@ install: # Install software bundles
 	-chmod 600 .ssh/config .password-store/ssh/config
 
 pyenv .pyenv/bin/pyenv:
-	curl https://pyenv.run | bash
+	curl -sSL https://pyenv.run | bash
 
 python: .pyenv/bin/pyenv
 	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && source venv/bin/activate && python bin/get-pip.py && pip install --upgrade pip pip-tools pipx; fi
