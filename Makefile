@@ -109,22 +109,36 @@ install_inner:
 	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then source ./.bash_profile && asdf install; fi
 	$(MAKE) python
-	if ! test -x "$(HOME)/bin/docker-credential-pass"; then go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5; go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd; fi
-	if [[ -w /usr/local/bin ]]; then ln -nfs ~/bin/pass-vault-helper ~/bin/pinentry-defn /usr/local/bin/; else sudo ln -nfs ~/bin/pass-vault-helper ~/bin/pinentry-defn /usr/local/bin/; fi
-	if [[ ! -e /usr/local/bin/pass-vault-helper ]]; then \
-		if [[ -x "$(HOME)/bin/pass-vault-helper" ]]; then \
-			if [[ -w /usr/local/bin ]]; then \
-				ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
-			else \
-				sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
-			fi \
-		fi; \
-	fi
-	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
-	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
-	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
+	$(MAKE) bin/docker-credential-pass
+	$(MAKE) /usr/local/bin/pinentry-defn
+	$(MAKE) /usr/local/bin/pass-vault-helper
+	$(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
 	rm -rf $(shell brew --cache) 2>/dev/null || sudo rm -rf $(shell brew --cache)
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
+
+.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
+	mkdir -p "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"
+	if ! test -f "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator"; then \
+		curl -o "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator" -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64; fi
+	-chmod 755 "$(HOME)/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator"
+	if ! test -x "$(HOME)/bin/docker-credential-pass"; then \
+		go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5; go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd; fi
+
+bin/docker-credential-pass:
+	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
+	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
+
+/usr/local/bin/pinentry-defn:
+	if [[ -w /usr/local/bin ]]; then \
+		ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn \
+	else \
+		sudo ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn; fi
+
+/usr/local/bin/pass-vault-helper:
+	if [[ -w /usr/local/bin ]]; then \
+		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
+	else \
+		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
 
 fmt: # Format with isort, black
 	@echo
