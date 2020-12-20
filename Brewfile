@@ -43,6 +43,7 @@ brew "git-delta"
 brew "gron"
 brew "envconsul"
 brew "step"
+brew "protobuf"
 
 if OS.mac?
   tap "homebrew/cask"
