@@ -44,6 +44,8 @@ brew "gron"
 brew "envconsul"
 brew "step"
 brew "protobuf"
+brew "figlet"
+brew "lolcat"
 
 if OS.mac?
   tap "homebrew/cask"
