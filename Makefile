@@ -104,7 +104,7 @@ python: .pyenv/bin/pyenv
 	bin/fig pipx
 	bin/runmany 'venv/bin/python -m pipx  install $$1' cookiecutter pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry solo-python
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
-	venv/bin/python -m pipx install--pip-args "tox-pyenv tox-docker" tox
+	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
 
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
