@@ -1,4 +1,0 @@
-amazon-linux:
-sshd_config: GatewayPorts yes
-
-launchctl disable user/$UID/com.openssh.ssh-agent
