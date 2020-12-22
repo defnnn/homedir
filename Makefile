@@ -27,8 +27,6 @@ update_password_store:
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
 	git submodule update --init
-	if [[ -f /cache/.npmrc ]]; then ln -nfs /cache/.npmrc .; fi
-	if [[ -f /cache/.pip/pip.conf ]]; then mkdir -p .pip; ln -nfs /cache/.pip/pip.conf .pip/; fi
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
@@ -98,10 +96,10 @@ pyenv .pyenv/bin/pyenv:
 	curl -sSL https://pyenv.run | bash
 
 python: .pyenv/bin/pyenv
-	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && source venv/bin/activate && python bin/get-pip.py && pip install --upgrade pip pip-tools pipx; fi
-	bin/runmany 'bin/pipx install $$1' cookiecutter httpie pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry tox solo-python
-	bin/pipx runpip httpie install httpie-aws-authv4
-	bin/pipx runpip tox install tox-pyenv tox-docker
+	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+	bin/runmany 'venv/bin/python -m pipx  install $$1' cookiecutter httpie pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry tox solo-python
+	venv/bin/python -m pipx runpip httpie install httpie-aws-authv4
+	venv/bin/python -m pipx runpip tox install tox-pyenv tox-docker
 
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi

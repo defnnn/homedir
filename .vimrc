@@ -38,7 +38,7 @@ set modelines=10
 set noshowcmd
 set noshowmode
 
-set cmdheight=10
+set cmdheight=1
 
 set shiftround smarttab
 set autoindent smartindent
