@@ -134,22 +134,3 @@ bin/docker-credential-pass:
 		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
 	else \
 		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
-
-fmt: # Format with isort, black
-	@echo
-	drone exec --pipeline $@
-
-lint: # Run drone lint
-	@echo
-	drone exec --pipeline $@
-
-docs: # Build docs
-	@echo
-	drone exec --pipeline $@
-
-requirements: # Compile requirements
-	@echo
-	drone exec --pipeline $@
-
-test:
-	 env PYTEST_ADDOPTS='--keep-cluster --cluster-name=test' pytest -v -s test.py
