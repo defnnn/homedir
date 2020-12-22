@@ -126,7 +126,7 @@ install_inner:
 /usr/local/bin/pinentry-defn:
 	bin/fig pinentry
 	if [[ -w /usr/local/bin ]]; then \
-		ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn \
+		ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn; \
 	else \
 		sudo ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn; fi
 
@@ -138,6 +138,6 @@ bin/docker-credential-pass:
 /usr/local/bin/pass-vault-helper:
 	bin/fig pass-vault
 	if [[ -w /usr/local/bin ]]; then \
-		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
+		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
 	else \
 		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
