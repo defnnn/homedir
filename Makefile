@@ -112,6 +112,7 @@ install_inner:
 	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
 	$(MAKE) python
+	@bin/fig misc
 	$(MAKE) /usr/local/bin/pinentry-defn
 	$(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
 	$(MAKE) bin/docker-credential-pass
