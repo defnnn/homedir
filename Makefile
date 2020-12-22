@@ -90,18 +90,18 @@ setup-registry:
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
-	bin/fig cleanup
+	@bin/fig cleanup
 	rm -rf $(shell brew --cache) 2>/dev/null || sudo rm -rf $(shell brew --cache)
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 	-chmod 600 .ssh/config .password-store/ssh/config
 
 pyenv .pyenv/bin/pyenv:
-	bin/fig pyenv
+	@bin/fig pyenv
 	curl -sSL https://pyenv.run | bash
 
 python: .pyenv/bin/pyenv
 	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	bin/fig pipx
+	@bin/fig pipx
 	bin/runmany 'venv/bin/python -m pipx  install $$1' cookiecutter pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry solo-python
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
@@ -118,25 +118,26 @@ install_inner:
 	$(MAKE) /usr/local/bin/pass-vault-helper
 
 .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
-	bin/fig sops
+	@bin/fig sops
 	mkdir -p .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator
 	curl -o .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64
 	-chmod 755 .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
 
 /usr/local/bin/pinentry-defn:
-	bin/fig pinentry
+	@bin/fig pinentry
 	if [[ -w /usr/local/bin ]]; then \
 		ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn; \
 	else \
 		sudo ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn; fi
 
 bin/docker-credential-pass:
-	bin/fig pass-docker
+	@bin/fig pass-docker
+	go mod init github.com/amanibhavam/homedir
 	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
 	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
 
 /usr/local/bin/pass-vault-helper:
-	bin/fig pass-vault
+	@bin/fig pass-vault
 	if [[ -w /usr/local/bin ]]; then \
 		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
 	else \
