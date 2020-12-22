@@ -90,46 +90,53 @@ setup-registry:
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
+	bin/fig cleanup
+	rm -rf $(shell brew --cache) 2>/dev/null || sudo rm -rf $(shell brew --cache)
+	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 	-chmod 600 .ssh/config .password-store/ssh/config
 
 pyenv .pyenv/bin/pyenv:
+	bin/fig pyenv
 	curl -sSL https://pyenv.run | bash
 
 python: .pyenv/bin/pyenv
-	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	bin/runmany 'venv/bin/python -m pipx  install $$1' cookiecutter httpie pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry tox solo-python
-	venv/bin/python -m pipx runpip httpie install httpie-aws-authv4
-	venv/bin/python -m pipx runpip tox install tox-pyenv tox-docker
+	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+	bin/fig pipx
+	bin/runmany 'venv/bin/python -m pipx  install $$1' cookiecutter pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry solo-python
+	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
+	venv/bin/python -m pipx install--pip-args "tox-pyenv tox-docker" tox
 
 install_inner:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
-	-if test -x "$(shell which brew)"; then brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
-	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then source ./.bash_profile && asdf install; fi
+	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
+	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
 	$(MAKE) python
-	$(MAKE) bin/docker-credential-pass
-	$(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
 	$(MAKE) /usr/local/bin/pinentry-defn
+	$(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
+	$(MAKE) bin/docker-credential-pass
 	$(MAKE) /usr/local/bin/pass-vault-helper
-	rm -rf $(shell brew --cache) 2>/dev/null || sudo rm -rf $(shell brew --cache)
-	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 
 .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
+	bin/fig sops
 	mkdir -p .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator
 	curl -o .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64
 	-chmod 755 .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
 
-bin/docker-credential-pass:
-	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
-	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
-
 /usr/local/bin/pinentry-defn:
+	bin/fig pinentry
 	if [[ -w /usr/local/bin ]]; then \
 		ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn \
 	else \
 		sudo ln -nfs "$(HOME)/bin/pinentry-defn" /usr/local/bin/pinentry-defn; fi
 
+bin/docker-credential-pass:
+	bin/fig pass-docker
+	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
+	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
+
 /usr/local/bin/pass-vault-helper:
+	bin/fig pass-vault
 	if [[ -w /usr/local/bin ]]; then \
 		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper \
 	else \
