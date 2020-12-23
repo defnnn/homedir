@@ -44,6 +44,7 @@ brew "gron"
 brew "envconsul"
 brew "step"
 brew "protobuf"
+brew "figlet"
 brew "lolcat"
 
 if OS.mac?
@@ -69,7 +70,6 @@ if OS.mac?
 
   brew "htop"
   brew "pinentry-mac"
-  brew "figlet"
 else
   brew "aws-vault"
 end
