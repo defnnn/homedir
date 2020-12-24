@@ -18,10 +18,7 @@ function main {
             libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl
 
           sudo install -d -o 1000 -g 1000 /home/linuxbrew
-          git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew
-          git clone --depth 1 https://github.com/Homebrew/linuxbrew-core \
-            /home/linuxbrew/.linuxbrew/Library/Taps/homebrew/homebrew-core
-
+          curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh > /tmp/install.sh && bash /tmp/install.sh
           /home/linuxbrew/.linuxbrew/bin/brew tap linuxbrew/xorg
         fi
       fi
