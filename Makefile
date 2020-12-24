@@ -95,23 +95,35 @@ install: # Install software bundles
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 	-chmod 600 .ssh/config .password-store/ssh/config
 
+install_inner:
+	$(MAKE) brew
+	$(MAKE) asdf
+	$(MAKE) python
+	$(MAKE) pipx
+	$(MAKE) misc
+
 pyenv .pyenv/bin/pyenv:
 	@bin/fig pyenv
 	curl -sSL https://pyenv.run | bash
 
 python: .pyenv/bin/pyenv
 	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+
+pipx:
 	@bin/fig pipx
+	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
+	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
 	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry solo-python
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
 
-install_inner:
-	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
-	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
-	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
+asdf:
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
-	$(MAKE) python
+
+brew:
+	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
+
+misc:
 	@bin/fig misc
 	$(MAKE) /usr/local/bin/pinentry-defn
 	$(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
