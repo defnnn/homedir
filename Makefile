@@ -104,12 +104,15 @@ pyenv .pyenv/bin/pyenv:
 	curl -sSL https://pyenv.run | bash
 
 python: .pyenv/bin/pyenv
-	if ! venv/bin/python --version 2>/dev/null; then rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
+	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
+	if ! venv/bin/python --version 2>/dev/null; then \
+		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pipx:
 	@bin/fig pipx
-	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
-	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
+	if ! test venv/bin/pipx; then \
+		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black isort pyinfra awscli aws-sam-cli poetry solo-python
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
