@@ -39,9 +39,6 @@ upgrade: # Upgrade installed software
 	brew upgrade
 	if [[ "$(shell uname -s)" == "Darwin" ]]; then brew upgrade --cask; fi
 
-brew:
-	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
-
 install-aws:
 	sudo yum install -y jq htop
 	sudo yum install -y expat-devel readline-devel openssl-devel bzip2-devel sqlite-devel
@@ -122,6 +119,9 @@ asdf:
 
 brew:
 	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
+
+brew-install:
+	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
 misc:
 	@bin/fig misc
