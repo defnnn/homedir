@@ -73,6 +73,7 @@ setup-do-inner:
 	sudo bash -x /tmp/do-install.sh
 	make update
 	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; sleep 10; sudo tailscale down; sudo tailscale up --accept-dns=false --accept-routes=false; fi
+	curl -s https://install.zerotier.com | sudo bash
 	if [[ -d work/cilium ]]; then cd work/cilium; ~/env make up; fi
 	sudo apt update
 	sudo apt upgrade -y | cat
