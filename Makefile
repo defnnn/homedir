@@ -15,14 +15,12 @@ thing-inner:
 
 update: # Update code
 	git pull
-	if test -d .password-store/.; then cd .password-store && if git pull; then chmod 600 ssh/config; fi; fi
+	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
 update_password_store:
-	cd .password-store && git reset --hard origin/master
-	-chmod 600 .ssh/config .password-store/ssh/config
-	cd .password-store && git pull
-	-chmod 600 .ssh/config .password-store/ssh/config
+	cd .password-store && if git reset --hard origin/master; then chmod 600 ssh/config; fi
+	cd .password-store && if git pull; then chmod 600 ssh/config; fi
 
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
@@ -90,7 +88,6 @@ install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	@bin/fig cleanup
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
-	-chmod 600 .ssh/config .password-store/ssh/config
 
 install_inner:
 	$(MAKE) brew
