@@ -128,10 +128,10 @@ brew-install:
 
 misc:
 	@bin/fig misc
-	$(MAKE) /usr/local/bin/pinentry-defn
-	$(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
-	$(MAKE) bin/docker-credential-pass
-	$(MAKE) /usr/local/bin/pass-vault-helper
+	~/env.sh $(MAKE) /usr/local/bin/pinentry-defn
+	~/env.sh $(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
+	~/env.sh $(MAKE) bin/docker-credential-pass
+	~/env.sh $(MAKE) /usr/local/bin/pass-vault-helper
 
 .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
 	@bin/fig sops
