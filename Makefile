@@ -89,7 +89,6 @@ setup-registry:
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	@bin/fig cleanup
-	rm -rf $(shell brew --cache) 2>/dev/null || sudo rm -rf $(shell brew --cache)
 	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 	-chmod 600 .ssh/config .password-store/ssh/config
 
@@ -122,7 +121,7 @@ asdf:
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
 
 brew:
-	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle && rm -rf $(shell brew --cache) 2>/dev/null; fi
+	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle; fi
 
 brew-install:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
