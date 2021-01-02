@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function main {
+  local nm_role="$1"; shift
+
+  vault login -method=oidc role="${nm_role}"
+}
+
+source sub "$0" "$@"
