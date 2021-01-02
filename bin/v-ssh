@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
+function main {
+  set -efu
+
+  v ssh sign
+  exec ssh "$@"
+}
+
 source sub "$0" "$@"
