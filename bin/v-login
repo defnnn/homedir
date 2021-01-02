@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
 function main {
-  local nm_role="$1"; shift
+  local nm_role
 
-  vault login -method=oidc role="${nm_role}"
+  if [[ "$#" -gt 0 ]]; then
+    nm_role="$1"; shift
+  fi
+
+  vault login -method=oidc role="${nm_role:-${VAULT_DEFAULT_ROLE:-}}"
 }
 
 source sub "$0" "$@"
