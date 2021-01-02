@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 function main {
-  vault write -field=signed_key ssh/sign/ssh-defn public_key=@"$HOME/.ssh/id_rsa.pub" > ~/.ssh/id_rsa-cert.pub
+  if [[ -n "${VAULT_ADDR:-}" ]]; then
+    vault write -field=signed_key ssh/sign/ssh-defn public_key=@"$HOME/.ssh/id_rsa.pub" > ~/.ssh/id_rsa-cert.pub
+  fi
 }
 
 source sub "$0" "$@"
