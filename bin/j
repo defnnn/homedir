@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
 function main {
+  set -efu
+
   if [[ -f ~/.password-store/.env.j ]]; then
     source ~/.password-store/.env.j
   fi
 
-  exec java -jar ~/bin/jenkins-cli.jar -s http://localhost:8080 "$@"
+  if [[ ! -f ~/bin/jenkins-cli.jar ]]; then
+    curl -sSL -o ~/bin/jenkins-cli.jar.$$ http://localhost:8080/jnlpJars/jenkins-cli.jar
+    mv -f ~/bin/jenkins-cli.jar.$$ ~/bin/jenkins-cli.jar
+  fi
+
+  exec java -jar ~/bin/jenkins-cli.jar -s http://localhost:8080 -webSocket "$@"
 }
 
 main "$@"
