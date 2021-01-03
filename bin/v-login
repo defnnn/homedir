@@ -8,6 +8,7 @@ function main {
   fi
 
   vault login -method=oidc role="${nm_role:-${VAULT_DEFAULT_ROLE:-}}"
+  v ssh sign
 }
 
 source sub "$0" "$@"
