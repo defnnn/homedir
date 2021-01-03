@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 function main {
+  if [[ -f ~/.password-store/.env.j ]]; then
+    source ~/.password-store/.env.j
+  fi
+
   exec java -jar ~/bin/jenkins-cli.jar -s http://localhost:8080 "$@"
 }
 
