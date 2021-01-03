@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  exec java -jar ~/bin/jenkins-cli.jar -s http://localhost:8080 "$@"
+}
+
+main "$@"
