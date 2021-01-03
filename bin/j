@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 function main {
+  set -efu
+
+  if [[ ! -f ~/bin/jenkins-cli.jar ]]; then
+    curl -sSL -o ~/bin/jenkins-cli.jar.$$ http://localhost:8080/jnlpJars/jenkins-cli.jar
+    mv -f ~/bin/jenkins-cli.jar.$$ ~/bin/jenkins-cli.jar
+  fi
+
   exec java -jar ~/bin/jenkins-cli.jar -s http://localhost:8080 "$@"
 }
 
