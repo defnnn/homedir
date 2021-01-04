@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
+function main {
+  vault token lookup
+}
+
 source sub "$0" "$@"
