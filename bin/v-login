@@ -3,11 +3,11 @@
 function main {
   local nm_role
 
-  if [[ "$#" -gt 0 ]]; then
-    nm_role="$1"; shift
+  if [[ -n "${VAULT_DEFAULT_ROLE:-}" ]]; then
+    set -- "role=${VAULT_DEFAULT_ROLE}" "$@"
   fi
 
-  exec vault login -method=oidc role="${nm_role:-${VAULT_DEFAULT_ROLE:-}}" "$@"
+  exec vault login -method=oidc "$@"
 }
 
 source sub "$0" "$@"
