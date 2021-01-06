@@ -7,7 +7,7 @@ function main {
     set -- "role=${VAULT_DEFAULT_ROLE}" "$@"
   fi
 
-  if (cgroup 2>/dev/null || true) | grep /docker/ >/dev/null; then
+  if grep /docker/ /proc/$$/cgroup >/dev/null 2>&1; then
     set -- "port=18250" "listenaddress=0.0.0.0"
   fi
 
