@@ -7,7 +7,7 @@ function main {
     nm_role="$1"; shift
   fi
 
-  exec vault login -method=oidc role="${nm_role:-${VAULT_DEFAULT_ROLE:-}}"
+  exec vault login -method=oidc role="${nm_role:-${VAULT_DEFAULT_ROLE:-}}" "$@"
 }
 
 source sub "$0" "$@"
