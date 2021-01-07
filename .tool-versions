@@ -2,4 +2,4 @@ golang 1.15.6
 consul 1.9.1
 vault 1.6.1
 nomad 1.0.1
-boundary 0.1.3
+boundary 0.1.4
