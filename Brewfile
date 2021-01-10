@@ -47,6 +47,7 @@ brew "protobuf"
 brew "figlet"
 brew "lolcat"
 brew "hello"
+brew "saml2aws"
 
 if OS.mac?
   tap "homebrew/cask"
