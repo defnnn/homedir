@@ -6,11 +6,10 @@ function main {
   local nm_job="$(git remote get-url origin | perl -pe 's{^.*?github.com[:/]}{}; s{/+}{--}')"
 
   if [[ -z "${VAULT_TOKEN:-}" ]]; then
-    vault login -method=oidc role="env-${nm_job}"
-    export VAULT_TOKEN="$(pass vault-token)"
+    export VAULT_TOKEN="$(vault login -token-only -no-store -method=oidc role="env-${nm_job}")"
   fi
 
-  exec envconsul -no-prefix -upcase -sanitize -once -log-level ERR -secret "kv/pipeline/${nm_job}" "$@"
+  exec envconsul -no-prefix -upcase -sanitize -once -log-level ERR -pristine -secret "kv/pipeline/${nm_job}" "$@"
 }
 
 source sub "$0" "$@"

@@ -12,7 +12,7 @@ function main {
     set -- "role=${VAULT_DEFAULT_ROLE}" "$@"
   fi
 
-  exec vault login -method=oidc "$@"
+  exec vault login -no-print -method=oidc "$@"
 }
 
 source sub "$0" "$@"
