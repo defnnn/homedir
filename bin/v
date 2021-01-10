@@ -5,7 +5,11 @@ if [[ -z "${VAULT_ADDR:-}" ]]; then
 fi
 
 function main {
-  vault token lookup
+  if [[ "$#" == 0 ]]; then
+    exec vault token lookup
+  else
+    exec vault "$@"
+  fi
 }
 
 source sub "$0" "$@"
