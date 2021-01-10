@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
 function main {
-  if grep /docker/ /proc/$$/cgroup >/dev/null 2>&1; then
-    exec v remote "$@"
-    return $?
-  fi
-
   local nm_role
 
   if [[ -n "${VAULT_DEFAULT_ROLE:-}" ]]; then
     set -- "role=${VAULT_DEFAULT_ROLE}" "$@"
   fi
+
+  set -- "port=18250" "listenaddress=0.0.0.0"
 
   exec vault login -method=oidc "$@"
 }
