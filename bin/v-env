@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 function main {
-  export VAULT_TOKEN="$(pass vault-token)"
+  if [[ -z "${VAULT_TOKEN:-}" ]]; then
+    export VAULT_TOKEN="$(pass vault-token)"
+  fi
   exec envconsul -no-prefix -upcase -sanitize -once -log-level ERR -secret "$@"
 }
 
