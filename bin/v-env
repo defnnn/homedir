@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
 function main {
-  if [[ -z "${VAULT_TOKEN:-}" ]]; then
-    export VAULT_TOKEN="$(pass "${VAULT_TOKEN_PATH}")"
-  fi
-
-  exec "$@"
+  export VAULT_TOKEN="$(pass vault-token)"
+  exec envconsul -no-prefix -upcase -sanitize -once -log-level ERR -secret "$@"
 }
 
 source sub "$0" "$@"
