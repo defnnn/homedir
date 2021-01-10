@@ -3,9 +3,10 @@ tap "instrumenta/instrumenta"
 tap "cuelang/tap"
 tap "tilt-dev/tap"
 tap "goreleaser/tap"
+tap "defn/tap"
 
 brew "chamber"
-#brew "ctop"
+brew "ctop"
 brew "doctl"
 brew "drone-cli"
 brew "gnupg"
@@ -45,6 +46,7 @@ brew "step"
 brew "protobuf"
 brew "figlet"
 brew "lolcat"
+brew "hello"
 
 if OS.mac?
   tap "homebrew/cask"
@@ -69,6 +71,7 @@ if OS.mac?
 
   brew "htop"
   brew "pinentry-mac"
+  brew "cloudflared"
 else
   brew "aws-vault"
 end
