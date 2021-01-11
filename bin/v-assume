@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function main {
+  local nm_role="$1"; shift
+
+  local creds="$(v write -format=json "aws/sts/${nm_role}" ttl=15m | jq -r '.data | "export AWS_ACCESS_KEY_ID=\(.access_key | @sh)\nexport AWS_SECRET_ACCESS_KEY=\(.secret_key | @sh)\nexport AWS_SESSION_TOKEN=\(.security_token | @sh)\n"')"
+
+  if [[ "$#" == 0 ]]; then
+    echo "${creds}"
+  else
+    eval "${creds}"
+    exec "$@"
+  fi
+}
+
+source sub "$0" "$@"
