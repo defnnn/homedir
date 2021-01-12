@@ -7,9 +7,9 @@ function main {
   trap "rm -f '$tmp'" EXIT
 
   (
-    echo export scalyr_readlog_token="$(pass env/scalyr_readlog_token)" &
-    echo export scalyr_readconfig_token="$(pass env/scalyr_readconfig_token)" &
-    echo export scalyr_writeconfig_token="$(pass env/scalyr_writeconfig_token)" &
+    echo export scalyr_readlog_token="$(pass env/${SCALYR_PROFILE:-}/scalyr_readlog_token)" &
+    echo export scalyr_readconfig_token="$(pass env/${SCALYR_PROFILE:-}/scalyr_readconfig_token)" &
+    echo export scalyr_writeconfig_token="$(pass env/${SCALYR_PROFILE:-}/scalyr_writeconfig_token)" &
   ) | cat > "$tmp"
 
   source "$tmp"
