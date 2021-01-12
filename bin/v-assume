@@ -5,9 +5,16 @@ function main {
 
   local creds="$(v write -format=json "aws/sts/${nm_role}" ttl=15m | jq -r '.data | "export AWS_ACCESS_KEY_ID=\(.access_key | @sh)\nexport AWS_SECRET_ACCESS_KEY=\(.secret_key | @sh)\nexport AWS_SESSION_TOKEN=\(.security_token | @sh)\n"')"
 
+  if [[ -z "${creds}" ]]; then
+    echo
+    echo "ERROR: couldn't get credentials" 1>&2
+    return 1
+  fi
+
   if [[ "$#" == 0 ]]; then
     echo "${creds}"
   else
+    unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
     eval "${creds}"
     exec "$@"
   fi
