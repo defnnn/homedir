@@ -13,6 +13,11 @@ thing-inner:
 	$(MAKE) update
 	$(MAKE) install
 
+rebuild-python:
+	rm -rf .pyenv venv
+	$(MAKE) pyenv
+	$(MAKE) pipx
+
 update: # Update code
 	git pull
 	$(MAKE) update_password_store
@@ -106,6 +111,9 @@ python: .pyenv/bin/pyenv
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
 	if ! venv/bin/python --version 2>/dev/null; then \
 		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+
+pyenv:
+	runmany 'pyenv install $$1' 2.7.18 3.8.7 3.9.1
 
 pipx:
 	@bin/fig pipx
