@@ -123,3 +123,4 @@ powerline-go
 .tox
 /go.mod
 /go.sum
+.pylint.d/
