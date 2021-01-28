@@ -15,7 +15,7 @@ thing-inner:
 
 rebuild-python:
 	rm -rf .pyenv venv
-	$(MAKE) pyenv
+	$(MAKE) pyenv-python
 	$(MAKE) pipx
 
 update: # Update code
@@ -112,7 +112,7 @@ python: .pyenv/bin/pyenv
 	if ! venv/bin/python --version 2>/dev/null; then \
 		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
-pyenv:
+pyenv-python:
 	runmany 'pyenv install $$1' 2.7.18 3.8.7 3.9.1
 
 pipx:
