@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function main {
+  set -efu
+  v login
+  v ssh sign
+}
+
+source sub "$0" "$@"
