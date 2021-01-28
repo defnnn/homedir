@@ -1,0 +1,12 @@
+---
+all:
+  hosts:
+  children:
+    do:
+      hosts:
+        apple:
+        juju:
+        bee:
+        global:
+  vars:
+    ansible_connection: ssh
