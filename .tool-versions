@@ -3,3 +3,4 @@ consul 1.9.2
 vault 1.6.1
 nomad 1.0.2
 boundary 0.1.4
+kubectl 1.20.2
