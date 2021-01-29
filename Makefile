@@ -119,9 +119,10 @@ pipx:
 	@bin/fig pipx
 	if ! test -x venv/bin/pipx; then \
 		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra awscli aws-sam-cli poetry solo-python ansible-base
+	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra awscli aws-sam-cli poetry solo-python
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
+	venv/bin/python -m pipx install --pip-args "ansible" --force ansible-base
 
 asdf:
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
