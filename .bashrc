@@ -58,7 +58,7 @@ function renew {
     shift
   fi
 
-  eval $( 
+  eval $(
     $(aws configure get credential_process) | jq -r '"export AWS_ACCESS_KEY_ID=\(.AccessKeyId) AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey) AWS_SESSION_TOKEN=\(.SessionToken)"'
   )
 
@@ -122,7 +122,7 @@ function expired {
 
 function render_ps1 {
   local ec="$?"
-  
+
   export PS1_VAR=
 
   local nm_profile="${AWS_PROFILE}"
@@ -163,6 +163,14 @@ function update_ps1 {
   PS1="$(render_ps1)"
 }
 
+function do-env {
+  for a in DIGITALOCEAN_{ACCESS_TOKEN,TOKEN,API_TOKEN}; do export $a=$(pass digitalocean/$a); done
+}
+
+function cf-env {
+  for a in CLOUDFLARE_{DNS_API_TOKEN,ZONE_API_TOKEN,_API_TOKEN}; do export $a=$(pass cloudflare/$a); done
+}
+
 if [[ -f ~/.env ]]; then
   source ~/.env
 fi
@@ -172,7 +180,6 @@ if tty >/dev/null; then
     PROMPT_COMMAND="update_ps1"
   fi
 fi
-
 
 #export AWS_OKTA_MFA_PROVIDER=YUBICO
 export AWS_OKTA_MFA_PROVIDER=OKTA
