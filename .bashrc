@@ -168,7 +168,7 @@ function do-env {
 }
 
 function cf-env {
-  for a in CLOUDFLARE_{DNS_API_TOKEN,ZONE_API_TOKEN,_API_TOKEN}; do export $a=$(pass cloudflare/$a); done
+  for a in CLOUDFLARE_{DNS_API_TOKEN,ZONE_API_TOKEN,API_TOKEN}; do export $a=$(pass cloudflare/$a); done
 }
 
 if [[ -f ~/.env ]]; then
