@@ -3,8 +3,6 @@
 function main {
   set -efu
 
-  v ssh sign
-
   local remote="$1"; shift
 
   export _GPG_EXTRA_SOCKET="/usr/local/bin/S.gpg-agent.extra"
