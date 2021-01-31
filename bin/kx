@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  kn ingress-nginx "$@"
+  kn external-secrets "$@"
 }
 
 main "$@"
