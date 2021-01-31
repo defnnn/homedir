@@ -7,7 +7,7 @@ function main {
     set -- "role=${VAULT_DEFAULT_ROLE}" "$@"
   fi
 
-  set -- "port=18250" "listenaddress=0.0.0.0"
+  set -- "port=28250" "listenaddress=0.0.0.0"
 
   exec vault login -method=oidc "$@"
 }
