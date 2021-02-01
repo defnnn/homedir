@@ -61,3 +61,6 @@
 [submodule ".asdf/plugins/nomad"]
 	path = .asdf/plugins/nomad
 	url = https://github.com/Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/helm"]
+	path = .asdf/plugins/helm
+	url = https://github.com/Antiarchitect/asdf-helm.git
