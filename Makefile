@@ -72,8 +72,6 @@ setup-do-inner:
 	git submodule sync
 	git submodule update --init --recursive --remote
 	cd /etc/systemd/network && for a in 0 1 2 3; do (echo [NetDev]; echo Name=dummy$$a; echo Kind=dummy) | sudo tee dummy$$a.netdev; (echo [Match]; echo Name=dummy$$a; echo; echo [Network]; echo Address=169.254.32.$$a/32) | sudo tee dummy$$a.network; done
-	curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/do-install.sh
-	sudo bash -x /tmp/do-install.sh
 	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; sleep 10; sudo tailscale down; sudo tailscale up --accept-dns=false --accept-routes=true; fi
 	make update
 
