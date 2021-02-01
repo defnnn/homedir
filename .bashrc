@@ -171,6 +171,11 @@ function cf-env {
   for a in CLOUDFLARE_{DNS_API_TOKEN,ZONE_API_TOKEN,API_TOKEN}; do export $a=$(pass cloudflare/$a); done
 }
 
+function py-env {
+  export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+  eval "$(pyenv init -)"
+}
+
 if [[ -f ~/.env ]]; then
   source ~/.env
 fi
