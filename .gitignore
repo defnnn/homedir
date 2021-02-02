@@ -124,3 +124,4 @@ powerline-go
 /go.mod
 /go.sum
 .pylint.d/
+/.ecr

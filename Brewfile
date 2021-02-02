@@ -46,6 +46,7 @@ brew "figlet"
 brew "lolcat"
 brew "hello"
 brew "saml2aws"
+brew "linkerd"
 
 if OS.mac?
   tap "homebrew/cask"
