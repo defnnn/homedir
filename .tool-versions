@@ -1,4 +1,4 @@
-golang 1.15.7
+golang 1.15.8
 consul 1.9.3
 vault 1.6.2
 kubectl 1.20.2
