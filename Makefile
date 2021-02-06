@@ -53,6 +53,7 @@ setup-do:
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
+	sudo env DEBIAN_FRONTEND=noninteractive apt-get update && sudo env DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do \
 		sudo fallocate -l 1G $$s; \
@@ -65,16 +66,15 @@ setup-do-inner:
 	echo LABEL=mnt /mnt ext4 defaults 0 0 | sudo tee -a /etc/fstab
 	-sudo umount /mnt
 	sudo mount /mnt
-	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 	sudo install -d -o 1000 -g 1000 /mnt/password-store /mnt/work
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	git submodule sync
-	git submodule update --init --recursive --remote
 	cd /etc/systemd/network && for a in 0 1 2 3; do (echo [NetDev]; echo Name=dummy$$a; echo Kind=dummy) | sudo tee dummy$$a.netdev; (echo [Match]; echo Name=dummy$$a; echo; echo [Network]; echo Address=169.254.32.$$a/32) | sudo tee dummy$$a.network; done
 	if [[ -d /mnt/tailscale ]]; then sudo systemctl stop tailscaled; sudo rm -rf /var/lib/tailscale; sudo rsync -ia /mnt/tailscale /var/lib/; sudo systemctl start tailscaled; sleep 10; sudo tailscale down; sudo tailscale up --accept-dns=false --accept-routes=true; fi
-	sudo env DEBIAN_FRONTEND=noninteractive apt-get update && sudo env DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+	git submodule sync
+	git submodule update --init --recursive --remote
 	make update
+	if [[ -d work/katt ]]; then (cd work/katt && make one); fi
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
