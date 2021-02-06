@@ -61,8 +61,9 @@ setup-do-inner:
 		sudo mkswap $$s; \
 		echo $$s swap swap defaults 0 0 | sudo tee -a /etc/fstab; \
 	done
-	while ! test -e /dev/sda; do date; sleep 5; done
-	sudo e2label /dev/sda mnt
+	while ! (test -e /dev/sda || test -e /dev/sdb); do date; sleep 5; done
+	-sudo e2label /dev/sda mnt
+	-sudo e2label /dev/sdb mnt
 	echo LABEL=mnt /mnt ext4 defaults 0 0 | sudo tee -a /etc/fstab
 	-sudo umount /mnt
 	sudo mount /mnt
