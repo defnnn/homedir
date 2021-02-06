@@ -75,7 +75,6 @@ setup-do-inner:
 	git submodule sync
 	git submodule update --init --recursive --remote
 	make update
-	if [[ -d work/katt ]]; then (cd work/katt && make setup one); fi
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
