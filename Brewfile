@@ -47,6 +47,7 @@ brew "lolcat"
 brew "hello"
 brew "saml2aws"
 brew "linkerd"
+brew "glooctl"
 
 if OS.mac?
   tap "homebrew/cask"
