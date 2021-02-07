@@ -73,7 +73,7 @@ setup-do-inner:
 	cd /etc/systemd/network && for a in 0 1 2 3; do (echo [NetDev]; echo Name=dummy$$a; echo Kind=dummy) | sudo tee dummy$$a.netdev; (echo [Match]; echo Name=dummy$$a; echo; echo [Network]; echo Address=169.254.32.$$a/32) | sudo tee dummy$$a.network; done
 	git submodule sync
 	git submodule update --init --recursive --remote
-	make update
+	make update install
 
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
