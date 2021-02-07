@@ -125,3 +125,5 @@ powerline-go
 /go.sum
 .pylint.d/
 /.ecr
+.gloo/
+.soloio/
