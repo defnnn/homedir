@@ -23,6 +23,9 @@ update: # Update code
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
+list-all: # Update asdf plugin versions
+	runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kind kustomize helm
+
 update_password_store:
 	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config; fi
 	if cd .password-store && git pull; then chmod 600 ssh/config; fi
