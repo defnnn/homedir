@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  kn kuma-system "$@"
+  env KUBECONFIG="$HOME/.kube/${0##*/}.conf" "$@"
 }
 
 main "$@"
