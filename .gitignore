@@ -127,3 +127,4 @@ powerline-go
 /.ecr
 .gloo/
 .soloio/
+.steampipe
