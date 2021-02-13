@@ -56,7 +56,6 @@ setup-do:
 	./env.sh $(MAKE) setup-do-inner
 
 setup-do-inner:
-	sudo env DEBIAN_FRONTEND=noninteractive apt-get update && sudo env DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 	sudo mount -o defaults,nofail,discard,noatime /dev/disk/by-id/* /mnt
 	for s in /swap0 /swap1 /swap2 /swap3; do \
 		sudo fallocate -l 1G $$s; \
