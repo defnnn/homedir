@@ -19,6 +19,8 @@ rebuild-python:
 	$(MAKE) pipx
 
 update: # Update code
+	git submodule sync
+	git submodule update --init --recursive --remote
 	git pull
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
@@ -72,9 +74,6 @@ setup-do-inner:
 	sudo install -d -o 1000 -g 1000 /mnt/password-store /mnt/work
 	ln -nfs /mnt/password-store .password-store
 	ln -nfs /mnt/work work
-	cd /etc/systemd/network && for a in 0 1 2 3; do (echo [NetDev]; echo Name=dummy$$a; echo Kind=dummy) | sudo tee dummy$$a.netdev; (echo [Match]; echo Name=dummy$$a; echo; echo [Network]; echo Address=169.254.32.$$a/32) | sudo tee dummy$$a.network; done
-	git submodule sync
-	git submodule update --init --recursive --remote
 	make update install
 
 setup-aws:
