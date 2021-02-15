@@ -48,7 +48,6 @@ brew "hello"
 brew "saml2aws"
 brew "linkerd"
 brew "glooctl"
-brew "k3d"
 
 if OS.mac?
   tap "homebrew/cask"
