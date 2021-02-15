@@ -160,3 +160,9 @@ bin/docker-credential-pass:
 		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
 	else \
 		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
+
+ts-sync:
+	sudo rsync -ia /mnt/tailscale/. /var/lib/tailscale/.
+
+ts:
+	sudo tailscale up --accept-dns=false --acept-routes=true
