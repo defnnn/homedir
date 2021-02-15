@@ -6,7 +6,7 @@ function main {
       export KUBECONFIG="$HOME/.kube/${0##*/}.conf"
       k get --all-namespaces $(k api-resources --verbs=list --namespaced -o name | grep -v events | xargs | sed 's# #,#g')
       ;;
-    k*|helm|kustomize|linkerd|glooctl)
+    k*|helm|kustomize|linkerd|glooctl|bash|make)
       env KUBECONFIG="$HOME/.kube/${0##*/}.conf" "$@"
       ;;
     *)
