@@ -164,5 +164,8 @@ bin/docker-credential-pass:
 ts-sync:
 	sudo rsync -ia /mnt/tailscale/. /var/lib/tailscale/.
 
+ts-save:
+	sudo rsync -ia /var/lib/tailscale/. /mnt/tailscale/.
+
 ts:
 	sudo tailscale up --accept-dns=false --acept-routes=true
