@@ -64,3 +64,6 @@
 [submodule ".asdf/plugins/helm"]
 	path = .asdf/plugins/helm
 	url = https://github.com/Antiarchitect/asdf-helm.git
+[submodule ".asdf/plugins/k3sup"]
+	path = .asdf/plugins/k3sup
+	url = https://github.com/cgroschupp/asdf-k3sup.git
