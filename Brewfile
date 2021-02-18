@@ -5,6 +5,7 @@ tap "tilt-dev/tap"
 tap "goreleaser/tap"
 tap "versent/homebrew-taps"
 tap "defn/tap"
+tap "cloudflare/cloudflare"
 
 brew "chamber"
 brew "doctl"
