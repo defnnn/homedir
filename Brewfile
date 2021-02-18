@@ -48,6 +48,8 @@ brew "hello"
 brew "saml2aws"
 brew "linkerd"
 brew "glooctl"
+brew "z"
+brew "direnv"
 
 if OS.mac?
   tap "homebrew/cask"
