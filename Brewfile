@@ -5,7 +5,6 @@ tap "tilt-dev/tap"
 tap "goreleaser/tap"
 tap "versent/homebrew-taps"
 tap "defn/tap"
-tap "cloudflare/cloudflare"
 
 brew "chamber"
 brew "doctl"
@@ -55,6 +54,7 @@ brew "direnv"
 if OS.mac?
   tap "homebrew/cask"
   tap "homebrew/cask-fonts"
+  tap "cloudflare/cloudflare"
 
   cask "aws-vault"
   cask "1password"
