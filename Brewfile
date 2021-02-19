@@ -50,6 +50,7 @@ brew "linkerd"
 brew "glooctl"
 brew "z"
 brew "direnv"
+brew "k3d"
 
 if OS.mac?
   tap "homebrew/cask"
