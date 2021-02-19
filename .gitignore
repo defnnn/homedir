@@ -128,3 +128,4 @@ powerline-go
 .gloo/
 .soloio/
 .steampipe
+.git-credentials
