@@ -1,7 +1,7 @@
-golang 1.15.8
+golang 1.16
 consul 1.9.3
 vault 1.6.2
-kubectl 1.20.2
+kubectl 1.20.4
 kind 0.10.0
 kustomize 3.9.4
 helm 3.4.2
