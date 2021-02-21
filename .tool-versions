@@ -7,3 +7,4 @@ kustomize 3.9.4
 helm 3.4.2
 k3sup 0.9.13
 k3d 4.1.1
+nomad 1.0.3
