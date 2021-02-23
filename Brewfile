@@ -72,6 +72,7 @@ if OS.mac?
   cask "oracle-jdk"
   cask "balenaetcher"
   cask "tunnelblick"
+  cask "terminal-notifier"
 
   brew "htop"
   brew "pinentry-mac"
