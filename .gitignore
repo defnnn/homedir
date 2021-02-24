@@ -129,3 +129,4 @@ powerline-go
 .soloio/
 .steampipe
 .git-credentials
+.pulumi

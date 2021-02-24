@@ -50,6 +50,7 @@ brew "linkerd"
 brew "glooctl"
 brew "z"
 brew "direnv"
+brew "pulumi"
 
 if OS.mac?
   tap "homebrew/cask"
