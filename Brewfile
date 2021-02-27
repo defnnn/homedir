@@ -73,11 +73,11 @@ if OS.mac?
   cask "oracle-jdk"
   cask "balenaetcher"
   cask "tunnelblick"
-  cask "terminal-notifier"
 
   brew "htop"
   brew "pinentry-mac"
   brew "cloudflared"
+  brew "terminal-notifier"
 else
   brew "aws-vault"
 end
