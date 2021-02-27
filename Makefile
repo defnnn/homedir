@@ -16,6 +16,7 @@ thing-inner:
 rebuild-python:
 	rm -rf .pyenv venv
 	$(MAKE) pyenv-python
+	$(MAKE) python
 	$(MAKE) pipx
 
 update: # Update code
