@@ -8,3 +8,4 @@ helm 3.4.2
 k3sup 0.10.0
 k3d 4.1.1
 nomad 1.0.4
+terraform 0.14.7
