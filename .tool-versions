@@ -1,11 +1,11 @@
 golang 1.16
-consul 1.9.3
+consul 1.9.4
 vault 1.6.3
 kubectl 1.20.4
 kind 0.10.0
 kustomize 4.0.4
 helm 3.4.2
-k3sup 0.10.0
+k3sup 0.10.1
 k3d 4.1.1
 nomad 1.0.4
 terraform 0.14.7
