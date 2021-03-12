@@ -51,6 +51,7 @@ brew "glooctl"
 brew "z"
 brew "direnv"
 brew "pulumi"
+brew "bitwarden-cli"
 
 if OS.mac?
   tap "homebrew/cask"
