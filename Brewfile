@@ -52,6 +52,7 @@ brew "z"
 brew "direnv"
 brew "pulumi"
 brew "bitwarden-cli"
+brew "rg"
 
 if OS.mac?
   tap "homebrew/cask"
