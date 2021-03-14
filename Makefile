@@ -27,7 +27,7 @@ update: # Update code
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
-	runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kind kustomize helm k3sup k3d nomad
+	runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kind kustomize helm k3sup k3d nomad terraform
 
 update_password_store:
 	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config; fi
@@ -116,7 +116,7 @@ pipx:
 	@bin/fig pipx
 	if ! test -x venv/bin/pipx; then \
 		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra awscli aws-sam-cli poetry solo-python
+	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra awscli aws-sam-cli poetry solo-python ec2instanceconnectcli
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
 	venv/bin/python -m pipx install --pip-args "ansible" --force ansible-base
