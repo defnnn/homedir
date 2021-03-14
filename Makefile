@@ -16,6 +16,7 @@ thing-inner:
 rebuild-python:
 	rm -rf .pyenv venv
 	$(MAKE) pyenv-python
+	$(MAKE) python
 	$(MAKE) pipx
 
 update: # Update code
@@ -99,7 +100,8 @@ install_inner:
 
 pyenv .pyenv/bin/pyenv:
 	@bin/fig pyenv
-	curl -sSL https://pyenv.run | bash
+	brew install pyenv
+	#curl -sSL https://pyenv.run | bash
 
 python: .pyenv/bin/pyenv
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
@@ -108,7 +110,7 @@ python: .pyenv/bin/pyenv
 		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pyenv-python:
-	runmany 'pyenv install $$1' 2.7.18 3.8.7 3.9.1
+	runmany 'pyenv install $$1' 2.7.18 3.9.1
 
 pipx:
 	@bin/fig pipx
