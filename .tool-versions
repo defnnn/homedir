@@ -9,3 +9,4 @@ k3sup 0.10.1
 k3d 4.3.0
 nomad 1.0.4
 terraform 0.14.8
+boundary 0.1.5
