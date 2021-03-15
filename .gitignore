@@ -130,3 +130,4 @@ powerline-go
 .steampipe
 .git-credentials
 .pulumi
+.aws/sso
