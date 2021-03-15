@@ -80,6 +80,7 @@ if OS.mac?
   brew "pinentry-mac"
   brew "cloudflared"
   brew "terminal-notifier"
+  brew "awscli"
 else
   brew "aws-vault"
 end
