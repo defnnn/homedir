@@ -110,7 +110,7 @@ python: .pyenv/bin/pyenv
 		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pyenv-python:
-	runmany 'pyenv install $$1' 2.7.18 3.9.1
+	runmany 'pyenv install $$1' 2.7.18 3.9.2
 
 pipx:
 	@bin/fig pipx
