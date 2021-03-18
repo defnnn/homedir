@@ -14,7 +14,7 @@ thing-inner:
 	$(MAKE) install
 
 rebuild-python:
-	rm -rf .pyenv venv
+	rm -rf .pyenv venv .local/pipx
 	$(MAKE) pyenv-python
 	$(MAKE) python
 	$(MAKE) pipx
