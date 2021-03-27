@@ -184,6 +184,7 @@ mp-defn:
 	m purge
 	m launch -c 4 -d 100G -m 2048M -n defn
 	m stop defn
+	sleep 30
 	sudo VBoxManage modifyvm defn --nic2 bridged --bridgeadapter2 en0
 	m start defn
 	cat bin/install-multipass | m shell defn
