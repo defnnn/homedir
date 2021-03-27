@@ -178,6 +178,10 @@ multipass:
 	brew install multipass
 	brew install --cask slack virtualbox virtualbox-extension-pack
 
+mp:
+	$(MAKE) defn0
+	$(MAKE) defn1 defn2
+
 defn0 :
 	-m delete $@
 	m purge
