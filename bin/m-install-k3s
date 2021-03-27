@@ -7,7 +7,9 @@ function main {
   
   local mpip="$(m list --format json | jq -r --arg mp $mphost '.list[] | select(.name == $mp) | .ipv4[0]')"
   k3sup install --ip $mpip --user ubuntu --cluster \
-    --k3s-extra-args "--no-deploy=traefik --bind-address=$mpip --advertise-address=$mpip --node-ip=$mpip --node-external-ip $mpip" "$@"
+    --k3s-extra-args "--no-deploy=traefik --bind-address=$mpip --advertise-address=$mpip --node-ip=$mpip" "$@"
+
+  # --node-external-ip $mpip
 }
 
 main "$@"

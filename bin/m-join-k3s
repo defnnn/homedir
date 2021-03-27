@@ -12,7 +12,9 @@ function main {
   k3sup join \
       --ip "${mpip}" --server-ip "${mpserverip}" \
       --user ubuntu --server \
-      --k3s-extra-args "--no-deploy=traefik --bind-address="${mpip}" --advertise-address="${mpip}" --node-ip="${mpip}" --node-external-ip="${mpip}""
+      --k3s-extra-args "--no-deploy=traefik --bind-address=${mpip} --advertise-address=${mpip} --node-ip=${mpip}" "$@"
+
+  # --node-external-ip $mpip
 }
 
 main "$@"
