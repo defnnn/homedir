@@ -8,5 +8,5 @@ helm 3.4.2
 k3sup 0.10.1
 k3d 4.3.0
 nomad 1.0.4
-terraform 0.14.9
+terraform 0.15.0-beta2
 boundary 0.1.5
