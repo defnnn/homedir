@@ -131,3 +131,4 @@ powerline-go
 .git-credentials
 .pulumi
 .aws/sso
+kubeconfig
