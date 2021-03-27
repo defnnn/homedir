@@ -13,7 +13,8 @@ function main {
     mpip="$(m list --format json | jq -r --arg mp $mphost '.list[] | select(.name == $mp) | .ipv4[0]')"
   done
 
-  k3sup join --ip "${mpip}" --server-ip "${mpserverip}" --user ubuntu --server-user ubuntu \
+  k3sup join \
+    --ip "${mpip}" --user ubuntu --server-ip "${mpserverip}" --server-user ubuntu \
     --k3s-extra-args "--node-ip=$mpip" "$@"
 }
 

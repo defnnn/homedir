@@ -182,8 +182,12 @@ mp:
 	m delete --all
 	m purge
 	$(MAKE) defn0
+	bin/m-install-k3s $@
+	mv -f kubeconfig .kube/$@
 	cp .kube/defn0 .kube/config
 	$(MAKE) mp-cilium
+	$(MAKE) defn1
+	bin/m-join-k3s defn0 defn1
 
 mp-cilium:
 	kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
@@ -202,7 +206,7 @@ mp-hubble-status:
 mp-hubble-observe:
 	hubble --server localhost:4245 observe -f
 
-defn0 :
+defn0 defn1 defn2 defn3:
 	-m delete $@
 	m purge
 	m launch -c 2 -d 50G -m 2048M --network en0 -n $@
@@ -216,21 +220,3 @@ defn0 :
 	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
 	m exec $@ -- sudo apt-get update
 	m exec $@ -- sudo apt-get install tailscale
-	bin/m-install-k3s $@
-	mv -f kubeconfig .kube/$@
-
-defn1 defn2 defn3:
-	-m delete $@
-	m purge
-	m launch -c 2 -d 50G -m 2048M --network en0 -n $@
-	cat .ssh/id_rsa.pub | m exec $@ -- tee -a .ssh/authorized_keys
-	m exec $@ git clone https://github.com/amanibhavam/homedir
-	m exec $@ homedir/bin/copy-homedir
-	m exec $@ -- sudo mount bpffs -t bpf /sys/fs/bpf
-	mkdir -p ~/.config/$@/tailscale
-	sudo multipass mount $$HOME/.config/$@/tailscale $@:/var/lib/tailscale
-	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | m exec $@ -- sudo apt-key add -
-	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
-	m exec $@ -- sudo apt-get update
-	m exec $@ -- sudo apt-get install tailscale
-	bin/m-join-k3s defn0 $@
