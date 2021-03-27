@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 
 function main {
+  cat | sudo tee /etc/netplan/60-bridge.yaml <<EOF
+network:
+  ethernets:
+    enp0s8:                  # this is the interface name from above
+      dhcp4: true
+      dhcp4-overrides:       # this is needed so the default gateway
+        route-metric: 200    # remains with the first interface
+  version: 2
+EOF
+  sudo netplan apply
+
   git clone https://github.com/amanibhavam/homedir
   homedir/bin/copy-homedir
 }
 
 main "$@"
-
