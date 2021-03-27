@@ -173,3 +173,7 @@ ts-save:
 
 ts:
 	sudo tailscale up --accept-dns=false --accept-routes=true
+
+multipass:
+	brew install multipass
+	brew install --cask slack virtualbox virtualbox-extension-pack
