@@ -179,12 +179,8 @@ multipass:
 	brew install --cask slack virtualbox virtualbox-extension-pack
 
 defn1 defn2 defn3:
-	sudo true
 	-m delete $@
 	m purge
-	m launch -c 2 -d 50G -m 2048M -n $@
-	m stop $@
-	sleep 30
-	sudo VBoxManage modifyvm $@ --nic2 bridged --bridgeadapter2 en0
-	m start $@
-	cat bin/install-multipass | m shell $@
+	m launch -c 2 -d 50G -m 2048M --network en0 -n $@
+	m exec $@ git clone https://github.com/amanibhavam/homedir
+	m exec $@ homedir/bin/copy-homedir
