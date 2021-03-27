@@ -132,3 +132,4 @@ powerline-go
 .pulumi
 .aws/sso
 kubeconfig
+bin/hubble
