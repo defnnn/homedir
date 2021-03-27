@@ -182,5 +182,6 @@ defn1 defn2 defn3:
 	-m delete $@
 	m purge
 	m launch -c 2 -d 50G -m 2048M --network en0 -n $@
+	cat .ssh/id_rsa.pub | m exec $@ -- tee -a .ssh/authorized_keys
 	m exec $@ git clone https://github.com/amanibhavam/homedir
 	m exec $@ homedir/bin/copy-homedir
