@@ -189,6 +189,18 @@ mp-cilium:
 	kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
 	kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-hubble-install.yaml
 
+mp-hubble-ui:
+	kubectl port-forward -n kube-system svc/hubble-ui --address 0.0.0.0 --address :: 12000:80
+
+mm-hubble-relay:
+	kubectl port-forward -n kube-system svc/hubble-relay --address 0.0.0.0 --address :: 4245:80
+
+mp-hubble-status:
+	hubble --server localhost:4245 status
+
+mp-hubble-observe:
+	hubble --server localhost:4245 observe
+
 defn0 :
 	-m delete $@
 	m purge
