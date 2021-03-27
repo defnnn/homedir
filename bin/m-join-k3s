@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 function main {
+  set -exfu 
+
   local mpserver="$1"; shift
   local mphost="$1"; shift
   

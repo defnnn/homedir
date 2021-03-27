@@ -186,7 +186,7 @@ defn0 :
 	m exec $@ git clone https://github.com/amanibhavam/homedir
 	m exec $@ homedir/bin/copy-homedir
 	bin/m-install-k3s $@
-	mv -f kubeconfig > .kube/$@
+	mv -f kubeconfig .kube/$@
 
 defn1 defn2 defn3:
 	-m delete $@

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 function main {
+  set -exfu
+
   local mphost="$1"; shift
   
   local mpip="$(m list --format json | jq -r --arg mp $mphost '.list[] | select(.name == $mp) | .ipv4[0]')"
