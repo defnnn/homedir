@@ -182,7 +182,6 @@ mp:
 	m delete --all
 	m purge
 	$(MAKE) defn0
-	$(MAKE) defn1 defn2
 	cp .kube/defn0 .kube/config
 	$(MAKE) mp-cilium
 
@@ -198,6 +197,10 @@ defn0 :
 	m exec $@ git clone https://github.com/amanibhavam/homedir
 	m exec $@ homedir/bin/copy-homedir
 	m exec $@ -- sudo mount bpffs -t bpf /sys/fs/bpf
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | m exec $@ -- sudo apt-key add -
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
+	m exec $@ -- sudo apt-get update
+	m exec $@ -- sudo apt-get install tailscale
 	bin/m-install-k3s $@
 	mv -f kubeconfig .kube/$@
 
@@ -209,4 +212,8 @@ defn1 defn2 defn3:
 	m exec $@ git clone https://github.com/amanibhavam/homedir
 	m exec $@ homedir/bin/copy-homedir
 	m exec $@ -- sudo mount bpffs -t bpf /sys/fs/bpf
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | m exec $@ -- sudo apt-key add -
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
+	m exec $@ -- sudo apt-get update
+	m exec $@ -- sudo apt-get install tailscale
 	bin/m-join-k3s defn0 $@
