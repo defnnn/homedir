@@ -198,7 +198,7 @@ defn0 :
 	m exec $@ homedir/bin/copy-homedir
 	m exec $@ -- sudo mount bpffs -t bpf /sys/fs/bpf
 	mkdir -p ~/.config/$@/tailscale
-	mount ~/.config/$@/tailscale $@:/var/lib/tailscale
+	m mount ~/.config/$@/tailscale $@:/var/lib/tailscale
 	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | m exec $@ -- sudo apt-key add -
 	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
 	m exec $@ -- sudo apt-get update
@@ -215,7 +215,7 @@ defn1 defn2 defn3:
 	m exec $@ homedir/bin/copy-homedir
 	m exec $@ -- sudo mount bpffs -t bpf /sys/fs/bpf
 	mkdir -p ~/.config/$@/tailscale
-	mount ~/.config/$@/tailscale $@:/var/lib/tailscale
+	m mount ~/.config/$@/tailscale $@:/var/lib/tailscale
 	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | m exec $@ -- sudo apt-key add -
 	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
 	m exec $@ -- sudo apt-get update
