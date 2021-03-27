@@ -200,7 +200,7 @@ mp-hubble-status:
 	hubble --server localhost:4245 status
 
 mp-hubble-observe:
-	hubble --server localhost:4245 observe
+	hubble --server localhost:4245 observe -f
 
 defn0 :
 	-m delete $@
