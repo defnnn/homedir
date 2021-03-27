@@ -178,14 +178,13 @@ multipass:
 	brew install multipass
 	brew install --cask slack virtualbox virtualbox-extension-pack
 
-mp-defn:
+defn1 defn2 defn3:
 	sudo true
-	-m delete defn
+	-m delete $@
 	m purge
-	m launch -c 4 -d 100G -m 2048M -n defn
-	m stop defn
+	m launch -c 4 -d 100G -m 2048M -n $@
+	m stop $@
 	sleep 30
-	sudo VBoxManage modifyvm defn --nic2 bridged --bridgeadapter2 en0
-	m start defn
-	cat bin/install-multipass | m shell defn
-
+	sudo VBoxManage modifyvm $@ --nic2 bridged --bridgeadapter2 en0
+	m start $@
+	cat bin/install-multipass | m shell $@
