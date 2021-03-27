@@ -185,3 +185,5 @@ defn1 defn2 defn3:
 	cat .ssh/id_rsa.pub | m exec $@ -- tee -a .ssh/authorized_keys
 	m exec $@ git clone https://github.com/amanibhavam/homedir
 	m exec $@ homedir/bin/copy-homedir
+	bin/m-install-k3s $@
+	m exec $@ cat kubeconfig > .kube/$@
