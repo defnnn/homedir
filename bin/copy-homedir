@@ -16,10 +16,6 @@ function main {
           sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
             libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
             libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev
-
-          sudo install -d -o 1000 -g 1000 /home/linuxbrew
-          curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh > /tmp/install.sh && bash /tmp/install.sh
-          /home/linuxbrew/.linuxbrew/bin/brew tap linuxbrew/xorg
         fi
       fi
     fi
@@ -40,10 +36,12 @@ function main {
   rsync -ia homedir/.git .
   git reset --hard
   rm -f .zshrc
+
   if [[ "$(id -un)" = "cloudshell-user" ]]; then
-    curl -sSL -o bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.18.0/powerline-go-linux-amd64
+    curl -sSL -o bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64
     chmod 755 bin/powerline-go
   fi
+
   make update
   rm -rf homedir
 }
