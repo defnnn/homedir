@@ -11,7 +11,7 @@ function main {
       if [[ "$(uname -s)" != "Darwin" ]]; then
         if [[ -x "$(type -P apt)" ]]; then
           sudo apt update
-          sudo apt install -y make unzip git jq net-tools docker.io
+          sudo apt install -y make unzip git jq net-tools
         fi
       fi
     fi
