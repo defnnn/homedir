@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-function main {
-  git clone https://github.com/amanibhavam/homedir
-  homedir/bin/copy-homedir
-}
-
-main "$@"

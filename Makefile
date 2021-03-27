@@ -183,6 +183,12 @@ mp:
 	m purge
 	$(MAKE) defn0
 	$(MAKE) defn1 defn2
+	cp .kube/defn0 .kube/config
+	$(MAKE) mp-cilium
+
+mp-cilium:
+	kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
+	kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-hubble-install.yaml
 
 defn0 :
 	-m delete $@
@@ -191,6 +197,7 @@ defn0 :
 	cat .ssh/id_rsa.pub | m exec $@ -- tee -a .ssh/authorized_keys
 	m exec $@ git clone https://github.com/amanibhavam/homedir
 	m exec $@ homedir/bin/copy-homedir
+	m exec $@ -- sudo mount bpffs -t bpf /sys/fs/bpf
 	bin/m-install-k3s $@
 	mv -f kubeconfig .kube/$@
 
@@ -201,4 +208,5 @@ defn1 defn2 defn3:
 	cat .ssh/id_rsa.pub | m exec $@ -- tee -a .ssh/authorized_keys
 	m exec $@ git clone https://github.com/amanibhavam/homedir
 	m exec $@ homedir/bin/copy-homedir
+	m exec $@ -- sudo mount bpffs -t bpf /sys/fs/bpf
 	bin/m-join-k3s defn0 $@
