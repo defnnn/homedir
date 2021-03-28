@@ -183,6 +183,7 @@ mp:
 	m purge
 	$(MAKE) defn0
 	rm -f .kube/config
+	touch .kube/config
 	bin/m-install-k3s defn0 defn
 	kubectl config use-context defn
 	$(MAKE) mp-cilium
