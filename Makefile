@@ -187,6 +187,8 @@ mp:
 	$(MAKE) mp-cilium
 	$(MAKE) defn1
 	bin/m-join-k3s defn0 defn1
+	km apply -f metal.yaml
+	k apply -f nginx.html
 
 mp-cilium:
 	kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
