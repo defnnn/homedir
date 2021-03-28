@@ -193,6 +193,10 @@ mp-cilium:
 	kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-hubble-install.yaml
 	while kubectl get nodes | grep NotReady; do sleep 10; done
 
+mp-cilium-test:
+	kubectl create ns cilium-test
+	kubectl apply -n cilium-test -f https://raw.githubusercontent.com/cilium/cilium/v1.9/examples/kubernetes/connectivity-check/connectivity-check.yaml
+
 mp-hubble-ui:
 	kubectl port-forward -n kube-system svc/hubble-ui --address 0.0.0.0 --address :: 12000:80
 
