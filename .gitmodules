@@ -34,6 +34,3 @@
 [submodule ".asdf/plugins/k3sup"]
 	path = .asdf/plugins/k3sup
 	url = https://github.com/cgroschupp/asdf-k3sup.git
-[submodule ".asdf/plugins/k3d"]
-	path = .asdf/plugins/k3d
-	url = https://github.com/spencergilbert/asdf-k3d.git
