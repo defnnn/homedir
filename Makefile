@@ -245,4 +245,7 @@ defn3:
 	m exec $@ -- sudo apt-get update
 	m exec $@ -- sudo apt-get install tailscale
 	m exec $@ -- sudo tailscale up
+	rm -f .kube/config
+	touch .kube/config
 	bin/m-install-k3s defn3 defn3
+	kubectl config use-context defn3
