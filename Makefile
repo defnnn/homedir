@@ -183,14 +183,14 @@ mp:
 	$(MAKE) defn0
 	rm -f .kube/config
 	touch .kube/config
-	bin/m-install-k3s defn0 defn
-	kubectl config use-context defn
+	bin/m-install-k3s defn0 defn0
+	kubectl config use-context defn0
 	$(MAKE) mp-cilium
+	k apply -f nginx.yaml
 	#kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/namespace.yaml
 	#kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/metallb.yaml
 	#kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$$(openssl rand -base64 128)"
 	#km apply -f metal.yaml
-	k apply -f nginx.yaml
 
 mp-defn1:
 	$(MAKE) defn1
