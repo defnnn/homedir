@@ -219,9 +219,8 @@ mp-hubble-status:
 mp-hubble-observe:
 	hubble --server localhost:4245 observe -f
 
-defn0 defn1 defn2 defn3:
-	-m delete $@
-	m purge
+defn0 defn1 defn2:
+	-m delete --purge $@
 	m launch -c 4 -d 100G -m 4096M --network en0 -n $@
 	cat .ssh/id_rsa.pub | m exec $@ -- tee -a .ssh/authorized_keys
 	m exec $@ git clone https://github.com/amanibhavam/homedir
@@ -234,3 +233,16 @@ defn0 defn1 defn2 defn3:
 	m exec $@ -- sudo apt-get update
 	m exec $@ -- sudo apt-get install tailscale
 	m exec $@ -- sudo tailscale up
+
+defn3:
+	-m delete --purge $@
+	m launch -c 4 -d 100G -m 4096M --network en0 -n $@
+	cat .ssh/id_rsa.pub | m exec $@ -- tee -a .ssh/authorized_keys
+	mkdir -p ~/.config/$@/tailscale
+	sudo multipass mount $$HOME/.config/$@/tailscale $@:/var/lib/tailscale
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | m exec $@ -- sudo apt-key add -
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
+	m exec $@ -- sudo apt-get update
+	m exec $@ -- sudo apt-get install tailscale
+	m exec $@ -- sudo tailscale up
+	bin/m-install-k3s defn3 defn3
