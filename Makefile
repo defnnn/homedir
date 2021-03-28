@@ -193,6 +193,8 @@ mp:
 mp-cilium:
 	kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
 	kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-hubble-install.yaml
+	-while kubectl get nodes | grep NotReady; do sleep 10; done
+	sleep 30
 	while kubectl get nodes | grep NotReady; do sleep 10; done
 
 mp-cilium-test:
