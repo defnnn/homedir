@@ -179,8 +179,7 @@ multipass:
 	brew install --cask slack virtualbox virtualbox-extension-pack
 
 mp:
-	m delete --all
-	m purge
+	m delete --all --purge
 	$(MAKE) defn0
 	rm -f .kube/config
 	touch .kube/config
