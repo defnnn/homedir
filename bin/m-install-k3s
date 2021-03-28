@@ -6,10 +6,9 @@ function main {
   local mphost="$1"; shift
   local context="$1"; shift
 
-  
   local mpip=
   while [[ -z "${mpip}" ]]; do
-    mpip="$(m info --format json $mphost | jq -r --arg mp $mpserver '.info[$mp].ipv4[0]')"
+    mpip="$(m info --format json $mphost | jq -r --arg mp $mphost '.info[$mp].ipv4[0]')"
   done
 
   local mpts="$(m info --format json "$mphost" | jq -r --arg mp $mphost '.info[$mp].ipv4[1]')"
