@@ -187,7 +187,7 @@ mp:
 	bin/m-install-k3s defn0 defn
 	kubectl config use-context defn
 	$(MAKE) mp-cilium
-	km apply -f metal.yaml
+	k apply -f metal.yaml
 	k apply -f nginx.html
 
 mp-defn1:
