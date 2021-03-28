@@ -15,7 +15,7 @@ function main {
 
   k3sup join \
     --ip "${mpip}" --user ubuntu --server-ip "${mpserverip}" --server-user ubuntu \
-    --k3s-extra-args "--node-ip=$mpip" "$@"
+    --k3s-extra-args "--no-flannel --node-ip=$mpip" "$@"
 }
 
 main "$@"

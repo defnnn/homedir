@@ -182,9 +182,8 @@ mp:
 	m delete --all
 	m purge
 	$(MAKE) defn0
-	bin/m-install-k3s $@
-	mv -f kubeconfig .kube/$@
-	cp .kube/defn0 .kube/config
+	bin/m-install-k3s defn0 defn
+	kubectl config use-context defn
 	$(MAKE) mp-cilium
 	$(MAKE) defn1
 	bin/m-join-k3s defn0 defn1
