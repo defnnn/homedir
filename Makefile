@@ -194,7 +194,7 @@ mp:
 
 mp-defn1:
 	$(MAKE) defn1
-	bin/m-join-k3s defn0 defn1
+	bin/m-join-k3s defn1 defn0
 
 mp-cilium:
 	kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
