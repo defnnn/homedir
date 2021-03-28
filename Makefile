@@ -227,3 +227,4 @@ defn0 defn1 defn2 defn3:
 	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | m exec $@ -- sudo tee /etc/apt/sources.list.d/tailscale.list
 	m exec $@ -- sudo apt-get update
 	m exec $@ -- sudo apt-get install tailscale
+	m exec $@ -- sudo tailscale up
