@@ -133,3 +133,4 @@ powerline-go
 .aws/sso
 kubeconfig
 bin/hubble
+.subversion
