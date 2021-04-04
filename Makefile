@@ -176,4 +176,4 @@ ts:
 
 multipass:
 	brew install multipass
-	brew install --cask slack virtualbox virtualbox-extension-pack
+	brew install --cask virtualbox virtualbox-extension-pack

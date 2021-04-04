@@ -134,3 +134,4 @@ powerline-go
 kubeconfig
 bin/hubble
 .subversion
+.mono
