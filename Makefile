@@ -122,6 +122,7 @@ pipx:
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
 	venv/bin/python -m pipx install --pip-args "ansible" --force ansible-base
+	venv/bin/python -m pipx install --pip-args "watchdog" streamlit
 
 asdf:
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
