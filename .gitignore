@@ -135,3 +135,4 @@ kubeconfig
 bin/hubble
 .subversion
 .mono
+.streamlit
