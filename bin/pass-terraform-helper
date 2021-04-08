@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+passpth="terraform-token/${2:-}"
+
+case "${1:-}" in
+  get)
+    pass "${paspth}" | perl -pe 's{\s*$}{}' || true
+    ;;
+  forget)
+    pass rm -f "${passpth}" || true
+    ;;
+  store)
+    cat | pass insert -e -f "${passpth}" || true
+    ;;
+  *)
+    exit 1
+    ;;
+esac
