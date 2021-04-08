@@ -4,7 +4,12 @@ passpth="terraform-token/${2:-}"
 
 case "${1:-}" in
   get)
-    pass "${paspth}" | perl -pe 's{\s*$}{}' || true
+    p="$(pass "${passpth}" 2>/dev/null | perl -pe 's{\s*$}{}' || true)"
+    if [[ -z "${p}" ]]; then 
+      echo '{}'
+    else
+      echo "${p}"
+    fi
     ;;
   forget)
     pass rm -f "${passpth}" || true
