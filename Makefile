@@ -50,6 +50,8 @@ upgrade: # Upgrade installed software
 	brew upgrade
 	if [[ "$(shell uname -s)" == "Darwin" ]]; then brew upgrade --cask; fi
 	pipx upgrade-all
+	$(MAKE) list-all
+	git diff
 
 install-aws:
 	sudo yum install -y jq htop
@@ -180,3 +182,6 @@ ts:
 multipass:
 	brew install multipass
 	brew install --cask virtualbox virtualbox-extension-pack
+
+warp:
+	brew install --cask cloudflare-warp
