@@ -7,6 +7,6 @@ kustomize 4.0.5
 helm 3.4.2
 k3sup 0.10.1
 nomad 1.0.4
-terraform 0.15.0-rc1
+terraform 0.15.0-rc2
 boundary 0.1.5
-packer 1.7.1
+packer 1.7.2
