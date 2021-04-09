@@ -36,7 +36,7 @@ update_password_store:
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
 	./env.sh asdf update
-	asdf plugin update --all
+	./env.sh asdf plugin update --all
 	git submodule update --init
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
