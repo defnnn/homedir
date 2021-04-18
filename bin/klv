@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  kn linkerd-multicluster "$@"
+  kn linkerd-viz "$@"
 }
 
 main "$@"
