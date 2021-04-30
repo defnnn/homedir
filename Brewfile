@@ -76,7 +76,6 @@ if OS.mac?
   cask "oracle-jdk"
   cask "balenaetcher"
   cask "tunnelblick"
-  cask "cloudflare-warp"
 
   brew "htop"
   brew "pinentry-mac"
