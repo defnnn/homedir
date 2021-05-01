@@ -189,5 +189,8 @@ multipass:
 warp:
 	brew install --cask cloudflare-warp
 
-tunnel--%:
+tunnel:
+	cloudflared tunnel run
+
+connect--%:
 	cloudflared access tcp --hostname "$(second)" --url 127.0.0.1:1080
