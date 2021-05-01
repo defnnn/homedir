@@ -190,7 +190,11 @@ warp:
 	brew install --cask cloudflare-warp
 
 tunnel:
-	cloudflared tunnel run
+	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
+		cloudflare/cloudflared:2021.4.0 tunnel run
 
 connect--%:
-	cloudflared access tcp --hostname "$(second)" --url 127.0.0.1:1080
+	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
+		-p 1080:1080 \
+		cloudflare/cloudflared:2021.4.0 access tcp \
+			--hostname "$(second)" --url 127.0.0.1:1080
