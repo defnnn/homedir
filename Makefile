@@ -191,6 +191,7 @@ warp:
 
 tunnel:
 	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
+		--net=host \
 		cloudflare/cloudflared:2021.4.0 tunnel run
 
 connect--%:
