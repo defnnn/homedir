@@ -2,6 +2,9 @@ SHELL := /bin/bash
 
 .PHONY: docs
 
+first = $(word 1, $(subst --, ,$@))
+second = $(word 2, $(subst --, ,$@))
+
 menu:
 	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile
 
@@ -185,3 +188,6 @@ multipass:
 
 warp:
 	brew install --cask cloudflare-warp
+
+tunnel--%:
+	cloudflared access tcp --hostname "$(second)" --url 127.0.0.1:1080
