@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  kn linkerd-multicluster "$@"
+}
+
+main "$@"

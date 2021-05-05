@@ -6,6 +6,6 @@ kind 0.10.0
 kustomize 4.1.2
 helm 3.5.4
 k3sup 0.10.2
-terraform 0.15.1
+terraform 0.15.2
 boundary 0.1.5
 packer 1.7.2
