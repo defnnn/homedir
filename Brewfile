@@ -54,7 +54,6 @@ brew "pulumi"
 brew "bitwarden-cli"
 brew "rg"
 brew "pyenv"
-brew "cloudflare-wrangler"
 
 if OS.mac?
   tap "homebrew/cask"
