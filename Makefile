@@ -133,9 +133,6 @@ asdf:
 brew:
 	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle; fi
 
-brew-install:
-	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
-
 misc:
 	@bin/fig misc
 	~/env.sh $(MAKE) /usr/local/bin/pinentry-defn
@@ -184,8 +181,16 @@ multipass:
 	brew install multipass
 	brew install --cask virtualbox virtualbox-extension-pack
 
+homebrew:
+	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
+
 warp:
 	brew install --cask cloudflare-warp
+
+cloudflared:
+	wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
+	sudo dpkg -i cloudflared-stable-linux-amd64.deb
+	rm -f cloudflared-stable-linux-amd64.deb
 
 tunnel:
 	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
