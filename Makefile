@@ -210,3 +210,4 @@ new:
 	ln -nfs /mnt/work ~/
 	ln -nfs /mnt/.password-store ~/
 	cd && ./bin/install-homedir
+	cd && cd work/katt && make init ken
