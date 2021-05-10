@@ -207,7 +207,6 @@ new:
 	sudo mkdir -p /home/linuxbrew
 	-sudo mount /home/linuxbrew
 	-sudo mount /mnt
-	ln -nfs /mnt/work .
-	ln -nfs /mnt/.password-store .
-	git clone git@github.com:amanibhavam/homedir
-	./homedir/bin/install-homedir
+	ln -nfs /mnt/work ~/
+	ln -nfs /mnt/.password-store ~/
+	./bin/install-homedir
