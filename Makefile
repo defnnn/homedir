@@ -212,4 +212,4 @@ new:
 	cd && ./bin/install-homedir
 	sudo mkdir -p /usr/local/bin
 	sudo ln -nfs "$$(which git-crypt)" /usr/local/bin/
-	cd && cd work/katt && make init ken
+	cd && cd work/katt && make once init ken
