@@ -209,4 +209,4 @@ new:
 	-sudo mount /mnt
 	ln -nfs /mnt/work ~/
 	ln -nfs /mnt/.password-store ~/
-	./bin/install-homedir
+	cd && ./bin/install-homedir

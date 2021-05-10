@@ -3,7 +3,7 @@
 function main {
   set -efu
 
-  homedir/bin/copy-homedir
+  ./bin/copy-homedir
   make install
 }
 
