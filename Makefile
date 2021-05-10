@@ -202,3 +202,10 @@ connect--%:
 		-p 1080:1080 \
 		cloudflare/cloudflared:2021.4.0 access tcp \
 			--hostname "$(second)" --url 0.0.0.0:1080
+
+new:
+	sudo mkdir -p /home/linuxbrew
+	-sudo mount /home/linuxbrew
+	-sudo mount /mnt
+	git clone git@github.com:amanibhavam/homedir
+	./homedir/bin/install-homedir
