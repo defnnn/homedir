@@ -210,4 +210,6 @@ new:
 	ln -nfs /mnt/work ~/
 	ln -nfs /mnt/.password-store ~/
 	cd && ./bin/install-homedir
+	sudo mkdir -p /usr/local/bin
+	sudo ln -nfs "$$(which git-crypt)" /usr/local/bin/
 	cd && cd work/katt && make init ken
