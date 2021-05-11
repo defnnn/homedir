@@ -24,8 +24,7 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	git submodule sync
-	git submodule update --init --recursive --remote
+	# TODO asdf plugins: install and update
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
