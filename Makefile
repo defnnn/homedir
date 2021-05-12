@@ -24,7 +24,8 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	# TODO asdf plugins: install and update
+	runmany 'asdf plugin-add $$1' consul packer vault golang kubectl kind kustomize helm k3sup terraform
+	asdf plugin-update --all
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
