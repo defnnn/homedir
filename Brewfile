@@ -54,6 +54,8 @@ brew "pulumi"
 brew "bitwarden-cli"
 brew "rg"
 brew "pyenv"
+brew "argocd"
+brew "k9s"
 
 if OS.mac?
   tap "homebrew/cask"
