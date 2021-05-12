@@ -72,7 +72,7 @@ Brewfile.lock.json
 .zsh_sessions/
 .bash_logout
 .asdf
-.local/
+.local
 .cups/
 data/
 tmp/

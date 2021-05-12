@@ -24,8 +24,7 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	git submodule sync
-	git submodule update --init --recursive --remote
+	# TODO asdf plugins: install and update
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
@@ -183,6 +182,15 @@ multipass:
 
 homebrew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
+
+hubble:
+	export HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
+	curl -LO "https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz"
+	curl -LO "https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz.sha256sum"
+	sha256sum --check hubble-linux-amd64.tar.gz.sha256sum
+	tar zxf hubble-linux-amd64.tar.gz
+	sudo mv hubble /usr/local/bin/
+	rm -f hubble-linux-amd64.tar.gz*
 
 warp:
 	brew install --cask cloudflare-warp
