@@ -138,3 +138,5 @@ bin/hubble
 .streamlit
 /.tilt-dev
 .wrangler
+.argocd/
+.k9s/
