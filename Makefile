@@ -24,13 +24,13 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	runmany 'asdf plugin-add $$1 || true' consul packer vault golang kubectl kind kustomize helm k3sup terraform
+	bin/runmany 'asdf plugin-add $$1 || true' consul packer vault golang kubectl kind kustomize helm k3sup terraform
 	#asdf plugin-update --all
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
-	runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kind kustomize helm k3sup terraform
+	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kind kustomize helm k3sup terraform
 
 update_password_store:
 	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config; fi
@@ -112,7 +112,7 @@ python: .pyenv/bin/pyenv
 		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pyenv-python:
-	runmany 'pyenv install $$1' 2.7.18 3.9.1
+	bin/runmany 'pyenv install $$1' 2.7.18 3.9.1
 
 pipx:
 	@bin/fig pipx
