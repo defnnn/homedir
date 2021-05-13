@@ -29,7 +29,7 @@ function main {
   PATH="$HOME/.asdf/installs/bin:$PATH"
   PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$PATH"
 
-  rsync -ia homedir/.git .
+  rsync -ia .git ~/
   git reset --hard
   rm -f .zshrc
 
