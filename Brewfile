@@ -54,6 +54,7 @@ brew "rg"
 brew "pyenv"
 brew "argocd"
 brew "k9s"
+brew "kubeseal"
 
 if OS.mac?
   tap "homebrew/cask"
