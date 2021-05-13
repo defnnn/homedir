@@ -24,7 +24,7 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	bin/runmany 'asdf plugin-add $$1 || true' consul packer vault golang kubectl kind kustomize helm k3sup terraform
+	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kind kustomize helm k3sup terraform
 	#asdf plugin-update --all
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
