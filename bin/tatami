@@ -9,6 +9,10 @@ function main {
     k*|helm|kustomize|linkerd|glooctl|bash|*make)
       env KUBECONFIG="$HOME/.kube/${0##*/}.conf" "$@"
       ;;
+    e|exec)
+      shift
+      env KUBECONFIG="$HOME/.kube/${0##*/}.conf" "$@"
+      ;;
     *)
       env KUBECONFIG="$HOME/.kube/${0##*/}.conf" k "$@"
       ;;
