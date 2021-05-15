@@ -140,3 +140,4 @@ bin/hubble
 .wrangler
 .argocd/
 .k9s/
+tmux*log
