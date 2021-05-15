@@ -8,6 +8,13 @@ second = $(word 2, $(subst --, ,$@))
 menu:
 	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile
 
+latest: # Upgrade to the latest
+	$(MAKE) update
+	$(MAKE) latest_inner
+
+latest_inner:
+	$(MAKE) upgrade thing
+
 thing: # Upgrade all the things
 	./env.sh $(MAKE) thing-inner
 
