@@ -141,3 +141,4 @@ bin/hubble
 .argocd/
 .k9s/
 tmux*log
+WebstormProjects/
