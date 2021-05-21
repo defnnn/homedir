@@ -31,13 +31,13 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform linkerd
+	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform linkerd argocd
 	#asdf plugin-update --all
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
-	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kustomize helm k3sup terraform linkerd
+	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kustomize helm k3sup terraform linkerd argocd
 
 update_password_store:
 	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config; fi
