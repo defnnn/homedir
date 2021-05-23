@@ -5,6 +5,8 @@ function main {
 
   local cfg="$(mktemp -t XXXXXXXXX)"
 
+  trap EXIT "rm -f $cfg"
+
   cp "$HOME/.kube/config" "${cfg}"
 
   export KUBECONFIG="${cfg}"
