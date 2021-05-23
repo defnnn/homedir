@@ -1,20 +1,26 @@
 #!/usr/bin/env bash
 
 function main {
+  set -efu
+
+  export KUBECONFIG="$HOME/.kube/${0##*/}.conf"
+
+  cp "$HOME/.kube/config" "$KUBECONFIG"
+  ktx "${0##*/}"
+
   case "${1:-}" in
     all)
-      export KUBECONFIG="$HOME/.kube/${0##*/}.conf"
       k get --all-namespaces $(k api-resources --verbs=list --namespaced -o name | grep -v events | xargs | sed 's# #,#g')
       ;;
     k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*)
-      env KUBECONFIG="$HOME/.kube/${0##*/}.conf" "$@"
+      "$@"
       ;;
     e|exec)
       shift
-      env KUBECONFIG="$HOME/.kube/${0##*/}.conf" "$@"
+      "$@"
       ;;
     *)
-      env KUBECONFIG="$HOME/.kube/${0##*/}.conf" k "$@"
+      k "$@"
       ;;
   esac
 }
