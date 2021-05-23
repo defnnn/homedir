@@ -6,7 +6,7 @@ function main {
   export KUBECONFIG="$HOME/.kube/${0##*/}.conf"
 
   cp "$HOME/.kube/config" "$KUBECONFIG"
-  ktx "${0##*/}"
+  ktx "${0##*/}" >/dev/null
 
   case "${1:-}" in
     all)
