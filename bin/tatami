@@ -3,16 +3,18 @@
 function main {
   set -efu
 
-  export KUBECONFIG="$HOME/.kube/${0##*/}.conf"
+  local cfg="$(mktemp -t XXXXXXXXX)"
 
-  cp "$HOME/.kube/config" "$KUBECONFIG"
+  cp "$HOME/.kube/config" "${cfg}"
+
+  export KUBECONFIG="${cfg}"
   ktx "${0##*/}" >/dev/null
 
   case "${1:-}" in
     all)
       k get --all-namespaces $(k api-resources --verbs=list --namespaced -o name | grep -v events | xargs | sed 's# #,#g')
       ;;
-    k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*)
+    k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*|cilium*|hubble*)
       "$@"
       ;;
     e|exec)
