@@ -31,8 +31,6 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform argocd
-	#asdf plugin-update --all
 	$(MAKE) update_password_store
 	$(MAKE) update_inner
 
@@ -45,6 +43,7 @@ update_password_store:
 
 update_inner:
 	if [[ ! -d .asdf/.git ]]; then git clone https://github.com/asdf-vm/asdf.git asdf; mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
+	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform argocd
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
