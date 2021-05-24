@@ -142,3 +142,5 @@ bin/hubble
 .k9s/
 tmux*log
 WebstormProjects/
+.profile
+homedir

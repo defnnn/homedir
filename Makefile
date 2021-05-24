@@ -224,5 +224,4 @@ new:
 	ln -nfs /mnt/.password-store ~/
 	./bin/install-homedir
 	sudo mkdir -p /usr/local/bin
-	sudo ln -nfs "$$(which git-crypt)" /usr/local/bin/
-	cd && cd work/katt && make once init ken
+	sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/git-crypt /usr/local/bin/
