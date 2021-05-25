@@ -144,3 +144,4 @@ tmux*log
 WebstormProjects/
 .profile
 homedir
+.kube
