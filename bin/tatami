@@ -19,9 +19,24 @@ function main {
     k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*|cilium*|hubble*|stern)
       "$@"
       ;;
+    c)
+      shift
+      cilium "$@"
+      ;;
+    cm)
+      shift
+      cilium clustermesh "$@"
+      ;;
     e|exec)
       shift
       "$@"
+      ;;
+    9)
+      shift
+      k9s "$@"
+      ;;
+    "")
+      k9s
       ;;
     *)
       k "$@"
