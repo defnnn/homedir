@@ -27,6 +27,10 @@ function main {
       shift
       cilium clustermesh "$@"
       ;;
+    vm)
+      shift
+      cilium clustermesh vm "$@"
+      ;;
     e|exec)
       shift
       "$@"
