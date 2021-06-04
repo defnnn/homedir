@@ -77,6 +77,7 @@ if OS.mac?
   cask "balenaetcher"
   cask "tunnelblick"
   cask "lens"
+  cask "divvy"
 
   brew "htop"
   brew "pinentry-mac"
