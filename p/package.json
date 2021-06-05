@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cdktf-cli": "^0.4.0-pre.263",
     "pkg": "^5.2.1"
   }
 }
