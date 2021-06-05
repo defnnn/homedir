@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "cdktf-cli": "^0.4.0-pre.263",
-    "pkg": "^5.2.1"
+    "pkg": "^5.2.1",
+    "typescript": "^3.9.9"
   }
 }
