@@ -54,7 +54,6 @@ brew "pyenv"
 brew "k9s"
 brew "kubeseal"
 brew "kubectx"
-brew "typescript"
 
 if OS.mac?
   tap "homebrew/cask"
