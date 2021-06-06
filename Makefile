@@ -42,7 +42,7 @@ update_password_store:
 	if cd .password-store && git pull; then chmod 600 ssh/config; fi
 
 update_inner:
-	set -x; f [[ ! -d .asdf/.git ]]; then \
+	set -x; if [[ ! -d .asdf/.git ]]; then \
 		git clone https://github.com/asdf-vm/asdf.git asdf; \
 		mv asdf/.git .asdf/; rm -rf asdf; cd .asdf && git reset --hard; fi
 	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform argocd nodejs
