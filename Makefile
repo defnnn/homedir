@@ -224,3 +224,25 @@ new:
 	./bin/install-homedir
 	sudo mkdir -p /usr/local/bin
 	sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/git-crypt /usr/local/bin/
+
+------docker-compose: # -----------------------------
+
+bash: # bash shell with docker-compose exec
+	docker-compose exec home bash -il
+
+up: # Bring up home
+	docker-compose up -d --remove-orphans
+
+down: # Bring down home
+	docker-compose down --remove-orphans
+
+recreate: # Recreate home container
+	$(MAKE) down
+	$(MAKE) up
+
+recycle: # Recycle home container
+	$(MAKE) pull
+	$(MAKE) recreate
+
+pull:
+	docker-compose pull
