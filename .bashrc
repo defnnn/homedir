@@ -1,4 +1,4 @@
-if [[ -f ~/.env ]]; then set -a; source ~/.env; set +a; fi
+if [[ -f ~/.env.sh ]]; then set -a; source ~/.env.sh; set +a; fi
 
 ANSI_ESC=$'\033'
 ANSI_CSI="${ANSI_ESC}["
@@ -175,10 +175,6 @@ function py-env {
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   eval "$(pyenv init -)"
 }
-
-if [[ -f ~/.env ]]; then
-  source ~/.env
-fi
 
 if tty >/dev/null; then
   if type -P powerline-go >/dev/null; then
