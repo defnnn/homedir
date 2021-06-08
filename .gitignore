@@ -150,3 +150,4 @@ homedir
 .zprofile
 .zshrc
 .env
+/.cdktf
