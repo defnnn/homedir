@@ -31,6 +31,9 @@ apply:
 refresh:
 	terraform refresh
 
+apply-refresh:
+	terraform apply -refresh-only
+
 console:
 	terraform console
 
