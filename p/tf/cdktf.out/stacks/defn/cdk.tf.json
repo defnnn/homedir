@@ -1,0 +1,50 @@
+{
+  "//": {
+    "metadata": {
+      "version": "0.4.1",
+      "stackName": "defn"
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "aws": {
+        "version": "~> 3.44.0",
+        "source": "aws"
+      }
+    }
+  },
+  "provider": {
+    "aws": [
+      {
+        "region": "us-east-1"
+      }
+    ]
+  },
+  "resource": {
+    "aws_instance": {
+      "Hello": {
+        "ami": "ami-2757f631",
+        "instance_type": "t2.nano",
+        "//": {
+          "metadata": {
+            "path": "defn/Hello",
+            "uniqueId": "Hello",
+            "stackTrace": [
+              "new TerraformElement (/Users/defn/p/tf/node_modules/cdktf/lib/terraform-element.js:21:28)",
+              "new TerraformResource (/Users/defn/p/tf/node_modules/cdktf/lib/terraform-resource.js:17:9)",
+              "new Instance (/Users/defn/p/tf/.gen/providers/aws/instance.js:127:9)",
+              "new MyStack (/Users/defn/p/tf/main.js:11:9)",
+              "Object.<anonymous> (/Users/defn/p/tf/main.js:18:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

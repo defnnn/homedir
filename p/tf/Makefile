@@ -1,0 +1,2 @@
+synth:
+	tfc synth
