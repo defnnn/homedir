@@ -3,9 +3,6 @@ SHELL := /bin/bash
 synth:
 	cd src && tfc synth
 
-get:
-	cd src && tfc get
-
 init:
 	terraform init
 
