@@ -15,7 +15,7 @@ func NewMyStack(scope constructs.Construct, id string) cdktf.TerraformStack {
 		Region: jsii.String("us-east-1"),
 	})
 
-	instance := aws.NewInstance(stack, jsii.String("hello"), &aws.InstanceConfig{
+	aws.NewInstance(stack, jsii.String("hello"), &aws.InstanceConfig{
 		Ami:          jsii.String("ami-2757f631"),
 		InstanceType: jsii.String("t2.nano"),
 	})
