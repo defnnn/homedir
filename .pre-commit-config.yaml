@@ -24,5 +24,3 @@ repos:
     rev: fd0556d9a362a9a184327a4e8cf3c9f0dea3a47b
     hooks:
       - id: go-fmt
-      - id: go-imports
-      - id: go-mod-tidy
