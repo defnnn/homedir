@@ -1,7 +1,7 @@
 {
-  "language": "typescript",
-  "app": "npm run --silent compile && node main.js",
-  "codeMakerOutput": ".gen",
+  "language": "go",
+  "app": "go run main.go",
+  "codeMakerOutput": "generated",
   "terraformProviders": [
     "aws@~> 3.44.0"
   ],
