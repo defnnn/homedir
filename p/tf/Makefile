@@ -1,7 +1,10 @@
 SHELL := /bin/bash
 
 synth:
-	cd src && tfc synth
+	tfc synth
+
+get:
+	tfc get
 
 init:
 	terraform init
