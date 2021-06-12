@@ -1,1 +1,25 @@
-src/ts/cdktf.out/stacks/default/cdk.tf.json
+{
+  "terraform": {
+    "required_providers": {
+      "aws": {
+        "version": "~> 3.44.0",
+        "source": "aws"
+      }
+    }
+  },
+  "provider": {
+    "aws": [
+      {
+        "region": "us-east-1"
+      }
+    ]
+  },
+  "resource": {
+    "aws_instance": {
+      "hello": {
+        "ami": "ami-2757f631",
+        "instance_type": "t2.nano"
+      }
+    }
+  }
+}

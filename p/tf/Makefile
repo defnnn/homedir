@@ -1,41 +1,48 @@
 SHELL := /bin/bash
 
+pl ?= ts
+
 synth:
-	tfc synth
+	if test -d src; then cd src/$(pl); fi && tfc synth
 
 get:
+	if test -d src; then cd src/$(pl); fi && tfc synth
 	tfc get
 
-init:
+cdk.tf.json: src/$(pl)/cdktf.out/stacks/default/cdk.tf.json
+	cat $< | jq 'walk(if type == "object" then if .["//"] == null then . else del(.["//"]) end else . end)' > $@.1
+	mv -f $@.1 $@
+
+init: cdk.tf.json
 	terraform init
 
-upgrade:
+upgrade: cdk.tf.json
 	terraform init -upgrade
 
-fmt:
+fmt: cdk.tf.json
 	for a in *.tf *.tfvars; do if [[ -f $$a ]]; then terraform fmt $$a; fi; done
 
-validate:
+validate: cdk.tf.json
 	terraform validate
 
-check:
+check: cdk.tf.json
 	checkov -d .
 
-plan:
+plan: cdk.tf.json
 	terraform plan -out=.plan
 
 apply:
 	terraform apply .plan
 	rm -f .plan
 
-refresh:
+refresh: cdk.tf.json
 	terraform refresh
 
-apply-refresh:
+apply-refresh: cdk.tf.json
 	terraform apply -refresh-only
 
-console:
+console: cdk.tf.json
 	terraform console
 
-replace:
+replace: cdk.tf.json
 	terraform plan -out=.plan --replace=module.defn.module.instance.aws_instance.default
