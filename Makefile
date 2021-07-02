@@ -28,7 +28,7 @@ update: # Update code
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
-	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kustomize helm k3sup terraform argocd nodejs
+	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kustomize helm k3sup terraform argocd nodejs kind
 
 update_password_store:
 	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config; fi
@@ -111,7 +111,7 @@ python: .pyenv/bin/pyenv
 		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pyenv-python:
-	bin/runmany 'pyenv install $$1' 2.7.18 3.9.1
+	bin/runmany 'pyenv install $$1' 3.9.5
 
 pipx:
 	@bin/fig pipx
