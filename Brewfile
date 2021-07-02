@@ -55,6 +55,8 @@ brew "k9s"
 brew "kubeseal"
 brew "kubectx"
 
+brew "borkdude/brew/babashka"
+
 if OS.mac?
   tap "homebrew/cask"
   tap "homebrew/cask-fonts"
