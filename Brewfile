@@ -4,6 +4,7 @@ tap "cuelang/tap"
 tap "goreleaser/tap"
 tap "versent/homebrew-taps"
 tap "defn/tap"
+tap "borkdude/brew"
 
 brew "chamber"
 brew "doctl"
@@ -54,8 +55,7 @@ brew "pyenv"
 brew "k9s"
 brew "kubeseal"
 brew "kubectx"
-
-brew "borkdude/brew/babashka"
+brew "babashka"
 
 if OS.mac?
   tap "homebrew/cask"
