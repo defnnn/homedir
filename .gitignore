@@ -151,3 +151,4 @@ homedir
 .zshrc
 .env
 /.cdktf
+.kuma
