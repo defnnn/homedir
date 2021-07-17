@@ -152,3 +152,4 @@ homedir
 .env
 /.cdktf
 .kuma
+.rediscli_history
