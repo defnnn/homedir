@@ -153,3 +153,4 @@ homedir
 /.cdktf
 .kuma
 .rediscli_history
+.psql_history
