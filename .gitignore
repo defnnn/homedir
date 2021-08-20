@@ -154,3 +154,5 @@ homedir
 .kuma
 .rediscli_history
 .psql_history
+.jira.d
+.saml2aws
