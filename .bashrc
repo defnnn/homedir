@@ -97,6 +97,21 @@ function reload {
   for a in "$@"; do
     "reload-$a"
   done
+
+  if [[ "$#" -gt 0 ]]; then
+    if [[ "${SSH_AUTH_SOCK}" =~ gpg ]]; then 
+      true
+    else
+      reload gpg 
+      pushd ~ > /dev/null
+      source ./.bash_profile
+      popd > /dev/null
+    fi
+  else
+    pushd ~ > /dev/null
+    source ./.bash_profile
+    popd > /dev/null
+  fi
 }
 
 function reload-gpg {
