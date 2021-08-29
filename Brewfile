@@ -82,6 +82,7 @@ if OS.mac?
   cask "tunnelblick"
   cask "lens"
   cask "divvy"
+  cask "snagit"
 
   brew "htop"
   brew "pinentry-mac"
