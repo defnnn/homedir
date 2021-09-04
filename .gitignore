@@ -156,3 +156,6 @@ homedir
 .psql_history
 .jira.d
 .saml2aws
+
+.postgresql
+.*_history
