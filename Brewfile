@@ -6,6 +6,7 @@ tap "versent/homebrew-taps"
 tap "defn/tap"
 tap "borkdude/brew"
 tap "cockroachdb/tap"
+tap "turbot/tap"
 
 brew "chamber"
 brew "doctl"
@@ -58,6 +59,7 @@ brew "kubeseal"
 brew "kubectx"
 brew "babashka"
 brew "cockroach"
+brew "steampipe"
 
 if OS.mac?
   tap "homebrew/cask"
