@@ -13,6 +13,8 @@ PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$HOME/.local/bin:/home/linuxbrew/.linu
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
 PATH="$HOME/.asdf/installs/bin:$PATH"
 
+PATH="$HOME/bin/site:$PATH"
+
 if [[ "$(uname -s)" = "Darwin" ]]; then
   PATH="$PATH:$HOME/bin/$(uname -s)"
 fi

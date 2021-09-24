@@ -239,3 +239,11 @@ recycle: # Recycle home container
 
 pull:
 	docker-compose pull
+
+shim:
+	ln -nfs "$(shell asdf which kubectl)" bin/site/
+	ln -nfs "$(shell asdf which kind)" bin/site/
+	ln -nfs "$(shell asdf which kustomize)" bin/site/
+	ln -nfs "$(shell asdf which argocd)" bin/site/
+	ln -nfs "$(shell asdf which k3sup)" bin/site/
+	ln -nfs "$(shell asdf which helm)" bin/site/
