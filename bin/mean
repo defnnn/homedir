@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+function main {
+  set -efu
+
+  local cfg="$(mktemp -t XXXXXXXXX)"
+
+  trap "rm -f $cfg" EXIT
+
+  cp "$HOME/.kube/config" "${cfg}"
+
+  export KUBECONFIG="${cfg}"
+  ktx kind-mean >/dev/null
+
+  case "${1:-}" in
+    all)
+      k get --all-namespaces $(k api-resources --verbs=list --namespaced -o name | grep -v events | xargs | sed 's# #,#g')
+      ;;
+    k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*|cilium*|hubble*|stern)
+      "$@"
+      ;;
+    c)
+      shift
+      cilium "$@"
+      ;;
+    cm)
+      shift
+      cilium clustermesh "$@"
+      ;;
+    vm)
+      shift
+      cilium clustermesh vm "$@"
+      ;;
+    e|exec)
+      shift
+      "$@"
+      ;;
+    9)
+      shift
+      k9s "$@"
+      ;;
+    "")
+      k9s
+      ;;
+    *)
+      k "$@"
+      ;;
+  esac
+}
+
+main "$@"
