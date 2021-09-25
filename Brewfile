@@ -60,6 +60,7 @@ brew "kubectx"
 brew "babashka"
 brew "cockroach"
 brew "steampipe"
+brew "kumactl"
 
 if OS.mac?
   tap "homebrew/cask"
