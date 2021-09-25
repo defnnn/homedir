@@ -19,6 +19,9 @@ function main {
     k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*|cilium*|hubble*|stern)
       "$@"
       ;;
+    n*)
+      "$@"
+      ;;
     c)
       shift
       cilium "$@"

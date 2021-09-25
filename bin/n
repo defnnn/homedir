@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+function main {
+  ns="$1"; shift
+  k9s "$@"
+}
+
+main "$@"
