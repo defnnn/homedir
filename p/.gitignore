@@ -16,3 +16,4 @@ imports/*
 cdktf.out
 cdktf.log
 *terraform.*.tfstate*
+.idea

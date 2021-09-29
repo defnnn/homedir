@@ -1,5 +1,9 @@
 SHELL := /bin/bash
 
+gen.tf.json: cdktf.out/stacks/default/cdk.tf.json
+	cat $< | jq 'walk(if type == "object" then if .["//"] == null then . else del(.["//"]) end else . end)' > $@.1
+	mv -f $@.1 $@
+
 install: venv/bin/activate
 	$(MAKE) cdktf
 	$(MAKE) cdktf-py
@@ -59,7 +63,3 @@ get:
 build:
 	. ./venv/bin/activate && ./node_modules/.bin/cdktf synth
 	$(MAKE) gen.tf.json
-
-gen.tf.json: cdktf.out/stacks/default/cdk.tf.json
-	cat $< | jq 'walk(if type == "object" then if .["//"] == null then . else del(.["//"]) end else . end)' > $@.1
-	mv -f $@.1 $@

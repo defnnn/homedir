@@ -10,14 +10,36 @@
   "provider": {
     "aws": [
       {
-        "region": "us-east-1"
+        "region": "us-west-1"
       }
     ]
+  },
+  "data": {
+    "aws_ami": {
+      "lookup": {
+        "most_recent": true,
+        "owners": ["099720109477"],
+        "filter": [
+          {
+            "name": "name",
+            "values": ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
+          },
+          {
+            "name": "root-device-type",
+            "values": ["ebs"]
+          },
+          {
+            "name": "virtualization-type",
+            "values": ["hvm"]
+          }
+        ]
+      }
+    }
   },
   "resource": {
     "aws_instance": {
       "hello": {
-        "ami": "ami-2757f631",
+        "ami": "${data.aws_ami.lookup.image_id}",
         "instance_type": "t2.nano"
       }
     }

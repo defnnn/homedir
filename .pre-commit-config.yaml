@@ -14,11 +14,11 @@ repos:
     hooks:
       - id: isort
 
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.9.2
-    hooks:
-      - id: flake8
-        additional_dependencies: [flake8-isort]
+  #  - repo: https://gitlab.com/pycqa/flake8
+  #    rev: 3.9.2
+  #    hooks:
+  #      - id: flake8
+  #        additional_dependencies: [flake8-isort]
 
   - repo: git://github.com/dnephin/pre-commit-golang
     rev: fd0556d9a362a9a184327a4e8cf3c9f0dea3a47b
