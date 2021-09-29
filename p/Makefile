@@ -61,7 +61,7 @@ get:
 	./node_modules/.bin/cdktf get
 
 build:
-	mv terraform.tfstate terraform.tfstate.off
+	-mv terraform.tfstate terraform.tfstate.off
 	. ./venv/bin/activate && ./node_modules/.bin/cdktf synth
-	mv terraform.tfstate.off terraform.tfstate
+	-mv terraform.tfstate.off terraform.tfstate
 	$(MAKE) main.tf.json
