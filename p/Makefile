@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-gen.tf.json: cdktf.out/stacks/default/cdk.tf.json
+main.tf.json: cdktf.out/stacks/default/cdk.tf.json
 	cat $< | jq 'walk(if type == "object" then if .["//"] == null then . else del(.["//"]) end else . end)' > $@.1
 	mv -f $@.1 $@
 
@@ -64,4 +64,4 @@ build:
 	mv terraform.tfstate terraform.tfstate.off
 	. ./venv/bin/activate && ./node_modules/.bin/cdktf synth
 	mv terraform.tfstate.off terraform.tfstate
-	$(MAKE) gen.tf.json
+	$(MAKE) main.tf.json
