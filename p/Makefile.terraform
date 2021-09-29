@@ -1,0 +1,48 @@
+SHELL := /bin/bash
+
+pl ?= py
+
+test:
+	$(MAKE) check
+
+init:
+	terraform init
+
+upgrade:
+	terraform init -upgrade
+
+fmt:
+	for a in *.tf *.tfvars; do if [[ -f $$a ]]; then terraform fmt $$a; fi; done
+
+validate:
+	terraform validate
+
+check:
+	checkov -d .
+
+plan:
+	terraform plan -out=.plan
+
+apply:
+	terraform apply .plan
+	rm -f .plan
+
+refresh:
+	terraform refresh
+
+console:
+	terraform console
+
+apply-refresh: cdk.tf.json
+	terraform apply -refresh-only
+
+cdk.tf.json: $(pl)/cdktf.out/stacks/default/cdk.tf.json
+	cat $< | jq 'walk(if type == "object" then if .["//"] == null then . else del(.["//"]) end else . end)' > $@.1
+	mv -f $@.1 $@
+
+# in ${pl}/
+get:
+	../node_modules/.bin/cdktf get
+
+build:
+	. ../venv/bin/activate && ../node_modules/.bin/cdktf synth
