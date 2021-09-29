@@ -159,3 +159,4 @@ homedir
 
 .postgresql
 .*_history
+.eclipse

@@ -86,6 +86,7 @@ if OS.mac?
   cask "lens"
   cask "divvy"
   cask "snagit"
+  cask "dbeaver-community"
 
   brew "htop"
   brew "pinentry-mac"
