@@ -22,7 +22,7 @@
         "filter": [
           {
             "name": "name",
-            "values": ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
+            "values": ["ubuntu/images/hvm-ssd/ubuntu-focal-*server-*"]
           },
           {
             "name": "root-device-type",

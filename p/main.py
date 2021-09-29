@@ -16,7 +16,10 @@ class MyStack(TerraformStack):
             owners=["099720109477"],
             most_recent=True,
             filter=[
-                {"name": "name", "values": ["ubuntu/images/hvm-ssd/ubuntu-*server-*"]},
+                {
+                    "name": "name",
+                    "values": ["ubuntu/images/hvm-ssd/ubuntu-focal-*server-*"],
+                },
                 {"name": "root-device-type", "values": ["ebs"]},
                 {"name": "virtualization-type", "values": ["hvm"]},
             ],
