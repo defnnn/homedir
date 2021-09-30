@@ -36,10 +36,12 @@ upgrade:
 	terraform init -upgrade
 
 fmt:
+	git add -u .
 	for a in *.tf *.tfvars; do if [[ -f $$a ]]; then terraform fmt $$a; fi; done
 	isort $(shell git ls-files | grep 'py$$')
 	black $(shell git ls-files | grep 'py$$')
 	pc
+	git add -u .
 
 validate:
 	terraform validate

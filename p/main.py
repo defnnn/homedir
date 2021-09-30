@@ -15,7 +15,8 @@ class MyStack(TerraformStack):
     def __init__(self, scope: Construct, ns: str):
         super().__init__(scope, ns)
 
-        AwsProvider(self, "Aws", region="us-west-1")
+        AwsProvider(self, "aws", region="us-west-1")
+        AwsProvider(self, "sso", region="us-west-2", alias="sso")
 
         OrganizationsOrganization(
             self,
