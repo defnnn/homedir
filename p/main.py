@@ -2,7 +2,13 @@
 from cdktf import App, TerraformStack
 from constructs import Construct
 
-from imports.aws import AwsProvider, DataAwsAmi, Instance, OrganizationsOrganization
+from imports.aws import (
+    AwsProvider,
+    DataAwsAmi,
+    Instance,
+    OrganizationsAccount,
+    OrganizationsOrganization,
+)
 
 
 class MyStack(TerraformStack):
@@ -26,20 +32,19 @@ class MyStack(TerraformStack):
             ],
         )
 
-        ami = DataAwsAmi(
-            self,
-            "lookup",
-            owners=["099720109477"],
-            most_recent=True,
-            filter=[
-                {
-                    "name": "name",
-                    "values": ["ubuntu/images/hvm-ssd/ubuntu-focal-*server-*"],
-                },
-                {"name": "root-device-type", "values": ["ebs"]},
-                {"name": "virtualization-type", "values": ["hvm"]},
-            ],
-        )
+        account = "katt"
+        domain = "defn.sh"
+
+        for acctype in "net", "log", "lib", "ops", "sec", "hub", "pub", "dev", "dmz":
+            OrganizationsAccount(
+                self,
+                acctype,
+                name=acctype,
+                email=f"{account}+{acctype}@{domain}",
+                iam_user_access_to_billing="ALLOW",
+                role_name="OrganizationAccountAccessRole",
+                tags={"ManagedBy": "Terraform"},
+            )
 
 
 app = App()

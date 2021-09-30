@@ -28,27 +28,88 @@
         "enabled_policy_types": ["SERVICE_CONTROL_POLICY", "TAG_POLICY"],
         "feature_set": "ALL"
       }
-    }
-  },
-  "data": {
-    "aws_ami": {
-      "lookup": {
-        "most_recent": true,
-        "owners": ["099720109477"],
-        "filter": [
-          {
-            "name": "name",
-            "values": ["ubuntu/images/hvm-ssd/ubuntu-focal-*server-*"]
-          },
-          {
-            "name": "root-device-type",
-            "values": ["ebs"]
-          },
-          {
-            "name": "virtualization-type",
-            "values": ["hvm"]
-          }
-        ]
+    },
+    "aws_organizations_account": {
+      "net": {
+        "email": "katt+net@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "net",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "log": {
+        "email": "katt+log@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "log",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "lib": {
+        "email": "katt+lib@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "lib",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "ops": {
+        "email": "katt+ops@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "ops",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "sec": {
+        "email": "katt+sec@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "sec",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "hub": {
+        "email": "katt+hub@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "hub",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "pub": {
+        "email": "katt+pub@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "pub",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "dev": {
+        "email": "katt+dev@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "dev",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
+      },
+      "dmz": {
+        "email": "katt+dmz@defn.sh",
+        "iam_user_access_to_billing": "ALLOW",
+        "name": "dmz",
+        "role_name": "OrganizationAccountAccessRole",
+        "tags": {
+          "ManagedBy": "Terraform"
+        }
       }
     }
   }
