@@ -160,3 +160,4 @@ homedir
 .postgresql
 .*_history
 .eclipse
+.st2

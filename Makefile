@@ -28,7 +28,7 @@ update: # Update code
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
-	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kustomize helm k3sup terraform argocd nodejs kind
+	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kustomize helm k3sup terraform argo argocd nodejs kind
 
 update_password_store:
 	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config; fi
@@ -36,7 +36,7 @@ update_password_store:
 
 update_inner:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
-	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform argocd nodejs
+	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform argo argocd nodejs
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
@@ -117,7 +117,7 @@ pipx:
 	@bin/fig pipx
 	if ! test -x venv/bin/pipx; then \
 		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra aws-sam-cli poetry solo-python ec2instanceconnectcli checkov cloudsplaining awscli
+	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra aws-sam-cli poetry solo-python ec2instanceconnectcli checkov cloudsplaining awscli st2client
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
 	venv/bin/python -m pipx install --pip-args "ansible paramiko" ansible-core
