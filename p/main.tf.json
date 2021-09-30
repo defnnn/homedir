@@ -14,6 +14,22 @@
       }
     ]
   },
+  "resource": {
+    "aws_organizations_organization": {
+      "org": {
+        "aws_service_access_principals": [
+          "cloudtrail.amazonaws.com",
+          "config.amazonaws.com",
+          "ram.amazonaws.com",
+          "ssm.amazonaws.com",
+          "sso.amazonaws.com",
+          "tagpolicies.tag.amazonaws.com"
+        ],
+        "enabled_policy_types": ["SERVICE_CONTROL_POLICY", "TAG_POLICY"],
+        "feature_set": "ALL"
+      }
+    }
+  },
   "data": {
     "aws_ami": {
       "lookup": {
@@ -33,14 +49,6 @@
             "values": ["hvm"]
           }
         ]
-      }
-    }
-  },
-  "resource": {
-    "aws_instance": {
-      "hello": {
-        "ami": "${data.aws_ami.lookup.image_id}",
-        "instance_type": "t2.nano"
       }
     }
   }

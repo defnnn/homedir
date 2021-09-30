@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 from cdktf import App, TerraformStack
 from constructs import Construct
-from imports.aws import AwsProvider, DataAwsAmi, Instance
+
+from imports.aws import AwsProvider, DataAwsAmi, Instance, OrganizationsOrganization
 
 
 class MyStack(TerraformStack):
@@ -9,6 +10,21 @@ class MyStack(TerraformStack):
         super().__init__(scope, ns)
 
         AwsProvider(self, "Aws", region="us-west-1")
+
+        OrganizationsOrganization(
+            self,
+            "org",
+            feature_set="ALL",
+            enabled_policy_types=["SERVICE_CONTROL_POLICY", "TAG_POLICY"],
+            aws_service_access_principals=[
+                "cloudtrail.amazonaws.com",
+                "config.amazonaws.com",
+                "ram.amazonaws.com",
+                "ssm.amazonaws.com",
+                "sso.amazonaws.com",
+                "tagpolicies.tag.amazonaws.com",
+            ],
+        )
 
         ami = DataAwsAmi(
             self,
@@ -24,8 +40,6 @@ class MyStack(TerraformStack):
                 {"name": "virtualization-type", "values": ["hvm"]},
             ],
         )
-
-        Instance(self, "hello", ami=ami.image_id, instance_type="t2.nano")
 
 
 app = App()
