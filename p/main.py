@@ -37,9 +37,6 @@ class MyStack(TerraformStack):
             ],
         )
 
-        account = "katt"
-        domain = "defn.sh"
-
         ssoadmin_instances = DataAwsSsoadminInstances(self, "sso_instance")
         identitystore_group = DataAwsIdentitystoreGroup(
             self,
@@ -74,16 +71,39 @@ class MyStack(TerraformStack):
             managed_policy_arn="arn:aws:iam::aws:policy/AdministratorAccess",
         )
 
-        for acctype in "net", "log", "lib", "ops", "sec", "hub", "pub", "dev", "dmz":
-            acct = OrganizationsAccount(
-                self,
-                acctype,
-                name=acctype,
-                email=f"{account}+{acctype}@{domain}",
-                iam_user_access_to_billing="ALLOW",
-                role_name="OrganizationAccountAccessRole",
-                tags={"ManagedBy": "Terraform"},
-            )
+        account = "katt"
+        domain = "defn.sh"
+
+        for acctype in (
+            "katt",
+            "net",
+            "log",
+            "lib",
+            "ops",
+            "sec",
+            "hub",
+            "pub",
+            "dev",
+            "dmz",
+        ):
+            if acctype == account:
+                acct = OrganizationsAccount(
+                    self,
+                    acctype,
+                    name=acctype,
+                    email=f"{account}@{domain}",
+                    tags={"ManagedBy": "Terraform"},
+                )
+            else:
+                acct = OrganizationsAccount(
+                    self,
+                    acctype,
+                    name=acctype,
+                    email=f"{account}+{acctype}@{domain}",
+                    iam_user_access_to_billing="ALLOW",
+                    role_name="OrganizationAccountAccessRole",
+                    tags={"ManagedBy": "Terraform"},
+                )
 
             SsoadminAccountAssignment(
                 self,
