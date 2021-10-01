@@ -15,6 +15,25 @@ from imports.aws import (
     SsoadminPermissionSet,
 )
 
+account = "katt"
+domain = "defn.sh"
+account_names = (
+    "katt",
+    "net",
+    "log",
+    "lib",
+    "ops",
+    "sec",
+    "hub",
+    "pub",
+    "dev",
+    "dmz",
+)
+
+
+def element0(res, attr, eles, prop):
+    res.add_override(attr, "${[ for e in " + eles.fqn + prop + ": e ][0]}")
+
 
 class MyStack(TerraformStack):
     def __init__(self, scope: Construct, ns: str):
@@ -46,9 +65,11 @@ class MyStack(TerraformStack):
                 {"attributePath": "DisplayName", "attributeValue": "Administrators"}
             ],
         )
-        identitystore_group.add_override(
+        element0(
+            identitystore_group,
             "identity_store_id",
-            "${[ for e in " + ssoadmin_instances.fqn + ".identity_store_ids: e ][0]}",
+            ssoadmin_instances,
+            ".identity_store_ids",
         )
 
         sso_permission_set_admin = SsoadminPermissionSet(
@@ -59,9 +80,7 @@ class MyStack(TerraformStack):
             session_duration="PT2H",
             tags={"ManagedBy": "Terraform"},
         )
-        sso_permission_set_admin.add_override(
-            "instance_arn", "${[ for e in " + ssoadmin_instances.fqn + ".arns: e ][0]}"
-        )
+        element0(sso_permission_set_admin, "instance_arn", ssoadmin_instances, ".arns")
 
         SsoadminManagedPolicyAttachment(
             self,
@@ -71,21 +90,7 @@ class MyStack(TerraformStack):
             managed_policy_arn="arn:aws:iam::aws:policy/AdministratorAccess",
         )
 
-        account = "katt"
-        domain = "defn.sh"
-
-        for acctype in (
-            "katt",
-            "net",
-            "log",
-            "lib",
-            "ops",
-            "sec",
-            "hub",
-            "pub",
-            "dev",
-            "dmz",
-        ):
+        for acctype in account_names:
             if acctype == account:
                 acct = OrganizationsAccount(
                     self,
