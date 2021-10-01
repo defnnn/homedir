@@ -1,13 +1,18 @@
 #!/usr/bin/env python
-from cdktf import App, TerraformStack
+from cdktf import App, Fn, TerraformStack
 from constructs import Construct
 
 from imports.aws import (
     AwsProvider,
     DataAwsAmi,
+    DataAwsIdentitystoreGroup,
+    DataAwsSsoadminInstances,
     Instance,
     OrganizationsAccount,
     OrganizationsOrganization,
+    SsoadminAccountAssignment,
+    SsoadminManagedPolicyAttachment,
+    SsoadminPermissionSet,
 )
 
 
@@ -15,8 +20,7 @@ class MyStack(TerraformStack):
     def __init__(self, scope: Construct, ns: str):
         super().__init__(scope, ns)
 
-        AwsProvider(self, "aws", region="us-west-1")
-        AwsProvider(self, "sso", region="us-west-2", alias="sso")
+        AwsProvider(self, "aws", region="us-west-2")
 
         OrganizationsOrganization(
             self,
@@ -36,8 +40,42 @@ class MyStack(TerraformStack):
         account = "katt"
         domain = "defn.sh"
 
+        ssoadmin_instances = DataAwsSsoadminInstances(self, "sso_instance")
+        identitystore_group = DataAwsIdentitystoreGroup(
+            self,
+            "administrators_sso_group",
+            identity_store_id="empty",
+            filter=[
+                {"attributePath": "DisplayName", "attributeValue": "Administrators"}
+            ],
+        )
+        identitystore_group.add_override(
+            "identity_store_id",
+            "${[ for e in " + ssoadmin_instances.fqn + ".identity_store_ids: e ][0]}",
+        )
+
+        sso_permission_set_admin = SsoadminPermissionSet(
+            self,
+            "admin_sso_permission_set",
+            name="Administrator",
+            instance_arn="empty",
+            session_duration="PT2H",
+            tags={"ManagedBy": "Terraform"},
+        )
+        sso_permission_set_admin.add_override(
+            "instance_arn", "${[ for e in " + ssoadmin_instances.fqn + ".arns: e ][0]}"
+        )
+
+        SsoadminManagedPolicyAttachment(
+            self,
+            "admin_sso_managed_policy_attachment",
+            instance_arn=sso_permission_set_admin.instance_arn,
+            permission_set_arn=sso_permission_set_admin.arn,
+            managed_policy_arn="arn:aws:iam::aws:policy/AdministratorAccess",
+        )
+
         for acctype in "net", "log", "lib", "ops", "sec", "hub", "pub", "dev", "dmz":
-            OrganizationsAccount(
+            acct = OrganizationsAccount(
                 self,
                 acctype,
                 name=acctype,
@@ -45,6 +83,17 @@ class MyStack(TerraformStack):
                 iam_user_access_to_billing="ALLOW",
                 role_name="OrganizationAccountAccessRole",
                 tags={"ManagedBy": "Terraform"},
+            )
+
+            SsoadminAccountAssignment(
+                self,
+                f"{acctype}_admin_sso_account_assignment",
+                instance_arn=sso_permission_set_admin.instance_arn,
+                permission_set_arn=sso_permission_set_admin.arn,
+                principal_id=identitystore_group.group_id,
+                principal_type="GROUP",
+                target_id=acct.id,
+                target_type="AWS_ACCOUNT",
             )
 
 

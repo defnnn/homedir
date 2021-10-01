@@ -161,3 +161,4 @@ homedir
 .*_history
 .eclipse
 .st2
+.pypirc
