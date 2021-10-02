@@ -239,3 +239,5 @@ shim:
 	ln -nfs "$(shell asdf which argo)" bin/site/
 	ln -nfs "$(shell asdf which k3sup)" bin/site/
 	ln -nfs "$(shell asdf which helm)" bin/site/
+	ln -nfs "$(shell asdf which python)" bin/site/
+	ln -nfs "$(shell asdf which node)" bin/site/
