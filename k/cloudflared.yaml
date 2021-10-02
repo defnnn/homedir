@@ -6,8 +6,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 8888
-    targetPort: 8080
+    - port: 8888
+      targetPort: 8080
   selector:
     app: hello
 ---
@@ -26,10 +26,10 @@ spec:
         app: hello
     spec:
       containers:
-      - name: hello
-        image: cilium/echoserver
-        ports:
-        - containerPort: 8080
-        env:
-          - name: PORT
-            value: "8080"
+        - name: hello
+          image: cilium/echoserver
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"

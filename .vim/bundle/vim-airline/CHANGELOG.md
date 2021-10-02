@@ -3,6 +3,7 @@
 This is the Changelog for the vim-airline project.
 
 ## [0.12] - Unreleased
+
 - New features
   - Extensions:
     - [poetv](https://github.com/petobens/poet-v) support
@@ -12,7 +13,7 @@ This is the Changelog for the vim-airline project.
     - [vim-dirvish](https://github.com/justinmk/vim-dirvish) support
     - [fzf.vim](https://github.com/junegunn/fzf.vim) support
     - [OmniSharp](https://github.com/OmniSharp/omnisharp-vim) support
-    - [searchcount](https://vim-jp.org/vimdoc-en/eval.html#searchcount())  support
+    - [searchcount](<https://vim-jp.org/vimdoc-en/eval.html#searchcount()>) support
     - [fern.vim](https://github.com/lambdalisue/fern.vim) support
     - [Vim-CMake](https://github.com/cdelledonne/vim-cmake) support
     - [battery.vim](https://github.com/lambdalisue/battery.vim) support
@@ -27,6 +28,7 @@ This is the Changelog for the vim-airline project.
   - Added option to show short paths in the status line
 
 ## [0.11] - 2019-11-10
+
 - New features
   - Extensions:
     - [Coc](https://github.com/neoclide/coc.nvim) support
@@ -45,9 +47,9 @@ This is the Changelog for the vim-airline project.
   - The branch extensions now also displays whether the repository is in a clean state
     (will append a ! or ⚡if the repository is considered dirty).
   - The whitespace extensions will also check for conflict markers
-  - `:AirlineRefresh` command now takes an additional `!` attribute, that **skips** 
+  - `:AirlineRefresh` command now takes an additional `!` attribute, that **skips**
     recreating the highlighting groups (which might have a serious performance
-    impact if done very often, as might be the case when the configuration variable 
+    impact if done very often, as might be the case when the configuration variable
     `airline_skip_empty_sections` is active).
   - airline can now also detect multiple cursor mode (issue [#1933](https://github.com/vim-airline/vim-airline/issues/1933))
   - expose hunks output using the function `airline#extensions#hunks#get_raw_hunks()` to the outside [#1877](https://github.com/vim-airline/vim-airline/pull/1877)
@@ -59,6 +61,7 @@ This is the Changelog for the vim-airline project.
   - the term extension supports [neoterm](https://github.com/kassio/neoterm) vim plugin
 
 ## [0.10] - 2018-12-15
+
 - New features
   - Extensions:
     - [LanguageClient](https://github.com/autozimu/LanguageClient-neovim)
@@ -85,6 +88,7 @@ This is the Changelog for the vim-airline project.
   - Statusline can be set to inactive, whenever Vim loses focus (using FocusLost autocommand)
 
 ## [0.9] - 2018-01-15
+
 - Changes
   - Look of default Airline Symbols has been improved [#1397](https://github.com/vim-airline/vim-airline/issues/1397)
   - Airline does now set `laststatus=2` if needed
@@ -129,6 +133,7 @@ This is the Changelog for the vim-airline project.
   - Shows mercurial mq status if hg mq extension is enabled
 
 ## [0.8] - 2016-03-09
+
 - Changes
   - Airline converted to an organization and moved to new [repository](https://github.com/vim-airline/vim-airline)
   - Themes have been split into an separate repository [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
@@ -154,78 +159,77 @@ This is the Changelog for the vim-airline project.
   - Tabline's tab mode can display splits simultaneously
 
 ## [0.7] - 2014-12-10
+
 - New features
-    - accents support; allowing multiple colors/styles in the same section
-    - extensions: eclim
-    - themes: understated, monochrome, murmur, sol, lucius
+  - accents support; allowing multiple colors/styles in the same section
+  - extensions: eclim
+  - themes: understated, monochrome, murmur, sol, lucius
 - Improvements
-    -  solarized theme; support for 8 color terminals
-    -  tabline resizes dynamically based on number of open buffers
-    -  miscellaneous bug fixes
+  - solarized theme; support for 8 color terminals
+  - tabline resizes dynamically based on number of open buffers
+  - miscellaneous bug fixes
 
 ## [0.6] - 2013-10-08
 
 - New features
-    - accents support; allowing multiple colors/styles in the same section
-    - extensions: eclim
-    - themes: understated, monochrome, murmur, sol, lucius
+  - accents support; allowing multiple colors/styles in the same section
+  - extensions: eclim
+  - themes: understated, monochrome, murmur, sol, lucius
 - Improvements
-    - solarized theme; support for 8 color terminals
-    - tabline resizes dynamically based on number of open buffers
-    - miscellaneous bug fixes
+  - solarized theme; support for 8 color terminals
+  - tabline resizes dynamically based on number of open buffers
+  - miscellaneous bug fixes
 
 ## [0.5] - 2013-09-13
 
 - New features
-    - smart tabline extension which displays all buffers when only one tab is visible
-    - automatic section truncation when the window resizes
-    - support for a declarative style of configuration, allowing parts to contain metadata such as minimum window width or conditional visibility
-    - themes: zenburn, serene
+  - smart tabline extension which displays all buffers when only one tab is visible
+  - automatic section truncation when the window resizes
+  - support for a declarative style of configuration, allowing parts to contain metadata such as minimum window width or conditional visibility
+  - themes: zenburn, serene
 - Other
-    - a sizable chunk of vim-airline is now running through a unit testing suite, automated via Travis CI
+  - a sizable chunk of vim-airline is now running through a unit testing suite, automated via Travis CI
 
 ## [0.4] - 2013-08-26
 
- - New features
-    - integration with csv.vim and vim-virtualenv
-    - hunks extension for vim-gitgutter and vim-signify
-    - automatic theme switching with matching colorschemes
-    - commands: AirlineToggle
-    - themes: base16 (all variants)
- - Improvements
-    - integration with undotree, tagbar, and unite
- - Other
-    - refactored core and exposed statusline builder and pipeline
-    - all extension related g:airline_variables have been deprecated in favor of g:airline#extensions# variables
-    - extensions found in the runtimepath outside of the default distribution will be automatically loaded
+- New features
+  - integration with csv.vim and vim-virtualenv
+  - hunks extension for vim-gitgutter and vim-signify
+  - automatic theme switching with matching colorschemes
+  - commands: AirlineToggle
+  - themes: base16 (all variants)
+- Improvements
+  - integration with undotree, tagbar, and unite
+- Other
+  - refactored core and exposed statusline builder and pipeline
+  - all extension related g:airline_variables have been deprecated in favor of g:airline#extensions# variables
+  - extensions found in the runtimepath outside of the default distribution will be automatically loaded
 
 ## [0.3] - 2013-08-12
 
--  New features
-    -  first-class integration with tagbar
-    -  white space detection for trailing spaces and mixed indentation
-    -  introduced warning section for syntastic and white space detection
-    -  improved ctrlp integration: colors are automatically selected based on the current airline theme
-    -  new themes: molokai, bubblegum, jellybeans, tomorrow
--  Bug fixes
-    -  improved handling of eventignore used by other plugins
--  Other
-    - code cleaned up for clearer separation between core functionality and extensions
-    - introduced color extraction from highlight groups, allowing themes to be generated off of the active colorscheme (e.g. jellybeans and tomorrow)
-    - License changed to MIT
+- New features
+  - first-class integration with tagbar
+  - white space detection for trailing spaces and mixed indentation
+  - introduced warning section for syntastic and white space detection
+  - improved ctrlp integration: colors are automatically selected based on the current airline theme
+  - new themes: molokai, bubblegum, jellybeans, tomorrow
+- Bug fixes
+  - improved handling of eventignore used by other plugins
+- Other
+  - code cleaned up for clearer separation between core functionality and extensions
+  - introduced color extraction from highlight groups, allowing themes to be generated off of the active colorscheme (e.g. jellybeans and tomorrow)
+  - License changed to MIT
 
 ## [0.2] - 2013-07-28
 
--  New features
-      - iminsert detection
-      - integration with vimshell, vimfiler, commandt, lawrencium
-      - enhanced bufferline theming
-      - support for ctrlp theming
-      - support for custom window excludes
-- New themes
-      - luna and wombat
-- Bug fixes
-      - refresh branch name after switching with a shell command
+- New features
+  - iminsert detection
+  - integration with vimshell, vimfiler, commandt, lawrencium
+  - enhanced bufferline theming
+  - support for ctrlp theming
+  - support for custom window excludes
+- New themes - luna and wombat
+- Bug fixes - refresh branch name after switching with a shell command
 
 ## [0.1] - 2013-07-17
 
