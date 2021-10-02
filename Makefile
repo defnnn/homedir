@@ -108,11 +108,10 @@ pipx:
 	@bin/fig pipx
 	if ! test -x venv/bin/pipx; then \
 		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra aws-sam-cli poetry solo-python ec2instanceconnectcli checkov cloudsplaining awscli st2client flit
+	-bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra testinfra aws-sam-cli poetry solo-python ec2instanceconnectcli awscli flit
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	venv/bin/python -m pipx install --pip-args "tox-docker" tox
 	venv/bin/python -m pipx install --pip-args "ansible paramiko" ansible-core
-	venv/bin/python -m pipx install --pip-args "watchdog" streamlit
 
 asdf:
 	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
