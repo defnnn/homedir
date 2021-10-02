@@ -17,8 +17,7 @@ latest_inner:
 	$(MAKE) upgrade install
 
 rebuild-python:
-	rm -rf .pyenv venv .local/pipx
-	$(MAKE) pyenv-python
+	rm -rf venv .local/pipx
 	$(MAKE) python
 	$(MAKE) pipx
 
@@ -99,19 +98,11 @@ install_inner:
 	$(MAKE) pipx
 	$(MAKE) misc
 
-pyenv .pyenv/bin/pyenv:
-	@bin/fig pyenv
-	brew install pyenv
-	#curl -sSL https://pyenv.run | bash
-
-python: .pyenv/bin/pyenv
+python:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
 	if ! venv/bin/python --version 2>/dev/null; then \
 		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-
-pyenv-python:
-	bin/runmany 'pyenv install $$1' 3.9.6
 
 pipx:
 	@bin/fig pipx
@@ -119,7 +110,7 @@ pipx:
 		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 	bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra aws-sam-cli poetry solo-python ec2instanceconnectcli checkov cloudsplaining awscli st2client flit
 	venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
-	venv/bin/python -m pipx install --pip-args "tox-pyenv tox-docker" tox
+	venv/bin/python -m pipx install --pip-args "tox-docker" tox
 	venv/bin/python -m pipx install --pip-args "ansible paramiko" ansible-core
 	venv/bin/python -m pipx install --pip-args "watchdog" streamlit
 
