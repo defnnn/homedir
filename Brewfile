@@ -7,6 +7,8 @@ tap "defn/tap"
 tap "borkdude/brew"
 tap "cockroachdb/tap"
 tap "turbot/tap"
+tap "argoproj/tap"
+tap "tilt-dev/tap"
 
 brew "chamber"
 brew "doctl"
@@ -60,6 +62,8 @@ brew "babashka"
 brew "cockroach"
 brew "steampipe"
 brew "kumactl"
+brew "kubectl-argo-rollouts"
+brew "tilt"
 
 if OS.mac?
   tap "homebrew/cask"
