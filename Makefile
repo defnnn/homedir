@@ -28,7 +28,7 @@ update: # Update code
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
-	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault golang kubectl kustomize helm k3sup terraform argo argocd nodejs kind
+	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault kubectl kustomize helm king k3d k3sup terraform argo argocd python nodejs
 
 update_password_store:
 	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config; fi
@@ -36,7 +36,7 @@ update_password_store:
 
 update_inner:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
-	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault golang kubectl kustomize helm k3sup terraform argo argocd nodejs
+	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm king k3d k3sup terraform argo argocd python nodejs
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
