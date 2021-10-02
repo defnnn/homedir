@@ -60,27 +60,22 @@ class MyStack(TerraformStack):
         identitystore_group = DataAwsIdentitystoreGroup(
             self,
             "administrators_sso_group",
-            identity_store_id="empty",
+            identity_store_id=Fn.element(
+                Fn.tolist(ssoadmin_instances.identity_store_ids), 0
+            ),
             filter=[
                 {"attributePath": "DisplayName", "attributeValue": "Administrators"}
             ],
-        )
-        element0(
-            identitystore_group,
-            "identity_store_id",
-            ssoadmin_instances,
-            ".identity_store_ids",
         )
 
         sso_permission_set_admin = SsoadminPermissionSet(
             self,
             "admin_sso_permission_set",
             name="Administrator",
-            instance_arn="empty",
+            instance_arn=Fn.element(Fn.tolist(ssoadmin_instances.arns), 0),
             session_duration="PT2H",
             tags={"ManagedBy": "Terraform"},
         )
-        element0(sso_permission_set_admin, "instance_arn", ssoadmin_instances, ".arns")
 
         SsoadminManagedPolicyAttachment(
             self,
