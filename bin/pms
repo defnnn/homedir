@@ -8,7 +8,7 @@ function main {
     return 1
   fi
 
-  local nm_service="$1"
+  local nm_service="$1"; shift
 
   if [[ "$#" == 0 ]]; then
     set -- .
