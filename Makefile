@@ -165,9 +165,15 @@ bash:
 ssh:
 	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
+sync:
+	touch .ssh/authorized_keys
+	cp -a .ssh/authorized_keys k/.sync/
+	rsync -ia .password-store k/.sync/
+
 tilt-sync:
 	rm -rf .sync
 	mkdir -p .sync
+	$(MAKE) sync
 	rsync -ia .ssh/authorized_keys .sync/
 	rsync -ia .password-store .sync/
 	rm -rf k/.sync
