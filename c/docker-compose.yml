@@ -10,3 +10,4 @@ services:
       - $HOME/.password-store:/home/app/.password-store
       - $HOME/work:/home/app/work
       - $HOME/.ssh:/home/app/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock

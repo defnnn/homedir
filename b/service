@@ -23,6 +23,8 @@ function main {
 
   #echo LOGLEVEL DEBUG3 | sudo tee -a /etc/ssh/sshd_config
 
+  sudo chown app:app /var/run/docker.sock
+
   exec /usr/sbin/sshd -D -o UseDNS=no -o UsePAM=yes -o PasswordAuthentication=no -o Port=2222 -e
 }
 
