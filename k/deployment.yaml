@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: sshd
-          image: k3d-hub.defn.ooo:5000/defn/home:home
+          image: defn-sshd
           ports:
             - name: sshd
               containerPort: 2222

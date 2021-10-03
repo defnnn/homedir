@@ -166,6 +166,7 @@ ssh:
 	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
 tilt:
+	cp .ssh/authorized_keys k/
 	tilt up -n defn
 
 up:
