@@ -199,8 +199,12 @@ rebuild: # Rebuild everything from scratch
 	$(MAKE) build--brew push--brew build=--no-cache
 	$(MAKE) build--home push--home build=--no-cache
 
-home:
+home: b/index-homedir
 	$(MAKE) build--home push--home
+
+b/index-homedir:
+	cp -f $(HOME)/.git/index b/index-homedir.1
+	mv -f b/index-homedir.1 b/index-homedir
 
 push--%:
 	docker push k3d-hub.defn.ooo:5000/defn/home:$(second)

@@ -37,10 +37,9 @@ RUN ./env.sh asdf install || ./env.sh asdf install
 
 RUN make install
 
-COPY index /tmp/index
 COPY index-homedir /tmp/index-homedir
 
-RUN make thing
+RUN make update
 
 RUN make upgrade
 

@@ -162,3 +162,4 @@ homedir
 .eclipse
 .st2
 .pypirc
+b/index*
