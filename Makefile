@@ -166,8 +166,8 @@ ssh:
 	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
 tilt:
-	cp .ssh/authorized_keys k/
-	tilt up -n defn
+	rsync -ia .ssh/authorized_keys k/
+	tilt up
 
 up:
 	cd c && docker-compose up -d --remove-orphans
