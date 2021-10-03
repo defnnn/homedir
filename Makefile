@@ -165,9 +165,17 @@ bash:
 ssh:
 	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
+tilt-sync:
+	rm -rf .sync
+	mkdir -p .sync
+	rsync -ia .ssh/authorized_keys .sync/
+	rsync -ia .password-store .sync/
+	rm -rf k/.sync
+	mv .sync k/
+
 tilt:
-	rsync -ia .ssh/authorized_keys k/
 	tilt up
+	$(MAKE) tilt-sync
 
 up:
 	cd c && docker-compose up -d --remove-orphans

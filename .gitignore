@@ -164,3 +164,4 @@ homedir
 .pypirc
 b/index*
 b/.*
+.sync
