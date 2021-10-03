@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  home:
+    image: k3d-hub.defn.ooo:5000/defn/home:home
+    ports:
+      - 127.0.0.1:2222:2222
+    volumes:
+      - ../b/service:/service
+      - $HOME/.password-store:/app/src/.password-store
+      - $HOME/work:/app/src/work
+      - $HOME/.ssh:/app/src/.ssh

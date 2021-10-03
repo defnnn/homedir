@@ -160,13 +160,17 @@ new:
 	sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/git-crypt /usr/local/bin/
 
 bash:
-	docker-compose exec home bash -il
+	cd c && docker-compose exec home bash -il
+
+ssh:
+	-ssh-keygen -R '[localhost]:2222'
+	ssh -p 2222 -o StrictHostKeyChecking=no app@localhost
 
 up:
-	docker-compose up -d --remove-orphans
+	cd c && docker-compose up -d --remove-orphans
 
 down:
-	docker-compose down --remove-orphans
+	cd c && docker-compose down --remove-orphans
 
 recreate:
 	$(MAKE) down
@@ -177,7 +181,7 @@ recycle:
 	$(MAKE) recreate
 
 tail:
-	docker-compose logs -f
+	cd c && docker-compose logs -f
 
 shim:
 	ln -nfs "$(shell asdf which kubectl)" bin/site/
@@ -206,5 +210,5 @@ build--%:
 		--build-arg HOMEBOOT=app \
 		--build-arg HOMEUSER=app \
 		--build-arg HOMEDIR=https://github.com/amanibhavam/homedir \
-		-f b/Dockerfile \
+		-f b/Dockerfile.$(second) \
 		b
