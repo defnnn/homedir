@@ -27,7 +27,7 @@ update: # Update code
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
-	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault kubectl kustomize helm king k3d k3sup terraform argo argocd python nodejs
+	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
 
 config:
 	-chmod 600 ssh/config
@@ -35,7 +35,7 @@ config:
 
 update_inner:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
-	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm king k3d k3sup terraform argo argocd python nodejs
+	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
@@ -161,9 +161,6 @@ new:
 
 bash:
 	cd c && docker-compose exec home bash -il
-
-ssh:
-	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
 sync:
 	touch .ssh/authorized_keys
