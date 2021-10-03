@@ -163,3 +163,4 @@ homedir
 .st2
 .pypirc
 b/index*
+b/.*

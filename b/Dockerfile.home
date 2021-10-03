@@ -35,6 +35,8 @@ RUN ./env.sh brew bundle || true
 
 RUN ./env.sh asdf install || ./env.sh asdf install
 
+COPY .tool-versions .
+
 RUN make install
 
 COPY index-homedir /tmp/index-homedir

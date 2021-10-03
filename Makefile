@@ -199,12 +199,15 @@ rebuild: # Rebuild everything from scratch
 	$(MAKE) build--brew push--brew build=--no-cache
 	$(MAKE) build--home push--home build=--no-cache
 
-home: b/index-homedir
+home: b/index-homedir b/.tool-versions
 	$(MAKE) build--home push--home
 
 b/index-homedir:
 	cp -f $(HOME)/.git/index b/index-homedir.1
 	mv -f b/index-homedir.1 b/index-homedir
+
+b/.tool-versions: .password-store/.tool-versions
+	rsync -ia .password-store/.tool-versions $@
 
 push--%:
 	docker push k3d-hub.defn.ooo:5000/defn/home:$(second)
