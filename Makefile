@@ -165,6 +165,9 @@ bash:
 ssh:
 	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
+tilt:
+	tilt up -n defn
+
 up:
 	cd c && docker-compose up -d --remove-orphans
 

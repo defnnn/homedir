@@ -1,3 +1,7 @@
-allow_k8s_contexts('default')
+# -*- mode: Python -*
 
-k8s_yaml('k/cloudflared.yaml')
+analytics_settings(False)
+
+k8s_yaml(kustomize('.'))
+
+k8s_resource('sshd', port_forwards=2222)

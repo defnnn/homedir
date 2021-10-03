@@ -1,5 +1,0 @@
----
-- hosts: all
-  tasks:
-    - name: uname
-      command: uname -a

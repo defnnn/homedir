@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sshd
+  labels:
+    app: sshd
+spec:
+  selector:
+    matchLabels:
+      app: sshd
+  template:
+    metadata:
+      labels:
+        app: sshd
+    spec:
+      containers:
+        - name: sshd
+          image: k3d-hub.defn.ooo:5000/defn/home:home
+          ports:
+            - name: sshd
+              containerPort: 2222
