@@ -16,7 +16,7 @@ function main {
     all)
       k get --all-namespaces $(k api-resources --verbs=list --namespaced -o name | grep -v events | xargs | sed 's# #,#g')
       ;;
-    k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*|cilium*|hubble*|stern)
+    k*|helm|kustomize|linkerd|glooctl|bash|*make|argo*|cilium*|hubble*|stern|tilt)
       "$@"
       ;;
     n*)
@@ -38,9 +38,13 @@ function main {
       shift
       "$@"
       ;;
-    9)
+    9|n)
       shift
       k9s "$@"
+      ;;
+    nn)
+      shift
+      k9s -n "$@"
       ;;
     "")
       k9s
