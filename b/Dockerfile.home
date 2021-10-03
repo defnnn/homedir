@@ -43,9 +43,7 @@ RUN make install
 
 COPY index-homedir /tmp/index-homedir
 
-RUN make update
-
-RUN make upgrade
+RUN make update && make upgrade
 
 COPY service /service
 RUN sudo chmod 755 /service
