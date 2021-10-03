@@ -163,7 +163,6 @@ bash:
 	cd c && docker-compose exec home bash -il
 
 ssh:
-	-ssh-keygen -R '[localhost]:2222'
 	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
 up:
@@ -174,6 +173,7 @@ down:
 
 recreate:
 	$(MAKE) down
+	-ssh-keygen -R '[localhost]:2222'
 	$(MAKE) up
 
 recycle:
