@@ -185,7 +185,6 @@ tail:
 
 shim:
 	ln -nfs "$(shell asdf which kubectl)" bin/site/
-	ln -nfs "$(shell asdf which kind)" bin/site/
 	ln -nfs "$(shell asdf which kustomize)" bin/site/
 	ln -nfs "$(shell asdf which argocd)" bin/site/
 	ln -nfs "$(shell asdf which argo)" bin/site/
