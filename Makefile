@@ -240,3 +240,19 @@ shim:
 	ln -nfs "$(shell asdf which helm)" bin/site/
 	ln -nfs "$(shell asdf which python)" bin/site/
 	ln -nfs "$(shell asdf which node)" bin/site/
+
+rebuild: # Rebuild everything from scratch
+	$(MAKE) build--base push--base build=--no-cache
+	$(MAKE) build--brew push--brew build=--no-cache
+	$(MAKE) build--home push--home build=--no-cache
+
+push--%:
+	docker push k3d-hub.defn.ooo:5000/defn/home:$(second)
+
+build--%:
+	docker build $(build) -t k3d-hub.defn.ooo:5000/defn/home:$(second) \
+		--build-arg HOMEBOOT=app \
+		--build-arg HOMEUSER=app \
+		--build-arg HOMEDIR=https://github.com/amanibhavam/homedir \
+		-f b/Dockerfile \
+		b

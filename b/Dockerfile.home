@@ -1,0 +1,50 @@
+FROM k3d-hub.defn.ooo:5000/defn/home:brew
+
+ARG HOMEBOOT
+ARG HOMEUSER
+ARG HOMEDIR
+
+ARG GITHUBUSER
+
+ENV HOMEBOOT=$HOMEBOOT
+ENV HOMEUSER=$HOMEUSER
+ENV HOMEHOME=$HOMEHOME
+
+USER root
+RUN groupmod -n $HOMEUSER $HOMEBOOT
+RUN usermod -d /home/$HOMEUSER $HOMEBOOT
+RUN usermod -l $HOMEUSER $HOMEBOOT
+RUN echo "$HOMEUSER ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+RUN mkdir -p /run/sshd /run && chown -hR $HOMEUSER:$HOMEUSER /run /etc/ssh
+RUN if test "$HOMEBOOT" != "$HOMEUSER"; then ln -nfs $HOMEBOOT /home/$HOMEUSER; fi
+RUN chown -h $HOMEUSER:$HOMEUSER /home/$HOMEUSER /home/$HOMEBOOT
+
+USER $HOMEUSER
+WORKDIR /home/$HOMEUSER
+ENV HOME=/home/$HOMEUSER
+ENV PATH=/home/$HOMEUSER/.asdf/bin:/home/$HOMEUSER/.asdf/shims:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+RUN sudo apt-get update && sudo apt-get upgrade -y && sudo apt install -y zbar-tools htop
+RUN brew upgrade
+
+RUN sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/gpg* /home/linuxbrew/.linuxbrew/bin/tmux /usr/local/bin/
+
+RUN git clone $HOMEDIR homedir && mv homedir/.git . && rm -rf homedir && git reset --hard && make update
+
+RUN ./env.sh brew bundle || true
+
+RUN ./env.sh asdf install || ./env.sh asdf install
+
+RUN make install
+
+COPY index /tmp/index
+COPY index-homedir /tmp/index-homedir
+
+RUN make thing
+
+RUN make upgrade
+
+COPY service /service
+RUN sudo chmod 755 /service
+ENTRYPOINT [ "/service" ]
+CMD [ "sshd" ]
