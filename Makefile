@@ -175,7 +175,6 @@ tilt-sync:
 
 tilt:
 	tilt up
-	$(MAKE) tilt-sync
 
 up:
 	cd c && docker-compose up -d --remove-orphans
