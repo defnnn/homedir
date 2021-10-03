@@ -33,9 +33,11 @@ RUN git clone $HOMEDIR homedir && mv homedir/.git . && rm -rf homedir && git res
 
 RUN ./env.sh brew bundle || true
 
-RUN ./env.sh asdf install || ./env.sh asdf install
+COPY .tool-versions .tool-versions
 
-COPY .tool-versions .
+RUN git submodule update --init
+
+RUN ./env.sh asdf install || ./env.sh asdf install
 
 RUN make install
 
