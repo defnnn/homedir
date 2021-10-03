@@ -80,12 +80,6 @@ setup-do-inner:
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
 
-setup-dummy:
-	bin/setup-dummy
-
-setup-registry:
-	docker run -d -p 5000:5000 --restart=always --name registry registry:2
-
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	@bin/fig cleanup
@@ -152,51 +146,8 @@ bin/docker-credential-pass:
 	else \
 		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
 
-ts-sync:
-	sudo rsync -ia /mnt/tailscale/. /var/lib/tailscale/.
-	sudo systemctl restart tailscaled
-	$(MAKE) ts
-
-ts-save:
-	sudo rsync -ia /var/lib/tailscale/. /mnt/tailscale/.
-
-ts:
-	sudo tailscale up --accept-dns=false --accept-routes=true
-
-multipass:
-	brew install multipass
-	brew install --cask virtualbox virtualbox-extension-pack
-
 homebrew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
-
-hubble:
-	export HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
-	curl -LO "https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz"
-	curl -LO "https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz.sha256sum"
-	sha256sum --check hubble-linux-amd64.tar.gz.sha256sum
-	tar zxf hubble-linux-amd64.tar.gz
-	sudo mv hubble /usr/local/bin/
-	rm -f hubble-linux-amd64.tar.gz*
-
-warp:
-	brew install --cask cloudflare-warp
-
-cloudflared:
-	wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
-	sudo dpkg -i cloudflared-stable-linux-amd64.deb
-	rm -f cloudflared-stable-linux-amd64.deb
-
-tunnel:
-	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
-		--net=host \
-		cloudflare/cloudflared:2021.4.0 tunnel run
-
-connect--%:
-	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
-		-p 1080:1080 \
-		cloudflare/cloudflared:2021.4.0 access tcp \
-			--hostname "$(second)" --url 0.0.0.0:1080
 
 new:
 	sudo mkdir -p /home/linuxbrew
@@ -208,27 +159,25 @@ new:
 	sudo mkdir -p /usr/local/bin
 	sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/git-crypt /usr/local/bin/
 
-------docker-compose: # -----------------------------
-
-bash: # bash shell with docker-compose exec
+bash:
 	docker-compose exec home bash -il
 
-up: # Bring up home
+up:
 	docker-compose up -d --remove-orphans
 
-down: # Bring down home
+down:
 	docker-compose down --remove-orphans
 
-recreate: # Recreate home container
+recreate:
 	$(MAKE) down
 	$(MAKE) up
 
-recycle: # Recycle home container
+recycle:
 	$(MAKE) pull
 	$(MAKE) recreate
 
-pull:
-	docker-compose pull
+tail:
+	docker-compose logs -f
 
 shim:
 	ln -nfs "$(shell asdf which kubectl)" bin/site/
@@ -245,6 +194,9 @@ rebuild: # Rebuild everything from scratch
 	$(MAKE) build--base push--base build=--no-cache
 	$(MAKE) build--brew push--brew build=--no-cache
 	$(MAKE) build--home push--home build=--no-cache
+
+home:
+	$(MAKE) build--home push--home
 
 push--%:
 	docker push k3d-hub.defn.ooo:5000/defn/home:$(second)

@@ -15,6 +15,12 @@ function main {
     echo HostCertificate /etc/ssh/ssh_host_ecdsa_key-cert.pub | sudo tee -a /etc/ssh/sshd_config
   fi
 
+  if [[ ! -f /etc/ssh/ssh_host_rsa_key ]]; then
+    sudo rm -v /etc/ssh/ssh_host_*
+    sudo dpkg-reconfigure openssh-server
+    sudo chown -R app:app /etc/ssh
+  fi
+
   exec /usr/sbin/sshd -D -o UseDNS=no -o UsePAM=yes -o PasswordAuthentication=no -o Port=2222 -e
 }
 

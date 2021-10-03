@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   home:
-    image: defn/home:home
+    image: k3d-hub.defn.ooo:5000/defn/home:home
     network_mode: service:pause
     pid: service:pause
     volumes:
