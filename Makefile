@@ -23,15 +23,15 @@ rebuild-python:
 
 update: # Update code
 	git pull
-	$(MAKE) update_password_store
+	$(MAKE) config
 	$(MAKE) update_inner
 
 list-all: # Update asdf plugin versions
 	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault kubectl kustomize helm king k3d k3sup terraform argo argocd python nodejs
 
-update_password_store:
-	if cd .password-store && git reset --hard origin/master; then chmod 600 ssh/config || true; fi
-	if cd .password-store && git pull; then chmod 600 ssh/config || true; fi
+config:
+	-chmod 600 ssh/config
+	-chmod 700 .gnupg
 
 update_inner:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
@@ -164,7 +164,7 @@ bash:
 
 ssh:
 	-ssh-keygen -R '[localhost]:2222'
-	ssh -p 2222 -o StrictHostKeyChecking=no app@localhost
+	ssh -A -p 2222 -o StrictHostKeyChecking=no app@localhost
 
 up:
 	cd c && docker-compose up -d --remove-orphans
