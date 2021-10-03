@@ -80,6 +80,12 @@ setup-do-inner:
 setup-aws:
 	sudo perl -pe 's{^#\s*GatewayPorts .*}{GatewayPorts yes}' /etc/ssh/sshd_config | grep Gateway
 
+setup-dummy:
+	bin/setup-dummy
+
+setup-registry:
+	docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
 	@bin/fig cleanup
@@ -146,8 +152,45 @@ bin/docker-credential-pass:
 	else \
 		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
 
+ts-sync:
+	sudo rsync -ia /mnt/tailscale/. /var/lib/tailscale/.
+	sudo systemctl restart tailscaled
+	$(MAKE) ts
+
+ts-save:
+	sudo rsync -ia /var/lib/tailscale/. /mnt/tailscale/.
+
+ts:
+	sudo tailscale up --accept-dns=false --accept-routes=true
+
+multipass:
+	brew install multipass
+	brew install --cask virtualbox virtualbox-extension-pack
+
 homebrew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
+
+hubble:
+	export HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
+	curl -LO "https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz"
+	curl -LO "https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz.sha256sum"
+	sha256sum --check hubble-linux-amd64.tar.gz.sha256sum
+	tar zxf hubble-linux-amd64.tar.gz
+	sudo mv hubble /usr/local/bin/
+	rm -f hubble-linux-amd64.tar.gz*
+
+warp:
+	brew install --cask cloudflare-warp
+
+cloudflared:
+	wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
+	sudo dpkg -i cloudflared-stable-linux-amd64.deb
+	rm -f cloudflared-stable-linux-amd64.deb
+
+tunnel:
+	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
+		--net=host \
+		cloudflare/cloudflared:2021.4.0 tunnel run
 
 connect--%:
 	docker run -ti -v ~/.cloudflared:/etc/cloudflared \
@@ -164,6 +207,28 @@ new:
 	./bin/install-homedir
 	sudo mkdir -p /usr/local/bin
 	sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/git-crypt /usr/local/bin/
+
+------docker-compose: # -----------------------------
+
+bash: # bash shell with docker-compose exec
+	docker-compose exec home bash -il
+
+up: # Bring up home
+	docker-compose up -d --remove-orphans
+
+down: # Bring down home
+	docker-compose down --remove-orphans
+
+recreate: # Recreate home container
+	$(MAKE) down
+	$(MAKE) up
+
+recycle: # Recycle home container
+	$(MAKE) pull
+	$(MAKE) recreate
+
+pull:
+	docker-compose pull
 
 shim:
 	ln -nfs "$(shell asdf which kubectl)" bin/site/
