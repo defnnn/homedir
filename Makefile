@@ -211,9 +211,9 @@ shim:
 	ln -nfs "$(shell asdf which node)" bin/site/
 
 rebuild: # Rebuild everything from scratch
-	$(MAKE) build--base push--base build=--no-cache
-	$(MAKE) build--brew push--brew build=--no-cache
-	$(MAKE) build--home push--home build=--no-cache
+	$(MAKE) build--base build=--no-cache
+	$(MAKE) build--brew build=--no-cache
+	$(MAKE) build--home build=--no-cache
 
 home: b/.tool-versions
 	date > b/index-homedir
