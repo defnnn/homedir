@@ -176,7 +176,7 @@ sync:
 
 tilt-sync:
 	cp -a .docker/config.json k/.sync/.docker/
-	cp -a.ssh/authorized_keys k/.sync/
+	cp -a .ssh/authorized_keys k/.sync/
 	rsync -ia .password-store k/.sync/
 
 tilt:
