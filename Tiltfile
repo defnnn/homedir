@@ -10,7 +10,7 @@ docker_build('defn-sshd', 'k',
   live_update=[
     sync('k/.sync', '/home/app/k/.sync'),
 
-    run('cd && rsync -ia k/.ssh/.ssh/. .ssh/. >/dev/null'),
+    run('cd && rsync -ia k/.ssh/. .ssh/. >/dev/null'),
     run('cd && make update || make update'),
     run('cd && rsync -ia k/.sync/.password-store/. .password-store/. >/dev/null'),
     run('cd && rsync -ia k/.sync/.kube/. .kube/. >/dev/null'),
