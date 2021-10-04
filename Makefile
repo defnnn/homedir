@@ -177,7 +177,7 @@ tilt-sync:
 	mv .sync k/
 
 tilt:
-	tilt up -n defn
+	tilt up --namespaces defn
 
 up:
 	cd c && docker-compose up -d --remove-orphans
