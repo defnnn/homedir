@@ -177,7 +177,7 @@ tilt-sync:
 	mv .sync k/
 
 tilt:
-	tilt up
+	tilt up -n defn
 
 up:
 	cd c && docker-compose up -d --remove-orphans
