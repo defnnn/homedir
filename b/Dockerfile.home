@@ -37,7 +37,7 @@ RUN make update
 
 COPY .tool-versions.container .tool-versions
 
-RUN make update
+RUN make update || make update
 
 RUN git submodule update --init
 
