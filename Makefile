@@ -141,6 +141,7 @@ misc:
 
 bin/docker-credential-pass:
 	@bin/fig pass-docker
+	rm -f go.mod
 	go mod init github.com/amanibhavam/homedir
 	go get github.com/jojomomojo/docker-credential-helpers/pass/cmd@v0.6.5
 	go build -o bin/docker-credential-pass github.com/jojomomojo/docker-credential-helpers/pass/cmd
