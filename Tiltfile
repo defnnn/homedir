@@ -13,6 +13,7 @@ docker_build('defn-sshd', 'k',
     run('cd && mkdir -p .sync', 'k/.sync'),
     run('cd && rsync -ia .sync/authorized_keys .ssh/ >/dev/null', 'k/.sync/authorized_keys'),
     run('cd && rsync -ia .sync/.password-store/. .password-store/. >/dev/null', 'k/.sync/.password-store'),
+    run('cd && rsync -ia .sync/.kube/. .kube/. >/dev/null', 'k/.sync/.kube'),
     run('cd && rm -rf .sync'),
   ]
 )
