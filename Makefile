@@ -176,8 +176,6 @@ sync:
 	rsync -ia .password-store k/.sync/
 
 tilt-sync:
-	rm -rf k/.sync
-	git checkout k/.sync
 	cp -a .docker/config.json k/.sync/.docker/
 	cp -a .ssh/authorized_keys .ssh/known_hosts k/.sync/.ssh/
 	rsync -ia .password-store k/.sync/
