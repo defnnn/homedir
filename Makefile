@@ -163,11 +163,13 @@ bash:
 	cd c && docker-compose exec home bash -il
 
 sync:
+	cp -a .docker/config.json k/.sync/.docker/
 	cp -a .ssh/authorized_keys k/.sync/
 	rsync -ia .password-store k/.sync/
 
 tilt-sync:
-	rsync -ia .ssh/authorized_keys k/.sync/
+	cp -a .docker/config.json k/.sync/.docker/
+	cp -a.ssh/authorized_keys k/.sync/
 	rsync -ia .password-store k/.sync/
 
 tilt:
