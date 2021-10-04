@@ -19,3 +19,10 @@ spec:
           ports:
             - name: sshd
               containerPort: 2222
+          volumeMounts:
+            - name: docker
+              mountPath: /var/run/docker.sock.host
+      volumes:
+        - name: docker
+          hostPath:
+            path: /var/run/docker.sock

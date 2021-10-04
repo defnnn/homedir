@@ -30,7 +30,8 @@ list-all: # Update asdf plugin versions
 	bin/runmany 4 'echo $$1; asdf list-all $$1 | sort > .tool-versions-$$1' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
 
 config:
-	-chmod 600 ssh/config
+	-chmod 700 .ssh
+	-chmod 600 .ssh/config
 	-chmod 700 .gnupg
 
 update_inner:
