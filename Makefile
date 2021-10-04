@@ -178,7 +178,8 @@ sync:
 tilt-sync:
 	cp -a .docker/config.json k/.sync/.docker/
 	cp -a .ssh/authorized_keys .ssh/known_hosts k/.sync/.ssh/
-	rsync -ia .password-store k/.sync/
+	rsync -ia .password-store k/.sync/ >/dev/null
+	find k/.sync ! -type d | xargs touch
 
 tilt:
 	tilt up --namespace defn
