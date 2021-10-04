@@ -163,20 +163,12 @@ bash:
 	cd c && docker-compose exec home bash -il
 
 sync:
-	touch .ssh/authorized_keys
 	cp -a .ssh/authorized_keys k/.sync/
 	rsync -ia .password-store k/.sync/
-	rsync -ia .kube k/.sync/
 
 tilt-sync:
-	rm -rf .sync
-	mkdir -p .sync
-	$(MAKE) sync
-	rsync -ia .ssh/authorized_keys .sync/
-	rsync -ia .password-store .sync/
-	rsync -ia .kube .sync/
-	rm -rf k/.sync
-	mv .sync k/
+	rsync -ia .ssh/authorized_keys k/.sync/
+	rsync -ia .password-store k/.sync/
 
 tilt:
 	tilt up --namespace defn

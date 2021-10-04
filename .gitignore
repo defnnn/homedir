@@ -144,7 +144,6 @@ tmux*log
 WebstormProjects/
 .profile
 homedir
-.kube
 .fig/
 .tmux.conf
 .zprofile
