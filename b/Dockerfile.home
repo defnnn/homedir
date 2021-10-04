@@ -33,7 +33,7 @@ RUN git clone $HOMEDIR homedir && mv homedir/.git . && rm -rf homedir && git res
 
 RUN ./env.sh brew bundle || true
 
-RUN make update
+RUN make update || make update
 
 COPY .tool-versions.container .tool-versions
 
