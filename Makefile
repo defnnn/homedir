@@ -176,6 +176,7 @@ sync:
 	rsync -ia .password-store k/.sync/
 
 tilt-sync:
+	cp ~/.password-store/.gpg-id k/.sync/.aws-vault/
 	cp -a .docker/config.json k/.sync/.docker/
 	cp -a .ssh/authorized_keys .ssh/known_hosts k/.sync/.ssh/
 	rsync -ia .password-store k/.sync/ >/dev/null
