@@ -45,6 +45,12 @@ update_inner:
 	rm -f .profile
 
 upgrade: # Upgrade installed software
+	if [[ ! -x bin/docker-credential-pass ]]; then \
+		curl -sSL -o meh.tar.gz https://github.com/docker/docker-credential-helpers/releases/download/v0.6.4/docker-credential-pass-v0.6.4-amd64.tar.gz; \
+		tar xvfz meh.tar.gz; \
+		rm -f meh.tar.gz; \
+		chmod 755 docker-credential-pass; \
+		mv docker-credential-pass bin/site/; fi
 	brew upgrade
 	if [[ "$(shell uname -s)" == "Darwin" ]]; then brew upgrade --cask; fi
 	. venv/bin/activate && pipx upgrade-all
