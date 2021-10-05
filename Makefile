@@ -193,8 +193,11 @@ down:
 
 recreate:
 	$(MAKE) down
-	-ssh-keygen -R '[localhost]:2222'
+	$(MAKE) reset
 	$(MAKE) up
+
+reset:
+	-ssh-keygen -R '[localhost]:2222'
 
 recycle:
 	$(MAKE) pull
