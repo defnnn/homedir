@@ -72,27 +72,8 @@ colorscheme xoria256
 hi Folded  ctermfg=180 guifg=#dfaf87 ctermbg=234 guibg=#1c1c1c
 hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
 
-let g:go_fmt_command = "goimports"
-let g:go_doc_max_height = 50
-let g:go_doc_popup_window = 1
-let g:go_def_reuse_buffer = 1
-let g:go_metalinter_autosave = 0
-
-let g:go_metalinter_autosave_enabled = ['golint']
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-
 let b:ale_virtualenv_dir_names = ['venv']
 
-autocmd FileType go map Z :bprevious<CR>
-autocmd FileType go map gf :bprevious<CR>
-autocmd FileType go map X :bnext<CR>
-autocmd FileType go map gt :bnext<CR>
-autocmd FileType go map Q :bd<CR>
+let g:jedi#environment_path = "venv"
 
-autocmd FileType go nmap E <Plug>(go-run)
-autocmd FileType go nmap B <Plug>(go-build)
-autocmd FileType go nmap T <Plug>(go-test)
-autocmd FileType go nmap K <Plug>(go-doc)
-autocmd FileType go nmap I <Plug>(go-info)
-autocmd FileType go nmap L <Plug>(go-metalinter)
-autocmd FileType go nmap S <Plug>(go-alternate-edit)
+autocmd FileType python map <leader>z :ALEFix black<CR>
