@@ -226,6 +226,9 @@ home: b/.tool-versions
 	date > b/index-homedir
 	$(MAKE) build--home push--home
 
+home-update:
+	$(MAKE) build--update push--home
+
 b/.tool-versions: .password-store/.tool-versions
 	rsync -ia .password-store/.tool-versions $@
 
