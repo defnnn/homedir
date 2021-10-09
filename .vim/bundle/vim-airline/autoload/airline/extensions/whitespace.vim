@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2020 Bailey Ling et al.
+" MIT License. Copyright (c) 2013-2021 Bailey Ling et al.
 " vim: et ts=2 sts=2 sw=2
 
 " http://got-ravings.blogspot.com/2008/10/vim-pr0n-statusline-whitespace-flags.html
@@ -11,7 +11,8 @@ let s:default_checks = ['indent', 'trailing', 'mixed-indent-file', 'conflicts']
 
 let s:enabled = get(g:, 'airline#extensions#whitespace#enabled', 1)
 let s:skip_check_ft = {'make': ['indent', 'mixed-indent-file'],
-      \ 'csv': ['indent', 'mixed-indent-file']}
+      \ 'csv': ['indent', 'mixed-indent-file'],
+      \ 'mail': ['trailing']}
 
 function! s:check_mixed_indent()
   let indent_algo = get(g:, 'airline#extensions#whitespace#mixed_indent_algo', 0)
@@ -51,7 +52,7 @@ endfunction
 function! s:conflict_marker()
   " Checks for git conflict markers
   let annotation = '\%([0-9A-Za-z_.:]\+\)\?'
-  if &ft is# 'rst'
+  if match(['rst', 'markdown'], &ft) >= 0
     " rst filetypes use '=======' as header
     let pattern = '^\%(\%(<\{7} '.annotation. '\)\|\%(>\{7\} '.annotation.'\)\)$'
   else
@@ -77,7 +78,8 @@ function! airline#extensions#whitespace#check()
     let check = 'trailing'
     if index(checks, check) > -1 && index(get(skip_check_ft, &ft, []), check) < 0
       try
-        let regexp = get(g:, 'airline#extensions#whitespace#trailing_regexp', '\s$')
+        let regexp = get(b:, 'airline_whitespace_trailing_regexp',
+              \ get(g:, 'airline#extensions#whitespace#trailing_regexp', '\s$'))
         let trailing = search(regexp, 'nw')
       catch
         call airline#util#warning(printf('Whitespace: error occurred evaluating "%s"', regexp))
@@ -182,6 +184,10 @@ function! airline#extensions#whitespace#init(...)
 endfunction
 
 function! s:ws_refresh()
+  if !exists('#airline')
+    " airline disabled
+    return
+  endif
   if get(b:, 'airline_ws_changedtick', 0) == b:changedtick
     return
   endif
