@@ -184,6 +184,7 @@ tilt-sync:
 	find k/.sync/.kube ! -type d | xargs touch
 
 tilt:
+	date > k/.index
 	tilt up --namespace defn
 
 up:
