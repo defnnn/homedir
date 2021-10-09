@@ -74,6 +74,6 @@ hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=no
 
 let b:ale_virtualenv_dir_names = ['venv']
 
-let g:jedi#environment_path = "venv"
+let g:jedi#popup_on_dot = 0
 
 autocmd FileType python map <leader>z :ALEFix black<CR>
