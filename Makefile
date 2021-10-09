@@ -228,7 +228,7 @@ home: b/.tool-versions
 
 home-update:
 	$(MAKE) build--update build=--no-cache push--home 
-	touch k
+	date > k/.index
 	sleep 10
 	$(MAKE) tilt-sync
 
