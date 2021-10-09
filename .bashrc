@@ -218,7 +218,12 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 export KUBECTX_IGNORE_FZF=1
 
-export TERM=xterm-256color
+if [[ -z "${TMUX:-}" ]]; then
+  TERM=tmux-256color
+else
+  TERM=xterm-256color
+fi
+export TERM
 export TERM_PROGRAM=iTerm.app
 export BAT_THEME="Monokai Extended"
 
