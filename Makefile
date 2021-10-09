@@ -227,7 +227,7 @@ home: b/.tool-versions
 	$(MAKE) build--home push--home
 
 home-update:
-	$(MAKE) build--update push--home
+	$(MAKE) build--update build=--no-cache push--home 
 	touch k
 	sleep 10
 	$(MAKE) tilt-sync
