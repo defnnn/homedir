@@ -22,6 +22,10 @@ cmd_button(name='rebuild',
            resource='sshd',
            argv=['make', 'home-update'])
 
-cmd_button(name='sync',
+cmd_button(name='full-sync',
            resource='sshd',
            argv=['make', 'tilt-sync'])
+
+cmd_button(name='sync',
+           resource='sshd',
+           argv=['make', 'sync'])
