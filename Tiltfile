@@ -21,3 +21,7 @@ docker_build('defn-sshd', 'k',
 cmd_button(name='rebuild',
            resource='sshd',
            argv=['make', 'home-update'])
+
+cmd_button(name='sync',
+           resource='sshd',
+           argv=['make', 'tilt-sync'])
