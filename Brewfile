@@ -57,6 +57,7 @@ brew "steampipe"
 brew "kumactl"
 brew "kubectl-argo-rollouts"
 brew "tilt"
+brew "clusterctl"
 
 if OS.mac?
   tap "homebrew/cask"
