@@ -81,6 +81,8 @@ let g:go_metalinter_autosave = 0
 let g:go_metalinter_autosave_enabled = ['golint']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 
+let b:ale_virtualenv_dir_names = ['venv']
+
 autocmd FileType go map Z :bprevious<CR>
 autocmd FileType go map gf :bprevious<CR>
 autocmd FileType go map X :bnext<CR>
