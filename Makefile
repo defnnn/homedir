@@ -181,6 +181,7 @@ tilt-sync:
 	cp -a .ssh/authorized_keys .ssh/known_hosts k/.sync/.ssh/
 	rsync -ia .password-store k/.sync/ >/dev/null
 	find k/.sync/.password-store ! -type d | xargs touch
+	find k/.sync/.kube ! -type d | xargs touch
 
 tilt:
 	tilt up --namespace defn
