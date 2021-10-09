@@ -218,7 +218,7 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 export KUBECTX_IGNORE_FZF=1
 
-if [[ -z "${TMUX:-}" ]]; then
+if [[ -n "${TMUX:-}" ]]; then
   TERM=tmux-256color
 else
   TERM=xterm-256color
