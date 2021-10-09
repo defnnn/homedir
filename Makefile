@@ -246,3 +246,6 @@ build--%:
 		--build-arg HOMEDIR=https://github.com/amanibhavam/homedir \
 		-f b/Dockerfile.$(second) \
 		b
+
+yarn:
+	npm install -g yarn
