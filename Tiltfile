@@ -1,4 +1,4 @@
-# -*- mode: Python -*
+load('ext://uibutton', 'cmd_button', 'location')
 
 analytics_settings(False)
 
@@ -17,3 +17,7 @@ docker_build('defn-sshd', 'k',
     run('cd && env SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock make update || true')
   ]
 )
+
+cmd_button(name='rebuild',
+           resource='sshd',
+           argv=['make', 'home-update'])
