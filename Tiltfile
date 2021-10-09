@@ -14,5 +14,6 @@ docker_build('defn-sshd', 'k',
     run('cd && rsync -ia k/.sync/.docker/. .docker/. || true'),
     run('cd && rsync -ia k/.sync/.kube/. .kube/. >/dev/null || true'),
     run('cd && rsync -ia k/.sync/.password-store/. .password-store/. >/dev/null || true'),
+    run('cd && env SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock make update || true')
   ]
 )
