@@ -77,3 +77,7 @@ let b:ale_virtualenv_dir_names = ['venv']
 let g:jedi#popup_on_dot = 0
 
 autocmd FileType python map <leader>z :ALEFix black<CR>
+
+highlight CocHintFloat ctermfg=Black guifg=#000000
+highlight CocErrorFloat ctermfg=Black guifg=#000000
+
