@@ -228,6 +228,9 @@ home: b/.tool-versions
 
 home-update:
 	$(MAKE) build--update push--home
+	touch k
+	sleep 10
+	$(MAKE) tilt-sync
 
 b/.tool-versions: .password-store/.tool-versions
 	rsync -ia .password-store/.tool-versions $@
