@@ -68,16 +68,13 @@ endif
 
 set guioptions=
 
-colorscheme xoria256
-hi Folded  ctermfg=180 guifg=#dfaf87 ctermbg=234 guibg=#1c1c1c
-hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
+colorscheme onedark
+" colorscheme xoria256
+" hi Folded  ctermfg=180 guifg=#dfaf87 ctermbg=234 guibg=#1c1c1c
+" hi NonText ctermfg=252 guifg=#d0d0d0 ctermbg=234 guibg=#1c1c1c cterm=none gui=none
 
 let b:ale_virtualenv_dir_names = ['venv']
 
 let g:jedi#popup_on_dot = 0
 
 autocmd FileType python map <leader>z :ALEFix black<CR>
-
-highlight CocHintFloat ctermfg=Black guifg=#000000
-highlight CocErrorFloat ctermfg=Black guifg=#000000
-
