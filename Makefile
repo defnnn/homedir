@@ -251,3 +251,11 @@ yarn:
 	npm install -g npm
 	npm install -g yarn
 	cd .vim/bundle/coc.nvim && yarn install --frozen-lockfile
+
+thing:
+	-$(MAKE) update
+	$(MAKE) update
+	-$(MAKE) upgrade
+	$(MAKE) upgrade
+	$(MAKE) install
+	$(MAKE) yarn
