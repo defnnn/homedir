@@ -2,7 +2,7 @@ load('ext://uibutton', 'cmd_button', 'location')
 
 analytics_settings(False)
 
-k8s_yaml(kustomize('k'))
+k8s_yaml(kustomize('kustomize'))
 
 k8s_resource('sshd', port_forwards=2222)
 

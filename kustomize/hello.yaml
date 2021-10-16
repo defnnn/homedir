@@ -1,0 +1,13 @@
+apiVersion: example.com/v1
+kind: HelloWorld
+metadata:
+  name: your-name
+spec:
+  who: Your Name
+---
+apiVersion: example.com/v1
+kind: HelloWorld
+metadata:
+  name: my-name
+spec:
+  who: My Name

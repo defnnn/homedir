@@ -7,3 +7,7 @@ resources:
   - namespace.yaml
   - deployment.yaml
   - service.yaml
+  - crd.yaml
+  - controller.yaml
+  - webhook.yaml
+  - hello.yaml
