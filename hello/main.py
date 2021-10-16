@@ -19,7 +19,6 @@ class Controller(BaseHTTPRequestHandler):
         parent_id = controller["metadata"]["uid"]
         parent_name = parent["metadata"]["name"]
 
-        Controller.POD_COUNT += 0
         desired_pods = []
         for pod_index in range(Controller.POD_COUNT):
             new_pod = {
@@ -44,8 +43,9 @@ class Controller(BaseHTTPRequestHandler):
             desired_pods.append(new_pod)
 
         desired_status = {
-            "pods": Controller.POD_COUNT
+            "pods": len(children["Pod.v1"])
         }
+
         return {"status": desired_status, "children": desired_pods}
 
     def do_POST(self):

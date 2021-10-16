@@ -1,18 +1,18 @@
-apiVersion: example.com/v1
+apiVersion: defn.sh/v1
 kind: HelloWorld
 metadata:
   name: kids
 spec:
   who: Hana, lamda
 ---
-apiVersion: example.com/v1
+apiVersion: defn.sh/v1
 kind: HelloWorld
 metadata:
   name: defn
 spec:
   who: defn
 ---
-apiVersion: example.com/v1
+apiVersion: defn.sh/v1
 kind: HelloWorld
 metadata:
   name: tolan
