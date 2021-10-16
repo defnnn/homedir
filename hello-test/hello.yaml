@@ -1,13 +1,6 @@
 apiVersion: example.com/v1
 kind: HelloWorld
 metadata:
-  name: your-name
+  name: yo
 spec:
-  who: Your Name
----
-apiVersion: example.com/v1
-kind: HelloWorld
-metadata:
-  name: my-name
-spec:
-  who: My Name
+  who: defn
