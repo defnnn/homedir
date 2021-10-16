@@ -10,6 +10,7 @@ dogfood:
 		--dockerfile=Dockerfile \
 		--destination=k3d-hub.defn.ooo:5000/kaniko:bootstrap \
 		--reproducible \
+		--cache=true --cache-copy-layers \
 		--insecure --insecure-pull
 	docker pull k3d-hub.defn.ooo:5000/kaniko:bootstrap
 	docker run -ti --rm -v $(PWD):/workspace \
@@ -17,6 +18,7 @@ dogfood:
 		--dockerfile=Dockerfile \
 		--destination=k3d-hub.defn.ooo:5000/kaniko \
 		--reproducible \
+		--cache=true --cache-copy-layers \
 		--insecure --insecure-pull
 	docker pull k3d-hub.defn.ooo:5000/kaniko
 
