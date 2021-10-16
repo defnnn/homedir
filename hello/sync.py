@@ -15,7 +15,7 @@ class Controller(BaseHTTPRequestHandler):
         "apiVersion": "v1",
         "kind": "Pod",
         "metadata": {
-          "name": parent["metadata"]["name"]
+          "name": "%s-3" % parent["metadata"]["name"]
         },
         "spec": {
           "restartPolicy": "OnFailure",
