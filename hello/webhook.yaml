@@ -13,9 +13,9 @@ spec:
         app: hello-controller
     spec:
       containers:
-      - name: controller
-        image: defn-hello
-        command: ["python3", "/main.py"]
+        - name: controller
+          image: defn-hello
+          command: ["python3", "/main.py"]
 ---
 apiVersion: v1
 kind: Service
@@ -25,4 +25,4 @@ spec:
   selector:
     app: hello-controller
   ports:
-  - port: 80
+    - port: 80

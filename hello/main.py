@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from datetime import datetime
 import json
 
 class Controller(BaseHTTPRequestHandler):
@@ -15,7 +16,7 @@ class Controller(BaseHTTPRequestHandler):
         "apiVersion": "v1",
         "kind": "Pod",
         "metadata": {
-          "name": "%s-3" % parent["metadata"]["name"]
+          "name": "%s-%s" % (parent["metadata"]["name"], 100)
         },
         "spec": {
           "restartPolicy": "OnFailure",
