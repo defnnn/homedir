@@ -4,3 +4,10 @@ metadata:
   name: yo
 spec:
   who: Hana, lamda
+---
+apiVersion: example.com/v1
+kind: HelloWorld
+metadata:
+  name: defn
+spec:
+  who: defn
