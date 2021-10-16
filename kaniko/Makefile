@@ -11,13 +11,13 @@ dogfood:
 		--destination=k3d-hub.defn.ooo:5000/kaniko:bootstrap \
 		--reproducible \
 		--insecure --insecure-pull
+	docker pull k3d-hub.defn.ooo:5000/kaniko:bootstrap
 	docker run -ti --rm -v $(PWD):/workspace \
 		k3d-hub.defn.ooo:5000/kaniko:bootstrap \
 		--dockerfile=Dockerfile \
 		--destination=k3d-hub.defn.ooo:5000/kaniko \
 		--reproducible \
 		--insecure --insecure-pull
-	docker pull k3d-hub.defn.ooo:5000/kaniko:bootstrap
 	docker pull k3d-hub.defn.ooo:5000/kaniko
 
 warm:
