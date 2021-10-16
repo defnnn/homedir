@@ -11,6 +11,7 @@ class Controller(BaseHTTPRequestHandler):
 
     # Generate the desired child object(s).
     who = parent.get("spec", {}).get("who", "World")
+    greeting = "Hello" if who == "defn" else "Hi"
     desired_pods = [
       {
         "apiVersion": "v1",
@@ -24,7 +25,7 @@ class Controller(BaseHTTPRequestHandler):
             {
               "name": "hello",
               "image": "busybox",
-              "command": ["sh", "-c", "while true; do echo Hello, %s!; sleep 1; done" % who]
+              "command": ["sh", "-c", "while true; do echo %s, %s!; sleep 1; done" % (greeting, who)]
             }
           ]
         }

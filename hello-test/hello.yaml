@@ -3,4 +3,4 @@ kind: HelloWorld
 metadata:
   name: yo
 spec:
-  who: defn
+  who: Hana, lamda
