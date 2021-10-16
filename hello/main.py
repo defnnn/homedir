@@ -24,7 +24,7 @@ class Controller(BaseHTTPRequestHandler):
             {
               "name": "hello",
               "image": "busybox",
-              "command": ["sh", "-c", "sleep 5; echo Hello, %s!; exec sleep 60" % who]
+              "command": ["sh", "-c", "sleep 30; echo Hello, %s!; exec sleep 60" % who]
             }
           ]
         }
