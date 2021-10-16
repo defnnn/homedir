@@ -15,7 +15,6 @@ spec:
       containers:
         - name: controller
           image: defn-hello
-          command: ["python3", "/main.py"]
 ---
 apiVersion: v1
 kind: Service
