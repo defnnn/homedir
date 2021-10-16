@@ -1,7 +1,7 @@
 apiVersion: example.com/v1
 kind: HelloWorld
 metadata:
-  name: yo
+  name: kids
 spec:
   who: Hana, lamda
 ---
@@ -11,3 +11,10 @@ metadata:
   name: defn
 spec:
   who: defn
+---
+apiVersion: example.com/v1
+kind: HelloWorld
+metadata:
+  name: tolan
+spec:
+  who: tolan
