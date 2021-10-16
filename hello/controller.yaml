@@ -15,4 +15,4 @@ spec:
   hooks:
     sync:
       webhook:
-        url: http://hello-controller.hello/sync
+        url: http://hello-controller.hello
