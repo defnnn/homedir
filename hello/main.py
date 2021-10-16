@@ -8,7 +8,7 @@ import json
 class Controller(BaseHTTPRequestHandler):
     """webhook"""
 
-    POD_COUNT = 0
+    POD_COUNT = 1
 
     def sync(self, parent, children, controller):
         """returns desired state: set of pods, increasing each time the hook
@@ -17,16 +17,15 @@ class Controller(BaseHTTPRequestHandler):
         who = parent.get("spec", {}).get("who", "World")
         greeting = "Hello" if who == "defn" else "Hi"
         parent_id = controller["metadata"]["uid"]
-        Controller.POD_COUNT += 1
         parent_name = parent["metadata"]["name"]
 
+        Controller.POD_COUNT += 0
         desired_pods = []
-        pprint(Controller.POD_COUNT)
-        for _ in range(Controller.POD_COUNT):
+        for pod_index in range(Controller.POD_COUNT):
             new_pod = {
                 "apiVersion": "v1",
                 "kind": "Pod",
-                "metadata": {"name": f"{parent_name}-{parent_id}"},
+                "metadata": {"name": f"{parent_name}-{parent_id}-{pod_index}"},
                 "spec": {
                     "restartPolicy": "OnFailure",
                     "containers": [
@@ -44,7 +43,10 @@ class Controller(BaseHTTPRequestHandler):
             }
             desired_pods.append(new_pod)
 
-        return {"status": Controller.POD_COUNT, "children": desired_pods}
+        desired_status = {
+            "pods": Controller.POD_COUNT
+        }
+        return {"status": desired_status, "children": desired_pods}
 
     def do_POST(self):
         """Serve the sync() function as a JSON webhook."""
