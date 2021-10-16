@@ -1,8 +1,8 @@
 """ Metacontroller hook: creates a number of pods depending on the time. """
 
+import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pprint import pprint
-import json
 
 
 class Controller(BaseHTTPRequestHandler):
