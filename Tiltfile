@@ -2,6 +2,7 @@ load('ext://uibutton', 'cmd_button', 'location')
 
 analytics_settings(False)
 
+k8s_yaml(kustomize('home'))
 k8s_yaml(kustomize('hello'))
 k8s_yaml(kustomize('hello-test'))
 

@@ -1,12 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: defn
+namespace: hello
 
 resources:
   - namespace.yaml
-  - deployment.yaml
-  - service.yaml
   - crd.yaml
   - controller.yaml
   - webhook.yaml
