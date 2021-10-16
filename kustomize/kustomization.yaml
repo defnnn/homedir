@@ -11,8 +11,3 @@ resources:
   - controller.yaml
   - webhook.yaml
   - hello.yaml
-
-configMapGenerator:
-  - name: hello-controller
-    files:
-      - sync.py

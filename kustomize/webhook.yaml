@@ -14,15 +14,8 @@ spec:
     spec:
       containers:
       - name: controller
-        image: python:3.8.7
-        command: ["python3", "/hooks/sync.py"]
-        volumeMounts:
-        - name: hooks
-          mountPath: /hooks
-      volumes:
-      - name: hooks
-        configMap:
-          name: hello-controller
+        image: defn-webhook
+        command: ["python3", "/sync.py"]
 ---
 apiVersion: v1
 kind: Service
