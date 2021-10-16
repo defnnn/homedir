@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: controller
-        image: defn-webhook
+        image: defn-hello
         command: ["python3", "/sync.py"]
 ---
 apiVersion: v1

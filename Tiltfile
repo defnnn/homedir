@@ -6,7 +6,7 @@ k8s_yaml(kustomize('kustomize'))
 
 k8s_resource('sshd', port_forwards=2222)
 
-docker_build('defn-webhook', 'kk')
+docker_build('defn-hello', 'hello')
 
 docker_build('defn-sshd', 'k',
   live_update=[
