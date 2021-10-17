@@ -2,25 +2,25 @@
 
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from pprint import pprint
+
+# from pprint import pprint
 
 
 class Controller(BaseHTTPRequestHandler):
     """webhook"""
-
-    POD_COUNT = 1
 
     def sync(self, parent, children, controller):
         """returns desired state: set of pods, increasing each time the hook
         is called."""
 
         who = parent.get("spec", {}).get("who", "World")
+        pod_count = parent.get("spec", {}).get("count", 1)
         greeting = "Hello" if who == "defn" else "Hi"
         parent_id = controller["metadata"]["uid"]
         parent_name = parent["metadata"]["name"]
 
         desired_pods = []
-        for pod_index in range(Controller.POD_COUNT):
+        for pod_index in range(pod_count):
             new_pod = {
                 "apiVersion": "v1",
                 "kind": "Pod",
