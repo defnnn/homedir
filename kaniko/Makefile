@@ -30,3 +30,6 @@ warm:
 init:
 	$(MAKE) warm
 	$(MAKE) dogfood
+
+submit:
+	argo submit --watch argo.yaml
