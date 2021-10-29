@@ -34,8 +34,21 @@ config:
 	-chmod 600 .ssh/config
 	-chmod 700 .gnupg
 
-update_inner:
+install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
+
+install-python:
+	sudo apt install -y libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
+	asdf install python
+
+install-coc:
+	asdf install nodejs
+	npm install -g npm
+	npm install -g yarn
+	cd .vim/bundle/coc.nvim && yarn install --frozen-lockfile
+
+update_inner:
+	$(MAKE) asdf
 	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
@@ -113,9 +126,6 @@ pipx:
 	-venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 	-venv/bin/python -m pipx install --pip-args "tox-docker" tox
 	-venv/bin/python -m pipx install --pip-args "ansible paramiko" ansible-core
-
-asdf:
-	if [[ "$(shell id -un)" != "cloudshell-user" ]]; then bin/fig asdf; ./env.sh asdf install; fi
 
 brew:
 	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle; fi
@@ -249,11 +259,6 @@ build--%:
 		--build-arg HOMEDIR=https://github.com/amanibhavam/homedir \
 		-f b/Dockerfile.$(second) \
 		b
-
-yarn:
-	npm install -g npm
-	npm install -g yarn
-	cd .vim/bundle/coc.nvim && yarn install --frozen-lockfile
 
 thing:
 	-$(MAKE) update
