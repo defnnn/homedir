@@ -1,4 +1,5 @@
-FROM defn/python:latest
+FROM python:3.10
+
 
 ARG HOMEBOOT
 ENV HOMEBOOT=$HOMEBOOT
@@ -32,6 +33,14 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
 
 RUN install -d -o $HOMEBOOT -g $HOMEBOOT /home/$HOMEBOOT
 RUN ls -ld /home/$HOMEBOOT
+
+RUN python -m pip install --no-cache-dir --upgrade pip pip-tools pipx
+
+RUN apt update -y && apt install -y git
+
+RUN groupadd -g 1000 $HOMEBOOT
+RUN useradd -u 1000 -d /home/$HOMEBOOT -s /bin/bash -g $HOMEBOOT -M $HOMEBOOT
+RUN install -d -m 0700 -o $HOMEBOOT -g $HOMEBOOT /home/$HOMEBOOT
 
 USER $HOMEBOOT
 WORKDIR /home/$HOMEBOOT
