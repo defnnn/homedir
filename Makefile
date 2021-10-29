@@ -34,8 +34,18 @@ config:
 	-chmod 600 .ssh/config
 	-chmod 700 .gnupg
 
-asdf:
+install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
+
+install-python:
+	sudo apt install -y libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
+	asdf install python
+
+install-coc:
+	asdf install nodejs
+	npm install -g npm
+	npm install -g yarn
+	cd .vim/bundle/coc.nvim && yarn install --frozen-lockfile
 
 update_inner:
 	$(MAKE) asdf
@@ -246,11 +256,6 @@ build--%:
 		--build-arg HOMEDIR=https://github.com/amanibhavam/homedir \
 		-f b/Dockerfile.$(second) \
 		b
-
-yarn:
-	npm install -g npm
-	npm install -g yarn
-	cd .vim/bundle/coc.nvim && yarn install --frozen-lockfile
 
 thing:
 	-$(MAKE) update
