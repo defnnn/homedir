@@ -1,0 +1,42 @@
+[submodule ".asdf/plugins/argo"]
+	path = .asdf/plugins/argo
+	url = git@github.com:sudermanjr/asdf-argo.git
+[submodule ".asdf/plugins/argocd"]
+	path = .asdf/plugins/argocd
+	url = git@github.com:beardix/asdf-argocd.git
+[submodule ".asdf/plugins/consul"]
+	path = .asdf/plugins/consul
+	url = git@github.com:Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/helm"]
+	path = .asdf/plugins/helm
+	url = git@github.com:Antiarchitect/asdf-helm.git
+[submodule ".asdf/plugins/k3d"]
+	path = .asdf/plugins/k3d
+	url = git@github.com:spencergilbert/asdf-k3d.git
+[submodule ".asdf/plugins/k3sup"]
+	path = .asdf/plugins/k3sup
+	url = git@github.com:cgroschupp/asdf-k3sup.git
+[submodule ".asdf/plugins/kind"]
+	path = .asdf/plugins/kind
+	url = git@github.com:johnlayton/asdf-kind.git
+[submodule ".asdf/plugins/kubectl"]
+	path = .asdf/plugins/kubectl
+	url = git@github.com:Banno/asdf-kubectl.git
+[submodule ".asdf/plugins/kustomize"]
+	path = .asdf/plugins/kustomize
+	url = git@github.com:Banno/asdf-kustomize.git
+[submodule ".asdf/plugins/nodejs"]
+	path = .asdf/plugins/nodejs
+	url = git@github.com:asdf-vm/asdf-nodejs.git
+[submodule ".asdf/plugins/packer"]
+	path = .asdf/plugins/packer
+	url = git@github.com:Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/python"]
+	path = .asdf/plugins/python
+	url = git@github.com:danhper/asdf-python.git
+[submodule ".asdf/plugins/terraform"]
+	path = .asdf/plugins/terraform
+	url = git@github.com:Banno/asdf-hashicorp.git
+[submodule ".asdf/plugins/vault"]
+	path = .asdf/plugins/vault
+	url = git@github.com:Banno/asdf-hashicorp.git

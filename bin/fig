@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+function main {
+  if type -P figlet >/dev/null; then
+    figlet -d ~/etc -f chunky -w 999 "$@" | {
+      if type -P lolcat >/dev/null; then
+        lolcat
+      else
+        cat
+      fi
+    }
+  else
+    echo
+    echo "=== [ $@ ] =====================================================================================================" | cut -b1-80
+    echo
+  fi
+}
+
+main "$@"

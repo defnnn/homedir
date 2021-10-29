@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+function main {
+  set -efu
+
+  local tmp="$(mktemp -t XXXXXX)"
+  trap "rm -f '$tmp'" EXIT
+
+  (
+    echo export scalyr_readlog_token="$(pass env/${SCALYR_PROFILE:-}/scalyr_readlog_token)" &
+    echo export scalyr_readconfig_token="$(pass env/${SCALYR_PROFILE:-}/scalyr_readconfig_token)" &
+    echo export scalyr_writeconfig_token="$(pass env/${SCALYR_PROFILE:-}/scalyr_writeconfig_token)" &
+  ) | cat > "$tmp"
+
+  source "$tmp"
+
+  scalyr.py "$@"
+}
+
+main "$@"

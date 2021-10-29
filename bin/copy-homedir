@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+function main {
+  set -efu
+
+  if [[ "$(id -un)" = "cloudshell-user" ]]; then
+    sudo yum upgrade -y
+    sudo yum install -y rsync
+  else
+    if [[ ! -d /home/linuxbrew ]]; then
+      if [[ "$(uname -s)" != "Darwin" ]]; then
+        if [[ -x "$(type -P apt)" ]]; then
+          sudo apt update
+          sudo apt install -y make unzip git jq net-tools
+        fi
+      fi
+    fi
+
+    if [[ ! -x "$(which brew || true)" ]]; then
+      case "$(uname -s)" in
+        Darwin)
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install jq
+          ;;
+      esac
+    fi
+  fi
+
+  PATH="$HOME/.asdf/installs/bin:$PATH"
+  PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/opt/java/bin:$PATH"
+
+  rsync -ia .git ~/
+  git reset --hard
+  rm -f .zshrc
+
+  curl -sSL -o bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64
+  chmod 755 bin/powerline-go
+
+  make update
+  rm -rf homedir
+}
+
+main "$@"

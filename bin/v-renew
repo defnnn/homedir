@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  vault token renew
+}
+
+source sub "$0" "$@"

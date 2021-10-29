@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function main {
+  set -efu
+
+  ./bin/copy-homedir
+  make install
+}
+
+main "$@"

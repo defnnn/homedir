@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function main {
+  if [[ -z "${VAULT_TOKEN:-}" ]]; then
+    export VAULT_TOKEN="$(pass "${VAULT_TOKEN_PATH}")"
+  fi
+
+  exec "$@"
+}
+
+source sub "$0" "$@"

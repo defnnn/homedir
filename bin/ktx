@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+function main {
+  case "${1:-}" in
+    "")
+      if [[ -f .eks-name ]]; then
+        kubectx "$(cat .eks-name)-cluster"
+        return $?
+      else
+        kubectx
+        return $?
+      fi
+      ;;
+  esac
+  exec kubectx "$@"
+}
+
+main "$@"

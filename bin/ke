@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  ken default "$@"
+}
+
+main "$@"

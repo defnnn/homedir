@@ -1,0 +1,22 @@
+apiVersion: defn.sh/v1
+kind: HelloWorld
+metadata:
+  name: kids
+spec:
+  who: Hana, lamda
+  count: 2
+---
+apiVersion: defn.sh/v1
+kind: HelloWorld
+metadata:
+  name: defn
+spec:
+  who: defn
+---
+apiVersion: defn.sh/v1
+kind: HelloWorld
+metadata:
+  name: tolan
+spec:
+  who: tolan
+  count: 3

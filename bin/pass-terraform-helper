@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+passpth="terraform-token/${2:-}"
+
+case "${1:-}" in
+  get)
+    p="$(pass "${passpth}" 2>/dev/null | perl -pe 's{\s*$}{}' || true)"
+    if [[ -z "${p}" ]]; then 
+      echo '{}'
+    else
+      echo "${p}"
+    fi
+    ;;
+  forget)
+    pass rm -f "${passpth}" || true
+    ;;
+  store)
+    cat | pass insert -e -f "${passpth}" || true
+    ;;
+  *)
+    exit 1
+    ;;
+esac

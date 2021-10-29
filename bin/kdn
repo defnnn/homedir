@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function main {
+  local ns="$1"; shift
+  local label="$1"; shift
+  local image="$1"; shift
+
+  kn "$ns" alpha debug -it --image="$image" $(kn "$ns" get pod -o jsonpath='{.items[0].metadata.name}' -l "$label") "$@"
+}
+
+main "$@"

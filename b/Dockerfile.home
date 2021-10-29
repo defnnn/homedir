@@ -1,0 +1,54 @@
+FROM k3d-hub.defn.ooo:5000/defn/home:brew
+
+ARG HOMEDIR
+
+USER root
+RUN groupmod -n app app
+RUN usermod -d /home/app app
+RUN usermod -l app app
+RUN echo "app ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+RUN mkdir -p /run/sshd /run && chown -hR app:app /run /etc/ssh
+RUN if test "app" != "app"; then ln -nfs app /home/app; fi
+RUN chown -h app:app /home/app /home/app
+
+USER app
+WORKDIR /home/app
+ENV HOME=/home/app
+ENV PATH=/home/app/.asdf/bin:/home/app/.asdf/shims:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+RUN brew upgrade
+
+USER root
+RUN ln -nfs /home/linuxbrew/.linuxbrew/bin/gpg* /home/linuxbrew/.linuxbrew/bin/tmux /usr/local/bin/
+
+USER app
+
+RUN git clone $HOMEDIR homedir && mv homedir/.git . && rm -rf homedir && git reset --hard && make update
+
+RUN ./env.sh brew bundle || true
+
+RUN make update || make update
+
+COPY .tool-versions.container .tool-versions
+
+RUN make update || make update
+
+RUN git submodule update --init
+
+RUN ./env.sh asdf install || ./env.sh asdf install
+
+RUN git checkout .
+
+RUN make install
+
+COPY index-homedir /tmp/index-homedir
+
+RUN (make update || make update) && (make upgrade || make upgrade) && make install
+RUN make shim
+
+COPY service /service
+USER root
+RUN chmod 755 /service
+USER app
+ENTRYPOINT [ "/service" ]
+CMD [ "sshd" ]

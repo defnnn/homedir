@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+case "${1:-}" in
+  get)
+    pass vault-token | perl -pe 's{\s*$}{}' || true
+    ;;
+  erase)
+    pass rm -f vault-token || true
+    ;;
+  store)
+    cat | pass insert -e -f vault-token || true
+    ;;
+  *)
+    exit 1
+    ;;
+esac

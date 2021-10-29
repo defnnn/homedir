@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  local ns="$1"; shift
+  local label="$1"; shift
+
+  if [[ "$#" == 0 ]]; then
+    set -- bash
+  fi
+
+  kn "$ns" exec -ti $(kn "$ns" get pod -o jsonpath='{.items[0].metadata.name}' -l "$label") -- "$@"
+}
+
+main "$@"
