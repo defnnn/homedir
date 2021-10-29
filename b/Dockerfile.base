@@ -31,12 +31,7 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
     && locale-gen en_US.UTF-8 \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-RUN install -d -o $HOMEBOOT -g $HOMEBOOT /home/$HOMEBOOT
-RUN ls -ld /home/$HOMEBOOT
-
 RUN python -m pip install --no-cache-dir --upgrade pip pip-tools pipx
-
-RUN apt update -y && apt install -y git
 
 RUN groupadd -g 1000 $HOMEBOOT
 RUN useradd -u 1000 -d /home/$HOMEBOOT -s /bin/bash -g $HOMEBOOT -M $HOMEBOOT
