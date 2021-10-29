@@ -1,9 +1,5 @@
 FROM k3d-hub.defn.ooo:5000/defn/home:base
 
-ARG HOMEBOOT
-
-ENV HOMEBOOT=$HOMEBOOT
-
 USER root
 
 ENV HOME=/root
@@ -14,13 +10,13 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends libudev-dev
 
-RUN install -d -o $HOMEBOOT -g $HOMEBOOT -d /home/linuxbrew
-RUN install -d -o $HOMEBOOT -g $HOMEBOOT -d /home/$HOMEBOOT
-RUN usermod -d /home/$HOMEBOOT $HOMEBOOT
+RUN install -d -o app -g app -d /home/linuxbrew
+RUN install -d -o app -g app -d /home/app
+RUN usermod -d /home/app app
 
-USER $HOMEBOOT
-WORKDIR /home/$HOMEBOOT
-ENV HOME=/home/$HOMEBOOT
+USER app
+WORKDIR /home/app
+ENV HOME=/home/app
 
 ENV PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV LANG en_US.UTF-8
@@ -34,10 +30,10 @@ RUN env HOMEBREW_NO_AUTO_UPDATE=1 brew tap linuxbrew/xorg
 USER root
 RUN ln -nfs locale.h /usr/include/xlocale.h
 
-USER $HOMEBOOT
+USER app
 
 RUN env HOMEBREW_NO_AUTO_UPDATE=1 brew install perl
 
 RUN env HOMEBREW_NO_AUTO_UPDATE=1 brew install figlet lolcat
 
-ENV PATH=/home/$HOMEBOOT/.asdf/bin:/home/$HOMEBOOT/.asdf/shims:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/home/app/.asdf/bin:/home/app/.asdf/shims:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

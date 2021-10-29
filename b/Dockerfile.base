@@ -1,8 +1,5 @@
 FROM python:3.10
 
-ARG HOMEBOOT
-ENV HOMEBOOT=$HOMEBOOT
-
 USER root
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -24,7 +21,7 @@ RUN apt-get update \
         zbar-tools htop \
     && rm -f /usr/bin/gs
 
-RUN echo "$HOMEBOOT ALL=(ALL:ALL) ALL" >> /etc/sudoers
+RUN echo "app ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 RUN echo GatewayPorts clientspecified >> /etc/ssh/sshd_config
 
@@ -35,14 +32,14 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
 
 RUN python -m pip install --no-cache-dir --upgrade pip pip-tools pipx
 
-RUN groupadd -g 1000 $HOMEBOOT
-RUN useradd -u 1000 -d /home/$HOMEBOOT -s /bin/bash -g $HOMEBOOT -M $HOMEBOOT
-RUN usermod $HOMEBOOT -a -G sudo
-RUN install -d -m 0700 -o $HOMEBOOT -g $HOMEBOOT /home/$HOMEBOOT
+RUN groupadd -g 1000 app
+RUN useradd -u 1000 -d /home/app -s /bin/bash -g app -M app
+RUN usermod app -a -G sudo
+RUN install -d -m 0700 -o app -g app /home/app
 
-USER $HOMEBOOT
-WORKDIR /home/$HOMEBOOT
-ENV HOME=/home/$HOMEBOOT
+USER app
+WORKDIR /home/app
+ENV HOME=/home/app
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV LANG en_US.UTF-8

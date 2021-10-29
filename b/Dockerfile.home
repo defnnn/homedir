@@ -1,35 +1,27 @@
 FROM k3d-hub.defn.ooo:5000/defn/home:brew
 
-ARG HOMEBOOT
-ARG HOMEUSER
 ARG HOMEDIR
 
-ARG GITHUBUSER
-
-ENV HOMEBOOT=$HOMEBOOT
-ENV HOMEUSER=$HOMEUSER
-ENV HOMEHOME=$HOMEHOME
-
 USER root
-RUN groupmod -n $HOMEUSER $HOMEBOOT
-RUN usermod -d /home/$HOMEUSER $HOMEBOOT
-RUN usermod -l $HOMEUSER $HOMEBOOT
-RUN echo "$HOMEUSER ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
-RUN mkdir -p /run/sshd /run && chown -hR $HOMEUSER:$HOMEUSER /run /etc/ssh
-RUN if test "$HOMEBOOT" != "$HOMEUSER"; then ln -nfs $HOMEBOOT /home/$HOMEUSER; fi
-RUN chown -h $HOMEUSER:$HOMEUSER /home/$HOMEUSER /home/$HOMEBOOT
+RUN groupmod -n app app
+RUN usermod -d /home/app app
+RUN usermod -l app app
+RUN echo "app ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+RUN mkdir -p /run/sshd /run && chown -hR app:app /run /etc/ssh
+RUN if test "app" != "app"; then ln -nfs app /home/app; fi
+RUN chown -h app:app /home/app /home/app
 
-USER $HOMEUSER
-WORKDIR /home/$HOMEUSER
-ENV HOME=/home/$HOMEUSER
-ENV PATH=/home/$HOMEUSER/.asdf/bin:/home/$HOMEUSER/.asdf/shims:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+USER app
+WORKDIR /home/app
+ENV HOME=/home/app
+ENV PATH=/home/app/.asdf/bin:/home/app/.asdf/shims:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN brew upgrade
 
 USER root
 RUN ln -nfs /home/linuxbrew/.linuxbrew/bin/gpg* /home/linuxbrew/.linuxbrew/bin/tmux /usr/local/bin/
 
-USER $HOMEBOOT
+USER app
 
 RUN git clone $HOMEDIR homedir && mv homedir/.git . && rm -rf homedir && git reset --hard && make update
 
@@ -57,6 +49,6 @@ RUN make shim
 COPY service /service
 USER root
 RUN chmod 755 /service
-USER $HOMEBOOT
+USER app
 ENTRYPOINT [ "/service" ]
 CMD [ "sshd" ]

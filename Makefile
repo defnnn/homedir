@@ -256,8 +256,6 @@ push--%:
 
 build--%:
 	docker build $(build) -t k3d-hub.defn.ooo:5000/defn/home:$(second) \
-		--build-arg HOMEBOOT=app \
-		--build-arg HOMEUSER=app \
 		--build-arg HOMEDIR=https://github.com/amanibhavam/homedir \
 		-f b/Dockerfile.$(second) \
 		b
