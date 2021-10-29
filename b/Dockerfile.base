@@ -1,4 +1,6 @@
-FROM python:3.10
+ARG IMAGE
+
+FROM $IMAGE
 
 USER root
 
