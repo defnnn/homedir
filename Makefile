@@ -5,6 +5,9 @@ SHELL := /bin/bash
 first = $(word 1, $(subst --, ,$@))
 second = $(word 2, $(subst --, ,$@))
 
+first_ = $(word 1, $(subst _, ,$@))
+second_ = $(word 2, $(subst _, ,$@))
+
 menu:
 	@perl -ne 'printf("%10s: %s\n","$$1","$$2") if m{^([\w+-]+):[^#]+#\s(.+)$$}' Makefile
 
@@ -266,4 +269,12 @@ thing:
 	-$(MAKE) upgrade
 	$(MAKE) upgrade
 	$(MAKE) install
-	$(MAKE) yarn
+	$(MAKE) install-coc
+
+submit:
+	$(MAKE) submit_base
+	$(MAKE) submit_{app,ci}
+	$(MAKE) submit_{aws,terraform,cdktf}
+
+submit_%:
+	argo submit --log -f params.yaml --entrypoint build-$(second_) argo.yaml
