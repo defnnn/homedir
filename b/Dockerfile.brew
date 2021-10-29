@@ -31,7 +31,12 @@ RUN curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.s
 
 RUN env HOMEBREW_NO_AUTO_UPDATE=1 brew tap linuxbrew/xorg
 
-RUN sudo ln -nfs locale.h /usr/include/xlocale.h && env HOMEBREW_NO_AUTO_UPDATE=1 brew install perl
+USER root
+RUN ln -nfs locale.h /usr/include/xlocale.h
+
+USER $HOMEBOOT
+
+RUN env HOMEBREW_NO_AUTO_UPDATE=1 brew install perl
 
 RUN env HOMEBREW_NO_AUTO_UPDATE=1 brew install figlet lolcat
 

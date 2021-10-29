@@ -1,6 +1,5 @@
 FROM python:3.10
 
-
 ARG HOMEBOOT
 ENV HOMEBOOT=$HOMEBOOT
 
@@ -22,7 +21,10 @@ RUN apt-get update \
         build-essential m4 make \
         libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev \
         tmux gnupg libusb-1.0-0 \
+        zbar-tools htop \
     && rm -f /usr/bin/gs
+
+RUN echo "$HOMEBOOT ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 RUN echo GatewayPorts clientspecified >> /etc/ssh/sshd_config
 
@@ -46,5 +48,3 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
-
-RUN sudo id -a

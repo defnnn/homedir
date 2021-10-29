@@ -24,10 +24,12 @@ WORKDIR /home/$HOMEUSER
 ENV HOME=/home/$HOMEUSER
 ENV PATH=/home/$HOMEUSER/.asdf/bin:/home/$HOMEUSER/.asdf/shims:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN sudo apt-get update && sudo apt-get upgrade -y && sudo apt install -y zbar-tools htop
 RUN brew upgrade
 
-RUN sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/gpg* /home/linuxbrew/.linuxbrew/bin/tmux /usr/local/bin/
+USER root
+RUN ln -nfs /home/linuxbrew/.linuxbrew/bin/gpg* /home/linuxbrew/.linuxbrew/bin/tmux /usr/local/bin/
+
+USER $HOMEBOOT
 
 RUN git clone $HOMEDIR homedir && mv homedir/.git . && rm -rf homedir && git reset --hard && make update
 
@@ -53,6 +55,8 @@ RUN (make update || make update) && (make upgrade || make upgrade) && make insta
 RUN make shim
 
 COPY service /service
-RUN sudo chmod 755 /service
+USER root
+RUN chmod 755 /service
+USER $HOMEBOOT
 ENTRYPOINT [ "/service" ]
 CMD [ "sshd" ]
