@@ -217,6 +217,9 @@ shim:
 	ln -nfs "$(shell asdf which helm)" bin/site/
 	ln -nfs "$(shell asdf which python)" bin/site/
 	ln -nfs "$(shell asdf which node)" bin/site/
+	ln -nfs "$(shell asdf which kubectx)" bin/site/
+	ln -nfs "$(shell asdf which kubens)" bin/site/
+	ln -nfs "$(shell asdf which k9s)" bin/site/
 
 rebuild: # Rebuild everything from scratch
 	$(MAKE) build--base build=--no-cache
