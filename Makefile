@@ -231,9 +231,12 @@ shim:
 	ln -nfs "$(shell asdf which k9s)" bin/site/
 
 rebuild: # Rebuild everything from scratch
-	$(MAKE) build--base build=--no-cache
-	$(MAKE) build--brew build=--no-cache
-	$(MAKE) build--home build=--no-cache
+	$(MAKE) build--base build=$(build)
+	$(MAKE) build--brew build=$(build)
+	$(MAKE) build--home build=$(build)
+
+scratch: # Rebuild everything from scratch without cache
+	$(MAKE) build=--no-cache
 
 home: b/.tool-versions
 	date > b/index-homedir
