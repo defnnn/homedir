@@ -56,7 +56,7 @@ update_inner:
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
 	mkdir -p .docker
-	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass", "credHelpers": { "docker.io": "pass" }}' > .docker/config.json.1
+	(cat .docker/config.json 2>/dev/null || echo '{}') | jq -S '. + {credsStore: "pass", "credHelpers": { "docker.io": "pass" }, "insecure-registries" : ["k3d-hub.defn.ooo:5000"]}' > .docker/config.json.1
 	mv .docker/config.json.1 .docker/config.json
 	rm -f .profile
 
