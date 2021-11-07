@@ -51,7 +51,7 @@ install-coc:
 	cd .vim/bundle/coc.nvim && yarn install --frozen-lockfile
 
 update_inner:
-	bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
+	#bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
