@@ -166,3 +166,4 @@ b/.*
 .sync
 .mypy_cache
 .kuberlr/
+.vscode-server/
