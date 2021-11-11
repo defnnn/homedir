@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function main {
+  local host="$1"; shift
+
+  code -r "$@"
+}
+
+main "$@"
