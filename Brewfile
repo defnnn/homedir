@@ -59,6 +59,8 @@ if OS.mac?
   cask "snagit"
   cask "dbeaver-community"
   cask "visual-studio-code"
+  cask "multipass"
+  cask "virtualbox"
 
   brew "htop"
   brew "pinentry-mac"
