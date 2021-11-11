@@ -2,7 +2,6 @@ tap "aws/tap"
 tap "cuelang/tap"
 tap "defn/tap"
 tap "borkdude/brew"
-tap "tilt-dev/tap"
 
 brew "chamber"
 brew "gnupg"
@@ -33,7 +32,6 @@ brew "hello"
 brew "direnv"
 brew "rg"
 brew "babashka"
-brew "tilt"
 
 if OS.mac?
   tap "homebrew/cask"
