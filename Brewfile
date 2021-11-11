@@ -43,7 +43,6 @@ if OS.mac?
   cask "1password"
   cask "keeper-password-manager"
   cask "chromedriver"
-  cask "docker"
   cask "google-chrome"
   cask "iterm2"
   cask "skitch"
@@ -59,8 +58,6 @@ if OS.mac?
   cask "snagit"
   cask "dbeaver-community"
   cask "visual-studio-code"
-  cask "multipass"
-  cask "virtualbox"
 
   brew "htop"
   brew "pinentry-mac"
