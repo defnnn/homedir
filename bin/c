@@ -1,1 +1,9 @@
-tatami
+#!/usr/bin/env bash
+
+function main {
+  local host="$1"; shift
+
+  code --remote ssh-remote+"$host" "$@"
+}
+
+main "$@"
