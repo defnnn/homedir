@@ -52,6 +52,7 @@ Brewfile.lock.json
 .docker/
 .terraform.d/
 .viminfo
+.vim/plugged
 .bash_history
 .zsh_history
 .babel.json

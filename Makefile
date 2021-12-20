@@ -245,3 +245,6 @@ submit:
 
 submit_%:
 	argo submit --log -f params.yaml --entrypoint build-$(second_) argo.yaml
+
+.vim/autoload/plug.vim:
+	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
