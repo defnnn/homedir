@@ -1,0 +1,10 @@
+#cloud-config
+apt_update: true
+packages:
+  - linux-oem-20.04b
+runcmd:
+  - sync
+power_state:
+  mode: reboot
+  timeout: 30
+  condition: True

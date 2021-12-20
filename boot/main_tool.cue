@@ -20,15 +20,17 @@ command: {
 		createDroplet: exec.Run & {
 			cmd: ["doctl", "compute", "droplet", "create",
 				"--wait",
+				"--format", "ID",
+				"--no-header",
 				"--tag-name", config.name,
 				"--enable-ipv6",
+				"--enable-private-networking",
 				"--image", config.image,
 				"--region", config.region,
 				"--size", config.size,
 				"--ssh-keys", "\(ssh[config.sshkey].id)",
 				"--volumes", volume[config.volume].id,
-				"--format", "ID",
-				"--no-header",
+				"--user-data-file", "etc/user-data-\(config.name).txt",
 				config.name,
 			]
 			stdout: string
