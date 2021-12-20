@@ -25,6 +25,7 @@ command: {
 				"--tag-name", config.name,
 				"--enable-ipv6",
 				"--enable-private-networking",
+				"--enable-monitoring",
 				"--image", config.image,
 				"--region", config.region,
 				"--size", config.size,

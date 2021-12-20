@@ -1,8 +1,17 @@
 #cloud-config
+mounts:
+ - [ sda, /mnt, auto, "defaults" ]
 apt_update: true
 packages:
   - linux-oem-20.04b
 runcmd:
+  - mkdir -p /var/lib/tailscale
+  - rsync -ia /mnt/tailscale /var/lib/
+  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | apt-key add -
+  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | tee /etc/apt/sources.list.d/tailscale.list
+  - apt update
+  - apt install -y tailscale
+  - systemctl start tailscaled
   - sync
 power_state:
   mode: reboot
