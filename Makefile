@@ -59,6 +59,7 @@ install: # Install software bundles
 
 install_inner:
 	$(MAKE) brew
+	asdf install
 	$(MAKE) python
 	$(MAKE) pipx
 	$(MAKE) misc
