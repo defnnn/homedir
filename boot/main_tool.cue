@@ -48,6 +48,17 @@ command: {
 			$after: createDroplet
 		}
 	}
+	clean: {
+		cleanName: exec.Run & {
+			cmd: ["ssh-keygen", "-R", config.name]
+		}
+		cleanIP: exec.Run & {
+			cmd: ["ssh-keygen", "-R", config.ip]
+		}
+		getHostKey: exec.Run & {
+			cmd: ["ssh", "-o", "StrictHostKeyChecking=false", config.name, "true"]
+		}
+	}
 	delete: exec.Run & {
 		cmd: ["doctl", "compute", "droplet", "delete",
 			"--force",
