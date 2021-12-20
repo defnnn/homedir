@@ -168,3 +168,4 @@ b/.*
 .mypy_cache
 .kuberlr/
 .vscode-server/
+.kube
