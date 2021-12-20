@@ -1,6 +1,7 @@
 package defn
 
 import (
+	"strings"
 	"tool/exec"
 )
 
@@ -42,7 +43,7 @@ command: {
 		attachIP: exec.Run & {
 			cmd: ["doctl", "compute", "floating-ip-action", "assign",
 				config.ip,
-				createDroplet.stdout,
+				strings.Trim(createDroplet.stdout),
 			]
 			$after: createDroplet
 		}
