@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+doctl compute firewall -o json list | jq '(reduce .[] as $e ({}; .[$e.name] = $e)) as $fw | { firewall: $fw }' > do-firewall.json
+doctl compute volume -o json list | jq '(reduce .[] as $e ({}; .[$e.name] = $e)) as $vol | { volume: $vol }' > do-volume.json
+doctl compute ssh-key -o json list | jq '(reduce .[] as $e ({}; .[$e.name] = $e)) as $ssh | { ssh: $ssh }' > do-ssh.json
+doctl compute droplet -o json list | jq '(reduce .[] as $e ({}; .[$e.name] = $e)) as $droplet | { droplet: $droplet }' > do-droplet.json
+cue import -p defn -f do-*.json
+rm do-*.json
