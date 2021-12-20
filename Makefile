@@ -44,12 +44,6 @@ install-python:
 	sudo apt install -y libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
 	asdf install python
 
-install-coc:
-	asdf install nodejs
-	npm install -g npm
-	npm install -g yarn
-	cd .vim/bundle/coc.nvim && yarn install --frozen-lockfile
-
 update_inner:
 	#bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
 	mkdir -p .ssh && chmod 700 .ssh
@@ -124,10 +118,8 @@ pipx:
 	@bin/fig pipx
 	if ! test -x venv/bin/pipx; then \
 		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	-bin/runmany 'venv/bin/python -m pipx install $$1' cookiecutter pre-commit yq keepercommander docker-compose black pylint flake8 isort pyinfra testinfra aws-sam-cli poetry solo-python ec2instanceconnectcli awscli flit nodeenv
+	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq keepercommander pyinfra testinfra solo-python ec2instanceconnectcli awscli
 	-venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
-	-venv/bin/python -m pipx install --pip-args "tox-docker" tox
-	-venv/bin/python -m pipx install --pip-args "ansible paramiko" ansible-core
 
 brew:
 	-if test -x "$(shell which brew)"; then bin/fig brew; brew bundle; fi
@@ -135,15 +127,8 @@ brew:
 misc:
 	@bin/fig misc
 	~/env.sh $(MAKE) /usr/local/bin/pinentry-defn
-	~/env.sh $(MAKE) .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
 	~/env.sh $(MAKE) bin/docker-credential-pass
 	~/env.sh $(MAKE) /usr/local/bin/pass-vault-helper
-
-.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
-	@bin/fig sops
-	mkdir -p .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator
-	curl -o .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator -sSL https://github.com/goabout/kustomize-sopssecretgenerator/releases/download/v1.3.2/SopsSecretGenerator_1.3.2_$(shell uname -s | tr '[:upper:]' '[:lower:]')_amd64
-	-chmod 755 .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator
 
 /usr/local/bin/pinentry-defn:
 	@bin/fig pinentry
@@ -179,9 +164,6 @@ new:
 	sudo mkdir -p /usr/local/bin
 	sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/git-crypt /usr/local/bin/
 
-bash:
-	cd c && docker-compose exec home bash -il
-
 sync:
 	cp -a .docker/config.json k/.sync/.docker/
 	cp -a .ssh/authorized_keys .ssh/known_hosts k/.sync/.ssh/
@@ -199,26 +181,12 @@ tilt:
 	date > k/.index
 	tilt up --namespace defn
 
-up:
-	cd c && docker-compose up -d --remove-orphans
-
-down:
-	cd c && docker-compose down --remove-orphans
-
-recreate:
-	$(MAKE) down
-	$(MAKE) reset
-	$(MAKE) up
-
 reset:
 	-ssh-keygen -R '[localhost]:2222'
 
 recycle:
 	$(MAKE) pull
 	$(MAKE) recreate
-
-tail:
-	cd c && docker-compose logs -f
 
 shim:
 	ln -nfs "$(shell asdf which kubectl)" bin/site/
@@ -269,7 +237,6 @@ thing:
 	-$(MAKE) upgrade
 	$(MAKE) upgrade
 	$(MAKE) install
-	$(MAKE) install-coc
 
 submit:
 	$(MAKE) submit_base
