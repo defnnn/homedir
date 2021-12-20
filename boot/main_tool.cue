@@ -47,16 +47,17 @@ command: {
 			]
 			$after: createDroplet
 		}
-	}
-	clean: {
 		cleanName: exec.Run & {
 			cmd: ["ssh-keygen", "-R", config.name]
+			$after: attachIP
 		}
 		cleanIP: exec.Run & {
 			cmd: ["ssh-keygen", "-R", config.ip]
+			$after: cleanName
 		}
 		getHostKey: exec.Run & {
 			cmd: ["ssh", "-o", "StrictHostKeyChecking=false", config.name, "true"]
+			$after: cleanIP
 		}
 	}
 	delete: exec.Run & {
