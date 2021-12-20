@@ -43,7 +43,7 @@ command: {
 		attachIP: exec.Run & {
 			cmd: ["doctl", "compute", "floating-ip-action", "assign",
 				config.ip,
-				strings.Trim(createDroplet.stdout),
+				strings.TrimSpace(createDroplet.stdout),
 			]
 			$after: createDroplet
 		}
