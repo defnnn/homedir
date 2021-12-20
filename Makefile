@@ -112,7 +112,7 @@ python:
 	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
 	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
 	if ! venv/bin/python --version 2>/dev/null; then \
-		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python bin/get-pip.py && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+		rm -rf venv; bin/fig python; source ./.bash_profile && python3 -m venv venv && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pipx:
 	@bin/fig pipx
