@@ -33,7 +33,7 @@ command: {
 			firewall[config.firewall].id,
 			"--tag-names", "dev",
 		]
-    $after: create
+		$after: create
 	}
 	delete: exec.Run & {
 		cmd: ["doctl", "compute", "droplet", "delete",
