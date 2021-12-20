@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-function main {
-  command git add -u "$@"
-}
-
-main "$@"

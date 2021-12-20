@@ -1,8 +1,0 @@
-repo: https://github.com/amanibhavam/homedir
-revision: master
-version: master
-variant: ""
-
-base_dockerfile: b/Dockerfile.base
-base_source: "python:3.10"
-base_destination: "k3d-hub.defn.ooo:5000/amanibhavam/homedir:base"
