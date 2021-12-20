@@ -39,7 +39,7 @@ command: {
 		$after: create
 	}
 	ip: exec.Run & {
-		cmd: ["doctl", "compute", "floating-ip", "assign",
+		cmd: ["doctl", "compute", "floating-ip-action", "assign",
 			droplet.ip,
 			create.stdout,
 		]
