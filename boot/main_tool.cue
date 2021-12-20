@@ -18,22 +18,32 @@ command: {
 	create: exec.Run & {
 		cmd: ["doctl", "compute", "droplet", "create",
 			"--wait",
-			"--tag-name", "dev",
+			"--tag-name", config.name,
 			"--enable-ipv6",
 			"--image", config.image,
 			"--region", config.region,
 			"--size", config.size,
 			"--ssh-keys", "\(ssh[config.sshkey].id)",
 			"--volumes", volume[config.volume].id,
+			"--format", "ID",
+			"--no-header",
 			config.name,
 		]
+		stdout: string
 	}
 	fw: exec.Run & {
 		cmd: ["doctl", "compute", "firewall", "add-tags",
 			firewall[config.firewall].id,
-			"--tag-names", "dev",
+			"--tag-names", config.name,
 		]
 		$after: create
+	}
+	ip: exec.Run & {
+		cmd: ["doctl", "compute", "floating-ip", "assign",
+			droplet.ip,
+			create.stdout,
+		]
+		$after: fw
 	}
 	delete: exec.Run & {
 		cmd: ["doctl", "compute", "droplet", "delete",
