@@ -1,8 +1,3 @@
-tap "aws/tap"
-tap "cuelang/tap"
-tap "defn/tap"
-tap "borkdude/brew"
-
 brew "chamber"
 brew "gnupg"
 brew "git"
@@ -19,21 +14,18 @@ brew "socat"
 brew "tmux"
 brew "vim"
 brew "gh"
-brew "cue"
-brew "screen"
-brew "irssi"
-brew "sops"
 brew "stern"
 brew "yubico-piv-tool"
 brew "gron"
 brew "step"
+
+tap "defn/tap"
 brew "hello"
-brew "direnv"
-brew "rg"
 
 if OS.mac?
   tap "homebrew/cask"
   tap "homebrew/cask-fonts"
+  tap "aws/tap"
 
   cask "aws-vault"
   cask "1password"
