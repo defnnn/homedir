@@ -1,7 +1,7 @@
 package defn
 
 import (
-  "tool/cli"
+	"tool/cli"
 )
 
 arg1: string @tag(arg1)
@@ -15,5 +15,5 @@ arg8: string @tag(arg8)
 arg9: string @tag(arg9)
 
 command: meh: cli.Print & {
-  text: "cool beans"
+	text: "cool beans"
 }
