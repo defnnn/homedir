@@ -37,12 +37,11 @@ config:
 install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
 
-install-python:
+install-python: install-asdf
 	sudo apt install -y libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
 	asdf install python
 
 update_inner:
-	#bin/runmany './env.sh asdf plugin-add $$1 || true' consul packer vault kubectl kustomize helm k3d k3sup terraform argo argocd python nodejs
 	mkdir -p .ssh && chmod 700 .ssh
 	mkdir -p .gnupg && chmod 700 .gnupg
 	mkdir -p .aws
@@ -60,7 +59,6 @@ install: # Install software bundles
 
 install_inner:
 	$(MAKE) brew
-	$(MAKE) asdf
 	$(MAKE) python
 	$(MAKE) pipx
 	$(MAKE) misc
