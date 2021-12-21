@@ -34,12 +34,21 @@ config:
 	-chmod 600 .ssh/config
 	-chmod 700 .gnupg
 
+bootstrap:
+	$(MAKE) update
+	$(MAKE) install-asdf
+	$(MAKE) install-asdf-plugin
+	$(MAKE) install-python
+
 install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
 
+install-asdf-plugin:
+	bin/runmany './env.sh asdf plugin-add $$1' argo argocd cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python terraform tilt
+
 install-python: install-asdf
-	sudo apt install -y libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
-	asdf install python
+	sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
+	./env.sh asdf install python
 
 update_inner:
 	mkdir -p .ssh && chmod 700 .ssh
