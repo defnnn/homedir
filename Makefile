@@ -42,6 +42,7 @@ bootstrap:
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-python
 	$(MAKE) rebuild-python
+	$(MAKE) latest
 	sync
 
 install-password-store:
