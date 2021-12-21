@@ -122,16 +122,6 @@ misc:
 homebrew:
 	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
-new:
-	sudo mkdir -p /home/linuxbrew
-	-sudo mount /home/linuxbrew
-	-sudo mount /mnt
-	ln -nfs /mnt/work ~/
-	ln -nfs /mnt/.password-store ~/
-	./bin/install-homedir
-	sudo mkdir -p /usr/local/bin
-	sudo ln -nfs /home/linuxbrew/.linuxbrew/bin/git-crypt /usr/local/bin/
-
 shim:
 	ln -nfs "$(shell asdf which cue)" bin/site/
 	ln -nfs "$(shell asdf which kubectl)" bin/site/
@@ -147,13 +137,6 @@ shim:
 	ln -nfs "$(shell asdf which node)" bin/site/
 	ln -nfs "$(shell asdf which go)" bin/site/
 	ln -nfs "$(shell asdf which gofmt)" bin/site/
-
-thing:
-	-$(MAKE) update
-	$(MAKE) update
-	-$(MAKE) upgrade
-	$(MAKE) upgrade
-	$(MAKE) install
 
 .vim/autoload/plug.vim:
 	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
