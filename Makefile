@@ -36,11 +36,15 @@ config:
 
 bootstrap:
 	$(MAKE) update
+	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-python
 	$(MAKE) rebuild-python
+
+install-password-store:
+	ln -nfs /mnt/.password-store .
 
 install-powerline:
 	curl -sSL -o bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64
