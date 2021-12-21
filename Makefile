@@ -37,7 +37,7 @@ config:
 bootstrap:
 	$(MAKE) update
 	$(MAKE) install-asdf
-	$(MAKE) install-asdf-plugin
+	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-python
 
 install-asdf:
