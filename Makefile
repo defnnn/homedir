@@ -42,6 +42,8 @@ bootstrap:
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-python
 	$(MAKE) rebuild-python
+	sudo apt update
+	sudo apt upgrade -y
 	sync
 
 install-password-store:
