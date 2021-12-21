@@ -3,6 +3,7 @@
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/node_modules/*/**": true,
-        "**/venv/**": true
+        "**/venv/**": true,
+        "**/.local/pipx/**": true
     }
 }
