@@ -43,6 +43,7 @@ bootstrap:
 	$(MAKE) install-python
 	$(MAKE) rebuild-python
 	$(MAKE) latest
+	$(MAKE) shim
 	sudo apt update
 	sudo apt upgrade -y
 	sync
