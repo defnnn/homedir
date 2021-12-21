@@ -42,6 +42,7 @@ bootstrap:
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-python
 	$(MAKE) rebuild-python
+	sync
 
 install-password-store:
 	ln -nfs /mnt/.password-store .
