@@ -37,7 +37,6 @@ config:
 bootstrap:
 	$(MAKE) update
 	$(MAKE) install-password-store
-	$(MAKE) install-vim
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
