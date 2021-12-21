@@ -39,6 +39,7 @@ bootstrap:
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-python
+	$(MAKE) pipx
 
 install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
