@@ -69,7 +69,7 @@ update_inner:
 	rm -f .profile
 
 upgrade: # Upgrade installed software
-	brew upgrade
+	if type -P brew; then brew upgrade; fi
 	if [[ "$(shell uname -s)" == "Darwin" ]]; then brew upgrade --cask; fi
 	. venv/bin/activate && pipx upgrade-all
 
