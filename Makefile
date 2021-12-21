@@ -42,6 +42,7 @@ bootstrap:
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-python
 	$(MAKE) rebuild-python
+	$(MAKE) latest
 	sudo apt update
 	sudo apt upgrade -y
 	sync
@@ -71,7 +72,7 @@ update_inner:
 	rm -f .profile
 
 upgrade: # Upgrade installed software
-	brew upgrade
+	if type -P brew; then brew upgrade; fi
 	if [[ "$(shell uname -s)" == "Darwin" ]]; then brew upgrade --cask; fi
 	. venv/bin/activate && pipx upgrade-all
 
