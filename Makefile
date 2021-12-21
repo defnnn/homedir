@@ -37,6 +37,7 @@ config:
 bootstrap:
 	$(MAKE) update
 	$(MAKE) install-password-store
+	$(MAKE) install-vim
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
@@ -50,6 +51,9 @@ bootstrap:
 
 install-password-store:
 	ln -nfs /mnt/.password-store .
+
+install-vim:
+	vim +'PlugInstall --sync' +qa
 
 install-powerline:
 	curl -sSL -o bin/powerline-go https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64
