@@ -35,6 +35,9 @@ config:
 	-chmod 700 .gnupg
 
 bootstrap:
+	./env.sh $(MAKE) bootstrap_inner
+
+bootstrap_inner:
 	$(MAKE) update
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
@@ -76,16 +79,12 @@ update_inner:
 	rm -f .profile
 
 upgrade: # Upgrade installed software
-	if type -P brew; then brew upgrade; fi
-	if [[ "$(shell uname -s)" == "Darwin" ]]; then brew upgrade --cask; fi
 	. venv/bin/activate && pipx upgrade-all
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
-	rm -f /home/linuxbrew/.linuxbrew/bin/perl
 
 install_inner:
-	$(MAKE) brew
 	asdf install
 	$(MAKE) pipx
 	$(MAKE) misc
@@ -97,9 +96,6 @@ penv:
 pipx: penv
 	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq pyinfra testinfra awscli
 	-venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
-
-brew:
-	-if test -x "$(shell which brew)"; then brew bundle; fi
 
 misc:
 	~/env.sh $(MAKE) /usr/local/bin/pinentry-defn
@@ -116,9 +112,6 @@ misc:
 		ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; \
 	else \
 		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
-
-homebrew:
-	 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash -
 
 shim:
 	ln -nfs "$(shell ./env.sh asdf which cue)" bin/site/
