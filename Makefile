@@ -50,6 +50,13 @@ bootstrap_inner:
 	sudo apt upgrade -y
 	sync
 
+katt:
+	cd /mnt/work/katt/dev && ~/.env.sh c reset
+	cd /mnt/work/katt/dev && ~/.env.sh c install
+
+katt-golang:
+	cd /mnt/work/dev/k/golang && ~/.env.sh c apply
+
 install-password-store:
 	ln -nfs /mnt/.password-store .
 
