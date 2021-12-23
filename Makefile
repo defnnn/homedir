@@ -93,7 +93,7 @@ install_inner:
 
 penv:
 	if ! venv/bin/python --version 2>/dev/null; then \
-		rm -rf venv; source ./.bash_profile && python -m venv venv && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+		rm -rf venv; source ./.bash_profile && python3 -m venv venv && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pipx: penv
 	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq pyinfra testinfra awscli
