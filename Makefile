@@ -88,15 +88,14 @@ install: # Install software bundles
 install_inner:
 	$(MAKE) brew
 	asdf install
-	$(MAKE) penv
 	$(MAKE) pipx
 	$(MAKE) misc
 
-python:
+penv:
 	if ! venv/bin/python --version 2>/dev/null; then \
 		rm -rf venv; source ./.bash_profile && python -m venv venv && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
-pipx:
+pipx: penv
 	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq pyinfra testinfra awscli
 	-venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 
