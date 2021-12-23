@@ -60,7 +60,7 @@ install-powerline:
 
 install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
-	if [[ ! -f .tool-versions ]]; then mkdir -p .password-store; cp .tool-versions.example .password-store/.tool-versions; fi
+	if [[ ! -f .tool-versions ]]; then mkdir -p /mnt/.password-store; cp .tool-versions.example /mnt/.password-store/.tool-versions; fi
 
 install-asdf-plugin:
 	bin/runmany './env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python tilt
