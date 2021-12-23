@@ -21,7 +21,7 @@ latest_inner:
 
 rebuild-python:
 	rm -rf venv .local/pipx
-	$(MAKE) python
+	$(MAKE) penv
 	$(MAKE) pipx
 
 update: # Update code
@@ -60,13 +60,14 @@ install-powerline:
 
 install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
+	if [[ ! -f .tool-versions ]]; then mkdir -p .password-store; cp .tool-versions.example .password-store/.tool-versions; fi
 
 install-asdf-plugin:
-	bin/runmany './env.sh asdf plugin-add $$1' argo argocd cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python terraform tilt
+	bin/runmany './env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python tilt
 
-install-python: install-asdf
+install-python:
 	sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
-	./env.sh asdf install python
+	-./env.sh asdf install python
 
 update_inner:
 	mkdir -p .ssh && chmod 700 .ssh
@@ -87,20 +88,16 @@ install: # Install software bundles
 install_inner:
 	$(MAKE) brew
 	asdf install
-	$(MAKE) python
+	$(MAKE) penv
 	$(MAKE) pipx
 	$(MAKE) misc
 
 python:
-	if test -w /usr/local/bin; then ln -nfs python3 /usr/local/bin/python; fi
-	if test -w /home/linuxbrew/.linuxbrew/bin; then ln -nfs python3 /home/linuxbrew/.linuxbrew/bin/python; fi
 	if ! venv/bin/python --version 2>/dev/null; then \
-		rm -rf venv; source ./.bash_profile && python3 -m venv venv && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
+		rm -rf venv; source ./.bash_profile && python -m venv venv && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pipx:
-	if ! test -x venv/bin/pipx; then \
-		./env.sh venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
-	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq keepercommander pyinfra testinfra solo-python ec2instanceconnectcli awscli
+	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq pyinfra testinfra awscli
 	-venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 
 brew:
@@ -129,8 +126,6 @@ shim:
 	ln -nfs "$(shell ./env.sh asdf which cue)" bin/site/
 	ln -nfs "$(shell ./env.sh asdf which kubectl)" bin/site/
 	ln -nfs "$(shell ./env.sh asdf which kustomize)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which argocd)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which argo)" bin/site/
 	ln -nfs "$(shell ./env.sh asdf which k3sup)" bin/site/
 	ln -nfs "$(shell ./env.sh asdf which helm)" bin/site/
 	ln -nfs "$(shell ./env.sh asdf which kubectx)" bin/site/
