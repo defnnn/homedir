@@ -61,11 +61,11 @@ bootstrap_inner:
 	sync
 
 katt:
-	cd /mnt/work/katt/dev && ~/env.sh c reset
-	cd /mnt/work/katt/dev && ~/env.sh c install
+	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c reset
+	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c install
 
 katt-golang:
-	cd /mnt/work/dev/k/golang && ~/env.sh c apply
+	cd /mnt/work/dev/k/$(shell uname -n) && ~/env.sh c apply
 
 install-password-store:
 	ln -nfs /mnt/.password-store .
