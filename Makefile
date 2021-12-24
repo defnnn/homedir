@@ -34,6 +34,20 @@ config:
 	-chmod 600 .ssh/config
 	-chmod 700 .gnupg
 
+pod:
+	./env.sh $(MAKE) pod_inner
+
+pod_inner::
+	$(MAKE) update
+	$(MAKE) install-password-store
+	$(MAKE) install-powerline
+	$(MAKE) install-asdf
+	$(MAKE) install-vim
+	$(MAKE) latest
+	sudo apt update
+	sudo apt upgrade -y
+	sync
+
 bootstrap:
 	./env.sh $(MAKE) bootstrap_inner
 
