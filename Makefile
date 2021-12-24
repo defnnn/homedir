@@ -142,3 +142,6 @@ katt:
 katt-golang:
 	cd /mnt/work/dev/k/$(shell uname -n) && ~/env.sh c apply
 
+katt-argocd:
+	cd /mnt/work/dev/argocd && ~/env.sh make deploy
+
