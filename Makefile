@@ -38,28 +38,22 @@ pod:
 	./env.sh $(MAKE) pod_inner
 
 pod_inner::
-	$(MAKE) update
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	$(MAKE) install-vim
-	$(MAKE) latest
 	sync
 
 bootstrap:
 	./env.sh $(MAKE) bootstrap_inner
 
 bootstrap_inner:
-	$(MAKE) update
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-vim
 	$(MAKE) rebuild-python
-	$(MAKE) latest
-	sudo apt update
-	sudo apt upgrade -y
 	sync
 
 katt:
