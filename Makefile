@@ -29,6 +29,24 @@ update: # Update code
 	$(MAKE) config
 	$(MAKE) update_inner
 
+update_inner:
+	mkdir -p .ssh && chmod 700 .ssh
+	mkdir -p .gnupg && chmod 700 .gnupg
+	mkdir -p .aws
+	mkdir -p .docker
+	rm -f .profile
+
+upgrade: # Upgrade installed software
+	if [[ -f venv/bin/activate ]]; then . venv/bin/activate && pipx upgrade-all; fi
+
+install: # Install software bundles
+	source ./.bash_profile && ( $(MAKE) install_inner || true )
+
+install_inner:
+	asdf install
+	$(MAKE) pipx
+	$(MAKE) misc
+
 config:
 	-chmod 700 .ssh
 	-chmod 600 .ssh/config
@@ -60,13 +78,6 @@ bootstrap_inner:
 	$(MAKE) rebuild-python
 	sync
 
-katt:
-	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c reset
-	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c install
-
-katt-golang:
-	cd /mnt/work/dev/k/$(shell uname -n) && ~/env.sh c apply
-
 install-password-store:
 	ln -nfs /mnt/.password-store .
 
@@ -82,24 +93,6 @@ install-asdf:
 
 install-asdf-plugin:
 	bin/runmany './env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python tilt
-
-update_inner:
-	mkdir -p .ssh && chmod 700 .ssh
-	mkdir -p .gnupg && chmod 700 .gnupg
-	mkdir -p .aws
-	mkdir -p .docker
-	rm -f .profile
-
-upgrade: # Upgrade installed software
-	if [[ -f venv/bin/activate ]]; then . venv/bin/activate && pipx upgrade-all; fi
-
-install: # Install software bundles
-	source ./.bash_profile && ( $(MAKE) install_inner || true )
-
-install_inner:
-	asdf install
-	$(MAKE) pipx
-	$(MAKE) misc
 
 penv:
 	if ! venv/bin/python --version 2>/dev/null; then \
@@ -141,3 +134,11 @@ shim:
 
 .vim/autoload/plug.vim:
 	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+katt:
+	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c reset
+	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c install
+
+katt-golang:
+	cd /mnt/work/dev/k/$(shell uname -n) && ~/env.sh c apply
+
