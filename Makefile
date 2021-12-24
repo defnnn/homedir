@@ -93,7 +93,7 @@ update_inner:
 	rm -f .profile
 
 upgrade: # Upgrade installed software
-	. venv/bin/activate && pipx upgrade-all
+	if [[ -f venv/bin/activate ]]; then . venv/bin/activate && pipx upgrade-all; fi
 
 install: # Install software bundles
 	source ./.bash_profile && ( $(MAKE) install_inner || true )
