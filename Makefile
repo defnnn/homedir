@@ -38,6 +38,7 @@ pod:
 	./env.sh $(MAKE) pod_inner
 
 pod_inner::
+	$(MAKE) config
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
@@ -48,6 +49,8 @@ bootstrap:
 	./env.sh $(MAKE) bootstrap_inner
 
 bootstrap_inner:
+	$(MAKE) config
+	$(MAKE) install-password-store
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
