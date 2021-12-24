@@ -44,8 +44,6 @@ pod_inner::
 	$(MAKE) install-asdf
 	$(MAKE) install-vim
 	$(MAKE) latest
-	sudo apt update
-	sudo apt upgrade -y
 	sync
 
 bootstrap:
@@ -58,7 +56,6 @@ bootstrap_inner:
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
 	$(MAKE) install-vim
-	$(MAKE) install-python
 	$(MAKE) rebuild-python
 	$(MAKE) latest
 	sudo apt update
@@ -84,14 +81,9 @@ install-powerline:
 
 install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
-	if [[ ! -f .tool-versions ]]; then sudo install -d -o $$(id -un) -g $$(id -gn) -m 0700 /mnt/.password-store; cp .tool-versions.example /mnt/.password-store/.tool-versions; fi
 
 install-asdf-plugin:
 	bin/runmany './env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python tilt
-
-install-python:
-	sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev libreadline-dev
-	-./env.sh asdf install python
 
 update_inner:
 	mkdir -p .ssh && chmod 700 .ssh
