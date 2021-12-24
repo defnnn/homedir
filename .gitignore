@@ -169,3 +169,4 @@ b/.*
 .kuberlr/
 .vscode-server/
 .kube
+.tool-versions
