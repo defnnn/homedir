@@ -55,6 +55,7 @@ bootstrap_inner:
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
+	./env.sh asdf install
 	$(MAKE) install-vim
 	$(MAKE) rebuild-python
 	sync
