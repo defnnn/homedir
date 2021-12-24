@@ -145,3 +145,6 @@ katt-golang:
 katt-argocd:
 	cd /mnt/work/dev/argocd && ~/env.sh make deploy
 
+katt-argo-workflows:
+	cd /mnt/work/dev/argo-workflows && ~/env.sh make deploy
+
