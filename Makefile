@@ -136,8 +136,8 @@ shim:
 	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 katt:
-	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c reset
-	cd /mnt/work/katt/$(shell uname -n) && ~/env.sh c install
+	cd /mnt/work/dev/cluster/$(shell uname -n) && ~/env.sh c reset
+	cd /mnt/work/dev/cluster/$(shell uname -n) && ~/env.sh c install
 
 katt-golang:
 	cd /mnt/work/dev/k/$(shell uname -n) && ~/env.sh c apply
