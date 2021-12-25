@@ -134,17 +134,3 @@ shim:
 
 .vim/autoload/plug.vim:
 	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-katt:
-	cd /mnt/work/dev/cluster/$(shell uname -n) && ~/env.sh c reset
-	cd /mnt/work/dev/cluster/$(shell uname -n) && ~/env.sh c install
-
-katt-golang:
-	cd /mnt/work/dev/k/$(shell uname -n) && ~/env.sh c apply
-
-katt-argocd:
-	cd /mnt/work/dev/argocd && ~/env.sh make deploy
-
-katt-argo-workflows:
-	cd /mnt/work/dev/argo-workflows && ~/env.sh make deploy
-
