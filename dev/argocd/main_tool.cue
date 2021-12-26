@@ -9,12 +9,12 @@ command: passwd: exec.Run & {
 }
 
 command: add: {
-  addProject: exec.Run & {
-    cmd: ["argocd", "--core", "proj", "create", arg1]
-  }
+	addProject: exec.Run & {
+		cmd: ["argocd", "--core", "proj", "create", arg1]
+	}
 
-  addCluster: exec.Run & {
-    cmd: ["argocd", "--core", "cluster", "add", "-y", "--project", arg1, arg1]
-    $after: addProject
-  }
+	addCluster: exec.Run & {
+		cmd: ["argocd", "--core", "cluster", "add", "-y", "--project", arg1, arg1]
+		$after: addProject
+	}
 }

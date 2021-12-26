@@ -43,10 +43,13 @@ upgrade: # Upgrade installed software
 	if [[ -f venv/bin/activate ]]; then . venv/bin/activate && pipx upgrade-all; fi
 
 install: # Install software bundles
-	source ./.bash_profile && ( $(MAKE) install_inner || true )
+	bin/env.sh $(MAKE) install_inner || true
 
 install_inner:
 	asdf install
+	kk update
+	kk install stern ctx ns get-all
+	asdf reshim krew
 	$(MAKE) pipx
 	$(MAKE) misc
 
@@ -76,7 +79,7 @@ bootstrap_inner:
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
-	bin/env.sh asdf install
+	asdf install
 	$(MAKE) install-vim
 	$(MAKE) rebuild-python
 	sync
@@ -95,7 +98,7 @@ install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
 
 install-asdf-plugin:
-	bin/runmany 'bin/env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python tilt
+	bin/runmany 'bin/env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl krew kubectx kustomize nodejs python tilt
 
 penv:
 	if ! venv/bin/python --version 2>/dev/null; then \
