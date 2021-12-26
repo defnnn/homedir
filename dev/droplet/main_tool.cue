@@ -89,7 +89,7 @@ command: {
 			$after: copyToolVersions
 		}
 		initKubernetes: exec.Run & {
-			cmd: ["ssh", config.name, "bin/chexec.sh", "/mnt/work/dev/cluster/\(config.name)", "make"]
+			cmd: ["ssh", config.name, "bin/chexec.sh", "dev/cluster/\(config.name)", "make"]
 			$after: bootstrapHomedir
 		}
 		reboot: exec.Run & {
