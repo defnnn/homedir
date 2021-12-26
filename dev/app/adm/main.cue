@@ -3,6 +3,6 @@ package defn
 ns: "dev"
 
 config: adm: {
-    tag: "base"
+    tag: "adm"
     nodePort: 32003
 }
