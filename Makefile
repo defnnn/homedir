@@ -35,6 +35,7 @@ update_inner:
 	mkdir -p .aws
 	mkdir -p .docker
 	rm -f .profile
+	rm -f env env.sh
 
 upgrade: # Upgrade installed software
 	if [[ -f venv/bin/activate ]]; then . venv/bin/activate && pipx upgrade-all; fi
@@ -53,10 +54,10 @@ config:
 	-chmod 700 .gnupg
 
 pod:
+	$(MAKE) update
 	bin/env.sh $(MAKE) pod_inner
 
 pod_inner::
-	$(MAKE) config
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
@@ -64,10 +65,10 @@ pod_inner::
 	sync
 
 bootstrap:
+	$(MAKE) update
 	bin/env.sh $(MAKE) bootstrap_inner
 
 bootstrap_inner:
-	$(MAKE) config
 	$(MAKE) install-password-store
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
