@@ -166,7 +166,7 @@ function render_ps1 {
     -priority root,cwd,user,host,ssh,perms,git-branch,exit,cwd-path,git-status \
     -modules host,ssh,cwd,perms,gitlite,load,exit${PS1_VAR:+,shell-var --shell-var PS1_VAR} \
     -path-aliases /home/boot=\~,\~/work=work \
-    -theme ~/default.json
+    -theme ~/.password-store/powerline/default.json
 }
 
 function update_ps1 {

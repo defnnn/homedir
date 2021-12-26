@@ -7,6 +7,8 @@ import (
 
 objects: [
 	namespace,
+	for name, c in serviceAccount {c},
+	for name, c in clusterRoleBinding {c},
 	for name, c in configMap {c},
 	for name, c in statefulSet {c},
 	for name, c in service {c},
