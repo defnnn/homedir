@@ -55,6 +55,7 @@ RUN git clone https://github.com/amanibhavam/homedir homedir && mv homedir/.git 
 RUN echo cue 0.4.1-beta.6 >> .tool-versions
 RUN echo kubectl 1.21.8 >> .tool-versions
 RUN echo kustomize 4.2.0 >> .tool-versions
+RUN echo krew 4.2.0 >> .tool-versions
 RUN echo helm 3.7.1 >> .tool-versions
 RUN echo kubectx 0.9.4 >> .tool-versions
 RUN echo vault 1.9.2 >> .tool-versions
@@ -65,6 +66,8 @@ RUN echo argo 3.2.6 >> .tool-versions
 RUN echo tilt 0.23.4 >> .tool-versions
 RUN echo k9s 0.25.16 >> .tool-versions
 
-RUN for a in cue kubectl kustomize helm kubectx vault consul terraform argocd argo tilt k9s; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
+RUN for a in cue kubectl kustomize krew helm kubectx vault consul terraform argocd argo tilt k9s; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
+
+RUN bin/env.sh kubectl krew update && bin/env.sh kubectl krew install stern && bin/env.sh asdf reshim krew
 
 RUN ln -nfs /mnt/work .
