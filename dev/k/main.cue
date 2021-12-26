@@ -20,15 +20,16 @@ cm_prefix: "/cm"
 
 // Configuration per app instance
 config: [string]: {
-	tag: string
+	tag:      string
 	nodePort: int
 }
 
 // Generate statefulSet, service per app instance
 for cname, c in config {
+	serviceAccount: "\(cname)": {}
+	clusterRoleBinding: "\(cname)": {}
 	statefulSet: "\(cname)": {}
 	service: "\(cname)": {}
-
 }
 
 // Common configuration files
@@ -58,6 +59,31 @@ configMap: entry: {
 }
 
 // Schemas for Remote Development App
+serviceAccount: [NAME=string]: {
+	kind:       "ServiceAccount"
+	apiVersion: "v1"
+	metadata: {
+		name:      NAME
+		namespace: ns
+	}
+}
+
+clusterRoleBinding: [NAME=string]: {
+	kind:       "ClusterRoleBinding"
+	apiVersion: "rbac.authorization.k8s.io/v1beta1"
+	metadata: name: "\(NAME)-cluster-role-binding-cluster-admin"
+	subjects: [{
+		kind:      "ServiceAccount"
+		name:      NAME
+		namespace: ns
+	}]
+	roleRef: {
+		kind:     "ClusterRole"
+		name:     "cluster-admin"
+		apiGroup: ""
+	}
+}
+
 configMap: [NAME=string]: {
 	kind:       "ConfigMap"
 	apiVersion: "v1"
@@ -86,6 +112,8 @@ statefulSet: [NAME=string]: {
 		template: {
 			metadata: labels: app: NAME
 			spec: {
+				serviceAccountName: NAME
+
 				terminationGracePeriodSeconds: 60
 
 				securityContext: {
