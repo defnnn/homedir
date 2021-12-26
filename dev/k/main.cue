@@ -70,7 +70,7 @@ serviceAccount: [NAME=string]: {
 
 clusterRoleBinding: [NAME=string]: {
 	kind:       "ClusterRoleBinding"
-	apiVersion: "rbac.authorization.k8s.io/v1beta1"
+	apiVersion: "rbac.authorization.k8s.io/v1"
 	metadata: name: "\(NAME)-cluster-role-binding-cluster-admin"
 	subjects: [{
 		kind:      "ServiceAccount"
