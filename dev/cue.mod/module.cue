@@ -1,1 +1,1 @@
-module: "github.com/defn/dev"
+module: "github.com/amanibhavam/homedir/dev"
