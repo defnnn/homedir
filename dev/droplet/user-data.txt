@@ -1,0 +1,33 @@
+#cloud-config
+system_info:
+  default_user:
+    name: ubuntu
+    shell: /bin/bash
+    home: /home/ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+mounts:
+ - [ sda, /mnt, auto, "defaults" ]
+apt_update: true
+packages:
+  - python3-pip
+  - python3-venv
+  - git-crypt
+  - linux-oem-20.04b
+runcmd:
+  - echo GatewayPorts clientspecified >> /etc/ssh/sshd_config
+  - echo StreamLocalBindUnlink yes >> /etc/ssh/sshd_config
+  - ln -nfs /usr/bin/git-crypt /usr/local/bin/
+  - ln -nfs /mnt/work /home/ubuntu/
+  - mkdir -p /var/lib/tailscale
+  - if test -f /mnt/tailscale/tailscaled.state; then rsync -ia /mnt/tailscale /var/lib/; fi
+  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | apt-key add -
+  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | tee /etc/apt/sources.list.d/tailscale.list
+  - apt update
+  - apt install -y tailscale
+  - systemctl start tailscaled
+  - if ! test -f /mnt/tailscale/tailscaled.state; then tailscale up --accept-dns=true --authkey tskey-kWh4nf7CNTRL-Foqykk1VCxEiskjtHCLqP; fi
+  - mkdir -p /mnt/tailscale
+  - systemctl stop tailscaled
+  - rsync -ia /var/lib/tailscale /mnt/
+  - systemctl start tailscaled
+  - sync
