@@ -68,6 +68,6 @@ RUN echo k9s 0.25.16 >> .tool-versions
 
 RUN for a in cue kubectl kustomize krew helm kubectx vault consul terraform argocd argo tilt k9s; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
 
-RUN bin/env.sh kubectl krew update && bin/env.sh kubectl krew install stern ctx ns && bin/env.sh asdf reshim krew
+RUN bin/env.sh kubectl krew update && bin/env.sh kubectl krew install stern ctx ns get-all && bin/env.sh asdf reshim krew
 
 RUN ln -nfs /mnt/work .
