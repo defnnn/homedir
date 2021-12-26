@@ -53,7 +53,7 @@ ENV LC_ALL en_US.UTF-8
 RUN git clone https://github.com/amanibhavam/homedir homedir && mv homedir/.git . && rm -rf homedir && git reset --hard && make pod
 
 RUN echo cue 0.4.1-beta.6 >> .tool-versions
-RUN echo kubectl 1.23.1 >> .tool-versions
+RUN echo kubectl 1.21.8 >> .tool-versions
 RUN echo kustomize 4.2.0 >> .tool-versions
 RUN echo helm 3.7.1 >> .tool-versions
 RUN echo kubectx 0.9.4 >> .tool-versions
