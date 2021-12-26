@@ -2,7 +2,7 @@ package defn
 
 ns: "dev"
 
-config: go: {
+config: adm: {
     tag: "base"
     nodePort: 32003
 }
