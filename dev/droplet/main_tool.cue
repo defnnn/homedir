@@ -44,6 +44,15 @@ command: {
 			$after: createDroplet
 		}
 	}
+	update: {
+		waitPing: exec.Run & {
+			cmd: ["bash", "-c", "until ping -c1 \(config.fqdn)>/dev/null 2>&1; do date; sleep 1; done"]
+		}
+		bootstrapHomedir: exec.Run & {
+			cmd: ["ssh", config.name, "make", "latest"]
+			$after: waitPing
+		}
+	}
 	deploy: {
 		waitPing: exec.Run & {
 			cmd: ["bash", "-c", "until ping -c1 \(config.fqdn)>/dev/null 2>&1; do date; sleep 1; done"]
