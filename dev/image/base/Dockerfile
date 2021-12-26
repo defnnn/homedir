@@ -39,6 +39,8 @@ RUN mkdir -p /run/sshd && chown -hR app:app /run /etc/ssh
 RUN install -d -m 0700 -o app -g app /home/app
 RUN install -d -m 0700 -o app -g app /home/app/.ssh
 
+RUN curl -sSL -o /usr/local/bin/hof https://github.com/hofstadter-io/hof/releases/download/v0.5.17/hof_0.5.17_Linux_arm64 && chmod 755 /usr/local/bin/hof
+
 USER app
 WORKDIR /home/app
 ENV HOME=/home/app
