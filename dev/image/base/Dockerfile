@@ -62,4 +62,4 @@ RUN echo argocd 2.2.1 >> .tool-versions
 RUN echo argo 3.2.6 >> .tool-versions
 RUN echo tilt 0.23.4 >> .tool-versions
 
-RUN for a in cue kubectl kustomize helm kubectx vault consul terraform argocd argo tilt; do bbin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
+RUN for a in cue kubectl kustomize helm kubectx vault consul terraform argocd argo tilt; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
