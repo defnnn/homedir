@@ -61,7 +61,8 @@ RUN echo terraform 1.1.2 >> .tool-versions
 RUN echo argocd 2.2.1 >> .tool-versions
 RUN echo argo 3.2.6 >> .tool-versions
 RUN echo tilt 0.23.4 >> .tool-versions
+RUN echo k9s 0.25.16 >> .tool-versions
 
-RUN for a in cue kubectl kustomize helm kubectx vault consul terraform argocd argo tilt; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
+RUN for a in cue kubectl kustomize helm kubectx vault consul terraform argocd argo tilt k9s; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
 
 RUN ln -nfs /mnt/work .
