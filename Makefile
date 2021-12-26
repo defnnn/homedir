@@ -27,6 +27,8 @@ rebuild-python:
 update: # Update code
 	git pull
 	$(MAKE) config
+	git reset --hard
+	$(MAKE) config
 	$(MAKE) update_inner
 
 update_inner:
