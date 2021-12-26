@@ -53,7 +53,7 @@ config:
 	-chmod 700 .gnupg
 
 pod:
-	./env.sh $(MAKE) pod_inner
+	bin/env.sh $(MAKE) pod_inner
 
 pod_inner::
 	$(MAKE) config
@@ -64,7 +64,7 @@ pod_inner::
 	sync
 
 bootstrap:
-	./env.sh $(MAKE) bootstrap_inner
+	bin/env.sh $(MAKE) bootstrap_inner
 
 bootstrap_inner:
 	$(MAKE) config
@@ -73,7 +73,7 @@ bootstrap_inner:
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	-$(MAKE) install-asdf-plugin
-	./env.sh asdf install
+	bin/env.sh asdf install
 	$(MAKE) install-vim
 	$(MAKE) rebuild-python
 	sync
@@ -92,7 +92,7 @@ install-asdf:
 	if [[ ! -d .asdf ]]; then git clone https://github.com/asdf-vm/asdf.git .asdf; fi
 
 install-asdf-plugin:
-	bin/runmany './env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python tilt
+	bin/runmany 'bin/env.sh asdf plugin-add $$1' cue doctl golang helm k3sup k9s kubectl kubectx kustomize nodejs python tilt
 
 penv:
 	if ! venv/bin/python --version 2>/dev/null; then \
@@ -103,8 +103,8 @@ pipx: penv
 	-venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 
 misc:
-	~/env.sh $(MAKE) /usr/local/bin/pinentry-defn
-	~/env.sh $(MAKE) /usr/local/bin/pass-vault-helper
+	bin/env.sh $(MAKE) /usr/local/bin/pinentry-defn
+	bin/env.sh $(MAKE) /usr/local/bin/pass-vault-helper
 
 /usr/local/bin/pinentry-defn:
 	if [[ -w /usr/local/bin ]]; then \
@@ -119,18 +119,18 @@ misc:
 		sudo ln -nfs "$(HOME)/bin/pass-vault-helper" /usr/local/bin/pass-vault-helper; fi
 
 shim:
-	ln -nfs "$(shell ./env.sh asdf which cue)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which kubectl)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which kustomize)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which k3sup)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which helm)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which kubectx)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which kubens)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which k9s)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which python)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which node)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which go)" bin/site/
-	ln -nfs "$(shell ./env.sh asdf which gofmt)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which cue)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which kubectl)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which kustomize)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which k3sup)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which helm)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which kubectx)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which kubens)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which k9s)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which python)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which node)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which go)" bin/site/
+	ln -nfs "$(shell bin/env.sh asdf which gofmt)" bin/site/
 
 .vim/autoload/plug.vim:
 	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

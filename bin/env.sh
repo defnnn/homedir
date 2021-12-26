@@ -2,7 +2,9 @@
 
 function main {
   source ~/.bash_profile
-  "$@"
+
+  set -exu
+  exec "$@"
 }
 
 main "$@"

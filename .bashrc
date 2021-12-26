@@ -1,5 +1,3 @@
-if [[ -f ~/.env.sh ]]; then set -a; source ~/.env.sh; set +a; fi
-
 ANSI_ESC=$'\033'
 ANSI_CSI="${ANSI_ESC}["
 
