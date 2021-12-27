@@ -66,7 +66,7 @@ pod_inner::
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
-	$(MAKE) install-vim
+	bin/env.sh $(MAKE) install-vim
 	sync
 
 bootstrap:
@@ -78,10 +78,10 @@ bootstrap_inner:
 	$(MAKE) install-password-store
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
-	-$(MAKE) install-asdf-plugin
-	asdf install
-	$(MAKE) install-vim
-	$(MAKE) rebuild-python
+	-bin/env.sh $(MAKE) install-asdf-plugin
+	bin/env.sh asdf install
+	bin/env.sh $(MAKE) install-vim
+	bin/env.sh $(MAKE) rebuild-python
 	sync
 
 install-password-store:
