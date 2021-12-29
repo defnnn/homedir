@@ -208,6 +208,7 @@ if [[ -f /etc/aws.env ]]; then
   set +a
 fi
 
+export PULUMI_SKIP_UPDATE_CHECK=1
 export CHECKPOINT_DISABLE=1
 export NODEJS_CHECK_SIGNATURES=no
 export SAM_CLI_TELEMETRY=0
