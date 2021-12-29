@@ -1,5 +1,7 @@
 package defn
 
+cmd: string @tag(cmd)
+user: string @tag(user)
 arg1: string @tag(arg1)
 arg2: string @tag(arg2)
 arg3: string @tag(arg3)

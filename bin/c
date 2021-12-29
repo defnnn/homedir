@@ -4,6 +4,8 @@ function main {
   local cmd="$1"; shift
 
   cue cmd \
+    -t cmd="${cmd}" \
+    -t user="${USER}" \
     -t arg1="${1:-}" \
     -t arg2="${2:-}" \
     -t arg3="${3:-}" \
