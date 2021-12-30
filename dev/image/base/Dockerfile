@@ -51,6 +51,7 @@ ENV LANGUAGE en_US:en
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
+COPY VERSION /VERSION
 RUN git clone https://github.com/amanibhavam/homedir homedir && mv homedir/.git . && rm -rf homedir && git reset --hard && make pod
 
 RUN echo cue 0.4.1-beta.6 >> .tool-versions
