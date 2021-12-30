@@ -64,7 +64,7 @@ RUN echo tilt 0.23.4 >> .tool-versions
 RUN echo k9s 0.25.16 >> .tool-versions
 RUN echo jq 1.6 >> .tool-versions
 
-RUN for a in cue kubectl kustomize krew helm kubectx tilt k9s; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
+RUN for a in cue kubectl kustomize krew helm kubectx tilt k9s jq; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
 
 RUN bin/env.sh kubectl krew update && bin/env.sh kubectl krew install stern ctx ns get-all && bin/env.sh asdf reshim krew
 
