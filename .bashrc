@@ -234,6 +234,7 @@ unset LC_ALL
 unset GPG_TTY
 
 export AWS_VAULT_BACKEND=pass
+export AWS_VAULT_PROMPT=pass
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR="$HOME/k/.sync/.aws-vault"
 export AWS_VAULT_PASS_CMD=pass
 export AWS_VAULT_PASS_PREFIX=aws-vault
