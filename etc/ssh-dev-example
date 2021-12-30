@@ -1,0 +1,15 @@
+Host l
+  User app
+  Hostname localhost
+  ForwardAgent yes
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  StreamLocalBindUnlink yes
+  RemoteForward /home/app/.gnupg/S.gpg-agent /usr/local/bin/S.gpg-agent.extra
+
+Host *
+  ForwardAgent no
+  ServerAliveInterval 30
+  ServerAliveCountMax 10
+  PubkeyAcceptedKeyTypes +ssh-rsa
