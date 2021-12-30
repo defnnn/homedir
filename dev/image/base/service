@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function main {
+  if [[ -d /cm/ssh ]]; then
+    mkdir -p ~/.ssh
+    (set +f; cp -v /cm/ssh/authorized_keys ~/.ssh/)
+  fi
+
+  exec /usr/sbin/sshd -D -o UseDNS=no -o UsePAM=yes -o PasswordAuthentication=no -o Port=2222 -e
+}
+
+set -exfu
+main "$@"

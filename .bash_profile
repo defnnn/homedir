@@ -10,7 +10,7 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH:/usr/local/sbin:/sbin:/usr/sbin"
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then source "$HOME/.asdf/asdf.sh"; fi
 
-PATH="$HOME/bin/site:$PATH"
+PATH="$HOME/bin/site:$HOME/.pulumi/bin:$PATH"
 
 if [[ "$(uname -s)" = "Darwin" ]]; then
   PATH="$PATH:$HOME/bin/$(uname -s)"

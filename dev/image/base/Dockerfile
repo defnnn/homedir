@@ -71,3 +71,10 @@ RUN for a in cue kubectl kustomize krew helm kubectx vault consul terraform argo
 RUN bin/env.sh kubectl krew update && bin/env.sh kubectl krew install stern ctx ns get-all && bin/env.sh asdf reshim krew
 
 RUN ln -nfs /mnt/work .
+
+COPY default.json /mnt/.password-store/powerline/default.json
+
+COPY --chown=app:app service /service
+RUN chmod 755 /service
+
+ENTRYPOINT [ "/service" ]

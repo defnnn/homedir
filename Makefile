@@ -2,8 +2,8 @@ SHELL := /bin/bash
 
 .PHONY: docs
 
-first = $(word 1, $(subst --, ,$@))
-second = $(word 2, $(subst --, ,$@))
+first = $(word 1, $(subst -, ,$@))
+second = $(word 2, $(subst -, ,$@))
 
 first_ = $(word 1, $(subst _, ,$@))
 second_ = $(word 2, $(subst _, ,$@))
@@ -140,3 +140,6 @@ shim:
 
 .vim/autoload/plug.vim:
 	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+dev-%:
+	docker run --name dev-$(second) -p 2222:2222 -v ~/.ssh:/cm/ssh -v ~/.password-store:/mnt/.password-store -v ~/work:/mnt/work defn/dev:$(second)
