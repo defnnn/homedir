@@ -142,4 +142,4 @@ shim:
 	curl -fsSLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 dev-%:
-	docker run --name dev-$(second) -p 2222:2222 -v ~/.ssh:/cm/ssh -v ~/.password-store:/mnt/.password-store -v ~/work:/mnt/work defn/dev:$(second)
+	docker run --name dev -p 2222:2222 -v ~/.ssh:/cm/ssh -v ~/.password-store:/mnt/.password-store -v ~/work:/mnt/work defn/dev:$(second)
