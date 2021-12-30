@@ -1,4 +1,4 @@
-Host l
+Host dev
   User app
   Hostname localhost
   ForwardAgent yes
