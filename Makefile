@@ -106,7 +106,7 @@ penv:
 		rm -rf venv; source ./.bash_profile && python3 -m venv venv && venv/bin/python -m pip install --upgrade pip pip-tools pipx; fi
 
 pipx: penv
-	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq awscli
+	-bin/runmany 'venv/bin/python -m pipx install $$1' pre-commit yq
 	-venv/bin/python -m pipx install --pip-args "httpie-aws-authv4" httpie
 
 misc:
