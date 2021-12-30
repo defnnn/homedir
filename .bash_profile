@@ -16,4 +16,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   PATH="$PATH:$HOME/bin/$(uname -s)"
 fi
 
+if [[ -f "$HOME/venv/bin/activate" ]]; then source "$HOME/venv/bin/activate"; fi
+
 source "$HOME/.bashrc"

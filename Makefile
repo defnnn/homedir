@@ -67,6 +67,7 @@ pod_inner::
 	$(MAKE) install-powerline
 	$(MAKE) install-asdf
 	bin/env.sh $(MAKE) install-vim
+	$(MAKE) rebuild-python
 	sync
 
 bootstrap:
