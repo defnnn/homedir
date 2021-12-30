@@ -111,7 +111,7 @@ pipx: penv
 
 misc:
 	bin/env.sh $(MAKE) /usr/local/bin/pinentry-defn
-	bin/env.sh $(MAKE) /usr/local/bin/pass-vault-helper
+	#bin/env.sh $(MAKE) /usr/local/bin/pass-vault-helper
 
 /usr/local/bin/pinentry-defn:
 	if [[ -w /usr/local/bin ]]; then \
