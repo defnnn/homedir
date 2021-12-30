@@ -17,6 +17,7 @@ RUN apt-get update \
         gpg gpg-agent dirmngr scdaemon pass git-crypt \
         tmux vim-nox \
         build-essential \
+        python3-venv python3-pip \
         docker.io \
     && rm -f /usr/bin/gs
 
