@@ -5,6 +5,7 @@ work
 .aws/credentials
 .aws/cli/cache
 .bashrc.site
+.bashrc.*
 .password-store
 .SpaceVim.d/
 .vim/.netrwhist
