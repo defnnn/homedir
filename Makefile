@@ -144,4 +144,4 @@ shim:
 
 dev-%:
 	docker rm -f dev || true
-	docker run -d --name dev -p 2222:2222 -v ~/.ssh:/cm/ssh -v ~/.password-store:/mnt/.password-store -v ~/work:/mnt/work defn/dev:$(second)
+	docker run -d --name dev -p 2222:2222 -v ~/.ssh:/cm/ssh -v ~/.password-store:/mnt/.password-store -v ~/work:/mnt/work -v /var/run/docker.sock:/var/run/docker.sock defn/dev:$(second)

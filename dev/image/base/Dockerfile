@@ -14,8 +14,8 @@ RUN dpkg-divert --local --rename --add /sbin/udevadm && ln -s /bin/true /sbin/ud
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         openssh-server ca-certificates tzdata locales git curl rsync unzip \
-        gpg gpg-agent dirmngr scdaemon pass git-crypt \
-        tmux vim-nox \
+        gpg gpg-agent dirmngr scdaemon pass pass-extension-otp git-crypt oathtool \
+        tmux vim-nox less \
         build-essential \
         python3-venv python3-pip \
         docker.io \
@@ -42,6 +42,10 @@ RUN install -d -m 0700 -o app -g app /home/app/.ssh
 
 RUN curl -sSL -o /usr/local/bin/hof https://github.com/hofstadter-io/hof/releases/download/v0.5.17/hof_0.5.17_Linux_x86_64 && chmod 755 /usr/local/bin/hof
 
+RUN curl -sSL -o awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip && unzip awscliv2.zip && ./aws/install && rm -rf aws awscliv2.zip
+
+RUN curl -sSL https://packagecloud.io/install/repositories/segment/aws-okta/script.deb.sh | bash && apt-get install -y aws-okta
+
 USER app
 WORKDIR /home/app
 ENV HOME=/home/app
@@ -63,8 +67,9 @@ RUN echo kubectx 0.9.4 >> .tool-versions
 RUN echo tilt 0.23.4 >> .tool-versions
 RUN echo k9s 0.25.16 >> .tool-versions
 RUN echo jq 1.6 >> .tool-versions
+RUN echo aws-vault 6.3.1 >> .tool-versions
 
-RUN for a in cue kubectl kustomize krew helm kubectx tilt k9s jq; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
+RUN for a in cue kubectl kustomize krew helm kubectx tilt k9s jq aws-vault; do bin/env.sh asdf plugin-add $a; bin/env.sh asdf install $a; done
 
 RUN bin/env.sh kubectl krew update && bin/env.sh kubectl krew install stern ctx ns get-all && bin/env.sh asdf reshim krew
 
